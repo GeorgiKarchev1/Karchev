@@ -22,7 +22,7 @@ const Projects = () => {
       live: 'https://editing.bg/',
     },
     {
-      title: 'AlgoChat.io',
+      title: 'AlgoChat.com',
       description: 'Developed an interactive web application for learning Data Structures and Algorithms with a lazy learning approach, featuring daily 1-minute challenges, visual algorithm explanations, and progress tracking to make DSA accessible without overwhelming users.',
       image: '/img/algoimg.png',
       technologies: ['AI/ML', 'WebRTC', 'Real-time APIs', 'Voice Processing'],

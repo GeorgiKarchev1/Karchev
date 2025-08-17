@@ -88,8 +88,8 @@ const About = () => {
                   I'm Georgi Karchev from Plovdiv, programming since before AI was a thing!
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  Solid foundation in data structures & algorithms, contributing to both 
-                  backend and frontend projects.
+                I’ve worked on both backend and frontend projects, gaining hands-on experience in building real solutions.
+
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
                   Always eager to learn and grow - passionate about expanding skills 

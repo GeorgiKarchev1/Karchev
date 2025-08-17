@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react'
+import { Github, Linkedin, Mail, ArrowUp, Sparkles } from 'lucide-react'
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -13,114 +13,118 @@ const Footer = () => {
       name: 'GitHub',
       href: 'https://github.com/GeorgiKarchev1',
       icon: Github,
+      color: 'hover:bg-gray-800 hover:text-white',
     },
     {
       name: 'LinkedIn',
       href: 'https://www.linkedin.com/in/georgi-karchev-415901244/',
       icon: Linkedin,
+      color: 'hover:bg-blue-600 hover:text-white',
     },
     {
       name: 'Email',
       href: 'mailto:georgikarchev5@gmail.com',
       icon: Mail,
+      color: 'hover:bg-red-600 hover:text-white',
     },
   ]
 
-  const quickLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
-  ]
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
-    <footer className="bg-black border-t border-gray-800">
-      <div className="container-custom py-12">
+    <footer className="relative bg-gradient-to-b from-gray-950 to-black border-t border-gray-800/50 overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(147,51,234,0.1),transparent_50%)]"></div>
+      
+      <div className="container-custom py-16 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            {/* Brand */}
-            <div>
-              <motion.h3 
-                className="text-2xl font-black text-white mb-4"
-                whileHover={{ scale: 1.05 }}
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-12 mb-12">
+            {/* Brand Section */}
+            <div className="flex-1 max-w-2xl">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
               >
-                <span className="text-gradient">KARCHEV</span> 🚀
-              </motion.h3>
-              <p className="text-gray-300 text-sm leading-relaxed font-medium">
-                💀 The Beast from Bulgaria who builds FASTER than you scroll.
-                <br />
-                <span className="text-blue-400">Making the internet jealous, one project at a time.</span>
-              </p>
+                <div className="flex items-center gap-2 mb-6">
+                  <h3 className="text-3xl font-black text-white">
+                    <span className="text-gradient">KARCHEV</span>
+                  </h3>
+                </div>
+                <div className="space-y-3">
+                  <p className="text-gray-300 text-base leading-relaxed font-medium">
+                    💀 The Beast from Bulgaria who builds{' '}
+                    <span className="text-gradient font-bold">FASTER</span> than you scroll.
+                  </p>
+                  <p className="text-blue-400 text-sm font-medium">
+                    Making the internet jealous, one project at a time.
+                  </p>
+                </div>
+              </motion.div>
             </div>
 
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Links</h4>
-              <ul className="space-y-2">
-                {quickLinks.map((link) => (
-                  <li key={link.name}>
-                    <button
-                      onClick={() => scrollToSection(link.href)}
-                      className="text-gray-400 hover:text-white transition-colors text-sm"
+            {/* Social Links */}
+            <div className="flex-shrink-0">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <h4 className="text-xl font-bold text-white mb-8 flex items-center gap-2">
+                  Let's Connect
+                </h4>
+                <div className="flex gap-4">
+                  {socialLinks.map(({ name, href, icon: Icon, color }, index) => (
+                    <motion.a
+                      key={name}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      whileHover={{ 
+                        scale: 1.1, 
+                        y: -5,
+                        rotate: [0, -5, 5, 0],
+                        transition: { duration: 0.3 }
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                      viewport={{ once: true }}
+                      className={`p-4 bg-gray-900/50 backdrop-blur-sm text-gray-400 hover:text-white transition-all duration-300 rounded-2xl border border-gray-800/50 hover:border-gray-600/50 ${color} shadow-lg hover:shadow-xl`}
+                      aria-label={name}
                     >
-                      {link.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Social */}
-            <div>
-              <h4 className="text-lg font-bold text-white mb-4">LET'S CONNECT 🔥</h4>
-              <div className="flex space-x-4">
-                {socialLinks.map(({ name, href, icon: Icon }) => (
-                  <motion.a
-                    key={name}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.2, y: -3, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-gray-800 text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300 rounded-xl border border-gray-700 hover:border-blue-500"
-                    aria-label={name}
-                  >
-                    <Icon size={20} />
-                  </motion.a>
-                ))}
-              </div>
+                      <Icon size={22} />
+                    </motion.a>
+                  ))}
+                </div>
+              </motion.div>
             </div>
           </div>
 
-          {/* Bottom */}
-          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between">
-            <motion.p 
-              className="text-gray-400 text-sm mb-4 md:mb-0 font-medium"
-              whileHover={{ scale: 1.05 }}
-            >
-              © 2024 KARCHEV. Made with 🔥 and a lot of ☕
-            </motion.p>
-            <motion.button
-              onClick={scrollToTop}
-              whileHover={{ scale: 1.2, y: -3 }}
-              whileTap={{ scale: 0.9 }}
-              className="p-3 bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 rounded-xl shadow-lg hover:shadow-blue-500/25"
-              aria-label="Back to top"
-            >
-              <ArrowUp size={20} />
-            </motion.button>
-          </div>
+                    {/* Bottom Section */}
+          <motion.div 
+            className="border-t border-gray-800/50 pt-8 flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center gap-2">
+              <motion.p 
+                className="text-gray-400 text-sm font-medium"
+                whileHover={{ scale: 1.02 }}
+              >
+                © 2025 KARCHEV. All rights reserved.
+              </motion.p>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </footer>
