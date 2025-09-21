@@ -58,11 +58,11 @@ const Footer = () => {
                 </div>
                 <div className="space-y-3">
                   <p className="text-gray-300 text-base leading-relaxed font-medium">
-                    💀 The Beast from Bulgaria who builds{' '}
-                    <span className="text-gradient font-bold">FASTER</span> than you scroll.
+                    Ready to turn your idea into a money-making machine?{' '}
+                    <span className="text-gradient font-bold">Let's build it together.</span>
                   </p>
                   <p className="text-blue-400 text-sm font-medium">
-                    Making the internet jealous, one project at a time.
+                    No BS. Just results. Fast delivery. Fair pricing.
                   </p>
                 </div>
               </motion.div>

@@ -20,7 +20,7 @@ const Header = () => {
   const navItems = [
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
-    // { name: 'Contact', href: '#contact' },
+    { name: 'Contact', href: '#contact' },
   ]
 
   const scrollToSection = (href: string) => {
@@ -132,58 +132,110 @@ const Header = () => {
           </motion.button>
         </div>
 
-        {/* Enhanced Mobile Navigation */}
+        {/* Enhanced Mobile Navigation - Full Screen Overlay */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="md:hidden relative"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-40 md:hidden"
             >
-              {/* Mobile menu background with gradient */}
-              <div className="absolute inset-0 bg-gradient-to-b from-gray-900/95 via-gray-950/98 to-black/95 backdrop-blur-xl border-t border-gray-700/50" />
-              
-              {/* Mobile menu glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-cyan-500/5" />
-              
-              <div className="relative py-6 space-y-1">
-                {navItems.map((item, index) => (
-                  <motion.button
-                    key={item.name}
-                    onClick={() => scrollToSection(item.href)}
-                    className="group relative block w-full text-left px-6 py-4 text-gray-300 hover:text-white transition-all duration-300"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ x: 10 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div className="flex items-center space-x-3">
-                      <motion.div
-                        className="w-1 h-6 bg-gradient-to-b from-blue-500 to-cyan-500 rounded-full opacity-0 group-hover:opacity-100"
-                        whileHover={{ scaleY: 1.2 }}
-                      />
-                      <span className="font-bold text-lg">{item.name}</span>
-                    </div>
-                    
-                    {/* Mobile item background */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 rounded-lg"
-                      whileHover={{ scale: 1.02 }}
-                    />
-                    
-                    {/* Mobile item glow */}
-                    <motion.div
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100"
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    />
-                  </motion.button>
-                ))}
-                
+              {/* Full screen background */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 bg-gray-950/98 backdrop-blur-2xl"
+              />
 
+              {/* Animated gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-cyan-500/10" />
+
+              {/* Content */}
+              <div className="relative flex flex-col items-center justify-center h-full px-8">
+                {/* Close button at top right */}
+                <motion.button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.1 }}
+                  className="absolute top-8 right-8 w-12 h-12 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-gray-700/50 transition-all duration-300 z-50"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <X size={24} />
+                </motion.button>
+
+                {/* Logo at top */}
+                <motion.div
+                  initial={{ opacity: 0, y: -30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="absolute top-20"
+                >
+                  <span className="text-2xl font-black bg-gradient-to-r from-white via-blue-200 to-cyan-400 bg-clip-text text-transparent">
+                    KARCHEV
+                  </span>
+                </motion.div>
+
+                {/* Navigation items */}
+                <div className="space-y-8">
+                  {navItems.map((item, index) => (
+                    <motion.button
+                      key={item.name}
+                      onClick={() => scrollToSection(item.href)}
+                      className="group relative block text-center"
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 + index * 0.1 }}
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <div className="relative">
+                        <span className="text-4xl font-black text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all duration-300">
+                          {item.name}
+                        </span>
+
+                        {/* Underline effect */}
+                        <motion.div
+                          className="absolute -bottom-2 left-1/2 w-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full group-hover:w-full group-hover:left-0 transition-all duration-300"
+                        />
+
+                        {/* Glow effect */}
+                        <motion.div
+                          className="absolute inset-0 bg-blue-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+                          animate={{ scale: [1, 1.1, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        />
+                      </div>
+                    </motion.button>
+                  ))}
+                </div>
+
+
+                {/* Animated particles */}
+                {[...Array(6)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-1 h-1 bg-blue-400/60 rounded-full"
+                    style={{
+                      top: `${20 + Math.random() * 60}%`,
+                      left: `${10 + Math.random() * 80}%`,
+                    }}
+                    animate={{
+                      y: [0, -20, 0],
+                      opacity: [0.6, 1, 0.6],
+                      scale: [1, 1.5, 1],
+                    }}
+                    transition={{
+                      duration: 3 + Math.random() * 2,
+                      repeat: Infinity,
+                      delay: Math.random() * 2,
+                    }}
+                  />
+                ))}
               </div>
             </motion.div>
           )}

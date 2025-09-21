@@ -8,14 +8,14 @@ const Projects = () => {
   const projects = [
     {
       title: 'The Agency Course',
-      description: 'A comprehensive video editing education platform offering structured courses from beginner to advanced levels. Features include Adobe Premiere Pro training, After Effects tutorials, and monetization strategies.',
+      description: 'Turned video editing education into a profitable business. Students pay monthly for structured courses that actually teach them to make money. No fluff, just results.',
       image: '/img/theagency.png',
       github: 'https://github.com/GeorgiKarchev1/theagencycourse',
       live: 'https://theagencycourse.bg/',
     },
     {
       title: 'Editing.bg',
-      description: 'Professional video editing service platform connecting content creators with skilled editors. Streamlined workflow for YouTube videos, short-form content, and social media optimization.',
+      description: 'Built a marketplace that connects content creators with video editors. Handles file uploads, payments, and project management. Creators get professional edits without the hassle.',
       image: '/img/editingbg.png',
       technologies: ['React', 'Node.js', 'File Upload', 'Real-time Chat'],
       github: 'https://github.com/GeorgiKarchev1/Editing.bg',
@@ -23,7 +23,7 @@ const Projects = () => {
     },
     {
       title: 'AlgoChat.com',
-      description: 'Developed an interactive web application for learning Data Structures and Algorithms with a lazy learning approach, featuring daily 1-minute challenges, visual algorithm explanations, and progress tracking to make DSA accessible without overwhelming users.',
+      description: 'Made learning algorithms actually fun and accessible. Daily 1-minute challenges that don\'t overwhelm users. No more boring textbooks - just bite-sized learning that sticks.',
       image: '/img/algoimg.png',
       technologies: ['AI/ML', 'WebRTC', 'Real-time APIs', 'Voice Processing'],
       github: 'https://github.com/GeorgiKarchev1/algo',
@@ -69,8 +69,8 @@ const Projects = () => {
               transition={{ delay: 0.5 }}
               viewport={{ once: true }}
             >
-              Real products. Real users. Real impact. No bullsh*t portfolios here - 
-              these babies are LIVE and making money! 
+              These aren't portfolio pieces - they're businesses. Each one solves a real problem, 
+              serves real users, and makes real money. Want the same for your idea? 
             </motion.p>
           </div>
 
