@@ -32,30 +32,7 @@ const Header = () => {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Animated background with glow effect */}
-      <motion.div
-        className={`absolute inset-0 transition-all duration-500 ${
-          isScrolled 
-            ? 'bg-gray-950/95 backdrop-blur-md border-b border-gray-700/50' 
-            : 'bg-transparent'
-        }`}
-        animate={isScrolled ? {
-          boxShadow: "0 4px 32px rgba(59, 130, 246, 0.15)"
-        } : {
-          boxShadow: "0 0 0px rgba(59, 130, 246, 0)"
-        }}
-      />
-      
-      {/* Animated gradient border */}
-      {isScrolled && (
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"
-        />
-      )}
-
+    <header className="absolute top-0 left-0 right-0 z-50">
       <nav className="container-custom relative">
         <div className="flex items-center justify-between h-16">
           {/* Enhanced Logo */}
@@ -65,12 +42,9 @@ const Header = () => {
             whileTap={{ scale: 0.95 }}
             className="group relative"
           >
-            <span className="text-xl font-black bg-gradient-to-r from-white via-blue-200 to-cyan-400 bg-clip-text text-transparent group-hover:from-cyan-400 group-hover:to-blue-400 transition-all duration-300">
+            <span className="text-xl font-bold text-white group-hover:text-primary-300 transition-all duration-300">
               KARCHEV
             </span>
-            <motion.div
-              className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
-            />
           </motion.button>
 
           {/* Enhanced Desktop Navigation */}
@@ -81,33 +55,14 @@ const Header = () => {
                 onClick={() => scrollToSection(item.href)}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative px-4 py-2 font-bold text-gray-300 hover:text-white transition-all duration-300"
+                className="px-4 py-2 font-semibold text-gray-400 hover:text-primary-300 transition-all duration-300"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <span className="relative z-10">{item.name}</span>
-                
-                {/* Animated background */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg opacity-0 group-hover:opacity-100"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
-                />
-                
-                {/* Animated underline */}
-                <motion.div
-                  className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:w-full group-hover:left-0 transition-all duration-300"
-                />
-                
-                {/* Hover glow effect */}
-                <motion.div
-                  className="absolute inset-0 bg-blue-400/5 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                />
+                {item.name}
               </motion.button>
             ))}
-            
-
           </div>
 
           {/* Enhanced Mobile Menu Button */}
@@ -126,7 +81,7 @@ const Header = () => {
             
             {/* Mobile button glow effect */}
             <motion.div
-              className="absolute inset-0 bg-blue-400/10 rounded-lg opacity-0 hover:opacity-100 transition-opacity"
+              className="absolute inset-0 bg-primary-300/10 rounded-lg opacity-0 hover:opacity-100 transition-opacity"
               whileHover={{ scale: 1.2 }}
             />
           </motion.button>
@@ -151,7 +106,7 @@ const Header = () => {
               />
 
               {/* Animated gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-cyan-500/10" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 via-primary-300/5 to-primary-600/10" />
 
               {/* Content */}
               <div className="relative flex flex-col items-center justify-center h-full px-8">
@@ -175,7 +130,7 @@ const Header = () => {
                   transition={{ delay: 0.1 }}
                   className="absolute top-20"
                 >
-                  <span className="text-2xl font-black bg-gradient-to-r from-white via-blue-200 to-cyan-400 bg-clip-text text-transparent">
+                  <span className="text-2xl font-black text-white">
                     KARCHEV
                   </span>
                 </motion.div>
@@ -186,32 +141,33 @@ const Header = () => {
                     <motion.button
                       key={item.name}
                       onClick={() => scrollToSection(item.href)}
-                      className="group relative block text-center"
+                      className="block text-center"
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 + index * 0.1 }}
                       whileHover={{ scale: 1.05, y: -5 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <div className="relative">
-                        <span className="text-4xl font-black text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all duration-300">
-                          {item.name}
-                        </span>
-
-                        {/* Underline effect */}
-                        <motion.div
-                          className="absolute -bottom-2 left-1/2 w-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full group-hover:w-full group-hover:left-0 transition-all duration-300"
-                        />
-
-                        {/* Glow effect */}
-                        <motion.div
-                          className="absolute inset-0 bg-blue-400/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
-                          animate={{ scale: [1, 1.1, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        />
-                      </div>
+                      <span className="text-4xl font-bold text-gray-400 hover:text-primary-300 transition-all duration-300">
+                        {item.name}
+                      </span>
                     </motion.button>
                   ))}
+
+                  {/* Mobile CTA Button */}
+                  <motion.a
+                    href="https://cal.com/georgi-karchev-3r9puz/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="block px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    Schedule a Call
+                  </motion.a>
                 </div>
 
 
@@ -219,7 +175,7 @@ const Header = () => {
                 {[...Array(6)].map((_, i) => (
                   <motion.div
                     key={i}
-                    className="absolute w-1 h-1 bg-blue-400/60 rounded-full"
+                    className="absolute w-1 h-1 bg-primary-300/60 rounded-full"
                     style={{
                       top: `${20 + Math.random() * 60}%`,
                       left: `${10 + Math.random() * 80}%`,

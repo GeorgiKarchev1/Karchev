@@ -19,7 +19,7 @@ const Footer = () => {
       name: 'LinkedIn',
       href: 'https://www.linkedin.com/in/georgi-karchev-415901244/',
       icon: Linkedin,
-      color: 'hover:bg-blue-600 hover:text-white',
+      color: 'hover:bg-primary-600 hover:text-white',
     },
     {
       name: 'Email',
@@ -30,11 +30,19 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="relative bg-gradient-to-b from-gray-950 to-black border-t border-gray-800/50 overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(147,51,234,0.1),transparent_50%)]"></div>
-      
+    <footer className="relative bg-black overflow-hidden">
+      {/* Modern Background Elements */}
+      <div className="absolute inset-0">
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black to-primary-900/20" />
+
+        {/* Subtle glow at bottom */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-48 bg-primary-600/10 blur-3xl" />
+
+        {/* Noise texture */}
+        <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXhpIHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz48L2ZpbHRlcj48cGF0aCBkPSJNMCAwaDMwMHYzMDBIMHoiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iLjA1Ii8+PC9zdmc+')]" />
+      </div>
+
       <div className="container-custom py-16 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -61,7 +69,7 @@ const Footer = () => {
                     Ready to turn your idea into a money-making machine?{' '}
                     <span className="text-gradient font-bold">Let's build it together.</span>
                   </p>
-                  <p className="text-blue-400 text-sm font-medium">
+                  <p className="text-primary-300 text-sm font-medium">
                     No BS. Just results. Fast delivery. Fair pricing.
                   </p>
                 </div>

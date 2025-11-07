@@ -32,45 +32,81 @@ const Projects = () => {
   ]
 
   return (
-    <section id="projects" className="section-padding bg-gray-950">
-      <div className="container-custom">
+    <section id="projects" className="section-padding bg-black relative overflow-hidden">
+      {/* Modern Background Elements */}
+      <div className="absolute inset-0">
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-primary-900/10 to-black" />
+
+        {/* Animated gradient orbs */}
+        <motion.div
+          className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, 50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 right-0 w-96 h-96 bg-primary-300/15 rounded-full blur-3xl"
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 80, 0],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{
+            duration: 28,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+
+        {/* Dot pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle,rgba(144,169,85,0.4)_1px,transparent_1px)] bg-[size:24px_24px]" />
+      </div>
+
+      <div className="container-custom relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          {/* Aggressive Header */}
+          {/* Header */}
           <div className="text-center mb-16">
-            <motion.h2 
-              className="text-5xl md:text-7xl font-black text-white mb-6 leading-none"
-              initial={{ scale: 0.5, rotate: -5 }}
-              whileInView={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 0.8, ease: "backOut" }}
+            <motion.h2
+              className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight"
+              initial={{ scale: 0.95 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              STUFF I{' '}
-              <span className="text-gradient bg-gradient-to-r from-orange-400 via-red-500 to-pink-600 bg-clip-text text-transparent">
-                ACTUALLY
-              </span>{' '}
-              BUILT
+              Featured{' '}
+              <span className="text-gradient bg-gradient-to-r from-primary-300 via-primary-200 to-primary-50 bg-clip-text text-transparent">
+                Projects
+              </span>
             </motion.h2>
-            <motion.div 
-              className="w-32 h-1 bg-gradient-to-r from-orange-500 to-red-600 mx-auto mb-8"
+            <motion.div
+              className="w-24 h-1 bg-gradient-to-r from-primary-600 to-primary-300 mx-auto mb-8"
               initial={{ width: 0 }}
-              whileInView={{ width: 128 }}
+              whileInView={{ width: 96 }}
               transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
             />
-            <motion.p 
-              className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto font-bold"
+            <motion.p
+              className="text-xl text-gray-400 max-w-3xl mx-auto"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
               viewport={{ once: true }}
             >
-              These aren't portfolio pieces - they're businesses. Each one solves a real problem, 
-              serves real users, and makes real money. Want the same for your idea? 
+              Real applications serving real users. Each project demonstrates my commitment
+              to building functional, user-friendly solutions.
             </motion.p>
           </div>
 
@@ -84,17 +120,17 @@ const Projects = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02 }}
-                className="group grid lg:grid-cols-2 gap-12 items-center p-8 rounded-2xl bg-gray-800/50 border border-gray-700 hover:border-blue-500/50 transition-all duration-500 hover:bg-gray-800/80"
+                className="group grid lg:grid-cols-2 gap-12 items-center p-8 rounded-2xl bg-gray-900/50 border border-gray-700/50 hover:border-primary-500/50 transition-all duration-500 hover:bg-gray-900/70 hover:shadow-xl hover:shadow-primary-500/10"
               >
                 {/* Project Image */}
                 <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
                   <div className="relative">
                     {/* Glowing effect */}
                     <motion.div
-                      className="absolute -inset-2 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      className="absolute -inset-2 bg-gradient-to-r from-primary-500/20 via-primary-300/20 to-primary-50/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     />
-                    
-                    <div className="relative overflow-hidden rounded-xl bg-gray-800 border border-gray-700 group-hover:border-blue-500/50 transition-all duration-500">
+
+                    <div className="relative overflow-hidden rounded-xl bg-gray-900 border border-gray-700/50 group-hover:border-primary-500/50 transition-all duration-500">
                       <motion.div
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.5 }}
@@ -126,7 +162,7 @@ const Projects = () => {
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.1, rotate: 5 }}
                             whileTap={{ scale: 0.9 }}
-                            className="p-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg"
+                            className="p-4 bg-primary-600 text-white rounded-xl font-bold hover:bg-primary-700 transition-colors shadow-lg"
                           >
                             <ExternalLink size={20} />
                           </motion.a>
@@ -167,11 +203,11 @@ const Projects = () => {
                 {/* Project Info */}
                 <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
                   <div className="space-y-6">
-                    <motion.h3 
-                      className="text-3xl md:text-4xl font-black text-white group-hover:text-blue-400 transition-colors duration-300"
-                      whileHover={{ scale: 1.05 }}
+                    <motion.h3
+                      className="text-3xl md:text-4xl font-bold text-white group-hover:text-primary-300 transition-colors duration-300"
+                      whileHover={{ scale: 1.02 }}
                     >
-                      {project.title} 
+                      {project.title}
                     </motion.h3>
                     
                     <motion.p 
@@ -204,23 +240,23 @@ const Projects = () => {
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl font-bold hover:from-green-700 hover:to-green-800 transition-all duration-300 shadow-lg hover:shadow-green-500/25"
+                        whileHover={{ scale: 1.02, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-primary-500/30 transition-all duration-300"
                       >
                         <ExternalLink size={18} className="mr-2" />
-                         SEE IT LIVE
+                        View Live
                       </motion.a>
                       <motion.a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="inline-flex items-center px-8 py-4 border-2 border-gray-600 text-gray-300 rounded-xl font-bold hover:border-blue-500 hover:text-white hover:bg-blue-500/10 transition-all duration-300"
+                        whileHover={{ scale: 1.02, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="inline-flex items-center px-8 py-3 border border-gray-600 text-gray-300 rounded-xl font-semibold hover:border-gray-400 hover:text-white transition-all duration-300"
                       >
                         <Github size={18} className="mr-2" />
-                        CODE
+                        View Code
                       </motion.a>
                     </div>
                   </div>

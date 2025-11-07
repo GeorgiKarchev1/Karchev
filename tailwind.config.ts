@@ -9,20 +9,22 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        heading: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        display: ['Sora', 'system-ui', 'sans-serif'],
       },
       colors: {
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          50: '#ecf39e',   // mindaro (lightest)
+          100: '#d4e87e',  // lighter mindaro
+          200: '#b8d85e',  // light moss
+          300: '#90a955',  // moss-green
+          400: '#6f8f3d',  // medium green
+          500: '#4f772d',  // fern-green
+          600: '#31572c',  // hunter-green
+          700: '#254420',  // darker hunter
+          800: '#1a3118',  // very dark
+          900: '#132a13',  // dark-green (darkest)
         },
         gray: {
           50: '#fafafa',

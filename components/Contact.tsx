@@ -5,21 +5,28 @@ import { Mail, MessageCircle, Calendar } from 'lucide-react'
 
 const Contact = () => {
   return (
-    <section id="contact" className="section-padding bg-gradient-to-b from-gray-950 to-black relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute inset-0 opacity-5">
+    <section id="contact" className="section-padding bg-black relative overflow-hidden">
+      {/* Modern Background Elements */}
+      <div className="absolute inset-0">
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-primary-900/15 to-black" />
+
+        {/* Animated gradient orbs */}
         <motion.div
-          animate={{ 
-            rotate: 360,
-            scale: [1, 1.1, 1]
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-600/25 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.25, 0.35, 0.25],
           }}
-          transition={{ 
-            duration: 30, 
+          transition={{
+            duration: 15,
             repeat: Infinity,
-            ease: "linear"
+            ease: "easeInOut"
           }}
-          className="absolute top-1/4 right-1/4 w-96 h-96 border border-blue-400 rounded-full"
         />
+
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.02] bg-[linear-gradient(rgba(144,169,85,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(144,169,85,0.5)_1px,transparent_1px)] bg-[size:48px_48px]" />
       </div>
 
       <div className="container-custom relative z-10">
@@ -32,155 +39,77 @@ const Contact = () => {
         >
           {/* Header */}
           <div className="mb-16">
-            <motion.h2 
-              className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight"
-              initial={{ scale: 0.5 }}
+            <motion.h2
+              className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight"
+              initial={{ scale: 0.95 }}
               whileInView={{ scale: 1 }}
-              transition={{ duration: 0.8, ease: "backOut" }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              Ready to{' '}
-              <span className="text-gradient bg-gradient-to-r from-green-400 to-blue-600 bg-clip-text text-transparent">
-                Build Something?
+              Let's Work{' '}
+              <span className="text-gradient bg-gradient-to-r from-primary-300 via-primary-200 to-primary-50 bg-clip-text text-transparent">
+                Together
               </span>
             </motion.h2>
-            <motion.div 
-              className="w-24 h-1 bg-gradient-to-r from-green-600 to-blue-600 mx-auto mb-8"
-              initial={{ width: 0 }}
-              whileInView={{ width: 96 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              viewport={{ once: true }}
-            />
-            <motion.p 
-              className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-medium"
+
+            <motion.p
+              className="text-xl text-gray-400 max-w-2xl mx-auto mb-12"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Stop dreaming about your idea. Let's make it real. 
-              I'm taking on 2 new projects this month - will yours be one of them?
+              Have a project in mind? Let's discuss how I can help bring your ideas to life.
+              Schedule a free consultation call to get started.
             </motion.p>
-          </div>
-
-          {/* Contact Options */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <motion.a
-              href="mailto:georgikarchev5@gmail.com"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="group p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 backdrop-blur-sm"
-            >
-              <div className="flex flex-col items-center space-y-4">
-                <div className="p-4 bg-blue-500/10 rounded-xl group-hover:bg-blue-500/20 transition-colors">
-                  <Mail size={32} className="text-blue-400" />
-                </div>
-                <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                  Email Me
-                </h3>
-                <p className="text-gray-400 text-center">
-                  georgikarchev5@gmail.com
-                </p>
-                <p className="text-sm text-gray-500 text-center">
-                  I respond within 24 hours
-                </p>
-              </div>
-            </motion.a>
 
             <motion.a
-              href="https://www.linkedin.com/in/georgi-karchev-415901244/"
+              href="https://cal.com/georgi-karchev-3r9puz/30min"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ delay: 0.3 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="group p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 backdrop-blur-sm"
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <div className="flex flex-col items-center space-y-4">
-                <div className="p-4 bg-green-500/10 rounded-xl group-hover:bg-green-500/20 transition-colors">
-                  <MessageCircle size={32} className="text-green-400" />
-                </div>
-                <h3 className="text-xl font-bold text-white group-hover:text-green-400 transition-colors">
-                  LinkedIn
-                </h3>
-                <p className="text-gray-400 text-center">
-                  Connect & message me
-                </p>
-                <p className="text-sm text-gray-500 text-center">
-                  Professional networking
-                </p>
-              </div>
-            </motion.a>
-
-            <motion.a
-              href="https://calendly.com/georgi-karchev"
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="group p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 backdrop-blur-sm"
-            >
-              <div className="flex flex-col items-center space-y-4">
-                <div className="p-4 bg-purple-500/10 rounded-xl group-hover:bg-purple-500/20 transition-colors">
-                  <Calendar size={32} className="text-purple-400" />
-                </div>
-                <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
-                  Book a Call
-                </h3>
-                <p className="text-gray-400 text-center">
-                  30-min free consultation
-                </p>
-                <p className="text-sm text-gray-500 text-center">
-                  Let's discuss your project
-                </p>
-              </div>
+              <Calendar size={20} />
+              Schedule a Call
             </motion.a>
           </div>
 
-          {/* CTA */}
+          {/* Alternative Contact */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
-            className="p-8 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl border border-blue-500/20 backdrop-blur-sm"
+            className="border-t border-gray-800 pt-16"
           >
-            <h3 className="text-2xl font-bold text-white mb-4">
-              What's Your Timeline?
-            </h3>
-            <p className="text-gray-300 mb-6">
-              Most projects take 2-8 weeks depending on complexity. 
-              I can start immediately and keep you updated every step of the way.
+            <p className="text-gray-500 text-center mb-8 text-sm">
+              Prefer email or LinkedIn?
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-wrap justify-center gap-6">
               <motion.a
-                href="mailto:georgikarchev5@gmail.com?subject=Project Inquiry"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-bold hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
+                href="mailto:georgikarchev5@gmail.com"
+                whileHover={{ y: -2 }}
+                className="flex items-center gap-3 px-6 py-3 bg-gray-900/50 rounded-xl border border-gray-700/50 hover:border-gray-600 transition-all duration-300 group"
               >
-                Start Your Project
+                <Mail size={20} className="text-primary-500 group-hover:text-primary-400 transition-colors" />
+                <span className="text-gray-300 font-semibold group-hover:text-white transition-colors">Email Me</span>
               </motion.a>
+
               <motion.a
-                href="https://calendly.com/georgi-karchev"
+                href="https://www.linkedin.com/in/georgi-karchev-415901244/"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-gray-600 text-gray-300 rounded-xl font-bold hover:border-blue-400 hover:text-white hover:bg-blue-400/10 transition-all duration-300"
+                whileHover={{ y: -2 }}
+                className="flex items-center gap-3 px-6 py-3 bg-gray-900/50 rounded-xl border border-gray-700/50 hover:border-gray-600 transition-all duration-300 group"
               >
-                Free Consultation
+                <MessageCircle size={20} className="text-primary-500 group-hover:text-primary-400 transition-colors" />
+                <span className="text-gray-300 font-semibold group-hover:text-white transition-colors">LinkedIn</span>
               </motion.a>
             </div>
           </motion.div>

@@ -1,48 +1,36 @@
 'use client'
 
-import { motion, useMotionValue, useSpring } from 'framer-motion'
-import { Github, Linkedin, Mail, ArrowDown, Sparkles, Code2, Rocket, X } from 'lucide-react'
+import { motion, useTransform, useScroll } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 
 const Hero = () => {
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
   const [mounted, setMounted] = useState(false)
-  const [showNotification, setShowNotification] = useState(true)
-  const [showFirstNotification, setShowFirstNotification] = useState(true)
-  const [showSecondNotification, setShowSecondNotification] = useState(true)
-  
-  const mouseXSpring = useSpring(mouseX, { stiffness: 400, damping: 40 })
-  const mouseYSpring = useSpring(mouseY, { stiffness: 400, damping: 40 })
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  const { scrollY } = useScroll()
+  const y1 = useTransform(scrollY, [0, 300], [0, 100])
 
   useEffect(() => {
     setMounted(true)
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX - 50)
-      mouseY.set(e.clientY - 50)
-    }
 
-    const handleScroll = () => {
-      const projectsHeader = document.querySelector('#projects h2')
-      if (projectsHeader) {
-        const rect = projectsHeader.getBoundingClientRect()
-        // Hide notification when "STUFF I ACTUALLY BUILT" headline is in view
-        if (rect.top < window.innerHeight * 0.3) {
-          setShowNotification(false)
-        } else {
-          setShowNotification(true)
-        }
+    // Throttle mouse move for better performance
+    let lastTime = 0
+    const throttleDelay = 50 // 50ms throttle
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const now = Date.now()
+      if (now - lastTime >= throttleDelay) {
+        setMousePosition({
+          x: (e.clientX / window.innerWidth - 0.5) * 20,
+          y: (e.clientY / window.innerHeight - 0.5) * 20,
+        })
+        lastTime = now
       }
     }
 
     window.addEventListener('mousemove', handleMouseMove)
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [mouseX, mouseY])
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
 
   const scrollToProjects = () => {
     const element = document.querySelector('#projects')
@@ -51,293 +39,200 @@ const Hero = () => {
     }
   }
 
-  const scrollToAbout = () => {
-    const element = document.querySelector('#about')
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   if (!mounted) return null
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-      {/* Glass morphism notification - positioned in top-right corner */}
-      {showNotification && showFirstNotification && (
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 pb-24 overflow-visible">
+      {/* Animated Mesh Gradient Background */}
+      <div className="absolute inset-0 bg-black">
         <motion.div
-          initial={{ opacity: 0, x: 100, scale: 0.9 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          exit={{ opacity: 0, x: 100, scale: 0.9 }}
-          transition={{
-            duration: 0.6,
-            delay: 0.5,
-            type: "spring",
-            stiffness: 300,
-            damping: 25
+          className="absolute inset-0 bg-gradient-to-br from-primary-900/50 via-primary-800/30 to-primary-700/50"
+          style={{
+            x: mousePosition.x * 0.5,
+            y: mousePosition.y * 0.5,
           }}
-          className="fixed top-20 right-6 z-50 hidden md:block"
-        >
-          <motion.div
-            className="bg-gray-800/20 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-600/30 p-5 w-80 relative"
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            {/* Close button */}
-            <button
-              onClick={() => setShowFirstNotification(false)}
-              className="absolute -top-2 -left-2 w-6 h-6 bg-gray-700 hover:bg-gray-600 rounded-full flex items-center justify-center transition-colors z-10"
-            >
-              <X size={14} className="text-gray-300" />
-            </button>
-            <div className="flex items-start gap-4">
-              {/* Profile Image */}
-              <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 border border-white/20">
-                <Image
-                  src="/img/hormozi.jpg"
-                  alt="Alex Hormozi"
-                  width={48}
-                  height={48}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="flex-1 min-w-0">
-                <div className="flex items-start justify-between mb-2">
-                  <h4 className="font-bold text-white text-base">Alex Hormozi</h4>
-                  <span className="text-sm text-gray-300 font-medium">now</span>
-                </div>
-                <p className="text-gray-200 text-sm leading-relaxed">
-                  Only 2 spots left this month.
-                </p>
-                <p className="text-gray-200 text-sm leading-relaxed">
-                  Don't miss out.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-
-      {/* Second notification with Nakov */}
-      {showNotification && showSecondNotification && (
-        <motion.div
-          initial={{ opacity: 0, x: 100, scale: 0.9 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          exit={{ opacity: 0, x: 100, scale: 0.9 }}
-          transition={{
-            duration: 0.6,
-            delay: 0.7,
-            type: "spring",
-            stiffness: 300,
-            damping: 25
-          }}
-          className="fixed top-56 right-6 z-50 hidden md:block"
-        >
-          <motion.div
-            className="bg-gray-800/20 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-600/30 p-5 w-80 relative"
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            {/* Close button */}
-            <button
-              onClick={() => setShowSecondNotification(false)}
-              className="absolute -top-2 -left-2 w-6 h-6 bg-gray-700 hover:bg-gray-600 rounded-full flex items-center justify-center transition-colors z-10"
-            >
-              <X size={14} className="text-gray-300" />
-            </button>
-            <div className="flex items-start gap-4">
-              {/* Profile Image */}
-              <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 border border-white/20">
-                <Image
-                  src="/img/nakov.jpg"
-                  alt="Nakov"
-                  width={48}
-                  height={48}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="flex-1 min-w-0">
-                <div className="flex items-start justify-between mb-2">
-                  <h4 className="font-bold text-white text-base">Svetlin Nakov</h4>
-                  <span className="text-sm text-gray-300 font-medium">2m ago</span>
-                </div>
-                <p className="text-gray-200 text-sm leading-relaxed">
-                  This guy can code
-                </p>
-                <p className="text-gray-200 text-sm leading-relaxed">
-                  Hire him !!!
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-
-      {/* Enhanced background with animated gradients */}
-      <div className="absolute inset-0 z-0">
-        {/* Animated gradient orbs */}
-        <motion.div
-          style={{ x: mouseXSpring, y: mouseYSpring }}
-          className="absolute pointer-events-none"
-        >
-          <div className="w-96 h-96 rounded-full bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10 blur-3xl" />
-        </motion.div>
-        
-        {/* Additional floating elements */}
-        <motion.div
-          animate={{ 
-            rotate: [0, 360],
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3]
-          }}
-          transition={{ 
-            duration: 20, 
-            repeat: Infinity, 
-            ease: "linear" 
-          }}
-          className="absolute top-1/4 left-1/4 w-8 h-8 border-2 border-blue-400/20 rounded-lg"
         />
-        
+
+        {/* Animated gradient orbs with mouse tracking */}
         <motion.div
-          animate={{ 
-            y: [0, -40, 0],
-            rotate: [0, 180, 360],
-            opacity: [0.2, 0.5, 0.2]
+          className="absolute top-0 -left-40 w-96 h-96 bg-primary-500/30 rounded-full blur-3xl"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, 50, 0],
+            scale: [1, 1.2, 1],
           }}
-          transition={{ 
-            duration: 15, 
+          style={{
+            x: mousePosition.x * 2,
+            y: mousePosition.y * 2,
+          }}
+          transition={{
+            duration: 20,
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-1/3 right-1/4"
-        >
-          <Sparkles size={28} className="text-purple-400/30" />
-        </motion.div>
-
+        />
         <motion.div
-          animate={{ 
-            x: [0, 60, 0],
-            opacity: [0.2, 0.6, 0.2],
-            rotate: [0, 90, 180]
+          className="absolute top-1/4 right-0 w-96 h-96 bg-primary-300/30 rounded-full blur-3xl"
+          animate={{
+            x: [0, -100, 0],
+            y: [0, 100, 0],
+            scale: [1, 1.3, 1],
           }}
-          transition={{ 
-            duration: 12, 
+          style={{
+            x: mousePosition.x * -1.5,
+            y: mousePosition.y * 1.5,
+          }}
+          transition={{
+            duration: 25,
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute bottom-1/3 left-1/5"
-        >
-          <Code2 size={24} className="text-cyan-400/30" />
-        </motion.div>
+        />
+        <motion.div
+          className="absolute bottom-0 left-1/2 w-96 h-96 bg-primary-600/30 rounded-full blur-3xl"
+          animate={{
+            x: [0, -50, 0],
+            y: [0, -100, 0],
+            scale: [1, 1.4, 1],
+          }}
+          style={{
+            x: mousePosition.x * -1,
+            y: mousePosition.y * -1,
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
 
-        {/* Grid pattern overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+        {/* Grid overlay with parallax */}
+        <motion.div
+          className="absolute inset-0 bg-[linear-gradient(rgba(79,119,45,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(79,119,45,0.03)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_60%,transparent_100%)]"
+          style={{ y: y1 }}
+        />
+
+        {/* Floating particles - reduced for performance */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-primary-300/40 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              x: [0, Math.random() * 20 - 10, 0],
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 5 + Math.random() * 5,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
       </div>
 
-      <div className="container-custom relative z-10">
-        <div className="max-w-6xl mx-auto text-center">
+      <motion.div
+        className="container-custom relative z-10"
+        style={{
+          x: mousePosition.x * 0.3,
+          y: mousePosition.y * 0.3,
+          overflow: 'visible',
+        }}
+      >
+        <div className="max-w-6xl mx-auto text-center" style={{ overflow: 'visible' }}>
           {/* Enhanced main content */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "backOut" }}
-            className="mb-12"
-          >
-
-            <motion.h1 
-              className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-tight"
-              initial={{ y: 100 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 1, ease: "backOut" }}
+          <div className="mb-12" style={{ overflow: 'visible' }}>
+            {/* Main heading with staggered word reveal */}
+            <motion.h1
+              className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-12 leading-relaxed pb-8 font-heading"
+              style={{ overflow: 'visible' }}
             >
-              I Build Apps That{' '}
-              <motion.span 
-                className="block text-gradient bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent"
-                animate={{ 
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
-                }}
-                transition={{ 
-                  duration: 4, 
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                style={{ backgroundSize: "200% 200%" }}
+              <motion.div
+                initial={{ opacity: 0, y: 50, rotateX: -15 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{ duration: 1, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
               >
-                Actually Work
-              </motion.span>
+                Full Stack Developer
+              </motion.div>
+
+              <motion.div
+                className="relative inline-block mt-4 mb-4"
+                initial={{ opacity: 0, y: 50, scale: 0.8 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 1, delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
+                style={{ overflow: 'visible' }}
+              >
+                {/* Glow effect behind text */}
+                <motion.div
+                  className="absolute -inset-8 bg-gradient-to-r from-primary-500/20 via-primary-300/20 to-primary-50/20 blur-3xl"
+                  animate={{
+                    opacity: [0.5, 0.8, 0.5],
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+
+                <span className="relative block font-display text-gradient bg-gradient-to-r from-primary-300 via-primary-200 to-primary-50 bg-clip-text text-transparent">
+                  Building Real Solutions
+                </span>
+              </motion.div>
             </motion.h1>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-8"
-            >
-              <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-300 mb-4">
-                Full Stack Developer Who Actually Ships
-              </h2>
-            </motion.div>
 
-            <motion.p 
-              className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-medium mb-12"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
+            {/* Description with fade and blur - optimized for performance */}
+            <motion.p
+              className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed mb-16 font-body"
+              initial={{ opacity: 0, filter: "blur(10px)", y: 30 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+              transition={{ delay: 1, duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
             >
-              Most developers build pretty demos that break when you look at them wrong. I build apps that solve real problems, 
-              handle real users, and don't crash. I've been shipping production code for years - not some junior who needs hand-holding.
+              I help entrepreneurs and businesses turn their ideas into functional web applications. With 3+ years of experience, I focus on clean code, user experience, and delivering projects on time.
             </motion.p>
-          </motion.div>
 
-
-          {/* Enhanced social links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className="flex justify-center space-x-6"
-          >
-            {[
-              { icon: Github, href: 'https://github.com/GeorgiKarchev1', label: 'GitHub', color: 'hover:text-gray-300 hover:bg-gray-800/50' },
-              { icon: Linkedin, href: 'https://www.linkedin.com/in/georgi-karchev-415901244/', label: 'LinkedIn', color: 'hover:text-blue-400 hover:bg-blue-400/10' },
-              { icon: Mail, href: 'mailto:georgikarchev5@gmail.com', label: 'Email', color: 'hover:text-green-400 hover:bg-green-400/10' }
-            ].map(({ icon: Icon, href, label, color }) => (
+            {/* CTA Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 2, duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+            >
               <motion.a
-                key={label}
-                href={href}
+                href="https://cal.com/georgi-karchev-3r9puz/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -3 }}
-                whileTap={{ scale: 0.9 }}
-                className={`p-4 text-gray-500 ${color} transition-all duration-300 rounded-2xl border border-gray-800/50 hover:border-gray-600/50 backdrop-blur-sm`}
-                aria-label={label}
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white text-lg font-semibold rounded-xl shadow-lg overflow-hidden"
               >
-                <Icon size={24} />
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
+                <span className="relative z-10">Schedule a Call</span>
               </motion.a>
-            ))}
-          </motion.div>
-        </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center gap-2 text-gray-500"
-        >
-          <span className="text-sm font-medium">Scroll to explore</span>
-          <ArrowDown size={20} />
-        </motion.div>
+              <motion.button
+                onClick={scrollToProjects}
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 border-2 border-gray-600 text-gray-300 text-lg font-semibold rounded-xl hover:border-primary-500 hover:text-white hover:bg-primary-500/10 transition-all duration-300"
+              >
+                View Projects
+              </motion.button>
+            </motion.div>
+
+          </div>
+        </div>
       </motion.div>
+
     </section>
   )
 }

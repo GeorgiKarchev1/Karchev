@@ -13,33 +13,42 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="section-padding bg-gradient-to-b from-gray-900 to-gray-950 relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute inset-0 opacity-5">
+    <section id="about" className="section-padding bg-black relative overflow-hidden">
+      {/* Modern Background Elements */}
+      <div className="absolute inset-0">
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-900/20 via-black to-black" />
+
+        {/* Animated gradient orbs */}
         <motion.div
-          animate={{ 
-            rotate: 360,
-            scale: [1, 1.1, 1]
+          className="absolute top-1/4 -right-48 w-96 h-96 bg-primary-600/20 rounded-full blur-3xl"
+          animate={{
+            x: [0, -50, 0],
+            y: [0, 100, 0],
+            scale: [1, 1.3, 1],
           }}
-          transition={{ 
-            duration: 30, 
+          transition={{
+            duration: 25,
             repeat: Infinity,
-            ease: "linear"
+            ease: "easeInOut"
           }}
-          className="absolute top-1/4 right-1/4 w-96 h-96 border border-blue-400 rounded-full"
         />
         <motion.div
-          animate={{ 
-            rotate: -360,
-            scale: [1.1, 1, 1.1]
+          className="absolute bottom-1/4 -left-48 w-96 h-96 bg-primary-500/15 rounded-full blur-3xl"
+          animate={{
+            x: [0, 50, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.2, 1],
           }}
-          transition={{ 
-            duration: 25, 
+          transition={{
+            duration: 20,
             repeat: Infinity,
-            ease: "linear"
+            ease: "easeInOut"
           }}
-          className="absolute bottom-1/4 left-1/4 w-64 h-64 border border-purple-400 rounded-full"
         />
+
+        {/* Noise texture overlay */}
+        <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=')]" />
       </div>
 
       <div className="container-custom relative z-10">
@@ -68,13 +77,13 @@ const About = () => {
               transition={{ duration: 0.8, ease: "backOut" }}
               viewport={{ once: true }}
             >
-              Why Choose{' '}
-              <span className="text-gradient bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-                Me?
+              WHY CHOOSE{' '}
+              <span className="text-gradient bg-gradient-to-r from-primary-300 via-primary-200 to-primary-50 bg-clip-text text-transparent uppercase">
+                ME?
               </span>
             </motion.h2>
-            <motion.div 
-              className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"
+            <motion.div
+              className="w-24 h-1 bg-gradient-to-r from-primary-600 to-primary-300 mx-auto"
               initial={{ width: 0 }}
               whileInView={{ width: 96 }}
               transition={{ duration: 1, delay: 0.3 }}
@@ -123,7 +132,7 @@ const About = () => {
                     viewport={{ once: true }}
                     className="text-center"
                   >
-                    <div className="text-2xl md:text-3xl font-black text-gradient bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent mb-2">
+                    <div className="text-2xl md:text-3xl font-black text-gradient bg-gradient-to-r from-primary-300 via-primary-200 to-primary-50 bg-clip-text text-transparent mb-2">
                       {stat.number}
                     </div>
                     <div className="text-sm text-gray-400 font-medium">{stat.label}</div>
@@ -133,7 +142,7 @@ const About = () => {
             </motion.div>
 
             {/* Right Column - Profile Image */}
-            <motion.div 
+            <motion.div
               className="relative"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -141,39 +150,131 @@ const About = () => {
               viewport={{ once: true }}
             >
               <div className="relative group">
-                {/* Enhanced glowing border effect */}
+                {/* Enhanced glowing border effect with color cycling */}
                 <motion.div
-                  className="absolute -inset-6 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 rounded-3xl blur-2xl opacity-30"
-                  animate={{ 
+                  className="absolute -inset-6 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-50 rounded-3xl blur-2xl opacity-30"
+                  animate={{
                     scale: [1, 1.05, 1],
-                    rotate: [0, 1, -1, 0]
+                    rotate: [0, 1, -1, 0],
+                    background: [
+                      "linear-gradient(to right, rgb(59 130 246), rgb(147 197 253), rgb(219 234 254))",
+                      "linear-gradient(to right, rgb(34 197 94), rgb(134 239 172), rgb(187 247 208))",
+                      "linear-gradient(to right, rgb(59 130 246), rgb(147 197 253), rgb(219 234 254))"
+                    ]
                   }}
-                  transition={{ 
-                    duration: 6, 
+                  transition={{
+                    duration: 6,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
+                    background: {
+                      duration: 8,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }
                   }}
                 />
-                
-                {/* Image container with enhanced styling */}
-                <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-4 overflow-hidden border border-gray-700/50 shadow-2xl">
+
+                {/* Floating particles around the image */}
+                {[...Array(8)].map((_, i) => (
                   <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                    className="relative overflow-hidden rounded-2xl"
+                    key={i}
+                    className="absolute w-2 h-2 bg-primary-300/60 rounded-full"
+                    style={{
+                      left: `${20 + Math.random() * 60}%`,
+                      top: `${20 + Math.random() * 60}%`,
+                    }}
+                    animate={{
+                      y: [0, -20, 0],
+                      x: [0, Math.random() * 10 - 5, 0],
+                      opacity: [0.3, 0.8, 0.3],
+                      scale: [0.8, 1.2, 0.8],
+                    }}
+                    transition={{
+                      duration: 4 + Math.random() * 2,
+                      repeat: Infinity,
+                      delay: Math.random() * 2,
+                      ease: "easeInOut"
+                    }}
+                  />
+                ))}
+
+                {/* Image container with enhanced styling */}
+                <div className="relative bg-gradient-to-br from-black to-gray-950 rounded-3xl p-4 overflow-hidden border border-primary-900/30 shadow-2xl">
+                  <motion.div
+                    whileHover={{
+                      scale: 1.05,
+                      rotateY: 5,
+                      rotateX: 5
+                    }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="relative overflow-hidden rounded-2xl cursor-pointer"
+                    style={{ perspective: "1000px" }}
                   >
-                    <Image
-                      src="/img/azseriozen_optimized_1000.jpg"
-                      alt="Georgi Karchev - Full Stack Developer"
-                      width={600}
-                      height={700}
-                      className="w-full h-[500px] md:h-[600px] rounded-2xl object-cover object-center"
-                      priority
-                      quality={95}
+                    <motion.div
+                      className="relative"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <Image
+                        src="/img/azseriozen_optimized_1000.jpg"
+                        alt="Georgi Karchev - Full Stack Developer"
+                        width={600}
+                        height={700}
+                        className="w-full h-[500px] md:h-[600px] rounded-2xl object-cover object-center transition-all duration-500"
+                        priority
+                        quality={95}
+                      />
+
+                      {/* Dynamic overlay effects */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"
+                        animate={{
+                          background: [
+                            "linear-gradient(to top, rgba(0,0,0,0.2), transparent, transparent)",
+                            "linear-gradient(to top, rgba(59,130,246,0.1), transparent, transparent)",
+                            "linear-gradient(to top, rgba(0,0,0,0.2), transparent, transparent)"
+                          ]
+                        }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      />
+
+                      {/* Shimmer effect on hover */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"
+                        whileHover={{ translateX: "100%" }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                      />
+                    </motion.div>
+
+                    {/* Floating geometric shapes */}
+                    <motion.div
+                      className="absolute top-4 right-4 w-3 h-3 bg-primary-400/80 rounded-full"
+                      animate={{
+                        y: [0, -10, 0],
+                        opacity: [0.5, 1, 0.5],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
                     />
-                    
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                    <motion.div
+                      className="absolute bottom-4 left-4 w-2 h-2 bg-primary-300/60 rotate-45"
+                      animate={{
+                        rotate: [45, 135, 45],
+                        scale: [1, 1.2, 1],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
                   </motion.div>
                 </div>
               </div>
