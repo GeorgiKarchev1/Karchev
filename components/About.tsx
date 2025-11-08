@@ -111,13 +111,13 @@ const About = () => {
                   That's not how I roll.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  I build stuff that works. My educational platform? Making real money. My AI app? 
+                  I build stuff that works. My educational platform? Its useful and have purpose. My AI app? 
                   Users actually use it daily. My video editing service? Streamlined workflow that 
                   saves clients hours every week.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  I'm not here to show off my GitHub commits or talk about "best practices." 
-                  I'm here to solve your problems and make you money. Period.
+                  I'm not here to show off my GitHub commits or talk about "best practices".
+                  I'm here to solve your problems and build something valuiable. 
                 </p>  
               </div>
 

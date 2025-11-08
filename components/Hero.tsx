@@ -150,22 +150,14 @@ const Hero = () => {
           <div className="mb-12" style={{ overflow: 'visible' }}>
             {/* Main heading with staggered word reveal */}
             <motion.h1
-              className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-12 leading-relaxed pb-8 font-heading"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-relaxed pb-4 font-heading"
               style={{ overflow: 'visible' }}
             >
               <motion.div
-                initial={{ opacity: 0, y: 50, rotateX: -15 }}
-                animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                transition={{ duration: 1, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
-              >
-                Full Stack Developer
-              </motion.div>
-
-              <motion.div
-                className="relative inline-block mt-4 mb-4"
+                className="relative inline-block"
                 initial={{ opacity: 0, y: 50, scale: 0.8 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 1, delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
+                transition={{ duration: 1, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
                 style={{ overflow: 'visible' }}
               >
                 {/* Glow effect behind text */}
@@ -195,7 +187,7 @@ const Hero = () => {
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{ delay: 1, duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
             >
-              I help entrepreneurs and businesses turn their ideas into functional web applications. With 3+ years of experience, I focus on clean code, user experience, and delivering projects on time.
+              Transforming ideas into functional web applications. 3+ years of delivering quality projects.
             </motion.p>
 
             {/* CTA Section */}
