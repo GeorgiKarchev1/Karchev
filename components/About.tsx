@@ -3,8 +3,14 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Brain, Coffee } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 const About = () => {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const stats = [
     { number: '3+', label: 'Years Shipping Code' },
@@ -175,28 +181,36 @@ const About = () => {
                 />
 
                 {/* Floating particles around the image */}
-                {[...Array(8)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 bg-primary-300/60 rounded-full"
-                    style={{
-                      left: `${20 + Math.random() * 60}%`,
-                      top: `${20 + Math.random() * 60}%`,
-                    }}
-                    animate={{
-                      y: [0, -20, 0],
-                      x: [0, Math.random() * 10 - 5, 0],
-                      opacity: [0.3, 0.8, 0.3],
-                      scale: [0.8, 1.2, 0.8],
-                    }}
-                    transition={{
-                      duration: 4 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 2,
-                      ease: "easeInOut"
-                    }}
-                  />
-                ))}
+                {mounted && [...Array(8)].map((_, i) => {
+                  const randomLeft = 20 + Math.random() * 60
+                  const randomTop = 20 + Math.random() * 60
+                  const randomX = Math.random() * 10 - 5
+                  const randomDuration = 4 + Math.random() * 2
+                  const randomDelay = Math.random() * 2
+
+                  return (
+                    <motion.div
+                      key={i}
+                      className="absolute w-2 h-2 bg-primary-300/60 rounded-full"
+                      style={{
+                        left: `${randomLeft}%`,
+                        top: `${randomTop}%`,
+                      }}
+                      animate={{
+                        y: [0, -20, 0],
+                        x: [0, randomX, 0],
+                        opacity: [0.3, 0.8, 0.3],
+                        scale: [0.8, 1.2, 0.8],
+                      }}
+                      transition={{
+                        duration: randomDuration,
+                        repeat: Infinity,
+                        delay: randomDelay,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  )
+                })}
 
                 {/* Image container with enhanced styling */}
                 <div className="relative bg-gradient-to-br from-black to-gray-950 rounded-3xl p-4 overflow-hidden border border-primary-900/30 shadow-2xl">
