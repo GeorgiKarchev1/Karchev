@@ -19,7 +19,7 @@ const Header = () => {
 
   const navItems = [
     { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
+    { name: 'Ecosystem', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ]
 
@@ -78,7 +78,7 @@ const Header = () => {
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </motion.div>
-            
+
             {/* Mobile button glow effect */}
             <motion.div
               className="absolute inset-0 bg-primary-300/10 rounded-lg opacity-0 hover:opacity-100 transition-opacity"

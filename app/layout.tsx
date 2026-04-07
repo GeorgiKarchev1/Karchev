@@ -2,17 +2,65 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://karchev.dev'),
-  title: 'Karchev - Full Stack Developer',
-  description: 'Personal portfolio of Karchev, a passionate full stack developer from Bulgaria specializing in modern web technologies and video editing platforms.',
-  keywords: 'developer, portfolio, full stack, web development, react, next.js, video editing, bulgaria',
-  authors: [{ name: 'Karchev' }],
+  metadataBase: new URL('https://karchev.bg'),
+  title: {
+    default: 'Karchev | Съдържание и Сайтове, които продават',
+    template: '%s | Karchev'
+  },
+  description: 'Правим съдържание и сайтове за бизнеси в България — от идея до публикация. Контент производство, уеб разработка и автоматизации.',
+  keywords: [
+    'уеб разработка българия',
+    'контент производство',
+    'видео производство',
+    'онлайн магазин',
+    'landing page',
+    'дигитална агенция',
+    'сайт за бизнес',
+    'уеб дизайн',
+    'социални мрежи',
+    'Karchev'
+  ],
+  authors: [{ name: 'Georgi Karchev', url: 'https://karchev.bg' }],
+  creator: 'Georgi Karchev',
   openGraph: {
-    title: 'Karchev - Full Stack Developer',
-    description: 'Personal portfolio showcasing modern web development projects and video editing platforms',
     type: 'website',
+    locale: 'bg_BG',
+    url: 'https://karchev.bg',
+    title: 'Karchev | Съдържание и Сайтове, които продават',
+    description: 'Правим съдържание и сайтове за бизнеси в България. Запази безплатна консултация.',
+    siteName: 'Karchev',
+    images: [
+      {
+        url: '/img/azseriozen_optimized_1000.jpg',
+        width: 1000,
+        height: 1000,
+        alt: 'Georgi Karchev - Дигитална Агенция България',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Karchev | Съдържание и Сайтове, които продават',
+    description: 'Правим съдържание и сайтове за бизнеси в България.',
+    images: ['/img/azseriozen_optimized_1000.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://karchev.bg',
   },
 }
+
+import { LanguageProvider } from '@/context/LanguageContext'
 
 export default function RootLayout({
   children,
@@ -20,9 +68,55 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth overflow-x-hidden">
+    <html lang="bg" className="scroll-smooth overflow-x-hidden">
       <body className="font-sans antialiased text-white overflow-x-hidden">
-        {children}
+        <LanguageProvider>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'LocalBusiness',
+                name: 'Karchev',
+                url: 'https://karchev.bg',
+                image: 'https://karchev.bg/img/azseriozen_optimized_1000.jpg',
+                description: 'Дигитална агенция в България, специализирана в контент производство и уеб разработка за малки, средни и големи бизнеси.',
+                areaServed: 'Bulgaria',
+                founder: {
+                  '@type': 'Person',
+                  name: 'Georgi Karchev',
+                  sameAs: [
+                    'https://www.linkedin.com/in/georgi-karchev-415901244/',
+                    'https://github.com/GeorgiKarchev1',
+                  ],
+                },
+                hasOfferCatalog: {
+                  '@type': 'OfferCatalog',
+                  name: 'Услуги',
+                  itemListElement: [
+                    {
+                      '@type': 'Offer',
+                      itemOffered: {
+                        '@type': 'Service',
+                        name: 'Контент Производство',
+                        description: 'Видео съдържание от идея до публикация за социалните мрежи.',
+                      },
+                    },
+                    {
+                      '@type': 'Offer',
+                      itemOffered: {
+                        '@type': 'Service',
+                        name: 'Уеб Разработка',
+                        description: 'Landing страници, онлайн магазини и уеб автоматизации.',
+                      },
+                    },
+                  ],
+                },
+              }),
+            }}
+          />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   )

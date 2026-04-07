@@ -1,232 +1,179 @@
 'use client'
 
-import { motion, useTransform, useScroll } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { useLanguage } from '@/context/LanguageContext'
 
-const Hero = () => {
-  const [mounted, setMounted] = useState(false)
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+const sites = [
+  { name: 'GBGamingHub',       url: 'gbgaminghub.com',    img: '/img/gbgaminghub.png',  href: 'https://www.gbgaminghub.com/',  imgPosition: 'top' },
+  { name: 'The Agency Course',  url: 'theagencycourse.bg', img: '/img/theagency.png',    href: 'https://theagencycourse.bg/',   imgPosition: 'top' },
+  { name: 'Готов за час',       url: 'gotovzachas.com',    img: '/img/gotovzachas.png',  href: 'https://gotovzachas.com/',      imgPosition: 'top' },
+  { name: 'AI Marketing',       url: 'aimarketing.bg',     img: '/img/aimarketing.png',  href: 'https://aimarketing.bg/',       imgPosition: 'top' },
+  { name: 'InPlayGear',         url: 'inplaygear.com',     img: '/img/inplaygear.png',   href: 'https://inplaygear.com/',       imgPosition: '50% 15%' },
+  { name: 'Editing.bg',         url: 'editing.bg',         img: '/img/editingbg.png',    href: 'https://editing.bg/',           imgPosition: 'center' },
+]
 
-  const { scrollY } = useScroll()
-  const y1 = useTransform(scrollY, [0, 300], [0, 100])
+// Duplicate for seamless infinite loop
+const marqueeTrack = [...sites, ...sites]
 
-  useEffect(() => {
-    setMounted(true)
+function WordReveal({ text, delay = 0, className = '' }: { text: string; delay?: number; className?: string }) {
+  const words = text.split(' ')
+  return (
+    <span className={className}>
+      {words.map((word, i) => (
+        <span key={i} className="inline-block overflow-hidden pb-[0.06em]">
+          <motion.span
+            className="inline-block"
+            initial={{ rotateX: 90, opacity: 0, y: '70%' }}
+            animate={{ rotateX: 0, opacity: 1, y: '0%' }}
+            transition={{ duration: 0.75, delay: delay + i * 0.11, ease: [0.22, 1, 0.36, 1] }}
+            style={{ transformOrigin: '50% 0%', display: 'inline-block' }}
+          >
+            {word}
+          </motion.span>
+          {i < words.length - 1 ? '\u00A0' : ''}
+        </span>
+      ))}
+    </span>
+  )
+}
 
-    // Throttle mouse move for better performance
-    let lastTime = 0
-    const throttleDelay = 50 // 50ms throttle
+function BrowserFrame({ site }: { site: typeof sites[0] }) {
+  return (
+    <div className="rounded-2xl overflow-hidden border border-[#2d232e] group-hover:border-[#534b52]/50 shadow-xl shadow-[#2d232e]/15 group-hover:shadow-2xl group-hover:shadow-[#534b52]/10 bg-[#e0ddcf] transition-all duration-300">
+      {/* Chrome bar */}
+      <div className="flex items-center gap-2 px-3 py-2.5 bg-[#e0ddcf] border-b border-[#2d232e]">
+        <div className="flex gap-1.5 shrink-0">
+          <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]/80" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]/80" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]/80" />
+        </div>
+        <div className="flex-1 mx-2 bg-[#e0ddcf] rounded-md px-3 py-1 text-[10px] text-[#2d232e] font-mono truncate">
+          {site.url}
+        </div>
+      </div>
+      {/* Screenshot */}
+      <div className="relative overflow-hidden h-[220px] lg:h-[270px]">
+        <Image
+          src={site.img}
+          alt={site.name}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          style={{ objectPosition: site.imgPosition }}
+          sizes="(max-width: 1024px) 360px, 420px"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#f1f0ea]/30 to-transparent pointer-events-none" />
+      </div>
+    </div>
+  )
+}
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const now = Date.now()
-      if (now - lastTime >= throttleDelay) {
-        setMousePosition({
-          x: (e.clientX / window.innerWidth - 0.5) * 20,
-          y: (e.clientY / window.innerHeight - 0.5) * 20,
-        })
-        lastTime = now
-      }
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
-
-  const scrollToProjects = () => {
-    const element = document.querySelector('#projects')
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
-  if (!mounted) return null
+export default function Hero() {
+  const { t } = useLanguage()
+  const [paused, setPaused] = useState(false)
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 pb-24 overflow-visible">
-      {/* Animated Mesh Gradient Background */}
-      <div className="absolute inset-0 bg-black">
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-primary-900/50 via-primary-800/30 to-primary-700/50"
-          style={{
-            x: mousePosition.x * 0.5,
-            y: mousePosition.y * 0.5,
-          }}
-        />
+    <section className="relative flex flex-col items-center bg-[#f1f0ea] overflow-hidden pt-36 pb-24 md:pt-48 md:pb-32">
 
-        {/* Animated gradient orbs with mouse tracking */}
-        <motion.div
-          className="absolute top-0 -left-40 w-96 h-96 bg-primary-500/30 rounded-full blur-3xl"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, 50, 0],
-            scale: [1, 1.2, 1],
-          }}
-          style={{
-            x: mousePosition.x * 2,
-            y: mousePosition.y * 2,
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute top-1/4 right-0 w-96 h-96 bg-primary-300/30 rounded-full blur-3xl"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 100, 0],
-            scale: [1, 1.3, 1],
-          }}
-          style={{
-            x: mousePosition.x * -1.5,
-            y: mousePosition.y * 1.5,
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-0 left-1/2 w-96 h-96 bg-primary-600/30 rounded-full blur-3xl"
-          animate={{
-            x: [0, -50, 0],
-            y: [0, -100, 0],
-            scale: [1, 1.4, 1],
-          }}
-          style={{
-            x: mousePosition.x * -1,
-            y: mousePosition.y * -1,
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+      <style>{`
+        @keyframes marquee {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+      `}</style>
 
-        {/* Grid overlay with parallax */}
-        <motion.div
-          className="absolute inset-0 bg-[linear-gradient(rgba(79,119,45,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(79,119,45,0.03)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_60%,transparent_100%)]"
-          style={{ y: y1 }}
-        />
+      {/* Background glow removed for cleaner styling */}
+      <div className="absolute inset-0 bg-grid opacity-12 pointer-events-none" />
 
-        {/* Floating particles - reduced for performance */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-primary-300/40 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              x: [0, Math.random() * 20 - 10, 0],
-              opacity: [0.2, 0.8, 0.2],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 5 + Math.random() * 5,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-              ease: "easeInOut"
-            }}
-          />
-        ))}
+      {/* ── Text ──────────────────────────────────────────────────── */}
+      <div className="relative z-10 flex flex-col items-center text-center px-5 mb-16 md:mb-24 mt-8 md:mt-0">
+
+        <h1
+          className="font-heading font-black leading-[1.02] mb-8"
+          style={{ perspective: '900px' }}
+        >
+          <span className="block text-[#2d232e] text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[6rem]">
+            <WordReveal text={t('hero.titleP1')} delay={0.05} />
+          </span>
+          <span
+            className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[6rem] text-[#534b52] mt-2"
+          >
+            <WordReveal text={t('hero.titleP2')} delay={0.28} />
+          </span>
+        </h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.65 }}
+          className="text-lg sm:text-xl md:text-2xl text-[#2d232e] mb-12 max-w-2xl font-medium leading-relaxed"
+        >
+          {t('hero.subTitle')}
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.82 }}
+          className="flex flex-col w-full sm:w-auto sm:flex-row items-center gap-4 px-4 sm:px-0"
+        >
+          <Link
+            href="https://cal.com/georgi-karchev-3r9puz/30min"
+            target="_blank"
+            className="btn-primary text-base md:text-lg px-8 md:px-10 py-4 md:py-5 w-full sm:w-auto"
+          >
+            {t('hero.bookStrategyCall')}
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Link>
+          <Link
+            href="#portfolio"
+            className="btn-secondary w-full sm:w-auto text-base md:text-lg px-8 md:px-10 py-4 md:py-5 text-center"
+          >
+            {t('hero.seePortfolio')}
+          </Link>
+        </motion.div>
       </div>
 
+      {/* ── Marquee — Desktop only ─────────────────────────────────── */}
       <motion.div
-        className="container-custom relative z-10"
-        style={{
-          x: mousePosition.x * 0.3,
-          y: mousePosition.y * 0.3,
-          overflow: 'visible',
-        }}
+        className="hidden md:block relative z-10 w-full overflow-hidden pb-10"
+        initial={{ opacity: 0, y: 60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.0, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="max-w-6xl mx-auto text-center" style={{ overflow: 'visible' }}>
-          {/* Enhanced main content */}
-          <div className="mb-12" style={{ overflow: 'visible' }}>
-            {/* Main heading with staggered word reveal */}
-            <motion.h1
-              className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-relaxed pb-4 font-heading"
-              style={{ overflow: 'visible' }}
+        {/* Fade edges removed to fix the grid blocking 'lights' */}
+
+        <div
+          className="flex gap-5"
+          style={{
+            width: 'max-content',
+            animation: 'marquee 38s linear infinite',
+            animationPlayState: paused ? 'paused' : 'running',
+          }}
+        >
+          {marqueeTrack.map((site, i) => (
+            // group on <a> so hover hitbox is stable — inner elements scale via group-hover:
+            <a
+              key={i}
+              href={site.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+              className="group shrink-0 w-[360px] lg:w-[420px] block"
             >
-              <motion.div
-                className="relative inline-block"
-                initial={{ opacity: 0, y: 50, scale: 0.8 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 1, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
-                style={{ overflow: 'visible' }}
-              >
-                {/* Glow effect behind text */}
-                <motion.div
-                  className="absolute -inset-8 bg-gradient-to-r from-primary-500/20 via-primary-300/20 to-primary-50/20 blur-3xl"
-                  animate={{
-                    opacity: [0.5, 0.8, 0.5],
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-
-                <span className="relative block font-display text-gradient bg-gradient-to-r from-primary-300 via-primary-200 to-primary-50 bg-clip-text text-transparent">
-                  Building Real Solutions
-                </span>
-              </motion.div>
-            </motion.h1>
-
-            {/* Description with fade and blur - optimized for performance */}
-            <motion.p
-              className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed mb-16 font-body"
-              initial={{ opacity: 0, filter: "blur(10px)", y: 30 }}
-              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{ delay: 1, duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
-            >
-              Transforming ideas into functional web applications. 3+ years of delivering quality projects.
-            </motion.p>
-
-            {/* CTA Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 2, duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
-            >
-              <motion.a
-                href="https://cal.com/georgi-karchev-3r9puz/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white text-lg font-semibold rounded-xl shadow-lg overflow-hidden"
-              >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                />
-                <span className="relative z-10">Schedule a Call</span>
-              </motion.a>
-
-              <motion.button
-                onClick={scrollToProjects}
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-gray-600 text-gray-300 text-lg font-semibold rounded-xl hover:border-primary-500 hover:text-white hover:bg-primary-500/10 transition-all duration-300"
-              >
-                View Projects
-              </motion.button>
-            </motion.div>
-
-          </div>
+              <div className="transition-transform duration-300 ease-out group-hover:scale-[1.03]">
+                <BrowserFrame site={site} />
+              </div>
+            </a>
+          ))}
         </div>
       </motion.div>
 
     </section>
   )
 }
-
-export default Hero

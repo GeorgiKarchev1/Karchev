@@ -1,122 +1,231 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, MessageCircle, Calendar } from 'lucide-react'
+import { Send, CheckCircle } from 'lucide-react'
+import { useLanguage } from '@/context/LanguageContext'
 
-const Contact = () => {
+type FormState = {
+  name: string
+  email: string
+  phone: string
+  service: string
+  message: string
+}
+
+const SERVICES_BG = ['Уеб разработка', 'Контент производство', 'И двете', 'Не съм сигурен']
+const SERVICES_EN = ['Web Development', 'Content Production', 'Both', "I'm not sure"]
+
+const BUDGETS_BG = ['До 250 €', '250 – 750 €', '750 – 1500 €', '1500+ €']
+const BUDGETS_EN = ['Under €250', '€250 – €750', '€750 – €1500', '€1500+']
+
+export default function Contact() {
+  const { t, language } = useLanguage()
+  const isBG = language === 'BG'
+
+  const [form, setForm] = useState<FormState>({
+    name: '', email: '', phone: '', service: '', message: '',
+  })
+  const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setLoading(true)
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/georgikarchev5@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone || 'Not provided',
+          service: form.service || 'Not specified',
+          message: form.message,
+        })
+      })
+
+      if (response.ok) {
+        setSent(true)
+      } else {
+        alert('An error occurred. Please try again later.')
+      }
+    } catch (error) {
+      alert('Network error. Please check your connection and try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const inputCls =
+    'w-full bg-[#e0ddcf] border border-[#2d232e] rounded-xl px-4 py-3 text-[#2d232e] placeholder-[#2d232e] text-sm focus:outline-none focus:border-[#534b52] transition-colors duration-200'
+
   return (
-    <section id="contact" className="section-padding bg-black relative overflow-hidden">
-      {/* Modern Background Elements */}
-      <div className="absolute inset-0">
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-primary-900/15 to-black" />
+    <section id="contact" className="py-20 md:py-32 bg-[#f1f0ea] relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#534b52]/6 blur-[130px] rounded-full pointer-events-none" />
 
-        {/* Animated gradient orbs */}
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-600/25 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.25, 0.35, 0.25],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+      <div className="container-wide mx-auto relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
 
-        {/* Grid pattern overlay */}
-        <div className="absolute inset-0 opacity-[0.02] bg-[linear-gradient(rgba(144,169,85,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(144,169,85,0.5)_1px,transparent_1px)] bg-[size:48px_48px]" />
-      </div>
-
-      <div className="container-custom relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          {/* Header */}
-          <div className="mb-16">
+          {/* Left — heading */}
+          <div className="lg:sticky lg:top-32">
+            <div className="text-sm font-mono text-[#534b52] mb-4 tracking-widest uppercase">
+              {t('contact.eyeBrow')}
+            </div>
             <motion.h2
-              className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight"
-              initial={{ scale: 0.95 }}
-              whileInView={{ scale: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Let's Work{' '}
-              <span className="text-gradient bg-gradient-to-r from-primary-300 via-primary-200 to-primary-50 bg-clip-text text-transparent">
-                Together
-              </span>
-            </motion.h2>
-
-            <motion.p
-              className="text-xl text-gray-400 max-w-2xl mx-auto mb-12"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              Have a project in mind? Let's discuss how I can help bring your ideas to life.
-              Schedule a free consultation call to get started.
-            </motion.p>
-
-            <motion.a
-              href="https://cal.com/georgi-karchev-3r9puz/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
+              className="text-4xl md:text-5xl font-bold text-[#2d232e] leading-tight mb-6"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+              transition={{ duration: 0.7 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <Calendar size={20} />
-              Schedule a Call
-            </motion.a>
+              {t('contact.title')}{' '}
+              <span className="text-[#534b52]">{t('contact.titleHighlight')}</span>
+            </motion.h2>
+            <p className="text-[#2d232e] text-lg leading-relaxed mb-8">
+              {t('contact.desc')}
+            </p>
+
+            <div className="space-y-4">
+              {[
+                { label: t('contact.perk1') },
+                { label: t('contact.perk2') },
+                { label: t('contact.perk3') },
+              ].map((p, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + i * 0.1, duration: 0.5 }}
+                  viewport={{ once: true }}
+                  className="flex items-center gap-3 text-[#2d232e]"
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#534b52] shrink-0" />
+                  {p.label}
+                </motion.div>
+              ))}
+            </div>
           </div>
 
-          {/* Alternative Contact */}
+          {/* Right — form */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
             viewport={{ once: true }}
-            className="border-t border-gray-800 pt-16"
           >
-            <p className="text-gray-500 text-center mb-8 text-sm">
-              Prefer email or LinkedIn?
-            </p>
-            <div className="flex flex-wrap justify-center gap-6">
-              <motion.a
-                href="mailto:georgikarchev5@gmail.com"
-                whileHover={{ y: -2 }}
-                className="flex items-center gap-3 px-6 py-3 bg-gray-900/50 rounded-xl border border-gray-700/50 hover:border-gray-600 transition-all duration-300 group"
+            {sent ? (
+              <div className="flex flex-col items-center justify-center gap-4 py-20 text-center">
+                <CheckCircle className="w-14 h-14 text-[#e0ddcf]" />
+                <h3 className="text-2xl font-bold text-[#f1f0ea]">{t('contact.successTitle')}</h3>
+                <p className="text-[#e0ddcf]">{t('contact.successDesc')}</p>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="bg-[#2d232e] border border-[#2d232e] rounded-2xl p-8 space-y-5"
               >
-                <Mail size={20} className="text-primary-500 group-hover:text-primary-400 transition-colors" />
-                <span className="text-gray-300 font-semibold group-hover:text-white transition-colors">Email Me</span>
-              </motion.a>
+                {/* Name + Email */}
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs text-[#e0ddcf] font-mono mb-2 uppercase tracking-wider">
+                      {t('contact.labelName')}
+                    </label>
+                    <input
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      required
+                      placeholder={t('contact.placeholderName')}
+                      className={inputCls}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-[#e0ddcf] font-mono mb-2 uppercase tracking-wider">
+                      {t('contact.labelEmail')}
+                    </label>
+                    <input
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      required
+                      placeholder={t('contact.placeholderEmail')}
+                      className={inputCls}
+                    />
+                  </div>
+                </div>
 
-              <motion.a
-                href="https://www.linkedin.com/in/georgi-karchev-415901244/"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -2 }}
-                className="flex items-center gap-3 px-6 py-3 bg-gray-900/50 rounded-xl border border-gray-700/50 hover:border-gray-600 transition-all duration-300 group"
-              >
-                <MessageCircle size={20} className="text-primary-500 group-hover:text-primary-400 transition-colors" />
-                <span className="text-gray-300 font-semibold group-hover:text-white transition-colors">LinkedIn</span>
-              </motion.a>
-            </div>
+                {/* Phone */}
+                <div>
+                  <label className="block text-xs text-[#e0ddcf] font-mono mb-2 uppercase tracking-wider">
+                    {t('contact.labelPhone')}
+                  </label>
+                  <input
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    placeholder={t('contact.placeholderPhone')}
+                    className={inputCls}
+                  />
+                </div>
+
+                {/* Service Input */}
+                <div>
+                  <label className="block text-xs text-[#e0ddcf] font-mono mb-2 uppercase tracking-wider">
+                    {t('contact.labelService')}
+                  </label>
+                  <input
+                    name="service"
+                    value={form.service}
+                    onChange={handleChange}
+                    placeholder={t('contact.placeholderMessage')} // reusing placeholder or you can just leave it blank
+                    className={inputCls}
+                  />
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label className="block text-xs text-[#e0ddcf] font-mono mb-2 uppercase tracking-wider">
+                    {t('contact.labelMessage')}
+                  </label>
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    rows={4}
+                    placeholder={t('contact.placeholderMessage')}
+                    className={`${inputCls} resize-none`}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full btn-primary justify-center py-4 text-base disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {loading ? (
+                    <span className="inline-block w-5 h-5 border-2 border-[#e0ddcf]/40 border-t-[#e0ddcf] rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      {t('contact.submitBtn')}
+                      <Send className="w-4 h-4" />
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
 }
-
-export default Contact

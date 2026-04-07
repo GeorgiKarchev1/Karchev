@@ -1,142 +1,126 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, ArrowUp, Sparkles } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowUpRight, Instagram, Linkedin, Mail } from 'lucide-react'
+import { useLanguage } from '@/context/LanguageContext'
 
-const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  const socialLinks = [
-    {
-      name: 'GitHub',
-      href: 'https://github.com/GeorgiKarchev1',
-      icon: Github,
-      color: 'hover:bg-gray-800 hover:text-white',
-    },
-    {
-      name: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/georgi-karchev-415901244/',
-      icon: Linkedin,
-      color: 'hover:bg-primary-600 hover:text-white',
-    },
-    {
-      name: 'Email',
-      href: 'mailto:georgikarchev5@gmail.com',
-      icon: Mail,
-      color: 'hover:bg-red-600 hover:text-white',
-    },
-  ]
+export default function Footer() {
+  const { t } = useLanguage()
 
   return (
-    <footer className="relative bg-black overflow-hidden">
-      {/* Modern Background Elements */}
-      <div className="absolute inset-0">
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black to-primary-900/20" />
+    <footer className="border-t-2 border-[#2d232e] bg-[#f1f0ea]">
+      <div className="container-wide mx-auto py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
 
-        {/* Subtle glow at bottom */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-48 bg-primary-600/10 blur-3xl" />
-
-        {/* Noise texture */}
-        <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXhpIHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz48L2ZpbHRlcj48cGF0aCBkPSJNMCAwaDMwMHYzMDBIMHoiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iLjA1Ii8+PC9zdmc+')]" />
-      </div>
-
-      <div className="container-custom py-16 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <div className="flex flex-col lg:flex-row items-start justify-between gap-12 mb-12">
-            {/* Brand Section */}
-            <div className="flex-1 max-w-2xl">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
+          {/* Brand */}
+          <div className="md:col-span-1">
+            <div className="text-2xl font-bold font-heading text-[#2d232e] mb-4">KARCHEV</div>
+            <p className="text-[#2d232e] text-sm leading-relaxed max-w-xs">
+              {t('footer.tagline')}
+            </p>
+            <div className="flex gap-4 mt-6">
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full border border-[#2d232e] flex items-center justify-center text-[#2d232e] hover:bg-[#534b52] hover:text-[#e0ddcf] transition-colors"
               >
-                <div className="flex items-center gap-2 mb-6">
-                  <h3 className="text-3xl font-black text-white">
-                    <span className="text-gradient">KARCHEV</span>
-                  </h3>
-                </div>
-                <div className="space-y-3">
-                  <p className="text-gray-300 text-base leading-relaxed font-medium">
-                    Ready to turn your idea into a money-making machine?{' '}
-                    <span className="text-gradient font-bold">Let's build it together.</span>
-                  </p>
-                  <p className="text-primary-300 text-sm font-medium">
-                    No BS. Just results. Fast delivery. Fair pricing.
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex-shrink-0">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/georgi-karchev-415901244/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full border border-[#2d232e] flex items-center justify-center text-[#2d232e] hover:bg-[#534b52] hover:text-[#e0ddcf] transition-colors"
               >
-                <h4 className="text-xl font-bold text-white mb-8 flex items-center gap-2">
-                  Let's Connect
-                </h4>
-                <div className="flex gap-4">
-                  {socialLinks.map(({ name, href, icon: Icon, color }, index) => (
-                    <motion.a
-                      key={name}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      whileHover={{ 
-                        scale: 1.1, 
-                        y: -5,
-                        rotate: [0, -5, 5, 0],
-                        transition: { duration: 0.3 }
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                      viewport={{ once: true }}
-                      className={`p-4 bg-gray-900/50 backdrop-blur-sm text-gray-400 hover:text-white transition-all duration-300 rounded-2xl border border-gray-800/50 hover:border-gray-600/50 ${color} shadow-lg hover:shadow-xl`}
-                      aria-label={name}
-                    >
-                      <Icon size={22} />
-                    </motion.a>
-                  ))}
-                </div>
-              </motion.div>
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.tiktok.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full border border-[#2d232e] flex items-center justify-center text-[#2d232e] hover:bg-[#534b52] hover:text-[#e0ddcf] transition-colors"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91.04.18 1.45.92 2.81 2.05 3.73 1.14.93 2.64 1.45 4.14 1.47v4.06c-1.34-.05-2.67-.37-3.87-1-1.12-.6-2.11-1.42-2.88-2.39v9.42c0 2.22-1.01 4.31-2.73 5.67-1.74 1.34-4.04 1.95-6.2 1.63-2.14-.3-4.06-1.45-5.32-3.15-1.28-1.73-1.84-3.92-1.47-6.04.37-2.12 1.57-4 3.32-5.2 1.76-1.18 3.93-1.61 6.01-1.18V10.8c-.89-.25-1.83-.34-2.76-.23-.84.09-1.64.44-2.3.96-.64.51-1.11 1.21-1.33 2.01-.22.79-.18 1.63.12 2.39.29.75.83 1.39 1.51 1.8.69.41 1.5.61 2.29.58.8-.02 1.57-.27 2.22-.72.64-.44 1.13-1.07 1.39-1.83.18-.54.26-1.11.23-1.68V.02h3.91Z"/>
+                </svg>
+              </a>
             </div>
           </div>
 
-                    {/* Bottom Section */}
-          <motion.div 
-            className="border-t border-gray-800/50 pt-8 flex justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center gap-2">
-              <motion.p 
-                className="text-gray-400 text-sm font-medium"
-                whileHover={{ scale: 1.02 }}
-              >
-                © 2025 KARCHEV. All rights reserved.
-              </motion.p>
+          {/* Services */}
+          <div>
+            <div className="text-xs font-bold uppercase tracking-wider text-[#2d232e] mb-5">
+              {t('footer.servicesTitle')}
             </div>
-          </motion.div>
-        </motion.div>
+            <ul className="space-y-3">
+              {['service1', 'service2', 'service3'].map((key) => (
+                <li key={key}>
+                  <Link href="#solutions" className="text-[#2d232e] text-sm hover:text-[#534b52] transition-colors font-medium">
+                    {t(`footer.${key}`)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Portfolio */}
+          <div>
+            <div className="text-xs font-bold uppercase tracking-wider text-[#2d232e] mb-5">
+              {t('footer.portfolioTitle')}
+            </div>
+            <ul className="space-y-3">
+              {[
+                { name: 'GBGamingHub',       url: 'https://www.gbgaminghub.com/' },
+                { name: 'The Agency Course',  url: 'https://theagencycourse.bg/' },
+                { name: 'Editing.bg',         url: 'https://editing.bg/' },
+                { name: 'InPlayGear',         url: 'https://inplaygear.com/' },
+                { name: 'Готов за час',       url: 'https://gotovzachas.com/' },
+                { name: 'AI Marketing',       url: 'https://aimarketing.bg/' },
+              ].map((site) => (
+                <li key={site.name}>
+                  <a
+                    href={site.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#2d232e] text-sm hover:text-[#534b52] transition-colors inline-flex items-center gap-1 group font-medium"
+                  >
+                    {site.name}
+                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <div className="text-xs font-bold uppercase tracking-wider text-[#2d232e] mb-5">
+              {t('footer.connectTitle')}
+            </div>
+            <Link
+              href="https://cal.com/georgi-karchev-3r9puz/30min"
+              target="_blank"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full border-2 border-[#2d232e] text-sm text-[#2d232e] font-bold hover:bg-[#534b52] hover:text-[#e0ddcf] transition-colors mb-6 shadow-[2px_2px_0px_#2d232e] active:translate-y-[1px] active:translate-x-[1px] active:shadow-[1px_1px_0px_#2d232e]"
+            >
+              {t('navbar.bookMeeting')}
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+            <div className="flex items-center gap-2 text-[#2d232e] text-sm">
+              <Mail className="w-4 h-4" />
+              <span>{t('footer.email')}</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t-2 border-[#2d232e] flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-sm font-medium text-[#2d232e]">{t('footer.rights')}</div>
+          <div className="flex gap-6 text-sm font-medium text-[#2d232e]">
+            <Link href="#" className="hover:text-[#534b52] transition-colors">{t('footer.privacy')}</Link>
+            <Link href="#" className="hover:text-[#534b52] transition-colors">{t('footer.terms')}</Link>
+          </div>
+        </div>
       </div>
     </footer>
   )
 }
-
-export default Footer
