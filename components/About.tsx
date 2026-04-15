@@ -145,7 +145,7 @@ const About = () => {
                        </svg>
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-[#534b52] uppercase tracking-wider">{t('about.founder', { defaultValue: 'Founder' })}</div>
+                      <div className="text-xs font-bold text-[#534b52] uppercase tracking-wider">{t('about.founder')}</div>
                       <div className="text-base font-black text-[#2d232e]">Georgi Karchev</div>
                     </div>
                   </motion.div>
