@@ -5,6 +5,8 @@ export const translations = {
             services: 'Services',
             portfolio: 'Portfolio',
             about: 'About',
+            tools: 'Tools',
+            blog: 'Blog',
             bookMeeting: 'Book Free Call',
         },
         about: {
@@ -15,11 +17,19 @@ export const translations = {
             p2: 'With a focus on high-performance web development and strategic content creation, we craft digital assets that act as your best salespeople.',
             p3: 'No fluff. No empty promises. Just clean code, compelling copy, and systems that work tirelessly for your business.',
             stats: {
-                efficiency: 'Efficiency',
-                workflows: 'Workflows',
-                commitment: 'Commitment'
+                views: 'Views in 60 days',
+                reached: 'Accounts reached',
+                newAudience: 'New audience',
             },
-            founder: 'Founder'
+            proofLabel: 'Jan 24 – Mar 24 · Instagram Analytics',
+            proofVerified: 'Verified',
+            proofCaption: 'Unedited screenshot',
+            founder: 'Founder',
+            cofounder: 'Co-Founder',
+            role1: 'Founder · Web & Content',
+            role2: 'Co-Founder · Strategy & Ops',
+            joining: 'Coming soon',
+            joiningTitle: 'Second team member joining',
         },
         hero: {
             eyebrow: 'Digital Agency · Bulgaria',
@@ -162,12 +172,15 @@ export const translations = {
             service1: 'Content Production',
             service2: 'Web Development',
             service3: 'Chatbots & Automation',
+            resourcesTitle: 'Resources',
+            toolsLink: 'Free Tools',
+            blogLink: 'Blog',
             portfolioTitle: 'Portfolio',
             connectTitle: 'Connect',
             email: 'georgikarchev5@gmail.com',
             privacy: 'Privacy Policy',
             terms: 'Terms of Service',
-            rights: '© 2026 Karchev. All rights reserved.'
+            rights: '© 2026 GKarch. All rights reserved.'
         },
     },
     BG: {
@@ -175,6 +188,8 @@ export const translations = {
             services: 'Услуги',
             portfolio: 'Портфолио',
             about: 'За Нас',
+            tools: 'Инструменти',
+            blog: 'Блог',
             bookMeeting: 'Запази безплатна консултация',
         },
         about: {
@@ -185,11 +200,19 @@ export const translations = {
             p2: 'С фокус върху бърза уеб разработка и създаване на съдържание, ние създаваме дигитални активи, които действат като най-добрите ти търговци.',
             p3: 'Без празни приказки. Без лъжливи обещания. Само чист код, завладяващ текст и системи, които работят неуморно за твоя бизнес.',
             stats: {
-                efficiency: 'Ефективност',
-                workflows: 'Процеси',
-                commitment: 'Отдаденост'
+                views: 'Гледания за 60 дни',
+                reached: 'Достигнати акаунти',
+                newAudience: 'Нова аудитория',
             },
-            founder: 'Основател'
+            proofLabel: '24 Яну – 24 Март · Instagram Analytics',
+            proofVerified: 'Потвърдено',
+            proofCaption: 'Оригинален скрийншот',
+            founder: 'Основател',
+            cofounder: 'Съосновател',
+            role1: 'Основател · Уеб & Съдържание',
+            role2: 'Съосновател · Стратегия & Операции',
+            joining: 'Очаквайте скоро',
+            joiningTitle: 'Втори член на екипа',
         },
         hero: {
             eyebrow: 'Дигитална Агенция · България',
@@ -332,12 +355,15 @@ export const translations = {
             service1: 'Контент Производство',
             service2: 'Уеб Разработка',
             service3: 'Чат ботове & Автоматизации',
+            resourcesTitle: 'Ресурси',
+            toolsLink: 'Безплатни Инструменти',
+            blogLink: 'Блог',
             portfolioTitle: 'Портфолио',
             connectTitle: 'Свържи се',
             email: 'georgikarchev5@gmail.com',
             privacy: 'Политика за поверителност',
             terms: 'Общи условия',
-            rights: '© 2026 Karchev. Всички права запазени.'
+            rights: '© 2026 GKarch. Всички права запазени.'
         },
     }
 } as const;

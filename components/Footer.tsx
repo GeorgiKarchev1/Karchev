@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowUpRight, Instagram, Linkedin, Mail } from 'lucide-react'
+import { ArrowUpRight, Instagram, Linkedin } from 'lucide-react'
 import { useLanguage } from '@/context/LanguageContext'
 
 export default function Footer() {
@@ -106,10 +106,6 @@ export default function Footer() {
               {t('navbar.bookMeeting')}
               <ArrowUpRight className="w-4 h-4" />
             </Link>
-            <div className="flex items-center gap-2 text-[#2d232e] text-sm">
-              <Mail className="w-4 h-4" />
-              <span>{t('footer.email')}</span>
-            </div>
           </div>
         </div>
 

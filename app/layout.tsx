@@ -3,6 +3,11 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://karchev.bg'),
+  icons: {
+    icon: '/img/newfav.png',
+    apple: '/img/newfav.png',
+    shortcut: '/img/newfav.png',
+  },
   title: {
     default: 'Karchev | Съдържание и Сайтове, които продават',
     template: '%s | Karchev'

@@ -16,7 +16,6 @@ const sites = [
   { name: 'Editing.bg',         url: 'editing.bg',         img: '/img/editingbg.png',    href: 'https://editing.bg/',           imgPosition: 'center' },
 ]
 
-// Duplicate for seamless infinite loop
 const marqueeTrack = [...sites, ...sites]
 
 function WordReveal({ text, delay = 0, className = '' }: { text: string; delay?: number; className?: string }) {
@@ -41,10 +40,33 @@ function WordReveal({ text, delay = 0, className = '' }: { text: string; delay?:
   )
 }
 
+// Squiggle underline — draws left-to-right via background-size animation.
+// This approach guarantees the line matches text width exactly at all screen sizes.
+const SQUIGGLE_SVG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10'%3E%3Cpath d='M0 5 C 10 1%2C 20 9%2C 30 5 S 50 1%2C 60 5 S 80 9%2C 90 5 S 110 1%2C 120 5' fill='none' stroke='%23534b52' stroke-width='2.8' stroke-linecap='round'/%3E%3C/svg%3E")`
+
+function Squiggle({ className = '', delay = 0 }: { className?: string; delay?: number }) {
+  return (
+    <motion.span
+      aria-hidden="true"
+      className={className}
+      style={{
+        backgroundImage: SQUIGGLE_SVG,
+        backgroundRepeat: 'repeat-x',
+        backgroundPosition: '0 100%',
+        backgroundSize: '0% 0.22em',
+        display: 'block',
+        pointerEvents: 'none',
+      }}
+      initial={{ backgroundSize: '0% 0.22em' }}
+      animate={{ backgroundSize: '100% 0.22em' }}
+      transition={{ delay, duration: 1.4, ease: [0.65, 0, 0.35, 1] }}
+    />
+  )
+}
+
 function BrowserFrame({ site }: { site: typeof sites[0] }) {
   return (
     <div className="rounded-2xl overflow-hidden border border-[#2d232e] group-hover:border-[#534b52]/50 shadow-xl shadow-[#2d232e]/15 group-hover:shadow-2xl group-hover:shadow-[#534b52]/10 bg-[#e0ddcf] transition-all duration-300">
-      {/* Chrome bar */}
       <div className="flex items-center gap-2 px-3 py-2.5 bg-[#e0ddcf] border-b border-[#2d232e]">
         <div className="flex gap-1.5 shrink-0">
           <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]/80" />
@@ -55,15 +77,14 @@ function BrowserFrame({ site }: { site: typeof sites[0] }) {
           {site.url}
         </div>
       </div>
-      {/* Screenshot */}
-      <div className="relative overflow-hidden h-[220px] lg:h-[270px]">
+      <div className="relative overflow-hidden h-[150px] sm:h-[190px] md:h-[220px] lg:h-[270px]">
         <Image
           src={site.img}
           alt={site.name}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
           style={{ objectPosition: site.imgPosition }}
-          sizes="(max-width: 1024px) 360px, 420px"
+          sizes="(max-width: 640px) 240px, (max-width: 1024px) 360px, 420px"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#f1f0ea]/30 to-transparent pointer-events-none" />
@@ -77,7 +98,7 @@ export default function Hero() {
   const [paused, setPaused] = useState(false)
 
   return (
-    <section className="relative flex flex-col items-center bg-[#f1f0ea] overflow-hidden pt-36 pb-24 md:pt-48 md:pb-32">
+    <section className="relative flex flex-col items-center bg-[#f1f0ea] overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-48 md:pb-32">
 
       <style>{`
         @keyframes marquee {
@@ -86,23 +107,73 @@ export default function Hero() {
         }
       `}</style>
 
-      {/* Background glow removed for cleaner styling */}
-      <div className="absolute inset-0 bg-grid opacity-12 pointer-events-none" />
+      {/* ── Background — clean, professional, no decorative elements ── */}
+
+      {/* 1. Soft vertical tone shift — top slightly lighter, bottom slightly warmer */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            'linear-gradient(to bottom, #f4f2ec 0%, #f1f0ea 45%, #ece9de 100%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* 2. Two soft radial washes for depth — one warm top-right, one cool-purple bottom-left */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 80% 55% at 85% 10%, rgba(83,75,82,0.10) 0%, transparent 60%), radial-gradient(ellipse 70% 50% at 10% 95%, rgba(45,35,46,0.08) 0%, transparent 60%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* 3. Fine vertical pinstripes — editorial precision, very low opacity */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0 opacity-[0.05]"
+        style={{
+          backgroundImage: 'repeating-linear-gradient(to right, #2d232e 0px, #2d232e 1px, transparent 1px, transparent 96px)',
+          WebkitMaskImage: 'radial-gradient(ellipse 100% 80% at 50% 50%, black 40%, transparent 85%)',
+          maskImage: 'radial-gradient(ellipse 100% 80% at 50% 50%, black 40%, transparent 85%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* 4. Paper grain — subtle, adds tactility without noise */}
+      <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.22] mix-blend-multiply z-[1]" aria-hidden="true">
+        <filter id="hero-grain">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0.176  0 0 0 0 0.137  0 0 0 0 0.180  0 0 0 0.5 0" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#hero-grain)" />
+      </svg>
+
+      {/* 5. Horizon line — a single hairline rule just above the marquee, architectural */}
+      <div
+        className="pointer-events-none absolute left-0 right-0 h-px z-[1] hidden md:block"
+        style={{
+          top: 'calc(50% + 120px)',
+          background: 'linear-gradient(to right, transparent 0%, rgba(45,35,46,0.12) 20%, rgba(45,35,46,0.12) 80%, transparent 100%)',
+        }}
+        aria-hidden="true"
+      />
 
       {/* ── Text ──────────────────────────────────────────────────── */}
-      <div className="relative z-10 flex flex-col items-center text-center px-5 mb-16 md:mb-24 mt-8 md:mt-0">
+      <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-5 mb-12 sm:mb-16 md:mb-24 mt-4 md:mt-0 w-full max-w-[1200px]">
 
         <h1
-          className="font-heading font-black leading-[1.02] mb-8"
+          className="font-heading font-black leading-[1.05] md:leading-[1.02] mb-6 sm:mb-8 relative w-full"
           style={{ perspective: '900px' }}
         >
-          <span className="block text-[#2d232e] text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[6rem]">
+          <span className="block text-[#2d232e] text-[2.5rem] xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[6rem]">
             <WordReveal text={t('hero.titleP1')} delay={0.05} />
           </span>
-          <span
-            className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[6rem] text-[#534b52] mt-2"
-          >
-            <WordReveal text={t('hero.titleP2')} delay={0.28} />
+          <span className="block text-center mt-1 sm:mt-2">
+            <span className="inline-block whitespace-nowrap text-[2.5rem] xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[6rem] text-[#534b52]">
+              <WordReveal text={t('hero.titleP2')} delay={0.28} />
+              <Squiggle className="mt-1" delay={1.0} />
+            </span>
           </span>
         </h1>
 
@@ -110,7 +181,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.65 }}
-          className="text-lg sm:text-xl md:text-2xl text-[#2d232e] mb-12 max-w-2xl font-medium leading-relaxed"
+          className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#2d232e] mb-8 sm:mb-10 md:mb-12 max-w-[90%] sm:max-w-2xl font-medium leading-relaxed"
         >
           {t('hero.subTitle')}
         </motion.p>
@@ -119,36 +190,34 @@ export default function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.82 }}
-          className="flex flex-col w-full sm:w-auto sm:flex-row items-center gap-4 px-4 sm:px-0"
+          className="flex flex-col w-full sm:w-auto sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 px-2 sm:px-0 max-w-sm sm:max-w-none mx-auto"
         >
           <Link
             href="https://cal.com/georgi-karchev-3r9puz/30min"
             target="_blank"
-            className="btn-primary text-base md:text-lg px-8 md:px-10 py-4 md:py-5 w-full sm:w-auto"
+            className="btn-primary text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-3.5 sm:py-4 md:py-5 w-full sm:w-auto justify-center"
           >
             {t('hero.bookStrategyCall')}
             <ArrowRight className="w-5 h-5 ml-2" />
           </Link>
           <Link
             href="#portfolio"
-            className="btn-secondary w-full sm:w-auto text-base md:text-lg px-8 md:px-10 py-4 md:py-5 text-center"
+            className="btn-secondary w-full sm:w-auto text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-3.5 sm:py-4 md:py-5 text-center"
           >
             {t('hero.seePortfolio')}
           </Link>
         </motion.div>
       </div>
 
-      {/* ── Marquee — Desktop only ─────────────────────────────────── */}
+      {/* ── Marquee ───────────────────────────────────────────────── */}
       <motion.div
-        className="hidden md:block relative z-10 w-full overflow-hidden pb-10"
+        className="relative z-10 w-full overflow-hidden pb-6 md:pb-10"
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.0, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
       >
-        {/* Fade edges removed to fix the grid blocking 'lights' */}
-
         <div
-          className="flex gap-5"
+          className="flex gap-3 md:gap-5"
           style={{
             width: 'max-content',
             animation: 'marquee 38s linear infinite',
@@ -156,7 +225,6 @@ export default function Hero() {
           }}
         >
           {marqueeTrack.map((site, i) => (
-            // group on <a> so hover hitbox is stable — inner elements scale via group-hover:
             <a
               key={i}
               href={site.href}
@@ -164,7 +232,7 @@ export default function Hero() {
               rel="noopener noreferrer"
               onMouseEnter={() => setPaused(true)}
               onMouseLeave={() => setPaused(false)}
-              className="group shrink-0 w-[360px] lg:w-[420px] block"
+              className="group shrink-0 w-[240px] sm:w-[300px] md:w-[360px] lg:w-[420px] block"
             >
               <div className="transition-transform duration-300 ease-out group-hover:scale-[1.03]">
                 <BrowserFrame site={site} />

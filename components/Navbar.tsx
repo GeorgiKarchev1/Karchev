@@ -11,6 +11,12 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { t } = useLanguage()
+  const navItems = [
+    { href: '#solutions', label: t('navbar.services') },
+    { href: '#portfolio', label: t('navbar.portfolio') },
+    { href: '#how-it-works', label: t('navbar.about') },
+    { href: '/blog', label: t('navbar.blog') },
+  ]
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10)
@@ -25,20 +31,30 @@ export default function Navbar() {
         : 'bg-transparent py-6'
     }`}>
       <div className="container-wide mx-auto flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold tracking-tight font-heading text-[#2d232e] flex items-center gap-2">
-          KARCHEV
+        <Link
+          href="/"
+          className="shrink-0 transition-opacity hover:opacity-75"
+          aria-label="Karchev home"
+        >
+          <img
+            src="/img/logokarch.png"
+            alt="Karchev"
+            width="1500"
+            height="500"
+            className="block h-auto w-[120px] md:w-[144px] lg:w-[156px]"
+          />
         </Link>
 
-        <div className="hidden md:flex items-center gap-8">
-          <Link href="#solutions" className="text-sm font-medium text-[#2d232e] hover:text-[#2d232e] transition-colors">
-            {t('navbar.services')}
-          </Link>
-          <Link href="#portfolio" className="text-sm font-medium text-[#2d232e] hover:text-[#2d232e] transition-colors">
-            {t('navbar.portfolio')}
-          </Link>
-          <Link href="#how-it-works" className="text-sm font-medium text-[#2d232e] hover:text-[#2d232e] transition-colors">
-            {t('navbar.about')}
-          </Link>
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
+          {navItems.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className="text-sm font-medium text-[#2d232e] hover:text-[#534b52] transition-colors"
+            >
+              {label}
+            </Link>
+          ))}
 
           <div className="w-px h-4 bg-[#2d232e]" />
           <LanguageSwitcher />
@@ -71,11 +87,7 @@ export default function Navbar() {
             className="absolute top-full left-0 right-0 bg-[#f1f0ea] border-b border-[#2d232e] overflow-hidden md:hidden"
           >
             <div className="flex flex-col items-center p-6 gap-6">
-              {[
-                { href: '#solutions', label: t('navbar.services') },
-                { href: '#portfolio', label: t('navbar.portfolio') },
-                { href: '#how-it-works', label: t('navbar.about') },
-              ].map(({ href, label }) => (
+              {navItems.map(({ href, label }) => (
                 <Link
                   key={href}
                   href={href}
