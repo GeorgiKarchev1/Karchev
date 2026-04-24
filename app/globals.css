@@ -27,6 +27,74 @@
     @apply max-w-[1400px] mx-auto px-6 md:px-8;
   }
 
+  .hero-illustration-media {
+    position: absolute;
+    left: 50%;
+    bottom: -3.5rem;
+    width: 840px;
+    height: auto;
+    max-width: none;
+    transform: translateX(-50%);
+    opacity: 1;
+    user-select: none;
+  }
+
+  @media (min-width: 480px) {
+    .hero-illustration-media {
+      width: 920px;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .hero-illustration-media {
+      width: 980px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-illustration-media {
+      top: 50%;
+      bottom: auto;
+      width: 1520px;
+      transform: translate(-50%, -50%);
+      opacity: 0.97;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-illustration-media {
+      left: calc(50% + 1.25rem);
+      top: calc(50% + 1.25rem);
+      width: 1680px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .hero-illustration-media {
+      left: calc(50% + 1.5rem);
+      top: calc(50% + 1.5rem);
+      width: 1820px;
+    }
+  }
+
+  .final-cta-illustration-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.94;
+    user-select: none;
+  }
+
+  @media (max-width: 1023px) {
+    .final-cta-illustration-media {
+      object-position: center center;
+      opacity: 0.95;
+    }
+  }
+
   .btn-primary {
     @apply bg-[#534b52] text-[#f1f0ea] border-2 border-[#2d232e] font-bold px-8 py-4 rounded-full transition-all duration-300 ease-out active:translate-y-[2px] active:translate-x-[2px] active:shadow-[1px_1px_0px_#2d232e] text-lg inline-flex items-center justify-center gap-2 z-10;
     box-shadow: 4px 4px 0px #2d232e;

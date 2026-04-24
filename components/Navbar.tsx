@@ -41,16 +41,18 @@ export default function Navbar() {
             alt="Karchev"
             width="1500"
             height="500"
-            className="block h-auto w-[120px] md:w-[144px] lg:w-[156px]"
+            className="block h-auto w-[120px] lg:w-[144px] xl:w-[156px]"
+            style={{ filter: 'drop-shadow(0 0 6px rgba(241,240,234,0.8))' }}
           />
         </Link>
 
-        <div className="hidden md:flex items-center gap-6 lg:gap-8">
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navItems.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
-              className="text-sm font-medium text-[#2d232e] hover:text-[#534b52] transition-colors"
+              className="text-sm font-bold text-[#2d232e] hover:text-[#534b52] transition-colors"
+              style={{ textShadow: '0 0 8px rgba(241,240,234,0.9), 0 0 16px rgba(241,240,234,0.7)' }}
             >
               {label}
             </Link>
@@ -70,7 +72,7 @@ export default function Navbar() {
         </div>
 
         <button
-          className="md:hidden text-[#2d232e] p-2"
+          className="lg:hidden text-[#2d232e] p-2 drop-shadow-[0_0_6px_rgba(241,240,234,0.9)]"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -84,7 +86,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="absolute top-full left-0 right-0 bg-[#f1f0ea] border-b border-[#2d232e] overflow-hidden md:hidden"
+            className="absolute top-full left-0 right-0 bg-[#f1f0ea] border-b border-[#2d232e] overflow-hidden lg:hidden"
           >
             <div className="flex flex-col items-center p-6 gap-6">
               {navItems.map(({ href, label }) => (
