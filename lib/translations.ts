@@ -363,7 +363,7 @@ export const translations = {
             email: 'georgikarchev5@gmail.com',
             privacy: 'Политика за поверителност',
             terms: 'Общи условия',
-            rights: '© 2026 GKarch. Всички права запазени.'
+            rights: '© 2026 KarchX. Всички права запазени.'
         },
     }
 } as const;

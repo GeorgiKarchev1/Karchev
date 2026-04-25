@@ -61,20 +61,22 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,#fcfaf5_0%,#f8f4ed_38%,#f6f3ed_100%)]" />
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_80%_55%_at_85%_10%,rgba(83,75,82,0.10)_0%,transparent_60%),radial-gradient(ellipse_70%_50%_at_10%_95%,rgba(45,35,46,0.08)_0%,transparent_60%)]" />
       <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden" aria-hidden="true">
-        <picture>
-          <source media="(min-width: 768px)" srcSet="/img/hero-background-generated.png" />
-          <img
-            src="/img/hero-background-mobile-generated.png"
-            alt=""
-            className="hero-illustration-media"
-          />
-        </picture>
+        <img
+          src="/img/hero-background-mobile-generated.png"
+          alt=""
+          className="hero-illustration-mobile"
+        />
+        <img
+          src="/img/hero-background-generated.png"
+          alt=""
+          className="hero-illustration-desktop"
+        />
       </div>
       <div className="pointer-events-none absolute inset-0 z-[2] md:hidden bg-[linear-gradient(180deg,rgba(252,250,245,0.92)_0%,rgba(252,250,245,0.8)_28%,rgba(246,243,237,0.22)_62%,rgba(246,243,237,0.3)_100%)]" />
       <div className="pointer-events-none absolute inset-0 z-[2] hidden md:block bg-[linear-gradient(180deg,rgba(252,250,245,0.54)_0%,rgba(246,243,237,0.18)_42%,rgba(246,243,237,0.44)_100%)]" />
 
       {/* Content */}
-      <div className="container-wide relative z-10 flex w-full flex-col items-center px-4 pb-16 pt-32 text-center sm:px-5 sm:pb-20 sm:pt-36 md:py-36 lg:py-40">
+      <div className="container-wide relative z-10 flex w-full flex-col items-center px-4 pb-8 pt-[28vh] text-center sm:px-5 sm:pb-10 sm:pt-[26vh] md:py-36 lg:py-40">
 
         <h1
           className="relative mb-4 w-full font-heading font-black leading-[1.02] tracking-[-0.02em] sm:mb-5 md:mb-6"

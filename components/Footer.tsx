@@ -112,8 +112,9 @@ export default function Footer() {
         <div className="pt-8 border-t-2 border-[#2d232e] flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-sm font-medium text-[#2d232e]">{t('footer.rights')}</div>
           <div className="flex gap-6 text-sm font-medium text-[#2d232e]">
-            <Link href="#" className="hover:text-[#534b52] transition-colors">{t('footer.privacy')}</Link>
-            <Link href="#" className="hover:text-[#534b52] transition-colors">{t('footer.terms')}</Link>
+            <Link href="/politiki/poveritelnost" className="hover:text-[#534b52] transition-colors">{t('footer.privacy')}</Link>
+            <Link href="/politiki/obshti-uslovia" className="hover:text-[#534b52] transition-colors">{t('footer.terms')}</Link>
+            <Link href="/politiki/biskvitki" className="hover:text-[#534b52] transition-colors">Бисквитки</Link>
           </div>
         </div>
       </div>
