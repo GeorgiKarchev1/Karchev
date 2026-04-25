@@ -28,7 +28,7 @@ export default function CookieBanner() {
 
   return (
     <div className="fixed bottom-4 left-4 right-4 z-[9999] md:left-auto md:right-6 md:bottom-6 md:max-w-sm">
-      <div className="bg-[#2d232e] text-[#e0ddcf] rounded-2xl shadow-2xl p-5 border border-[#534b52]">
+      <div className="rounded-2xl shadow-2xl p-5 border border-[#534b52]/60 text-[#e0ddcf]" style={{ backgroundColor: '#2d232e' }}>
         <div className="flex items-start justify-between gap-3 mb-3">
           <p className="text-sm font-semibold leading-snug">Използваме бисквитки 🍪</p>
           <button
