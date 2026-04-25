@@ -47,5 +47,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/blog/kolko-struva-sait-za-malak-biznes`,
+      lastModified: new Date('2026-04-25'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
   ]
 }

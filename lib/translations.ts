@@ -110,6 +110,28 @@ export const translations = {
             titleHighlight: 'Work',
             subtitle: 'Real projects. Real results. See what we build.',
             viewSite: 'View site',
+            projects: {
+                theAgency: {
+                    title: 'The Agency Course',
+                    description: 'The complete blueprint for building a scalable video editing agency. We teach you how to automate client acquisition, delivery, and payments using modern AI workflows.',
+                    cta: 'Start Learning',
+                },
+                algoChat: {
+                    title: 'AlgoChat AI',
+                    description: 'Master algorithms with your personal AI tutor. Interactive voice conversations and real-time feedback make learning complex topics effortless and engaging.',
+                    cta: 'Try AI Tutor',
+                },
+                editingBg: {
+                    title: 'Editing.bg Platform',
+                    description: 'A fully automated marketplace connecting creators with editors. See how we used automation to streamline bookings, file transfers, and payouts.',
+                    cta: 'Visit Platform',
+                },
+                yordanKolev: {
+                    title: 'Yordan Kolev',
+                    description: 'A high-converting personal brand website for Yordan Kolev — coach and entrepreneur. Built to establish authority and turn visitors into clients from the first scroll.',
+                    cta: 'Visit Site',
+                },
+            },
         },
         testimonials: {
             title: 'What clients say',
@@ -293,6 +315,28 @@ export const translations = {
             titleHighlight: 'Работа',
             subtitle: 'Реални проекти. Реални резултати. Виж какво правим.',
             viewSite: 'Виж сайта',
+            projects: {
+                theAgency: {
+                    title: 'The Agency Course',
+                    description: 'Пълният наръчник за изграждане на мащабируема агенция за видео монтаж. Учим те как да автоматизираш привличането на клиенти, доставката и плащанията с AI.',
+                    cta: 'Започни',
+                },
+                algoChat: {
+                    title: 'AlgoChat AI',
+                    description: 'Научи алгоритми с личен AI ментор. Интерактивни гласови разговори и обратна връзка в реално време правят усвояването на сложни теми лесно и ангажиращо.',
+                    cta: 'Опитай AI ментора',
+                },
+                editingBg: {
+                    title: 'Editing.bg платформа',
+                    description: 'Напълно автоматизиран маркетплейс, свързващ създатели с монтажисти. Виж как използвахме автоматизация за резервации, трансфер на файлове и плащания.',
+                    cta: 'Виж платформата',
+                },
+                yordanKolev: {
+                    title: 'Йордан Колев',
+                    description: 'Уебсайт за личен бранд с висока конверсия за Йордан Колев — коуч и предприемач. Направен да изгражда авторитет и да превръща посетителите в клиенти от първия скрол.',
+                    cta: 'Виж сайта',
+                },
+            },
         },
         testimonials: {
             title: 'Какво казват клиентите',

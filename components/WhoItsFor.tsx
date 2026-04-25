@@ -12,6 +12,7 @@ const getPortfolioSites = (isBG: boolean) => [
   { name: 'InPlayGear',         url: 'https://inplaygear.com/',        desc: isBG ? 'Онлайн магазин за спортна и outdoor екипировка' : 'Online store for sports and outdoor equipment',                  tag: 'E-commerce',          img: '/img/inplaygear.png' },
   { name: 'Готов за час',       url: 'https://gotovzachas.com/',       desc: isBG ? 'Платформа за бързо записване на домашни услуги' : 'Platform for quick booking of home services',                  tag: isBG ? 'Уеб Разработка' : 'Web Development',     img: '/img/gotovzachas.png' },
   { name: 'AI Marketing',       url: 'https://aimarketing.bg/',        desc: isBG ? 'Сайт за AI маркетинг агенция с блог и услуги' : 'AI marketing agency site with blog and services',                    tag: isBG ? 'Уеб & Контент' : 'Web & Content',      img: '/img/aimarketing.png' },
+  { name: 'Yordan Kolev',       url: 'https://yordankolev.com/',       desc: isBG ? 'Сайт за личен бранд с висока конверсия за коуч и предприемач' : 'High-converting personal brand site for a coach and entrepreneur', tag: isBG ? 'Уеб Разработка' : 'Web Development',   img: '/img/yordankolev.png' },
 ]
 
 export default function WhoItsFor() {

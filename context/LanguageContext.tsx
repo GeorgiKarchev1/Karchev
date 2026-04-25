@@ -13,28 +13,45 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-    // Try to get from localStorage if needed, but simple default is BG
-    const [language, setLanguage] = useState<Language>('BG')
+function getCookie(name: string): string | undefined {
+    if (typeof document === 'undefined') return undefined
+    const match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'))
+    return match ? decodeURIComponent(match[1]) : undefined
+}
 
-    // Optional: Persist to local storage
+function setCookie(name: string, value: string) {
+    document.cookie = `${name}=${value}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`
+}
+
+export function LanguageProvider({ children }: { children: React.ReactNode }) {
+    const [language, setLanguageState] = useState<Language>('BG')
+
     useEffect(() => {
-        const saved = localStorage.getItem('language')
-        if (saved === 'EN' || saved === 'BG') {
-            setLanguage(saved)
+        // User has manually chosen a language before — respect that
+        const userPref = getCookie('user-lang-preference')
+        if (userPref === 'EN' || userPref === 'BG') {
+            setLanguageState(userPref)
+            return
+        }
+
+        // Fall back to geo-detected language set by middleware
+        const detected = getCookie('detected-country-lang')
+        if (detected === 'EN' || detected === 'BG') {
+            setLanguageState(detected)
         }
     }, [])
 
-    useEffect(() => {
-        localStorage.setItem('language', language)
-    }, [language])
+    const setLanguage = (lang: Language) => {
+        setLanguageState(lang)
+        // Persist manual choice so it overrides geo-detection on next visit
+        setCookie('user-lang-preference', lang)
+    }
 
     const t = (key: string) => {
         const keys = key.split('.')
         let current: any = translations[language]
         for (const k of keys) {
             if (current === undefined || current[k] === undefined) {
-                console.warn(`Missing translation for key: ${key} in language: ${language}`)
                 return key
             }
             current = current[k]

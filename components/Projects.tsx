@@ -3,30 +3,32 @@
 import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import Image from 'next/image'
+import { useLanguage } from '@/context/LanguageContext'
 
 const Projects = () => {
+  const { t } = useLanguage()
+
   const projects = [
     {
-      title: 'The Agency Course',
-      description: 'The complete blueprint for building a scalable video editing agency. We teach you how to automate client acquisition, delivery, and payments using modern AI workflows.',
+      key: 'theAgency',
       image: '/img/theagency.png',
       live: 'https://theagencycourse.bg/',
-      cta: 'Start Learning'
     },
     {
-      title: 'AlgoChat AI',
-      description: 'Master algorithms with your personal AI tutor. Interactive voice conversations and real-time feedback make learning complex topics effortless and engaging.',
+      key: 'algoChat',
       image: '/img/algoimg.png',
       live: 'https://www.algochad.com/',
-      cta: 'Try AI Tutor'
     },
     {
-      title: 'Editing.bg Platform',
-      description: 'A fully automated marketplace connecting creators with editors. See how we used automation to streamline bookings, file transfers, and payouts.',
+      key: 'editingBg',
       image: '/img/editingbg.png',
       live: 'https://editing.bg/',
-      cta: 'Visit Platform'
-    }
+    },
+    {
+      key: 'yordanKolev',
+      image: '/img/yordankolev.png',
+      live: 'https://yordankolev.com/',
+    },
   ]
 
   return (
@@ -43,8 +45,8 @@ const Projects = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            Our{' '}
-            <span className="text-[#534b52]">Ecosystem</span>
+            {t('portfolio.titleP1')}{' '}
+            <span className="text-[#534b52]">{t('portfolio.titleHighlight')}</span>
           </motion.h2>
           <div className="w-24 h-px bg-[#534b52] mx-auto mb-8" />
           <motion.p
@@ -54,7 +56,7 @@ const Projects = () => {
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
           >
-            Software and education designed to help you scale.
+            {t('portfolio.subtitle')}
           </motion.p>
         </div>
 
@@ -62,7 +64,7 @@ const Projects = () => {
         <div className="space-y-16">
           {projects.map((project, index) => (
             <motion.div
-              key={project.title}
+              key={project.key}
               initial={{ opacity: 0, y: 30, rotateX: 5 }}
               whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               whileHover={{ y: -6, rotateX: -2, scale: 1.005 }}
@@ -76,7 +78,7 @@ const Projects = () => {
                   <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.5 }}>
                     <Image
                       src={project.image}
-                      alt={project.title}
+                      alt={t(`portfolio.projects.${project.key}.title`)}
                       width={600}
                       height={400}
                       className="w-full h-64 md:h-80 object-cover"
@@ -88,9 +90,11 @@ const Projects = () => {
               <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
                 <div className="space-y-6">
                   <h3 className="text-3xl md:text-4xl font-bold text-[#e0ddcf] group-hover:text-[#534b52] transition-colors duration-300">
-                    {project.title}
+                    {t(`portfolio.projects.${project.key}.title`)}
                   </h3>
-                  <p className="text-lg text-[#2d232e] leading-relaxed">{project.description}</p>
+                  <p className="text-lg text-[#2d232e] leading-relaxed">
+                    {t(`portfolio.projects.${project.key}.description`)}
+                  </p>
                   <motion.a
                     href={project.live}
                     target="_blank"
@@ -99,7 +103,7 @@ const Projects = () => {
                     whileTap={{ scale: 0.95 }}
                     className="inline-flex items-center px-8 py-4 bg-[#534b52] text-[#e0ddcf] rounded-full font-bold hover:bg-[#2d232e] transition-colors"
                   >
-                    {project.cta}
+                    {t(`portfolio.projects.${project.key}.cta`)}
                     <ExternalLink size={18} className="ml-2" />
                   </motion.a>
                 </div>

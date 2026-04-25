@@ -62,6 +62,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://www.karchx.com',
+    languages: {
+      'bg': 'https://www.karchx.com',
+      'en': 'https://www.karchx.com',
+      'x-default': 'https://www.karchx.com',
+    },
   },
   verification: {
     google: 'GjxFoZiqby4aaoCuqQjHBZP4UCAFUwn7Yn9l5MIIdgI',
