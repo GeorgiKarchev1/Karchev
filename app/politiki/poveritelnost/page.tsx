@@ -28,7 +28,7 @@ export default function PrivacyPage() {
 
           <p>
             Настоящата Политика за поверителност описва как <strong>KarchX</strong> (Георги Кърчев,{' '}
-            <strong>https://karchev.bg</strong>) събира, използва, съхранява и защитава личните Ви
+            <strong>https://www.karchx.com</strong>) събира, използва, съхранява и защитава личните Ви
             данни. Прилагаме Регламент (ЕС) 2016/679 (GDPR) и приложимото българско законодателство.
           </p>
 
@@ -36,7 +36,7 @@ export default function PrivacyPage() {
             <ul className="space-y-1">
               <li><strong>Администратор:</strong> Георги Кърчев</li>
               <li><strong>Търговско наименование:</strong> KarchX</li>
-              <li><strong>Уебсайт:</strong> https://karchev.bg</li>
+              <li><strong>Уебсайт:</strong> https://www.karchx.com</li>
               <li><strong>Имейл за връзка:</strong> georgikarchev5@gmail.com</li>
             </ul>
           </Section>
@@ -150,7 +150,7 @@ export default function PrivacyPage() {
           <Section title="12. Контакт">
             <ul className="space-y-1">
               <li><strong>Имейл:</strong> georgikarchev5@gmail.com</li>
-              <li><strong>Сайт:</strong> https://karchev.bg</li>
+              <li><strong>Сайт:</strong> https://www.karchx.com</li>
             </ul>
           </Section>
 

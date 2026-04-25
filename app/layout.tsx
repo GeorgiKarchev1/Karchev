@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://karchev.bg'),
+  metadataBase: new URL('https://www.karchx.com'),
   icons: {
     icon: '/img/newfav.png',
     apple: '/img/newfav.png',
@@ -25,12 +25,12 @@ export const metadata: Metadata = {
     'социални мрежи',
     'Karchev'
   ],
-  authors: [{ name: 'Georgi Karchev', url: 'https://karchev.bg' }],
+  authors: [{ name: 'Georgi Karchev', url: 'https://www.karchx.com' }],
   creator: 'Georgi Karchev',
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
-    url: 'https://karchev.bg',
+    url: 'https://www.karchx.com',
     title: 'Karchev | Съдържание и Сайтове, които продават',
     description: 'Правим съдържание и сайтове за бизнеси в България. Запази безплатна консултация.',
     siteName: 'Karchev',
@@ -61,12 +61,13 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://karchev.bg',
+    canonical: 'https://www.karchx.com',
   },
 }
 
 import { LanguageProvider } from '@/context/LanguageContext'
 import CookieBanner from '@/components/CookieBanner'
+import Script from 'next/script'
 
 export default function RootLayout({
   children,
@@ -76,6 +77,18 @@ export default function RootLayout({
   return (
     <html lang="bg" className="scroll-smooth overflow-x-hidden">
       <body className="font-sans antialiased text-white overflow-x-hidden">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-HYR74PQ33D"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-HYR74PQ33D');
+          `}
+        </Script>
         <LanguageProvider>
           <script
             type="application/ld+json"
@@ -84,8 +97,8 @@ export default function RootLayout({
                 '@context': 'https://schema.org',
                 '@type': 'LocalBusiness',
                 name: 'Karchev',
-                url: 'https://karchev.bg',
-                image: 'https://karchev.bg/img/azseriozen_optimized_1000.jpg',
+                url: 'https://www.karchx.com',
+                image: 'https://www.karchx.com/img/azseriozen_optimized_1000.jpg',
                 description: 'Дигитална агенция в България, специализирана в контент производство и уеб разработка за малки, средни и големи бизнеси.',
                 areaServed: 'Bulgaria',
                 founder: {

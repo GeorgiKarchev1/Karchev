@@ -28,7 +28,7 @@ export default function TermsPage() {
 
           <p>
             Настоящите Условия за ползване уреждат достъпа до и използването на уебсайта{' '}
-            <strong>https://karchev.bg</strong> („Сайт") и всички услуги, предлагани чрез него,
+            <strong>https://www.karchx.com</strong> („Сайт") и всички услуги, предлагани чрез него,
             предоставяни от <strong>Георги Кърчев</strong>, физическо лице, действащо чрез Сайта
             („ние", „нас", „KarchX").
           </p>
@@ -195,7 +195,7 @@ export default function TermsPage() {
             <p>Въпроси относно тези Условия можете да изпращате на:</p>
             <ul className="mt-3 space-y-1">
               <li><strong>Имейл:</strong> georgikarchev5@gmail.com</li>
-              <li><strong>Сайт:</strong> https://karchev.bg</li>
+              <li><strong>Сайт:</strong> https://www.karchx.com</li>
             </ul>
           </Section>
 

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://karchev.dev/sitemap.xml',
+        sitemap: 'https://www.karchx.com/sitemap.xml',
     }
 }

@@ -28,7 +28,7 @@ export default function PrivacyPage() {
 
           <p>
             This Privacy Policy describes how <strong>KarchX</strong> (Georgi Karchev,{' '}
-            <strong>https://karchev.bg</strong>) collects, uses, stores, and protects your personal
+            <strong>https://www.karchx.com</strong>) collects, uses, stores, and protects your personal
             data. We comply with Regulation (EU) 2016/679 (GDPR) and applicable Bulgarian law.
           </p>
 
@@ -36,7 +36,7 @@ export default function PrivacyPage() {
             <ul className="space-y-1">
               <li><strong>Controller:</strong> Georgi Karchev</li>
               <li><strong>Trading name:</strong> KarchX</li>
-              <li><strong>Website:</strong> https://karchev.bg</li>
+              <li><strong>Website:</strong> https://www.karchx.com</li>
               <li><strong>Contact email:</strong> georgikarchev5@gmail.com</li>
             </ul>
           </Section>
@@ -151,7 +151,7 @@ export default function PrivacyPage() {
           <Section title="12. Contact">
             <ul className="space-y-1">
               <li><strong>Email:</strong> georgikarchev5@gmail.com</li>
-              <li><strong>Website:</strong> https://karchev.bg</li>
+              <li><strong>Website:</strong> https://www.karchx.com</li>
             </ul>
           </Section>
 

@@ -28,7 +28,7 @@ export default function CookiesPage() {
 
           <p>
             Настоящата политика обяснява какво са бисквитките, кои използваме на{' '}
-            <strong>https://karchev.bg</strong> и как можете да ги управлявате.
+            <strong>https://www.karchx.com</strong> и как можете да ги управлявате.
           </p>
 
           <Section title="1. Какво са бисквитките">

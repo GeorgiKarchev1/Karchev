@@ -28,7 +28,7 @@ export default function TermsPage() {
 
           <p>
             These Terms of Service govern access to and use of the website{' '}
-            <strong>https://karchev.bg</strong> ("Site") and all services offered through it,
+            <strong>https://www.karchx.com</strong> ("Site") and all services offered through it,
             provided by <strong>Georgi Karchev</strong>, an individual operating through the Site
             ("we", "us", "KarchX").
           </p>
@@ -194,7 +194,7 @@ export default function TermsPage() {
           <Section title="17. Contact">
             <ul className="space-y-1">
               <li><strong>Email:</strong> georgikarchev5@gmail.com</li>
-              <li><strong>Website:</strong> https://karchev.bg</li>
+              <li><strong>Website:</strong> https://www.karchx.com</li>
             </ul>
           </Section>
 

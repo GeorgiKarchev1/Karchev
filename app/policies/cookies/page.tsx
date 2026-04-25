@@ -28,7 +28,7 @@ export default function CookiesPage() {
 
           <p>
             This policy explains what cookies are, which ones we use on{' '}
-            <strong>https://karchev.bg</strong>, and how you can manage them.
+            <strong>https://www.karchx.com</strong>, and how you can manage them.
           </p>
 
           <Section title="1. What Are Cookies">
