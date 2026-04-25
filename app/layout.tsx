@@ -80,6 +80,15 @@ export default function RootLayout({
   return (
     <html lang="bg" className="scroll-smooth overflow-x-hidden">
       <body className="font-sans antialiased text-white overflow-x-hidden">
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "wh7c0g9u2q");
+          `}
+        </Script>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-HYR74PQ33D"
           strategy="afterInteractive"
