@@ -45,8 +45,8 @@ export const translations = {
         problem: {
             eyeBrow: 'Sound Familiar?',
             titlePart1: 'Does any of this',
-            titlePart2: 'sound like you?',
-            subtitle: "If even one of these hit you — you're reading the right thing.",
+            titlePart2: 'apply to you?',
+            subtitle: "If any of these apply to you, you're in the right place.",
             cards: {
                 noVisibility: {
                     title: "You have a great product, but clients don't come",
@@ -54,17 +54,17 @@ export const translations = {
                     desc: "A great product doesn't sell itself. Without the right online presence, competitors eat you alive."
                 },
                 outdatedSite: {
-                    title: "Your website repels people before they read anything",
+                    title: "Your website drives away people before they read anything",
                     stat: "Users make a judgement in 0.05 seconds",
                     desc: "Bad design = lost trust. The client is gone before they even see your prices."
                 },
                 noConversion: {
                     title: "You spend on ads, but sales don't follow",
                     stat: "On average 67% of ad budget is wasted",
-                    desc: "Without a converting site and clear strategy, your ads are just money in the bin."
+                    desc: "Without a converting site and clear strategy, your ads are just money down the drain."
                 },
                 agencyProblem: {
-                    title: "You pay an agency and count promises, not results",
+                    title: "You pay an agency and get promises, not results",
                     stat: "70% of businesses see no real effect from their agency",
                     desc: "Meetings, reports, beautiful presentations. But the bank account doesn't move."
                 }
@@ -77,9 +77,9 @@ export const translations = {
             subtitle: 'Two services. One focus — real results for your business.',
             content: {
                 badge: 'Content Production',
-                title: 'We handle content from A to Z',
+                title: 'We handle the content. All of it',
                 desc: 'You focus on the business. We take care of everything else.',
-                f1: { title: 'We think the ideas for you', desc: 'Strategy, topics, and concepts — tailored to your business and audience.' },
+                f1: { title: 'We think of the ideas for you', desc: 'Strategy, topics, and concepts — tailored to your business and audience.' },
                 f2: { title: 'We film and edit', desc: 'Idea + script + shooting + editing + UGC format.' },
                 f3: { title: 'We post on your behalf', desc: 'We manage and upload everything. You just approve.' },
             },
@@ -97,7 +97,7 @@ export const translations = {
             title: 'How we work',
             subtitle: 'Transparent. Fast. No unnecessary meetings.',
             steps: {
-                step1: { title: "Free Strategy Session", desc: "30 minutes online — we learn your business, goals and challenges. Zero obligations." },
+                step1: { title: "Free Strategy Session", desc: "30 minutes online — you tell us your business, goals and challenges. Zero obligations." },
                 step2: { title: "Custom Plan & Quote", desc: "You get a concrete strategy, clear deadlines and exact pricing. Nothing hidden." },
                 step3: { title: "We work, you run your business", desc: "We take full responsibility for delivery. You only approve the final result." },
                 step4: { title: "Unlimited Revisions", desc: "We don't close the project until you're 100% satisfied. No hidden fees." },
