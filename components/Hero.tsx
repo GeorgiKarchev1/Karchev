@@ -72,11 +72,11 @@ export default function Hero() {
           className="hero-illustration-desktop"
         />
       </div>
-      <div className="pointer-events-none absolute inset-0 z-[2] md:hidden bg-[linear-gradient(180deg,rgba(252,250,245,0.92)_0%,rgba(252,250,245,0.8)_28%,rgba(246,243,237,0.22)_62%,rgba(246,243,237,0.3)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-[2] md:hidden bg-[linear-gradient(180deg,rgba(252,250,245,0.97)_0%,rgba(252,250,245,0.95)_48%,rgba(246,243,237,0.25)_70%,rgba(246,243,237,0.3)_100%)]" />
       <div className="pointer-events-none absolute inset-0 z-[2] hidden md:block bg-[linear-gradient(180deg,rgba(252,250,245,0.54)_0%,rgba(246,243,237,0.18)_42%,rgba(246,243,237,0.44)_100%)]" />
 
       {/* Content */}
-      <div className="container-wide relative z-10 flex w-full flex-col items-center px-4 pb-8 pt-[28vh] text-center sm:px-5 sm:pb-10 sm:pt-[26vh] md:py-36 lg:py-40">
+      <div className="container-wide relative z-10 flex w-full flex-col items-center px-4 pb-8 pt-[18vh] text-center sm:px-5 sm:pb-10 sm:pt-[22vh] md:py-36 lg:py-40">
 
         <h1
           className="relative mb-4 w-full font-heading font-black leading-[1.02] tracking-[-0.02em] sm:mb-5 md:mb-6"
