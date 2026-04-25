@@ -84,6 +84,35 @@
     }
   }
 
+  .price-calculator-card-illustration {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 68%;
+    opacity: 0.97;
+    user-select: none;
+    pointer-events: none;
+    transform: scale(1.12);
+    filter: saturate(0.92) contrast(1.02);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  @media (min-width: 640px) {
+    .price-calculator-card-illustration {
+      transform: scale(1.08);
+      object-position: center 66%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .price-calculator-card-illustration {
+      transform: scale(1.03);
+      object-position: center 62%;
+    }
+  }
+
   .final-cta-illustration-media {
     position: absolute;
     inset: 0;

@@ -66,7 +66,7 @@ export default function Contact() {
   }
 
   const inputCls =
-    'w-full bg-[#e0ddcf] border border-[#2d232e] rounded-xl px-4 py-3 text-[#2d232e] placeholder-[#2d232e] text-sm focus:outline-none focus:border-[#534b52] transition-colors duration-200'
+    'w-full bg-white border border-[#2d232e]/15 rounded-xl px-4 py-3 text-[#2d232e] placeholder-[#2d232e]/50 text-sm focus:outline-none focus:border-[#534b52] transition-colors duration-200'
 
   return (
     <section id="contact" className="py-20 md:py-32 bg-[#f1f0ea] relative overflow-hidden">
@@ -124,19 +124,19 @@ export default function Contact() {
           >
             {sent ? (
               <div className="flex flex-col items-center justify-center gap-4 py-20 text-center">
-                <CheckCircle className="w-14 h-14 text-[#e0ddcf]" />
-                <h3 className="text-2xl font-bold text-[#f1f0ea]">{t('contact.successTitle')}</h3>
-                <p className="text-[#e0ddcf]">{t('contact.successDesc')}</p>
+                <CheckCircle className="w-14 h-14 text-[#534b52]" />
+                <h3 className="text-2xl font-bold text-[#2d232e]">{t('contact.successTitle')}</h3>
+                <p className="text-[#2d232e]/70">{t('contact.successDesc')}</p>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="bg-[#2d232e] border border-[#2d232e] rounded-2xl p-8 space-y-5"
+                className="bg-white/70 border border-[#2d232e]/10 rounded-2xl p-8 space-y-5"
               >
                 {/* Name + Email */}
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs text-[#e0ddcf] font-mono mb-2 uppercase tracking-wider">
+                    <label className="block text-xs text-[#2d232e] font-mono mb-2 uppercase tracking-wider">
                       {t('contact.labelName')}
                     </label>
                     <input
@@ -149,7 +149,7 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs text-[#e0ddcf] font-mono mb-2 uppercase tracking-wider">
+                    <label className="block text-xs text-[#2d232e] font-mono mb-2 uppercase tracking-wider">
                       {t('contact.labelEmail')}
                     </label>
                     <input
@@ -166,7 +166,7 @@ export default function Contact() {
 
                 {/* Phone */}
                 <div>
-                  <label className="block text-xs text-[#e0ddcf] font-mono mb-2 uppercase tracking-wider">
+                  <label className="block text-xs text-[#2d232e] font-mono mb-2 uppercase tracking-wider">
                     {t('contact.labelPhone')}
                   </label>
                   <input
@@ -180,7 +180,7 @@ export default function Contact() {
 
                 {/* Service Input */}
                 <div>
-                  <label className="block text-xs text-[#e0ddcf] font-mono mb-2 uppercase tracking-wider">
+                  <label className="block text-xs text-[#2d232e] font-mono mb-2 uppercase tracking-wider">
                     {t('contact.labelService')}
                   </label>
                   <input
@@ -194,7 +194,7 @@ export default function Contact() {
 
                 {/* Message */}
                 <div>
-                  <label className="block text-xs text-[#e0ddcf] font-mono mb-2 uppercase tracking-wider">
+                  <label className="block text-xs text-[#2d232e] font-mono mb-2 uppercase tracking-wider">
                     {t('contact.labelMessage')}
                   </label>
                   <textarea
