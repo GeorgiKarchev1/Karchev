@@ -27,8 +27,8 @@ export default function CookieBanner() {
   if (!visible) return null
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 z-[9999] md:left-auto md:right-6 md:bottom-6 md:max-w-sm">
-      <div className="rounded-2xl shadow-2xl p-5 border border-[#534b52] text-[#e0ddcf]" style={{ backgroundColor: 'rgb(45, 35, 46)', backdropFilter: 'none', WebkitBackdropFilter: 'none' }}>
+    <div className="fixed bottom-4 left-4 right-4 z-[9999] md:left-auto md:right-6 md:bottom-6 md:max-w-sm" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+      <div className="rounded-2xl shadow-2xl p-5 border border-[#534b52] text-[#e0ddcf]" style={{ backgroundColor: 'rgb(45, 35, 46)', transform: 'translateZ(0)', WebkitTransform: 'translateZ(0)' }}>
         <div className="flex items-start justify-between gap-3 mb-3">
           <p className="text-sm font-semibold leading-snug">Използваме бисквитки 🍪</p>
           <button
