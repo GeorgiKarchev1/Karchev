@@ -8,6 +8,7 @@ import { calculateBgEstimate, BgAnswers, EstimateResult } from '@/lib/pricing'
 interface LeadData {
   name: string
   email: string
+  phone: string
   consent: boolean
 }
 
@@ -91,10 +92,9 @@ function NavButtons({ onBack, onNext, nextLabel = 'Напред', nextDisabled =
 
 function Step1({ answers, set, onNext }: any) {
   const options = [
-    { value: 'business_site', title: 'Представителен сайт', description: 'Услуги, ресторант, салон, адвокат, счетоводител и др.' },
-    { value: 'landing_page',  title: 'Landing page',        description: 'Една страница за конкретна услуга или кампания.' },
-    { value: 'ecommerce',     title: 'Онлайн магазин',      description: 'Продукти, количка, плащания и поръчки.' },
-    { value: 'unsure',        title: 'Не съм сигурен',      description: 'Ще ти помогнем да разбереш кое има смисъл.' },
+    { value: 'landing_page',  title: 'Landing page',   description: 'Една страница за конкретна услуга или кампания.' },
+    { value: 'ecommerce',     title: 'Онлайн магазин', description: 'Продукти, количка, плащания и поръчки.' },
+    { value: 'unsure',        title: 'Не съм сигурен', description: 'Ще ти помогнем да разбереш кое има смисъл.' },
   ]
   return (
     <div>
@@ -103,9 +103,10 @@ function Step1({ answers, set, onNext }: any) {
       <div className="flex flex-col gap-2.5">
         {options.map(o => (
           <OptionCard key={o.value} {...o} selected={answers.siteType === o.value}
-            onClick={() => { set('siteType', o.value); onNext() }} />
+            onClick={() => set('siteType', o.value)} />
         ))}
       </div>
+      <NavButtons onNext={onNext} nextDisabled={!answers.siteType} />
     </div>
   )
 }
@@ -124,15 +125,10 @@ function Step2({ answers, set, onNext, onBack }: any) {
       <div className="flex flex-col gap-2.5">
         {options.map(o => (
           <OptionCard key={o.value} {...o} selected={answers.pages === o.value}
-            onClick={() => { set('pages', o.value); onNext() }} />
+            onClick={() => set('pages', o.value)} />
         ))}
       </div>
-      <div className="mt-4">
-        <button type="button" onClick={onBack}
-          className="flex items-center gap-1.5 text-sm text-[#2d232e]/50 hover:text-[#2d232e] transition-colors font-semibold">
-          <ArrowLeft className="w-4 h-4" /> Назад
-        </button>
-      </div>
+      <NavButtons onBack={onBack} onNext={onNext} nextDisabled={!answers.pages} />
     </div>
   )
 }
@@ -207,6 +203,9 @@ function StepLead({ lead, setLead, onBack, onNext, error }: {
           className="w-full px-4 py-3.5 rounded-xl border-2 border-[#2d232e]/15 bg-white text-[#2d232e] placeholder-[#2d232e]/35 text-sm focus:outline-none focus:border-[#534b52] transition-colors" />
         <input type="email" placeholder="email@example.com" value={lead.email}
           onChange={e => setLead((p: LeadData) => ({ ...p, email: e.target.value }))}
+          className="w-full px-4 py-3.5 rounded-xl border-2 border-[#2d232e]/15 bg-white text-[#2d232e] placeholder-[#2d232e]/35 text-sm focus:outline-none focus:border-[#534b52] transition-colors" />
+        <input type="tel" placeholder="Телефон — по желание" value={lead.phone}
+          onChange={e => setLead((p: LeadData) => ({ ...p, phone: e.target.value }))}
           className="w-full px-4 py-3.5 rounded-xl border-2 border-[#2d232e]/15 bg-white text-[#2d232e] placeholder-[#2d232e]/35 text-sm focus:outline-none focus:border-[#534b52] transition-colors" />
         <label className="flex items-start gap-3 cursor-pointer mt-1">
           <button type="button" onClick={() => setLead((p: LeadData) => ({ ...p, consent: !p.consent }))}
@@ -298,7 +297,7 @@ function ResultScreen({ result, answers, onReset }: {
 export default function BgFunnelWizard({ onClose }: { onClose?: () => void }) {
   const [step, setStep]           = useState(1)
   const [answers, setAnswers]     = useState<BgAnswers>({})
-  const [lead, setLead]           = useState<LeadData>({ name: '', email: '', consent: false })
+  const [lead, setLead]           = useState<LeadData>({ name: '', email: '', phone: '', consent: false })
   const [leadError, setLeadError] = useState('')
   const [result, setResult]       = useState<EstimateResult | null>(null)
 
@@ -320,7 +319,7 @@ export default function BgFunnelWizard({ onClose }: { onClose?: () => void }) {
     setStep(1)
     setAnswers({})
     setResult(null)
-    setLead({ name: '', email: '', consent: false })
+    setLead({ name: '', email: '', phone: '', consent: false })
   }
 
   return (
