@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, X } from 'lucide-react'
 import Link from 'next/link'
 import { calculateEnEstimate, EnAnswers, EstimateResult } from '@/lib/pricing'
 
@@ -123,7 +123,7 @@ async function submitLead(answers: EnAnswers, lead: LeadData, result: EstimateRe
 
 // ─── Main Wizard ───────────────────────────────────────────────────────────────
 
-export default function EnFunnelWizard() {
+export default function EnFunnelWizard({ onClose }: { onClose?: () => void }) {
   const [step, setStep]       = useState(0)
   const [answers, setAnswers] = useState<EnAnswers>({})
   const [lead, setLead]       = useState<LeadData>({ name: '', email: '', company: '', phone: '', consent: false })
@@ -164,7 +164,10 @@ export default function EnFunnelWizard() {
     <div className="min-h-screen bg-[#f1f0ea] flex flex-col">
       <header className="flex items-center justify-between px-5 py-4 border-b border-[#2d232e]/8">
         <Link href="/" className="font-black text-lg tracking-tight text-[#2d232e]">KARCHX</Link>
-        <Link href="/" className="text-xs text-[#2d232e]/50 hover:text-[#2d232e] transition-colors font-medium">← Back to site</Link>
+        {onClose
+          ? <button onClick={onClose} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#2d232e]/8 transition-colors text-[#2d232e]/50 hover:text-[#2d232e]"><X className="w-4 h-4" /></button>
+          : <Link href="/" className="text-xs text-[#2d232e]/50 hover:text-[#2d232e] transition-colors font-medium">← Back to site</Link>
+        }
       </header>
 
       {step >= 2 && (
