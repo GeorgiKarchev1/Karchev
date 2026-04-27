@@ -1,24 +1,39 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { Quote } from 'lucide-react'
-import { useLanguage } from '@/context/LanguageContext'
+import { motion } from "framer-motion";
+import { Quote } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function OfferStack() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
 
   const testimonials = [
-    { quote: t('testimonials.t1.quote'), name: t('testimonials.t1.name'), role: t('testimonials.t1.role'), initials: 'ИП' },
-    { quote: t('testimonials.t2.quote'), name: t('testimonials.t2.name'), role: t('testimonials.t2.role'), initials: 'МН' },
-    { quote: t('testimonials.t3.quote'), name: t('testimonials.t3.name'), role: t('testimonials.t3.role'), initials: 'СД' },
-  ]
+    {
+      quote: t("testimonials.t1.quote"),
+      name: t("testimonials.t1.name"),
+      role: t("testimonials.t1.role"),
+      initials: "ИП",
+    },
+    {
+      quote: t("testimonials.t2.quote"),
+      name: t("testimonials.t2.name"),
+      role: t("testimonials.t2.role"),
+      initials: "МН",
+    },
+    {
+      quote: t("testimonials.t3.quote"),
+      name: t("testimonials.t3.name"),
+      role: t("testimonials.t3.role"),
+      initials: "СД",
+    },
+  ];
 
   const stats = [
-    { number: t('testimonials.stat1'), label: t('testimonials.statLabel1') },
-    { number: t('testimonials.stat2'), label: t('testimonials.statLabel2') },
-    { number: t('testimonials.stat3'), label: t('testimonials.statLabel3') },
-    { number: t('testimonials.stat4'), label: t('testimonials.statLabel4') },
-  ]
+    { number: t("testimonials.stat1"), label: t("testimonials.statLabel1") },
+    { number: t("testimonials.stat2"), label: t("testimonials.statLabel2") },
+    { number: t("testimonials.stat3"), label: t("testimonials.statLabel3") },
+    { number: t("testimonials.stat4"), label: t("testimonials.statLabel4") },
+  ];
 
   return (
     <section className="py-20 md:py-32 bg-[#2d232e] relative overflow-hidden">
@@ -26,8 +41,12 @@ export default function OfferStack() {
 
       <div className="container-wide mx-auto relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-[#e0ddcf]">{t('testimonials.title')}</h2>
-          <p className="text-[#2d232e] text-xl font-light">{t('testimonials.subtitle')}</p>
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-[#e0ddcf]">
+            {t("testimonials.title")}
+          </h2>
+          <p className="text-[#2d232e] text-xl font-light">
+            {t("testimonials.subtitle")}
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -53,7 +72,9 @@ export default function OfferStack() {
                     {item.initials}
                   </div>
                   <div>
-                    <div className="font-semibold text-[#e0ddcf] text-sm">{item.name}</div>
+                    <div className="font-semibold text-[#e0ddcf] text-sm">
+                      {item.name}
+                    </div>
                     <div className="text-[#2d232e] text-xs">{item.role}</div>
                   </div>
                 </div>
@@ -78,7 +99,9 @@ export default function OfferStack() {
                   <div className="text-5xl font-bold text-[#e0ddcf] mb-2 group-hover:text-[#534b52] transition-colors">
                     {stat.number}
                   </div>
-                  <div className="text-[#2d232e] text-sm font-medium">{stat.label}</div>
+                  <div className="text-[#2d232e] text-sm font-medium">
+                    {stat.label}
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -87,15 +110,18 @@ export default function OfferStack() {
               <div className="absolute top-0 w-full h-[1px] bg-[#534b52]/30" />
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-2 h-2 rounded-full bg-[#534b52] animate-pulse" />
-                <span className="text-xs font-mono text-[#534b52] uppercase tracking-wide">Прием на клиенти: Отворен</span>
+                <span className="text-xs font-mono text-[#534b52] uppercase tracking-wide">
+                  Прием на клиенти: Отворен
+                </span>
               </div>
               <p className="text-[#2d232e] text-sm leading-relaxed">
-                Работим с ограничен брой клиенти едновременно, за да гарантираме качество. Ако искаш да работим заедно — свържи се сега.
+                Работим с ограничен брой клиенти едновременно, за да гарантираме
+                качество. Ако искаш да работим заедно — свържи се сега.
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

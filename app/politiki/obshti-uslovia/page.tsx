@@ -4,7 +4,8 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Общи условия | KarchX',
   description: 'Условия за ползване на услугите на KarchX — уеб разработка, контент производство и автоматизации.',
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
+  alternates: { canonical: 'https://www.karchx.com/politiki/obshti-uslovia' },
 }
 
 export default function TermsPage() {

@@ -4,7 +4,8 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Политика за бисквитки | KarchX',
   description: 'Как KarchX използва бисквитки и как можете да ги управлявате.',
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
+  alternates: { canonical: 'https://www.karchx.com/politiki/biskvitki' },
 }
 
 export default function CookiesPage() {

@@ -4,7 +4,8 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Политика за поверителност | KarchX',
   description: 'Как KarchX събира, използва и защитава личните ви данни.',
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
+  alternates: { canonical: 'https://www.karchx.com/politiki/poveritelnost' },
 }
 
 export default function PrivacyPage() {
