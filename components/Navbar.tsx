@@ -12,9 +12,9 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { t } = useLanguage()
   const navItems = [
-    { href: '#solutions', label: t('navbar.services') },
-    { href: '#portfolio', label: t('navbar.portfolio') },
-    { href: '#how-it-works', label: t('navbar.about') },
+    { href: '/#solutions', label: t('navbar.services') },
+    { href: '/#portfolio', label: t('navbar.portfolio') },
+    { href: '/#how-it-works', label: t('navbar.about') },
     { href: '/blog', label: t('navbar.blog') },
   ]
 
