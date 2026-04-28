@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     siteName: 'Karchev',
     images: [
       {
-        url: '/img/azseriozen_optimized_1000.jpg',
-        width: 1000,
-        height: 1000,
-        alt: 'Georgi Karchev - Дигитална Агенция България',
+        url: '/img/og-image.png',
+        width: 1536,
+        height: 1024,
+        alt: 'Karchev - Съдържание и Сайтове, които продават',
       },
     ],
   },
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Karchev | Съдържание и Сайтове, които продават',
     description: 'Правим съдържание и сайтове за бизнеси в България.',
-    images: ['/img/azseriozen_optimized_1000.jpg'],
+    images: ['/img/og-image.png'],
   },
   robots: {
     index: true,
@@ -115,7 +115,7 @@ export default function RootLayout({
                 '@type': 'LocalBusiness',
                 name: 'Karchev',
                 url: 'https://www.karchx.com',
-                image: 'https://www.karchx.com/img/azseriozen_optimized_1000.jpg',
+                image: 'https://www.karchx.com/img/og-image.png',
                 description: 'Дигитална агенция в България, специализирана в контент производство и уеб разработка за малки, средни и големи бизнеси.',
                 areaServed: 'Bulgaria',
                 founder: {

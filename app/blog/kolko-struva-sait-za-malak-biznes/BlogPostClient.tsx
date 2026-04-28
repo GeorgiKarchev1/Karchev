@@ -145,7 +145,7 @@ export default function BlogPostClient() {
     headline: content.BG.title,
     description:
       "Цените за уебсайт варират от 150€ до 5000€. Ето честен разбор на трите варианта, скритите разходи и как да избереш правилното решение.",
-    image: "https://www.karchx.com/img/azseriozen_optimized_1000.jpg",
+    image: "https://www.karchx.com/img/og-image.png",
     datePublished: "2026-04-25T00:00:00.000Z",
     dateModified: "2026-04-25T00:00:00.000Z",
     author: {
