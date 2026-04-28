@@ -131,6 +131,11 @@ export const translations = {
                     description: 'A high-converting personal brand website for Yordan Kolev — coach and entrepreneur. Built to establish authority and turn visitors into clients from the first scroll.',
                     cta: 'Visit Site',
                 },
+                eterika: {
+                    title: 'Eterika',
+                    description: 'A modern website for Eterika — built to showcase their brand and convert visitors into customers with a clean, professional design.',
+                    cta: 'Visit Site',
+                },
             },
         },
         testimonials: {
@@ -334,6 +339,11 @@ export const translations = {
                 yordanKolev: {
                     title: 'Йордан Колев',
                     description: 'Уебсайт за личен бранд с висока конверсия за Йордан Колев — коуч и предприемач. Направен да изгражда авторитет и да превръща посетителите в клиенти от първия скрол.',
+                    cta: 'Виж сайта',
+                },
+                eterika: {
+                    title: 'Eterika',
+                    description: 'Модерен уебсайт за Eterika — изграден да представи бранда им и да превърне посетителите в клиенти с чист, професионален дизайн.',
                     cta: 'Виж сайта',
                 },
             },

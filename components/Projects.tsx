@@ -29,6 +29,11 @@ const Projects = () => {
       image: '/img/yordankolev.png',
       live: 'https://yordankolev.com/',
     },
+    {
+      key: 'eterika',
+      image: '/img/eterika.png',
+      live: 'https://www.eterika.eu/',
+    },
   ]
 
   return (
