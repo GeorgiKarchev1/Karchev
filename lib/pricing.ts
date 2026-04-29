@@ -37,83 +37,83 @@ export interface EstimateResult {
 
 export const BG_PRICING = {
   basePrices: {
-    landing_page:  { min: 180,  max: 380  },
-    business_site: { min: 320,  max: 680  },
-    ecommerce:     { min: 550,  max: 1500 },
-    unsure:        { min: 280,  max: 600  },
+    landing_page:  { min: 130, max: 175 },
+    business_site: { min: 300, max: 475 },
+    ecommerce:     { min: 480, max: 940 },
+    unsure:        { min: 250, max: 500 },
   },
   pages: {
-    one_page:   { min: 0,  max: 0   },
-    three_five: { min: 70, max: 150 },
-    five_ten:   { min: 150, max: 350 },
-    unsure:     { min: 80, max: 180 },
+    one_page:   { min: 0,   max: 0   },
+    three_five: { min: 45,  max: 65  },
+    five_ten:   { min: 110, max: 230 },
+    unsure:     { min: 60,  max: 130 },
   },
   content: {
-    content_ready:   { min: 0,   max: 0   },
-    partial_content: { min: 50,  max: 150 },
-    no_content:      { min: 100, max: 300 },
-    unsure:          { min: 60,  max: 180 },
+    content_ready:   { min: 0,  max: 0  },
+    partial_content: { min: 25, max: 50 },
+    no_content:      { min: 50, max: 75 },
+    unsure:          { min: 35, max: 60 },
   },
   features: {
     contact_form: { min: 0,   max: 0   },
-    booking:      { min: 80,  max: 200 },
-    payments:     { min: 120, max: 350 },
-    blog:         { min: 50,  max: 120 },
-    seo_basic:    { min: 60,  max: 150 },
-    multilingual: { min: 120, max: 300 },
+    booking:      { min: 35,  max: 65  },
+    payments:     { min: 75,  max: 185 },
+    blog:         { min: 20,  max: 45  },
+    seo_basic:    { min: 25,  max: 45  },
+    multilingual: { min: 70,  max: 140 },
     none:         { min: 0,   max: 0   },
   },
   existingSite: {
-    no_site:  { min: 0,  max: 0   },
-    redesign: { min: 60, max: 180 },
-    unsure:   { min: 0,  max: 0   },
+    no_site:  { min: 0,  max: 0  },
+    redesign: { min: 40, max: 90 },
+    unsure:   { min: 0,  max: 0  },
   },
-  improvements: { min: 120, max: 400 },
+  improvements: { min: 80, max: 230 },
   urgentMultiplier: 1.2,
   flexibleMaxMultiplier: 0.95,
-  minAbsolute: 150,
+  minAbsolute: 100,
 }
 
 // ─── EN Pricing Config (edit here) ────────────────────────────────────────────
 
 export const EN_PRICING = {
   basePrices: {
-    landing_page:  { min: 200,  max: 420  },
-    business_site: { min: 350,  max: 750  },
-    ecommerce:     { min: 600,  max: 1650 },
-    unsure:        { min: 300,  max: 650  },
+    landing_page:  { min: 130, max: 175 },
+    business_site: { min: 300, max: 475 },
+    ecommerce:     { min: 480, max: 940 },
+    unsure:        { min: 250, max: 500 },
   },
   pages: {
     one_page:   { min: 0,   max: 0   },
-    three_five: { min: 80,  max: 170 },
-    five_ten:   { min: 170, max: 380 },
-    unsure:     { min: 90,  max: 200 },
+    three_five: { min: 45,  max: 65  },
+    five_ten:   { min: 110, max: 230 },
+    unsure:     { min: 60,  max: 130 },
   },
   content: {
-    content_ready:   { min: 0,   max: 0   },
-    partial_content: { min: 60,  max: 170 },
-    no_content:      { min: 120, max: 330 },
-    unsure:          { min: 70,  max: 200 },
+    content_ready:   { min: 0,  max: 0  },
+    partial_content: { min: 25, max: 50 },
+    no_content:      { min: 50, max: 75 },
+    unsure:          { min: 35, max: 60 },
   },
   features: {
     contact_form:    { min: 0,   max: 0   },
-    booking:         { min: 90,  max: 220 },
-    payments:        { min: 130, max: 380 },
-    blog:            { min: 60,  max: 130 },
-    seo_basic:       { min: 70,  max: 170 },
-    multilingual:    { min: 130, max: 330 },
-    crm_integration: { min: 150, max: 350 },
+    booking:         { min: 35,  max: 65  },
+    payments:        { min: 75,  max: 185 },
+    blog:            { min: 20,  max: 45  },
+    seo_basic:       { min: 25,  max: 45  },
+    multilingual:    { min: 70,  max: 140 },
+    crm_integration: { min: 90,  max: 180 },
     none:            { min: 0,   max: 0   },
   },
   existingSite: {
-    no_site:  { min: 0,  max: 0   },
-    redesign: { min: 70, max: 200 },
-    unsure:   { min: 0,  max: 0   },
+    no_site:  { min: 0,  max: 0  },
+    redesign: { min: 40, max: 90 },
+    unsure:   { min: 0,  max: 0  },
   },
-  improvements: { min: 130, max: 450 },
+  improvements: { min: 80, max: 230 },
   urgentMultiplier: 1.2,
   flexibleMaxMultiplier: 0.95,
-  minAbsolute: 170,
+  minAbsolute: 100,
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -180,7 +180,7 @@ export function calculateBgEstimate(answers: BgAnswers): EstimateResult {
 
   // Special rules
   if (features.includes('payments') && answers.siteType === 'ecommerce') {
-    min = Math.max(min, 650)
+    min = Math.max(min, 500)
   }
   if (features.includes('multilingual') && features.includes('seo_basic') && answers.pages === 'five_ten') {
     max = Math.max(max, 1800)
@@ -279,10 +279,10 @@ export function calculateEnEstimate(answers: EnAnswers): EstimateResult {
   }
 
   if (features.includes('payments') && answers.siteType === 'ecommerce') {
-    min = Math.max(min, 700)
+    min = Math.max(min, 500)
   }
   if (features.includes('multilingual') && features.includes('seo_basic') && answers.pages === 'five_ten') {
-    max = Math.max(max, 1500)
+    max = Math.max(max, 1000)
   }
 
   if (answers.budget === 'under_500') {
