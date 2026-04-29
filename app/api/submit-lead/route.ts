@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
 
   <h3 style="margin:0 0 8px;font-size:15px">Оценка</h3>
   <table style="width:100%;border-collapse:collapse;background:#f8f7f2;border-radius:8px;overflow:hidden;margin-bottom:24px">
-    ${row('Диапазон', `${result.minPrice} – ${result.maxPrice} ${isBG ? 'лв.' : 'EUR'}`)}
+    ${row('Диапазон', `${result.minPrice} – ${result.maxPrice} EUR`)}
     ${row('Тип проект', result.recommendedType)}
   </table>
 
@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: 'Karchev Калкулатор <onboarding@resend.dev>',
       to: TO_EMAIL,
-      subject: `Ново запитване — ${lead.name} (${result.minPrice}–${result.maxPrice}${isBG ? ' лв.' : ' EUR'})`,
+      subject: `Ново запитване — ${lead.name} (${result.minPrice}–${result.maxPrice} EUR)`,
       html,
       replyTo: lead.email,
     })

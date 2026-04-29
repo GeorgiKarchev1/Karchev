@@ -84,7 +84,7 @@ export default function TermsPage() {
 
           <Section title="4. Pricing and Payments">
             <ul className="list-disc ml-6 space-y-1">
-              <li>Prices are listed in BGN (Bulgarian lev) and/or EUR (euro).</li>
+              <li>Prices are listed in EUR (euro).</li>
               <li>We reserve the right to change prices at any time; the conditions confirmed in writing apply to a specific Project.</li>
               <li>Payment is made via agreed method. We may require an upfront payment or phased payments.</li>
               <li>We do not store payment card data.</li>
