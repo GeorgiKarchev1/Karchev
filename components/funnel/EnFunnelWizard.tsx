@@ -117,8 +117,15 @@ const stepVariants = {
 const QUESTION_STEPS = 8
 
 async function submitLead(answers: EnAnswers, lead: LeadData, result: EstimateResult): Promise<void> {
-  // TODO: integrate with Resend / EmailJS / your backend
-  console.log('[Funnel EN] Lead submitted:', { answers, lead, result })
+  try {
+    await fetch('/api/submit-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ answers, lead, result, lang: 'EN' }),
+    })
+  } catch (err) {
+    console.error('[Funnel EN] submit failed:', err)
+  }
 }
 
 // ─── Main Wizard ───────────────────────────────────────────────────────────────

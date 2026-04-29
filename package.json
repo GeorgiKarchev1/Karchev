@@ -17,6 +17,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
     "react-intersection-observer": "^9.5.2",
+    "resend": "^6.12.2",
     "three": "^0.183.2"
   },
   "devDependencies": {

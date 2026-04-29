@@ -21,7 +21,15 @@ const stepVariants = {
 }
 
 async function submitLead(answers: BgAnswers, lead: LeadData, result: EstimateResult): Promise<void> {
-  console.log('[Funnel BG] Lead submitted:', { answers, lead, result })
+  try {
+    await fetch('/api/submit-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ answers, lead, result, lang: 'BG' }),
+    })
+  } catch (err) {
+    console.error('[Funnel BG] submit failed:', err)
+  }
 }
 
 function ProgressBar({ step }: { step: number }) {
