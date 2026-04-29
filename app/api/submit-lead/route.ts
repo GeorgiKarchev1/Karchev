@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
 const TO_EMAIL = 'goshoo429@gmail.com'
 
 function label(key: string): string {
@@ -21,6 +20,7 @@ function row(k: string, v: unknown): string {
 
 export async function POST(req: NextRequest) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY)
     const { answers, lead, result, lang } = await req.json()
     const isBG = lang === 'BG'
 
