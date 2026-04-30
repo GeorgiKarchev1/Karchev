@@ -17,7 +17,7 @@ export default function PriceCalculatorCTA() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#f1f0ea] px-4 py-20 md:py-28">
+      <section className="relative overflow-hidden bg-[#f1f0ea] px-4 pt-20 pb-8 md:pt-28 md:pb-12">
         <div className="absolute inset-0 bg-grid opacity-[0.07] pointer-events-none" />
 
         <div className="container-wide mx-auto relative z-10">

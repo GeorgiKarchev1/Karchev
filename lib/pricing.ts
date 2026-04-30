@@ -1,15 +1,15 @@
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface BgAnswers {
-  siteType?: 'business_site' | 'landing_page' | 'ecommerce' | 'unsure'
+  siteType?: 'business_site' | 'landing_page' | 'ecommerce' | 'blog' | 'unsure'
   businessType?: 'services' | 'restaurant' | 'beauty_health' | 'professional' | 'online_store' | 'other'
   businessTypeOther?: string
   existingSite?: 'no_site' | 'redesign' | 'improvements' | 'unsure'
-  pages?: 'one_page' | 'three_five' | 'five_ten' | 'unsure'
+  pages?: 'one_page' | 'two_five' | 'five_ten' | 'ten_plus' | 'unsure'
   content?: 'content_ready' | 'partial_content' | 'no_content' | 'unsure'
   features?: string[]
   timeline?: 'urgent' | 'normal' | 'flexible'
-  budget?: 'under_300' | '300_800' | '800_1500' | '1500_plus' | 'unsure'
+  budget?: 'under_500_lv' | '500_1500_lv' | '1500_3000_lv' | '3000_plus_lv' | 'want_quote'
 }
 
 export interface EnAnswers {
@@ -40,13 +40,15 @@ export const BG_PRICING = {
     landing_page:  { min: 130, max: 175 },
     business_site: { min: 300, max: 475 },
     ecommerce:     { min: 480, max: 940 },
+    blog:          { min: 200, max: 400 },
     unsure:        { min: 250, max: 500 },
   },
   pages: {
-    one_page:   { min: 0,   max: 0   },
-    three_five: { min: 45,  max: 65  },
-    five_ten:   { min: 110, max: 230 },
-    unsure:     { min: 60,  max: 130 },
+    one_page:  { min: 0,   max: 0   },
+    two_five:  { min: 45,  max: 65  },
+    five_ten:  { min: 110, max: 230 },
+    ten_plus:  { min: 200, max: 400 },
+    unsure:    { min: 60,  max: 130 },
   },
   content: {
     content_ready:   { min: 0,  max: 0  },
@@ -55,13 +57,13 @@ export const BG_PRICING = {
     unsure:          { min: 35, max: 60 },
   },
   features: {
-    contact_form: { min: 0,   max: 0   },
-    booking:      { min: 35,  max: 65  },
-    payments:     { min: 75,  max: 185 },
-    blog:         { min: 20,  max: 45  },
-    seo_basic:    { min: 25,  max: 45  },
-    multilingual: { min: 70,  max: 140 },
-    none:         { min: 0,   max: 0   },
+    payments:      { min: 75,  max: 185 },
+    booking:       { min: 35,  max: 65  },
+    user_profiles: { min: 80,  max: 160 },
+    multilingual:  { min: 70,  max: 140 },
+    integrations:  { min: 90,  max: 180 },
+    unsure:        { min: 0,   max: 0   },
+    none:          { min: 0,   max: 0   },
   },
   existingSite: {
     no_site:  { min: 0,  max: 0  },
@@ -182,35 +184,36 @@ export function calculateBgEstimate(answers: BgAnswers): EstimateResult {
   if (features.includes('payments') && answers.siteType === 'ecommerce') {
     min = Math.max(min, 500)
   }
-  if (features.includes('multilingual') && features.includes('seo_basic') && answers.pages === 'five_ten') {
+  if (features.includes('multilingual') && answers.pages === 'five_ten') {
     max = Math.max(max, 1800)
   }
 
   // Budget warnings
-  if (answers.budget === 'under_300') {
-    if (min > 500) warnings.push('budget_too_low')
+  if (answers.budget === 'under_500_lv') {
+    if (min > 300) warnings.push('budget_too_low')
     if (answers.siteType === 'ecommerce') warnings.push('ecommerce_budget_mismatch')
   }
 
   // Flags
   if (features.includes('booking')) flags.push('booking_feature')
-  if (answers.content === 'no_content') flags.push('content_needed')
 
   min = roundTo50(Math.max(min, cfg.minAbsolute))
   max = roundTo50(Math.max(max, min + 100))
 
   const typeMap: Record<string, string> = {
-    landing_page: 'Landing page',
-    business_site: 'Персонализиран сайт за бизнес',
-    ecommerce: 'Онлайн магазин',
-    unsure: 'Персонализиран сайт за бизнес',
+    landing_page:  'Landing page',
+    business_site: 'Представителен сайт (фирмен)',
+    ecommerce:     'Онлайн магазин',
+    blog:          'Блог',
+    unsure:        'Персонализиран сайт за бизнес',
   }
 
   const explanationMap: Record<string, string> = {
-    landing_page: 'Изглежда, че за момента най-логичният вариант е landing page — една силна страница, която представя конкретна услуга и води хората към запитване.',
-    business_site: 'Най-логичният вариант е персонализиран сайт за бизнес — с ясна структура, бързо зареждане и страници, които помагат на хората да се свържат с теб.',
-    ecommerce: 'Твоят проект прилича повече на онлайн магазин — продуктова система, количка, плащания и управление на поръчки.',
-    unsure: 'Ще разберем заедно на базата на разговор — диапазонът е ориентировъчен.',
+    landing_page:  'Една силна страница, фокусирана върху конкретна услуга или оферта — бързо, ефективно, без излишно.',
+    business_site: 'Представителен фирмен сайт с ясна структура, бързо зареждане и страници, насочени към запитвания.',
+    ecommerce:     'Онлайн магазин с продуктова система, количка, плащания и управление на поръчки.',
+    blog:          'Блог платформа с удобна система за публикуване и организация на съдържанието.',
+    unsure:        'Ще разберем заедно на базата на разговор — диапазонът е ориентировъчен.',
   }
 
   return {

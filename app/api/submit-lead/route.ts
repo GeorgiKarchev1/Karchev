@@ -3,19 +3,74 @@ import { Resend } from 'resend'
 
 const TO_EMAIL = 'goshoo429@gmail.com'
 
-function label(key: string): string {
-  const map: Record<string, string> = {
-    siteType: 'Тип сайт', businessType: 'Тип бизнес', existingSite: 'Съществуващ сайт',
-    pages: 'Брой страници', content: 'Съдържание', features: 'Функции',
-    timeline: 'Срок', budget: 'Бюджет', industry: 'Индустрия',
-    businessTypeOther: 'Тип бизнес (друго)', industryOther: 'Индустрия (друго)',
-  }
-  return map[key] ?? key
+const KEY_LABELS: Record<string, string> = {
+  siteType:          'Тип сайт',
+  pages:             'Брой страници',
+  features:          'Функции',
+  budget:            'Бюджет',
+  businessType:      'Тип бизнес',
+  existingSite:      'Съществуващ сайт',
+  content:           'Съдържание',
+  timeline:          'Срок',
+  industry:          'Индустрия',
+  businessTypeOther: 'Тип бизнес (друго)',
+  industryOther:     'Индустрия (друго)',
+}
+
+const VALUE_LABELS: Record<string, string> = {
+  // siteType
+  business_site: 'Представителен сайт (фирмен)',
+  landing_page:  'Лендинг страница',
+  ecommerce:     'Онлайн магазин',
+  blog:          'Блог',
+  unsure:        'Не е сигурен',
+  // pages
+  one_page:  '1 страница',
+  two_five:  '2–5 страници',
+  five_ten:  '5–10 страници',
+  ten_plus:  '10+ страници',
+  // features
+  payments:      'Онлайн плащания',
+  booking:       'Резервации / записване',
+  user_profiles: 'Потребителски профили',
+  multilingual:  'Многоезичност',
+  integrations:  'Интеграции (ERP, CRM и др.)',
+  none:          'Нищо специално',
+  // budget
+  under_500_lv:  'До 500€',
+  '500_1500_lv': '500–1500€',
+  '1500_3000_lv':'1500–3000€',
+  '3000_plus_lv':'3000€+',
+  want_quote:    'Искам оферта',
+  // EN budget
+  under_500:   'Under $500',
+  '500_1500':  '$500–1,500',
+  '1500_3000': '$1,500–3,000',
+  '3000_plus': '$3,000+',
+  // existingSite
+  no_site:      'Нов сайт',
+  redesign:     'Редизайн',
+  improvements: 'Подобрения',
+  // timeline
+  urgent:   'Спешно',
+  normal:   'Нормално',
+  flexible: 'Гъвкаво',
+  // content
+  content_ready:   'Готово съдържание',
+  partial_content: 'Частично съдържание',
+  no_content:      'Без съдържание',
+}
+
+function translateValue(v: unknown): string {
+  if (Array.isArray(v)) return v.map(item => VALUE_LABELS[item] ?? item).join(', ')
+  const s = String(v ?? '—')
+  return VALUE_LABELS[s] ?? s
 }
 
 function row(k: string, v: unknown): string {
-  const val = Array.isArray(v) ? v.join(', ') : String(v ?? '—')
-  return `<tr><td style="padding:6px 12px;color:#888;font-size:13px;white-space:nowrap">${label(k)}</td><td style="padding:6px 12px;font-size:13px;color:#2d232e">${val}</td></tr>`
+  const keyLabel = KEY_LABELS[k] ?? k
+  const val = translateValue(v)
+  return `<tr><td style="padding:6px 12px;color:#888;font-size:13px;white-space:nowrap">${keyLabel}</td><td style="padding:6px 12px;font-size:13px;color:#2d232e">${val}</td></tr>`
 }
 
 export async function POST(req: NextRequest) {

@@ -12,8 +12,6 @@ interface LeadData {
   consent: boolean
 }
 
-const QUESTION_STEPS = 4
-
 const stepVariants = {
   initial: { opacity: 0, y: 12 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } },
@@ -32,8 +30,8 @@ async function submitLead(answers: BgAnswers, lead: LeadData, result: EstimateRe
   }
 }
 
-function ProgressBar({ step }: { step: number }) {
-  const pct = Math.round((step / QUESTION_STEPS) * 100)
+function ProgressBar({ step, total }: { step: number; total: number }) {
+  const pct = Math.round((step / total) * 100)
   return (
     <div className="w-full h-1 bg-[#2d232e]/10 rounded-full overflow-hidden">
       <motion.div className="h-full bg-[#534b52] rounded-full" initial={{ width: 0 }}
@@ -98,16 +96,20 @@ function NavButtons({ onBack, onNext, nextLabel = 'Напред', nextDisabled =
   )
 }
 
-function Step1({ answers, set, onNext }: any) {
+// ─── Steps ────────────────────────────────────────────────────────────────────
+
+function Step1({ answers, set, onNext, displayStep, totalSteps }: any) {
   const options = [
-    { value: 'landing_page',  title: 'Landing page',   description: 'Една страница за конкретна услуга или кампания.' },
-    { value: 'ecommerce',     title: 'Онлайн магазин', description: 'Продукти, количка, плащания и поръчки.' },
-    { value: 'unsure',        title: 'Не съм сигурен', description: 'Ще ти помогнем да разбереш кое има смисъл.' },
+    { value: 'business_site', title: 'Представителен сайт (фирмен)', description: 'Сайт, който представя вашата фирма или услуги.' },
+    { value: 'ecommerce',     title: 'Онлайн магазин',               description: 'Продукти, количка, плащания и поръчки.' },
+    { value: 'landing_page',  title: 'Лендинг страница',             description: 'Една страница за конкретна услуга или кампания.' },
+    { value: 'unsure',        title: 'Не съм сигурен',               description: 'Ще ви помогнем да разберете кое има смисъл.' },
   ]
   return (
     <div>
-      <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-2">Въпрос 1 от 4</p>
-      <h2 className="text-xl font-black text-[#2d232e] mb-4 leading-snug">Какъв сайт ти трябва?</h2>
+      <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-2">Въпрос {displayStep} от {totalSteps}</p>
+      <h2 className="text-xl font-black text-[#2d232e] mb-1 leading-snug">Какъв тип сайт ви е нужен?</h2>
+      <p className="text-xs text-[#2d232e]/50 mb-4 font-medium">Това е най-важният въпрос.</p>
       <div className="flex flex-col gap-2.5">
         {options.map(o => (
           <OptionCard key={o.value} {...o} selected={answers.siteType === o.value}
@@ -119,17 +121,18 @@ function Step1({ answers, set, onNext }: any) {
   )
 }
 
-function Step2({ answers, set, onNext, onBack }: any) {
+function Step2({ answers, set, onNext, onBack, displayStep, totalSteps }: any) {
   const options = [
-    { value: 'one_page',   title: '1 страница',    description: 'Landing page или една основна услуга.' },
-    { value: 'three_five', title: '3–5 страници',  description: 'Начало, Услуги, Контакт и др.' },
-    { value: 'five_ten',   title: '5–10 страници', description: 'Повече услуги или по-сериозна структура.' },
-    { value: 'unsure',     title: 'Не знам',       description: 'Ще изчислим ориентировъчно.' },
+    { value: 'two_five',  title: '2–5 страници',  description: 'Начало, Услуги, Контакт и др.' },
+    { value: 'five_ten',  title: '5–10 страници', description: 'Повече услуги или по-сериозна структура.' },
+    { value: 'ten_plus',  title: '10+ страници',  description: 'Голям сайт с много раздели.' },
+    { value: 'unsure',    title: 'Не знам',        description: 'Ще изчислим ориентировъчно.' },
   ]
   return (
     <div>
-      <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-2">Въпрос 2 от 4</p>
-      <h2 className="text-xl font-black text-[#2d232e] mb-4 leading-snug">Колко страници ще са нужни?</h2>
+      <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-2">Въпрос {displayStep} от {totalSteps}</p>
+      <h2 className="text-xl font-black text-[#2d232e] mb-1 leading-snug">Колко страници ще има сайтът?</h2>
+      <p className="text-xs text-[#2d232e]/50 mb-4 font-medium">Това директно влияе на цената.</p>
       <div className="flex flex-col gap-2.5">
         {options.map(o => (
           <OptionCard key={o.value} {...o} selected={answers.pages === o.value}
@@ -141,27 +144,26 @@ function Step2({ answers, set, onNext, onBack }: any) {
   )
 }
 
-function Step3({ answers, set, onNext, onBack }: any) {
+function Step3({ answers, set, onNext, onBack, displayStep, totalSteps }: any) {
   const features = answers.features ?? []
   const toggle = (value: string) => {
-    if (value === 'none') { set('features', features.includes('none') ? [] : ['none']); return }
-    const without = features.filter((f: string) => f !== 'none')
+    if (value === 'unsure') { set('features', features.includes('unsure') ? [] : ['unsure']); return }
+    const without = features.filter((f: string) => f !== 'unsure')
     set('features', without.includes(value) ? without.filter((f: string) => f !== value) : [...without, value])
   }
   const options = [
-    { value: 'contact_form', title: 'Форма за запитване' },
-    { value: 'booking',      title: 'Резервации / записване на час' },
-    { value: 'payments',     title: 'Онлайн плащания' },
-    { value: 'blog',         title: 'Блог / статии' },
-    { value: 'seo_basic',    title: 'SEO основи' },
-    { value: 'multilingual', title: 'Многоезичност' },
-    { value: 'none',         title: 'Нищо специално' },
+    { value: 'payments',      title: 'Онлайн плащания' },
+    { value: 'booking',       title: 'Резервации / записване' },
+    { value: 'user_profiles', title: 'Потребителски профили' },
+    { value: 'multilingual',  title: 'Многоезичност' },
+    { value: 'integrations',  title: 'Интеграции (ERP, CRM и др.)' },
+    { value: 'unsure',        title: 'Не съм сигурен' },
   ]
   return (
     <div>
-      <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-2">Въпрос 3 от 4</p>
-      <h2 className="text-xl font-black text-[#2d232e] mb-1 leading-snug">Какви функции ти трябват?</h2>
-      <p className="text-xs text-[#2d232e]/50 mb-4 font-medium">Може да избереш повече от едно.</p>
+      <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-2">Въпрос {displayStep} от {totalSteps}</p>
+      <h2 className="text-xl font-black text-[#2d232e] mb-1 leading-snug">Какви функции ще са ви нужни?</h2>
+      <p className="text-xs text-[#2d232e]/50 mb-4 font-medium">Тук се крият „скъпите неща". Може да изберете повече от едно.</p>
       <div className="grid grid-cols-1 gap-2">
         {options.map(o => (
           <CheckboxCard key={o.value} title={o.title} checked={features.includes(o.value)} onToggle={() => toggle(o.value)} />
@@ -172,19 +174,19 @@ function Step3({ answers, set, onNext, onBack }: any) {
   )
 }
 
-function Step4({ answers, set, onNext, onBack }: any) {
+function Step4({ answers, set, onNext, onBack, displayStep, totalSteps }: any) {
   const options = [
-    { value: 'under_300', title: 'До 300€' },
-    { value: '300_800',   title: '300–800€' },
-    { value: '800_1500',  title: '800–1500€' },
-    { value: '1500_plus', title: '1500€+' },
-    { value: 'unsure',    title: 'Не съм сигурен' },
+    { value: 'under_500_lv',  title: 'До 500€' },
+    { value: '500_1500_lv',   title: '500–1500€' },
+    { value: '1500_3000_lv',  title: '1500–3000€' },
+    { value: '3000_plus_lv',  title: '3000€+' },
+    { value: 'want_quote',    title: 'Искам оферта' },
   ]
   return (
     <div>
-      <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-2">Въпрос 4 от 4</p>
-      <h2 className="text-xl font-black text-[#2d232e] mb-1 leading-snug">Какъв бюджет си отделил?</h2>
-      <p className="text-xs text-[#2d232e]/50 mb-4 font-medium">Помага ни да ти покажем вариант, който има смисъл.</p>
+      <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-2">Въпрос {displayStep} от {totalSteps}</p>
+      <h2 className="text-xl font-black text-[#2d232e] mb-1 leading-snug">Какъв е вашият бюджет?</h2>
+      <p className="text-xs text-[#2d232e]/50 mb-4 font-medium">Това спестява най-много време.</p>
       <div className="grid grid-cols-2 gap-2.5">
         {options.map(o => (
           <OptionCard key={o.value} title={o.title} selected={answers.budget === o.value} onClick={() => set('budget', o.value)} />
@@ -203,10 +205,10 @@ function StepLead({ lead, setLead, onBack, onNext, error }: {
       <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-2">Последна стъпка</p>
       <h2 className="text-xl font-black text-[#2d232e] mb-1 leading-snug">Накъде да изпратим резултата?</h2>
       <p className="text-xs text-[#2d232e]/55 mb-5 leading-relaxed">
-        Ще получиш ориентировъчна цена веднага след попълването.
+        Ще получите ориентировъчна цена веднага след попълването.
       </p>
       <div className="flex flex-col gap-3">
-        <input type="text" placeholder="Твоето име" value={lead.name}
+        <input type="text" placeholder="Вашето име" value={lead.name}
           onChange={e => setLead((p: LeadData) => ({ ...p, name: e.target.value }))}
           className="w-full px-4 py-3.5 rounded-xl border-2 border-[#2d232e]/15 bg-white text-[#2d232e] placeholder-[#2d232e]/35 text-sm focus:outline-none focus:border-[#534b52] transition-colors" />
         <input type="email" placeholder="email@example.com" value={lead.email}
@@ -234,18 +236,17 @@ function StepLead({ lead, setLead, onBack, onNext, error }: {
 // ─── Result ────────────────────────────────────────────────────────────────────
 
 const FEATURE_LABELS: Record<string, string> = {
-  booking:      'Резервации / записване на час',
-  payments:     'Онлайн плащания',
-  blog:         'Блог / статии',
-  seo_basic:    'SEO основи',
-  multilingual: 'Многоезичност',
-  contact_form: 'Форма за запитване',
+  payments:      'Онлайн плащания',
+  booking:       'Резервации / записване',
+  user_profiles: 'Потребителски профили',
+  multilingual:  'Многоезичност',
+  integrations:  'Интеграции (ERP, CRM и др.)',
 }
 
 function ResultScreen({ result, answers, onReset }: {
   result: EstimateResult; answers: BgAnswers; onReset: () => void
 }) {
-  const selectedFeatures = (answers.features ?? []).filter(f => f !== 'none' && FEATURE_LABELS[f])
+  const selectedFeatures = (answers.features ?? []).filter(f => f !== 'unsure' && FEATURE_LABELS[f])
 
   return (
     <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
@@ -283,13 +284,13 @@ function ResultScreen({ result, answers, onReset }: {
       )}
 
       <div className="bg-[#2d232e] rounded-2xl p-5 text-center">
-        <h3 className="text-base font-black text-[#e0ddcf] mb-1">Искаш точна цена?</h3>
+        <h3 className="text-base font-black text-[#e0ddcf] mb-1">Искате точна цена?</h3>
         <p className="text-xs text-[#e0ddcf]/60 leading-relaxed mb-4">
-          Запази безплатен 30-минутен разговор — ще ти кажем директно какво ти трябва.
+          Запазете безплатен 30-минутен разговор — ще ви кажем директно какво ви трябва.
         </p>
         <a href="https://cal.com/georgi-karchev-3r9puz/30min" target="_blank" rel="noopener noreferrer"
           className="block w-full py-3 rounded-full bg-[#e0ddcf] text-[#2d232e] font-black text-sm hover:bg-white transition-colors mb-2">
-          Запази безплатен разговор →
+          Запазете безплатен разговор →
         </a>
         <button onClick={onReset}
           className="block w-full py-2.5 rounded-full border border-[#e0ddcf]/20 text-[#e0ddcf]/60 font-semibold text-xs hover:border-[#e0ddcf]/50 hover:text-[#e0ddcf] transition-all">
@@ -309,14 +310,36 @@ export default function BgFunnelWizard({ onClose }: { onClose?: () => void }) {
   const [leadError, setLeadError] = useState('')
   const [result, setResult]       = useState<EstimateResult | null>(null)
 
+  const isLanding = answers.siteType === 'landing_page'
+  const totalSteps = isLanding ? 3 : 4
+
+  // Map internal step → display step number (skip step 2 for landing page)
+  const displayStep = isLanding && step >= 3 ? step - 1 : step
+
   const set = (key: keyof BgAnswers, value: any) => setAnswers(prev => ({ ...prev, [key]: value }))
-  const next = () => setStep(s => s + 1)
-  const back = () => setStep(s => s - 1)
+
+  const next = () => {
+    // Skip pages question (step 2) for landing pages
+    if (step === 1 && answers.siteType === 'landing_page') {
+      setStep(3)
+    } else {
+      setStep(s => s + 1)
+    }
+  }
+
+  const back = () => {
+    // Skip pages question (step 2) when going back from step 3 for landing pages
+    if (step === 3 && answers.siteType === 'landing_page') {
+      setStep(1)
+    } else {
+      setStep(s => s - 1)
+    }
+  }
 
   const handleLeadNext = () => {
-    if (!lead.name.trim())                                        { setLeadError('Моля въведи своето име.'); return }
-    if (!lead.email.includes('@') || !lead.email.includes('.'))   { setLeadError('Въведи валиден имейл адрес.'); return }
-    if (!lead.consent)                                            { setLeadError('Трябва да се съгласиш, за да продължиш.'); return }
+    if (!lead.name.trim())                                        { setLeadError('Моля въведете своето име.'); return }
+    if (!lead.email.includes('@') || !lead.email.includes('.'))   { setLeadError('Въведете валиден имейл адрес.'); return }
+    if (!lead.consent)                                            { setLeadError('Трябва да се съгласите, за да продължите.'); return }
     setLeadError('')
     const est = calculateBgEstimate(answers)
     submitLead(answers, lead, est)
@@ -329,6 +352,8 @@ export default function BgFunnelWizard({ onClose }: { onClose?: () => void }) {
     setResult(null)
     setLead({ name: '', email: '', phone: '', consent: false })
   }
+
+  const stepProps = { answers, set, onNext: next, onBack: back, displayStep, totalSteps }
 
   return (
     <div className="flex flex-col h-full">
@@ -344,7 +369,7 @@ export default function BgFunnelWizard({ onClose }: { onClose?: () => void }) {
 
       {!result && (
         <div className="px-6 pt-4 flex-shrink-0">
-          <ProgressBar step={Math.min(step, QUESTION_STEPS)} />
+          <ProgressBar step={Math.min(displayStep, totalSteps)} total={totalSteps} />
         </div>
       )}
 
@@ -356,10 +381,10 @@ export default function BgFunnelWizard({ onClose }: { onClose?: () => void }) {
             </motion.div>
           ) : (
             <motion.div key={step} variants={stepVariants} initial="initial" animate="animate" exit="exit">
-              {step === 1 && <Step1 answers={answers} set={set} onNext={next} />}
-              {step === 2 && <Step2 answers={answers} set={set} onNext={next} onBack={back} />}
-              {step === 3 && <Step3 answers={answers} set={set} onNext={next} onBack={back} />}
-              {step === 4 && <Step4 answers={answers} set={set} onNext={next} onBack={back} />}
+              {step === 1 && <Step1 {...stepProps} />}
+              {step === 2 && <Step2 {...stepProps} />}
+              {step === 3 && <Step3 {...stepProps} />}
+              {step === 4 && <Step4 {...stepProps} />}
               {step === 5 && <StepLead lead={lead} setLead={setLead} onBack={back} onNext={handleLeadNext} error={leadError} />}
             </motion.div>
           )}
