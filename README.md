@@ -150,9 +150,28 @@ The portfolio is fully responsive with breakpoints for:
 Create a `.env.local` file for any environment-specific configurations:
 
 ```env
-# Add your environment variables here
 NEXT_PUBLIC_SITE_URL=https://yoursite.com
+ADMIN_PASSWORD=change-this
+ADMIN_SECRET=change-this-too
+# Optional for Vercel production admin persistence
+# BLOB_READ_WRITE_TOKEN=vercel_blob_rw_token
+# ADMIN_POSTS_BLOB_ACCESS=public
 ```
+
+## 🔐 Admin Panel
+
+- Login URL: `/admin`
+- Protected dashboard: `/admin/dashboard`
+- The admin session uses an `httpOnly` cookie
+- Local development stores admin-created posts in `data/posts.json`
+- Vercel deployments switch automatically to Vercel Blob storage when `BLOB_READ_WRITE_TOKEN` is present
+- `ADMIN_POSTS_BLOB_ACCESS` can be `public` or `private` depending on your Blob store type
+
+## ▲ Vercel Notes
+
+- The admin panel is designed to avoid filesystem writes in production
+- To make post creation/editing persist on Vercel, create a Blob store an d expose `BLOB_READ_WRITE_TOKEN` to the project environment
+- `ADMIN_PASSWORD` and `ADMIN_SECRET` must be set in the Vercel project settings before enabling admin access
 
 ## 📈 Performance
 

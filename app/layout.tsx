@@ -1,52 +1,54 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { headers } from 'next/headers'
+import Script from 'next/script'
+import { LanguageProvider } from '@/context/LanguageContext'
+import CookieBanner from '@/components/CookieBanner'
+import { BASE_URL, getHtmlLang } from '@/lib/site'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.karchx.com'),
+  metadataBase: new URL(BASE_URL),
   icons: {
     icon: '/img/newfav.png',
     apple: '/img/newfav.png',
     shortcut: '/img/newfav.png',
   },
   title: {
-    default: 'Karchev | Съдържание и Сайтове, които продават',
+    default: 'Karchev | Websites, Content & AI Systems for Growth',
     template: '%s | Karchev'
   },
-  description: 'Правим съдържание и сайтове за бизнеси в България — от идея до публикация. Контент производство, уеб разработка и автоматизации.',
+  description: 'Karchev builds conversion-focused websites, content systems, and AI automations for businesses in Bulgaria and international markets.',
   keywords: [
-    'уеб разработка българия',
-    'контент производство',
-    'видео производство',
-    'онлайн магазин',
-    'landing page',
-    'дигитална агенция',
-    'сайт за бизнес',
-    'уеб дизайн',
-    'социални мрежи',
-    'Karchev'
+    'website development bulgaria',
+    'landing page development',
+    'content production',
+    'ai automation for business',
+    'small business website',
+    'Karchev',
   ],
-  authors: [{ name: 'Georgi Karchev', url: 'https://www.karchx.com' }],
+  authors: [{ name: 'Georgi Karchev', url: BASE_URL }],
   creator: 'Georgi Karchev',
   openGraph: {
     type: 'website',
-    locale: 'bg_BG',
-    url: 'https://www.karchx.com',
-    title: 'Karchev | Съдържание и Сайтове, които продават',
-    description: 'Правим съдържание и сайтове за бизнеси в България. Запази безплатна консултация.',
+    locale: 'en_US',
+    alternateLocale: ['bg_BG'],
+    url: BASE_URL,
+    title: 'Karchev | Websites, Content & AI Systems for Growth',
+    description: 'Conversion-focused websites, content production, and AI automation for businesses in Bulgaria and beyond.',
     siteName: 'Karchev',
     images: [
       {
         url: '/img/og-image.png',
         width: 1536,
         height: 1024,
-        alt: 'Karchev - Съдържание и Сайтове, които продават',
+        alt: 'Karchev',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Karchev | Съдържание и Сайтове, които продават',
-    description: 'Правим съдържание и сайтове за бизнеси в България.',
+    title: 'Karchev | Websites, Content & AI Systems for Growth',
+    description: 'Conversion-focused websites, content production, and AI automation for businesses.',
     images: ['/img/og-image.png'],
   },
   robots: {
@@ -61,29 +63,24 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.karchx.com',
-    languages: {
-      'bg': 'https://www.karchx.com',
-      'en': 'https://www.karchx.com',
-      'x-default': 'https://www.karchx.com',
-    },
+    canonical: BASE_URL,
   },
   verification: {
     google: 'GjxFoZiqby4aaoCuqQjHBZP4UCAFUwn7Yn9l5MIIdgI',
   },
 }
 
-import { LanguageProvider } from '@/context/LanguageContext'
-import CookieBanner from '@/components/CookieBanner'
-import Script from 'next/script'
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const localeHeader = headers().get('x-site-locale')
+  const htmlLang = getHtmlLang(localeHeader === 'en' ? 'en' : localeHeader === 'bg' ? 'bg' : null)
+  const initialLanguage = htmlLang === 'en' ? 'EN' : 'BG'
+
   return (
-    <html lang="bg" className="scroll-smooth overflow-x-hidden">
+    <html lang={htmlLang} className="scroll-smooth overflow-x-hidden">
       <body className="font-sans antialiased text-white overflow-x-hidden">
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
@@ -106,48 +103,50 @@ export default function RootLayout({
             gtag('config', 'G-HYR74PQ33D');
           `}
         </Script>
-        <LanguageProvider>
+        <LanguageProvider initialLanguage={initialLanguage}>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify({
                 '@context': 'https://schema.org',
-                '@type': 'LocalBusiness',
-                name: 'Karchev',
-                url: 'https://www.karchx.com',
-                image: 'https://www.karchx.com/img/og-image.png',
-                description: 'Дигитална агенция в България, специализирана в контент производство и уеб разработка за малки, средни и големи бизнеси.',
-                areaServed: 'Bulgaria',
-                founder: {
-                  '@type': 'Person',
-                  name: 'Georgi Karchev',
-                  sameAs: [
-                    'https://www.linkedin.com/in/georgi-karchev-415901244/',
-                    'https://github.com/GeorgiKarchev1',
-                  ],
-                },
-                hasOfferCatalog: {
-                  '@type': 'OfferCatalog',
-                  name: 'Услуги',
-                  itemListElement: [
-                    {
-                      '@type': 'Offer',
-                      itemOffered: {
-                        '@type': 'Service',
-                        name: 'Контент Производство',
-                        description: 'Видео съдържание от идея до публикация за социалните мрежи.',
-                      },
+                '@graph': [
+                  {
+                    '@type': 'Organization',
+                    name: 'Karchev',
+                    url: BASE_URL,
+                    logo: `${BASE_URL}/img/newfav.png`,
+                    image: `${BASE_URL}/img/og-image.png`,
+                    founder: {
+                      '@type': 'Person',
+                      name: 'Georgi Karchev',
+                      sameAs: [
+                        'https://www.linkedin.com/in/georgi-karchev-415901244/',
+                        'https://github.com/GeorgiKarchev1',
+                      ],
                     },
-                    {
-                      '@type': 'Offer',
-                      itemOffered: {
-                        '@type': 'Service',
-                        name: 'Уеб Разработка',
-                        description: 'Landing страници, онлайн магазини и уеб автоматизации.',
-                      },
+                    sameAs: [
+                      'https://www.linkedin.com/in/georgi-karchev-415901244/',
+                      'https://github.com/GeorgiKarchev1',
+                    ],
+                  },
+                  {
+                    '@type': 'ProfessionalService',
+                    name: 'Karchev',
+                    url: BASE_URL,
+                    image: `${BASE_URL}/img/og-image.png`,
+                    areaServed: ['Bulgaria', 'United States'],
+                    serviceType: [
+                      'Website development',
+                      'Landing page development',
+                      'Content production',
+                      'AI automation',
+                    ],
+                    founder: {
+                      '@type': 'Person',
+                      name: 'Georgi Karchev',
                     },
-                  ],
-                },
+                  },
+                ],
               }),
             }}
           />

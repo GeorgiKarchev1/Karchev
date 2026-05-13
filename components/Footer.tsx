@@ -1,11 +1,22 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { ArrowUpRight, Instagram, Linkedin } from 'lucide-react'
 import { useLanguage } from '@/context/LanguageContext'
+import { getPolicyPath, getRouteLocale } from '@/lib/site'
 
 export default function Footer() {
   const { t } = useLanguage()
+  const pathname = usePathname()
+  const locale = pathname ? getRouteLocale(pathname) : null
+  const homePath = locale === 'en' ? '/en' : locale === 'bg' ? '/bg' : '/'
+  const blogPath = locale === 'en' ? '/en/blog' : locale === 'bg' ? '/bg/blog' : '/blog'
+  const privacyPath = getPolicyPath(locale === 'en' ? 'en' : 'bg', 'privacy')
+  const termsPath = getPolicyPath(locale === 'en' ? 'en' : 'bg', 'terms')
+  const cookiesPath = getPolicyPath(locale === 'en' ? 'en' : 'bg', 'cookies')
+  const homeLabel = locale === 'en' ? 'Home' : 'Начало'
+  const cookiesLabel = locale === 'en' ? 'Cookies' : 'Бисквитки'
 
   return (
     <footer className="border-t-2 border-[#2d232e] bg-[#f1f0ea]">
@@ -54,13 +65,26 @@ export default function Footer() {
               {t('footer.servicesTitle')}
             </div>
             <ul className="space-y-3">
-              {['service1', 'service2', 'service3'].map((key) => (
-                <li key={key}>
-                  <Link href="#solutions" className="text-[#2d232e] text-sm hover:text-[#534b52] transition-colors font-medium">
-                    {t(`footer.${key}`)}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href={locale === 'en' ? '/en/website-development' : '/bg/izrabotka-na-saitove'} className="text-[#2d232e] text-sm hover:text-[#534b52] transition-colors font-medium">
+                  {t('footer.service2')}
+                </Link>
+              </li>
+              <li>
+                <Link href={locale === 'en' ? '/en/landing-pages' : '/bg/landing-stranitsi'} className="text-[#2d232e] text-sm hover:text-[#534b52] transition-colors font-medium">
+                  Landing Pages
+                </Link>
+              </li>
+              <li>
+                <Link href={locale === 'en' ? '/en/ai-automation' : '/bg/ai-avtomatizatsii'} className="text-[#2d232e] text-sm hover:text-[#534b52] transition-colors font-medium">
+                  {t('footer.service3')}
+                </Link>
+              </li>
+              <li>
+                <Link href={blogPath} className="text-[#2d232e] text-sm hover:text-[#534b52] transition-colors font-medium">
+                  {t('footer.blogLink')}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -109,12 +133,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t-2 border-[#2d232e] flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="pt-8 border-t-2 border-[#2d232e] flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-sm font-medium text-[#2d232e]">{t('footer.rights')}</div>
           <div className="flex gap-6 text-sm font-medium text-[#2d232e]">
-            <Link href="/politiki/poveritelnost" className="hover:text-[#534b52] transition-colors">{t('footer.privacy')}</Link>
-            <Link href="/politiki/obshti-uslovia" className="hover:text-[#534b52] transition-colors">{t('footer.terms')}</Link>
-            <Link href="/politiki/biskvitki" className="hover:text-[#534b52] transition-colors">Бисквитки</Link>
+            <Link href={homePath} className="hover:text-[#534b52] transition-colors">{homeLabel}</Link>
+            <Link href={privacyPath} className="hover:text-[#534b52] transition-colors">{t('footer.privacy')}</Link>
+            <Link href={termsPath} className="hover:text-[#534b52] transition-colors">{t('footer.terms')}</Link>
+            <Link href={cookiesPath} className="hover:text-[#534b52] transition-colors">{cookiesLabel}</Link>
           </div>
         </div>
       </div>

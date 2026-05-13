@@ -1,0 +1,123 @@
+{
+  "lastUpdated": "2026-05-12",
+  "bg": {
+    "primaryServiceKeywords": [
+      {
+        "keyword": "изработка на сайт за бизнес",
+        "targetUrl": "/bg/izrabotka-na-saitove",
+        "intent": "commercial",
+        "priority": "P1"
+      },
+      {
+        "keyword": "фирмен сайт",
+        "targetUrl": "/bg/izrabotka-na-saitove",
+        "intent": "commercial",
+        "priority": "P1"
+      },
+      {
+        "keyword": "landing страница",
+        "targetUrl": "/bg/landing-stranitsi",
+        "intent": "commercial",
+        "priority": "P1"
+      },
+      {
+        "keyword": "landing страница цена",
+        "targetUrl": "/bg/landing-stranitsi",
+        "intent": "commercial",
+        "priority": "P2"
+      },
+      {
+        "keyword": "AI автоматизации за бизнес",
+        "targetUrl": "/bg/ai-avtomatizatsii",
+        "intent": "commercial",
+        "priority": "P1"
+      }
+    ],
+    "supportingContentKeywords": [
+      {
+        "keyword": "колко струва сайт за малък бизнес",
+        "targetUrl": "/bg/blog/kolko-struva-sait-za-malak-biznes",
+        "intent": "informational",
+        "priority": "P1"
+      },
+      {
+        "keyword": "какво трябва да има сайт за малък бизнес",
+        "targetUrl": "/bg/blog/kakvo-tryabva-da-ima-sait-za-malak-biznes",
+        "intent": "informational",
+        "priority": "P1"
+      },
+      {
+        "keyword": "кога ти трябва landing страница",
+        "targetUrl": "/bg/blog/koga-ti-tryabva-landing-stranitsa-vmesto-sait",
+        "intent": "informational",
+        "priority": "P2"
+      },
+      {
+        "keyword": "AI автоматизации за малък бизнес",
+        "targetUrl": "/bg/blog/kak-ai-avtomatizatsiite-pestyat-vreme-na-malak-biznes",
+        "intent": "informational",
+        "priority": "P2"
+      }
+    ]
+  },
+  "en": {
+    "primaryServiceKeywords": [
+      {
+        "keyword": "website development for service business",
+        "targetUrl": "/en/website-development",
+        "intent": "commercial",
+        "priority": "P1"
+      },
+      {
+        "keyword": "small business website redesign",
+        "targetUrl": "/en/website-development",
+        "intent": "commercial",
+        "priority": "P1"
+      },
+      {
+        "keyword": "landing page developer",
+        "targetUrl": "/en/landing-pages",
+        "intent": "commercial",
+        "priority": "P1"
+      },
+      {
+        "keyword": "ai automation for small business",
+        "targetUrl": "/en/ai-automation",
+        "intent": "commercial",
+        "priority": "P1"
+      },
+      {
+        "keyword": "conversion focused web design",
+        "targetUrl": "/en/website-development",
+        "intent": "commercial",
+        "priority": "P2"
+      }
+    ],
+    "supportingContentKeywords": [
+      {
+        "keyword": "website cost small business bulgaria",
+        "targetUrl": "/en/blog/website-cost-small-business-bulgaria",
+        "intent": "informational",
+        "priority": "P1"
+      },
+      {
+        "keyword": "what a small business website needs",
+        "targetUrl": "/en/blog/what-a-small-business-website-needs",
+        "intent": "informational",
+        "priority": "P1"
+      },
+      {
+        "keyword": "landing page vs website",
+        "targetUrl": "/en/blog/when-you-need-a-landing-page-instead-of-a-website",
+        "intent": "informational",
+        "priority": "P2"
+      },
+      {
+        "keyword": "website mistakes that kill trust",
+        "targetUrl": "/en/blog/website-mistakes-that-kill-trust",
+        "intent": "informational",
+        "priority": "P2"
+      }
+    ]
+  }
+}

@@ -2,32 +2,188 @@ import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.karchx.com'
-  const lastModified = new Date()
+  const lastModified = new Date('2026-05-12T00:00:00.000Z')
 
   return [
     {
-      url: baseUrl,
+      url: `${baseUrl}/bg`,
       lastModified,
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: `${baseUrl}/blog`,
+      url: `${baseUrl}/en`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/bg/izrabotka-na-saitove`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/bg/landing-stranitsi`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/bg/ai-avtomatizatsii`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/en/website-development`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/en/landing-pages`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/en/ai-automation`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/bg/blog`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/en/blog`,
       lastModified,
       changeFrequency: 'weekly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/tools`,
+      url: `${baseUrl}/bg/tools`,
       lastModified,
       changeFrequency: 'weekly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/blog/kolko-struva-sait-za-malak-biznes`,
+      url: `${baseUrl}/en/tools`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/bg/estimate`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.65,
+    },
+    {
+      url: `${baseUrl}/en/estimate`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.65,
+    },
+    {
+      url: `${baseUrl}/bg/blog/kolko-struva-sait-za-malak-biznes`,
       lastModified: new Date('2026-04-25'),
       changeFrequency: 'monthly',
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/bg/blog/kakvo-tryabva-da-ima-sait-za-malak-biznes`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/bg/blog/koga-ti-tryabva-landing-stranitsa-vmesto-sait`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/bg/blog/kak-ai-avtomatizatsiite-pestyat-vreme-na-malak-biznes`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/bg/blog/greshkite-v-saita-koito-ubivat-doverieto`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/en/blog/website-cost-small-business-bulgaria`,
+      lastModified: new Date('2026-04-25'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/en/blog/what-a-small-business-website-needs`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/en/blog/when-you-need-a-landing-page-instead-of-a-website`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/en/blog/how-ai-automation-saves-time-for-small-businesses`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/en/blog/website-mistakes-that-kill-trust`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/bg/kazusi`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/en/case-studies`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/bg/kazusi/editing-bg`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/bg/kazusi/yordan-kolev`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/en/case-studies/editing-bg`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/en/case-studies/yordan-kolev`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/politiki/poveritelnost`,
@@ -43,6 +199,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/politiki/obshti-uslovia`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/policies/privacy-policy`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/policies/terms-of-service`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/policies/cookies`,
       lastModified,
       changeFrequency: 'yearly',
       priority: 0.3,

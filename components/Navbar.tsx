@@ -2,20 +2,26 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowRight } from 'lucide-react'
 import LanguageSwitcher from './LanguageSwitcher'
 import { useLanguage } from '@/context/LanguageContext'
+import { getRouteLocale } from '@/lib/site'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { t } = useLanguage()
+  const pathname = usePathname()
+  const locale = pathname ? getRouteLocale(pathname) : null
+  const homePath = locale === 'en' ? '/en' : locale === 'bg' ? '/bg' : '/'
   const navItems = [
-    { href: '/#solutions', label: t('navbar.services') },
-    { href: '/#portfolio', label: t('navbar.portfolio') },
-    { href: '/#how-it-works', label: t('navbar.about') },
-    { href: '/blog', label: t('navbar.blog') },
+    { href: `${homePath}#solutions`, label: t('navbar.services') },
+    { href: `${homePath}#portfolio`, label: t('navbar.portfolio') },
+    { href: `${homePath}#how-it-works`, label: t('navbar.about') },
+    { href: locale === 'en' ? '/en/tools' : locale === 'bg' ? '/bg/tools' : '/tools', label: t('navbar.tools') },
+    { href: locale === 'en' ? '/en/blog' : locale === 'bg' ? '/bg/blog' : '/blog', label: t('navbar.blog') },
   ]
 
   useEffect(() => {
@@ -32,7 +38,7 @@ export default function Navbar() {
     }`}>
       <div className="container-wide mx-auto flex items-center justify-between">
         <Link
-          href="/"
+          href={homePath}
           className="shrink-0 transition-opacity hover:opacity-75"
           aria-label="Karchev home"
         >

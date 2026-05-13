@@ -23,10 +23,22 @@ function setCookie(name: string, value: string) {
     document.cookie = `${name}=${value}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`
 }
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-    const [language, setLanguageState] = useState<Language>('BG')
+export function LanguageProvider({
+    children,
+    initialLanguage,
+}: {
+    children: React.ReactNode
+    initialLanguage?: Language
+}) {
+    const [language, setLanguageState] = useState<Language>(initialLanguage ?? 'BG')
 
     useEffect(() => {
+        if (initialLanguage) {
+            setLanguageState(initialLanguage)
+            setCookie('user-lang-preference', initialLanguage)
+            return
+        }
+
         // User has manually chosen a language before — respect that
         const userPref = getCookie('user-lang-preference')
         if (userPref === 'EN' || userPref === 'BG') {
@@ -39,7 +51,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         if (detected === 'EN' || detected === 'BG') {
             setLanguageState(detected)
         }
-    }, [])
+    }, [initialLanguage])
 
     const setLanguage = (lang: Language) => {
         setLanguageState(lang)

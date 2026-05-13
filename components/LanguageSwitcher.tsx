@@ -1,16 +1,26 @@
 'use client'
 
 import { useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Globe } from 'lucide-react'
 import { useLanguage } from '@/context/LanguageContext'
+import { getLocalizedSwitchPath } from '@/lib/site'
 
 export default function LanguageSwitcher() {
     const { language, setLanguage } = useLanguage()
     const [isHovered, setIsHovered] = useState(false)
+    const pathname = usePathname()
+    const router = useRouter()
 
     const toggleLang = () => {
-        setLanguage(language === 'EN' ? 'BG' : 'EN')
+        const nextLanguage = language === 'EN' ? 'BG' : 'EN'
+        setLanguage(nextLanguage)
+
+        if (pathname) {
+            const nextPath = getLocalizedSwitchPath(pathname, nextLanguage === 'BG' ? 'bg' : 'en')
+            router.push(nextPath)
+        }
     }
 
     return (
