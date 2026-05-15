@@ -10,6 +10,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
   bgWebsiteCost: {
     locale: 'bg',
     path: '/bg/blog/kolko-struva-sait-za-malak-biznes',
+    image: '/blogimg.png',
     title: 'Колко струва сайт за малък бизнес в България — честен отговор',
     description: 'Цените за уебсайт варират от 150€ до 5000€. Ето честен разбор на трите варианта, скритите разходи и как да избереш правилното решение.',
     category: 'Уеб Разработка',
@@ -72,6 +73,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
   enWebsiteCost: {
     locale: 'en',
     path: '/en/blog/website-cost-small-business-bulgaria',
+    image: '/blogimg.png',
     title: 'How Much Does a Website Cost for a Small Business in Bulgaria?',
     description: 'An honest breakdown of template websites, custom websites, online stores, and the hidden costs small businesses usually miss.',
     category: 'Web Development',
@@ -134,6 +136,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
   bgSmallBusinessWebsiteNeeds: {
     locale: 'bg',
     path: '/bg/blog/kakvo-tryabva-da-ima-sait-za-malak-biznes',
+    image: '/blog/website-needs-thumb.svg',
     title: 'Какво трябва да има един сайт за малък бизнес през 2026',
     description: 'Структура, trust елементи и SEO основа за сайт, който не е просто визитка, а актив за бизнеса.',
     category: 'Уеб Стратегия',
@@ -183,6 +186,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
   enSmallBusinessWebsiteNeeds: {
     locale: 'en',
     path: '/en/blog/what-a-small-business-website-needs',
+    image: '/blog/website-needs-thumb.svg',
     title: 'What a Small Business Website Actually Needs in 2026',
     description: 'A practical breakdown of structure, trust elements, and SEO foundations for a website that helps a business grow.',
     category: 'Website Strategy',
@@ -232,6 +236,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
   bgLandingPageInsteadOfWebsite: {
     locale: 'bg',
     path: '/bg/blog/koga-ti-tryabva-landing-stranitsa-vmesto-sait',
+    image: '/blog/landing-page-thumb.svg',
     title: 'Кога ти трябва landing страница вместо цял сайт',
     description: 'Кога landing page е по-силен избор от многостраничен сайт и как това влияе на конверсията и бюджета.',
     category: 'Landing Pages',
@@ -277,6 +282,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
   enLandingPageInsteadOfWebsite: {
     locale: 'en',
     path: '/en/blog/when-you-need-a-landing-page-instead-of-a-website',
+    image: '/blog/landing-page-thumb.svg',
     title: 'When You Need a Landing Page Instead of a Full Website',
     description: 'A practical look at when a focused landing page makes more sense than a broader multi-page website.',
     category: 'Landing Pages',
@@ -322,6 +328,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
   bgAiAutomationTimeSavings: {
     locale: 'bg',
     path: '/bg/blog/kak-ai-avtomatizatsiite-pestyat-vreme-na-malak-biznes',
+    image: '/blog/ai-automation-thumb.svg',
     title: 'Как AI автоматизациите пестят време на малък бизнес',
     description: 'Къде AI автоматизациите имат реален смисъл за малки екипи и къде са просто buzzword разход.',
     category: 'AI Автоматизации',
@@ -367,6 +374,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
   enAiAutomationTimeSavings: {
     locale: 'en',
     path: '/en/blog/how-ai-automation-saves-time-for-small-businesses',
+    image: '/blog/ai-automation-thumb.svg',
     title: 'How AI Automation Saves Time for Small Businesses',
     description: 'Where AI automation creates real leverage for small teams and where it is just expensive noise.',
     category: 'AI Automation',
@@ -412,6 +420,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
   bgWebsiteTrustMistakes: {
     locale: 'bg',
     path: '/bg/blog/greshkite-v-saita-koito-ubivat-doverieto',
+    image: '/blog/trust-mistakes-thumb.svg',
     title: 'Грешките в сайта, които убиват доверието за 10 секунди',
     description: 'Най-честите сайт грешки, които карат посетителя да излезе, преди изобщо да е разбрал офертата.',
     category: 'Конверсия',
@@ -452,6 +461,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
   enWebsiteTrustMistakes: {
     locale: 'en',
     path: '/en/blog/website-mistakes-that-kill-trust',
+    image: '/blog/trust-mistakes-thumb.svg',
     title: 'Website Mistakes That Kill Trust in the First 10 Seconds',
     description: 'The most common website mistakes that make a visitor leave before they even understand the offer.',
     category: 'Conversion',

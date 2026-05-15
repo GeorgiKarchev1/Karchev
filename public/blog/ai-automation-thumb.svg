@@ -1,0 +1,50 @@
+<svg width="1536" height="1024" viewBox="0 0 1536 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1536" height="1024" rx="40" fill="#F6F1EA"/>
+<rect width="1536" height="1024" fill="url(#bg)" opacity="0.76"/>
+<path d="M161 764C161 764 235 705 335 709C435 713 487 775 572 773" stroke="#201D1D" stroke-width="3" stroke-linecap="round" stroke-dasharray="14 18"/>
+<path d="M1008 237C1008 237 1093 173 1215 184C1337 195 1396 279 1452 345" stroke="#201D1D" stroke-width="3" stroke-linecap="round" stroke-dasharray="14 18"/>
+<rect x="117" y="156" width="454" height="258" rx="38" fill="#FFFDFC" stroke="#201D1D" stroke-width="4"/>
+<rect x="155" y="196" width="168" height="42" rx="21" fill="#201D1D"/>
+<rect x="191" y="211" width="95" height="12" rx="6" fill="#F6F1EA"/>
+<rect x="156" y="279" width="330" height="30" rx="15" fill="#201D1D"/>
+<rect x="156" y="332" width="295" height="24" rx="12" fill="#E7C9AD"/>
+<rect x="627" y="121" width="804" height="791" rx="46" fill="#FFFDFC" stroke="#201D1D" stroke-width="4"/>
+<rect x="690" y="184" width="675" height="304" rx="34" fill="#FAF6F0" stroke="#201D1D" stroke-width="4"/>
+<circle cx="1261" cy="141" r="106" fill="#E7C9AD" fill-opacity="0.52"/>
+<circle cx="210" cy="831" r="138" fill="#E7C9AD" fill-opacity="0.22"/>
+<text x="734" y="270" fill="#201D1D" font-family="Arial, Helvetica, sans-serif" font-size="74" font-weight="800">AI AUTOMATION</text>
+<text x="734" y="344" fill="#C36F2A" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="800">CONTENT PIPELINE</text>
+<text x="736" y="402" fill="#201D1D" fill-opacity="0.76" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600">Keywords → Article → Thumbnail → Scheduled Post</text>
+<rect x="691" y="553" width="195" height="184" rx="30" fill="#F2E6D8" stroke="#201D1D" stroke-width="4"/>
+<text x="726" y="603" fill="#C36F2A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="800">SEO Title</text>
+<rect x="725" y="622" width="120" height="68" rx="16" fill="#FFFDFC" stroke="#201D1D" stroke-width="4"/>
+<path d="M744 654H826" stroke="#201D1D" stroke-width="4" stroke-linecap="round"/>
+<path d="M744 675H802" stroke="#201D1D" stroke-width="4" stroke-linecap="round" opacity="0.24"/>
+<rect x="930" y="553" width="195" height="184" rx="30" fill="#F2E6D8" stroke="#201D1D" stroke-width="4"/>
+<text x="965" y="603" fill="#C36F2A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="800">Thumbnail</text>
+<rect x="968" y="629" width="66" height="49" rx="12" fill="#E7C9AD" stroke="#201D1D" stroke-width="3"/>
+<path d="M1056 640H1090" stroke="#201D1D" stroke-width="4" stroke-linecap="round"/>
+<path d="M1056 663H1076" stroke="#201D1D" stroke-width="4" stroke-linecap="round" opacity="0.28"/>
+<rect x="1169" y="553" width="195" height="184" rx="30" fill="#F2E6D8" stroke="#201D1D" stroke-width="4"/>
+<text x="1204" y="603" fill="#C36F2A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="800">Auto</text>
+<circle cx="1266" cy="657" r="43" fill="#FFFDFC" stroke="#201D1D" stroke-width="4"/>
+<path d="M1266 634V659L1286 678" stroke="#201D1D" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1266" cy="659" r="5" fill="#201D1D"/>
+<path d="M884 646H924" stroke="#201D1D" stroke-width="5" stroke-linecap="round"/>
+<path d="M1124 646H1164" stroke="#201D1D" stroke-width="5" stroke-linecap="round"/>
+<path d="M916 626L944 646L916 666" stroke="#201D1D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1156 626L1184 646L1156 666" stroke="#201D1D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="165" y="522" width="352" height="250" rx="42" fill="#FFFDFC" stroke="#201D1D" stroke-width="4"/>
+<rect x="213" y="574" width="256" height="34" rx="17" fill="#201D1D"/>
+<rect x="213" y="635" width="214" height="22" rx="11" fill="#201D1D" fill-opacity="0.15"/>
+<rect x="213" y="675" width="183" height="22" rx="11" fill="#201D1D" fill-opacity="0.15"/>
+<rect x="215" y="839" width="354" height="109" rx="34" fill="#201D1D"/>
+<rect x="255" y="878" width="160" height="20" rx="10" fill="#F6F1EA"/>
+<path d="M1326 796L1340 828L1375 831L1348 854L1356 889L1326 869L1296 889L1304 854L1277 831L1312 828L1326 796Z" fill="#E7C9AD" fill-opacity="0.55" stroke="#201D1D" stroke-width="3"/>
+<defs>
+<radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(768 512) rotate(90) scale(720 1080)">
+<stop stop-color="#FFFFFF"/>
+<stop offset="1" stop-color="#E9D8C7"/>
+</radialGradient>
+</defs>
+</svg>

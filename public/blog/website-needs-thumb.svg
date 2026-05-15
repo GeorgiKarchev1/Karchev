@@ -1,0 +1,48 @@
+<svg width="1536" height="1024" viewBox="0 0 1536 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1536" height="1024" rx="40" fill="#F6F1EA"/>
+<rect x="0" y="0" width="1536" height="1024" fill="url(#bg)" opacity="0.7"/>
+<path d="M76 806C76 806 131 737 229 728C327 719 360 786 424 786C488 786 527 739 577 739" stroke="#201D1D" stroke-width="3" stroke-linecap="round" stroke-dasharray="14 18"/>
+<path d="M1041 205C1041 205 1105 151 1195 155C1285 159 1327 236 1416 233" stroke="#201D1D" stroke-width="3" stroke-linecap="round" stroke-dasharray="14 18"/>
+<path d="M152 182L168 219L207 223L177 248L185 287L152 266L119 287L127 248L97 223L136 219L152 182Z" fill="#E7C9AD" fill-opacity="0.55" stroke="#201D1D" stroke-width="3"/>
+<path d="M1327 779L1341 812L1376 815L1349 838L1357 872L1327 852L1297 872L1305 838L1278 815L1313 812L1327 779Z" fill="#E7C9AD" fill-opacity="0.55" stroke="#201D1D" stroke-width="3"/>
+<rect x="142" y="168" width="508" height="386" rx="34" fill="#FFFDFC" stroke="#201D1D" stroke-width="4"/>
+<rect x="142" y="168" width="508" height="66" rx="34" fill="#F2E6D8" stroke="#201D1D" stroke-width="4"/>
+<circle cx="193" cy="201" r="10" fill="#201D1D"/>
+<circle cx="231" cy="201" r="10" fill="#E7C9AD"/>
+<circle cx="269" cy="201" r="10" fill="#201D1D" fill-opacity="0.22"/>
+<rect x="190" y="283" width="220" height="30" rx="15" fill="#201D1D"/>
+<rect x="190" y="335" width="392" height="22" rx="11" fill="#201D1D" fill-opacity="0.12"/>
+<rect x="190" y="376" width="351" height="22" rx="11" fill="#201D1D" fill-opacity="0.12"/>
+<rect x="190" y="433" width="140" height="48" rx="24" fill="#E7C9AD"/>
+<rect x="742" y="146" width="652" height="732" rx="42" fill="#FFFDFC" stroke="#201D1D" stroke-width="4"/>
+<rect x="798" y="212" width="248" height="402" rx="28" fill="#FAF6F0" stroke="#201D1D" stroke-width="4"/>
+<rect x="833" y="261" width="176" height="24" rx="12" fill="#201D1D"/>
+<rect x="833" y="312" width="150" height="18" rx="9" fill="#201D1D" fill-opacity="0.18"/>
+<rect x="833" y="349" width="120" height="18" rx="9" fill="#201D1D" fill-opacity="0.18"/>
+<rect x="833" y="408" width="180" height="160" rx="22" fill="#E7C9AD" fill-opacity="0.45"/>
+<rect x="1108" y="234" width="222" height="76" rx="24" fill="#F2E6D8" stroke="#201D1D" stroke-width="4"/>
+<path d="M1144 270L1173 297L1218 247" stroke="#201D1D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1239" y="259" width="49" height="14" rx="7" fill="#201D1D" fill-opacity="0.18"/>
+<rect x="1108" y="338" width="222" height="76" rx="24" fill="#F2E6D8" stroke="#201D1D" stroke-width="4"/>
+<path d="M1144 374L1173 401L1218 351" stroke="#201D1D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1239" y="363" width="49" height="14" rx="7" fill="#201D1D" fill-opacity="0.18"/>
+<rect x="1108" y="442" width="222" height="76" rx="24" fill="#F2E6D8" stroke="#201D1D" stroke-width="4"/>
+<path d="M1144 478L1173 505L1218 455" stroke="#201D1D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1239" y="467" width="49" height="14" rx="7" fill="#201D1D" fill-opacity="0.18"/>
+<rect x="1108" y="610" width="226" height="186" rx="28" fill="#FAF6F0" stroke="#201D1D" stroke-width="4"/>
+<path d="M1148 736L1188 686L1233 726L1290 646" stroke="#201D1D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1148" cy="736" r="12" fill="#E7C9AD" stroke="#201D1D" stroke-width="3"/>
+<circle cx="1188" cy="686" r="12" fill="#E7C9AD" stroke="#201D1D" stroke-width="3"/>
+<circle cx="1233" cy="726" r="12" fill="#E7C9AD" stroke="#201D1D" stroke-width="3"/>
+<circle cx="1290" cy="646" r="12" fill="#E7C9AD" stroke="#201D1D" stroke-width="3"/>
+<rect x="184" y="664" width="446" height="176" rx="36" fill="#201D1D"/>
+<rect x="224" y="707" width="205" height="24" rx="12" fill="#F6F1EA"/>
+<rect x="224" y="753" width="272" height="22" rx="11" fill="#F6F1EA" fill-opacity="0.26"/>
+<rect x="224" y="792" width="238" height="22" rx="11" fill="#F6F1EA" fill-opacity="0.26"/>
+<defs>
+<radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(768 512) rotate(90) scale(720 1080)">
+<stop stop-color="#FFFFFF"/>
+<stop offset="1" stop-color="#E9D8C7"/>
+</radialGradient>
+</defs>
+</svg>
