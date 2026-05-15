@@ -1,0 +1,24 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="48" fill="#F1F0EA"/>
+  <rect x="48" y="48" width="1504" height="804" rx="36" fill="#2D232E"/>
+  <circle cx="1310" cy="162" r="180" fill="#F97316" fill-opacity="0.18"/>
+  <circle cx="250" cy="760" r="230" fill="#F97316" fill-opacity="0.08"/>
+  <rect x="110" y="124" width="220" height="48" rx="24" fill="#534B52"/>
+  <text x="150" y="156" fill="#F1F0EA" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="2">KARCHX BLOG</text>
+  <text x="110" y="280" fill="#F1F0EA" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="800">AI AUTOMATION</text>
+  <text x="110" y="370" fill="#F97316" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="800">CONTENT PIPELINE</text>
+  <text x="110" y="444" fill="#D9D5C7" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="500">Keywords → Article → Thumbnail → Scheduled Post</text>
+  <rect x="110" y="540" width="410" height="180" rx="28" fill="#F1F0EA" fill-opacity="0.08" stroke="#F1F0EA" stroke-opacity="0.12"/>
+  <text x="146" y="590" fill="#F97316" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">SEO Title</text>
+  <text x="146" y="636" fill="#F1F0EA" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600">Weekly content system</text>
+  <text x="146" y="674" fill="#BFB8BB" font-family="Arial, Helvetica, sans-serif" font-size="22">Built for busy service teams</text>
+  <rect x="566" y="540" width="410" height="180" rx="28" fill="#F1F0EA" fill-opacity="0.08" stroke="#F1F0EA" stroke-opacity="0.12"/>
+  <text x="602" y="590" fill="#F97316" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Thumbnail</text>
+  <rect x="602" y="614" width="116" height="76" rx="18" fill="#F97316" fill-opacity="0.88"/>
+  <rect x="736" y="622" width="198" height="16" rx="8" fill="#F1F0EA" fill-opacity="0.9"/>
+  <rect x="736" y="654" width="154" height="16" rx="8" fill="#F1F0EA" fill-opacity="0.42"/>
+  <rect x="1022" y="540" width="468" height="180" rx="28" fill="#F1F0EA" fill-opacity="0.08" stroke="#F1F0EA" stroke-opacity="0.12"/>
+  <text x="1058" y="590" fill="#F97316" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Automation</text>
+  <text x="1058" y="636" fill="#F1F0EA" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600">Every Monday • 09:00</text>
+  <text x="1058" y="674" fill="#BFB8BB" font-family="Arial, Helvetica, sans-serif" font-size="22">Draft first, publish after approval</text>
+</svg>

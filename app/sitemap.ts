@@ -120,6 +120,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.75,
     },
     {
+      url: `${baseUrl}/bg/blog/ai-avtomatizatsii-za-seo-sadarzhanie-i-blog-sistema`,
+      lastModified: new Date('2026-05-15'),
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
       url: `${baseUrl}/en/blog/website-cost-small-business-bulgaria`,
       lastModified: new Date('2026-04-25'),
       changeFrequency: 'monthly',
@@ -146,6 +152,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/en/blog/website-mistakes-that-kill-trust`,
       lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/en/blog/ai-automation-seo-content-pipeline`,
+      lastModified: new Date('2026-05-15'),
       changeFrequency: 'monthly',
       priority: 0.75,
     },

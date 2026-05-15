@@ -488,6 +488,145 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
       alternates: localizedAlternates('/bg/blog/greshkite-v-saita-koito-ubivat-doverieto', '/en/blog/website-mistakes-that-kill-trust', 'en'),
       keywords: ['website mistakes that kill trust', 'conversion trust signals', 'service business website trust'],
     },
+
+  },
+  bgAiContentPipeline: {
+    locale: 'bg',
+    path: '/bg/blog/ai-avtomatizatsii-za-seo-sadarzhanie-i-blog-sistema',
+    title: 'Как AI автоматизациите превръщат SEO съдържанието в седмична система за растеж',
+    description: 'Как бизнесът може да автоматизира keyword research, писането на статии, thumbnail визиите и графика за публикуване без да губи контрол.',
+    image: '/img/blog-ai-content-pipeline.svg',
+    category: 'AI Автоматизации',
+    readTime: '6 мин четене',
+    date: '15 Май 2026',
+    intro: 'Повечето бизнеси знаят, че им трябва съдържание, но рядко имат време да измислят тема, да напишат статия, да подготвят визия и да публикуват всяка седмица. Затова истинската стойност не е просто в AI текста, а в AI системата зад целия content pipeline.',
+    sections: [
+      {
+        heading: 'Проблемът не е липса на идеи, а липса на процес',
+        body: 'Когато публикациите зависят от свободно време, те почти винаги се отлагат. Екипът има клиенти, продажби и оперативни задачи, а блогът остава на заден план. Това прави SEO-то накъсано и превръща content marketing-а в еднократен ентусиазъм, вместо в устойчив канал за растеж.',
+      },
+      {
+        heading: 'Как изглежда работещата AI content система',
+        list: [
+          'генерира SEO идеи според услугите и пазара ти',
+          'предлага keyword, заглавие, audience и search intent',
+          'пише първи draft на статията в тон, близък до бранда',
+          'създава thumbnail концепция по визуалния стил на сайта',
+          'подготвя slug, meta description и CTA',
+          'планира кога да се изпрати draft и кога да се публикува',
+        ],
+      },
+      {
+        heading: 'Къде идва реалната полза',
+        body: 'AI не заменя стратегията. Той заменя ръчната тежка част между стратегията и публикуването. Това означава по-малко празен лист, по-малко context switching и много по-лесен ритъм за седмично съдържание. Вместо всеки път да започваш от нула, имаш система, която подава следващата логична стъпка.',
+      },
+      {
+        heading: 'Добър пример за workflow',
+        subsections: [
+          {
+            title: '1. Ideation',
+            body: 'Системата генерира 3 SEO теми за сайта ти и обяснява защо всяка може да rank-не.',
+          },
+          {
+            title: '2. Production',
+            body: 'Избираш една тема, а AI подготвя пълна статия, meta description, slug и thumbnail концепция.',
+          },
+          {
+            title: '3. Approval + scheduling',
+            body: 'Draft-ът идва в Telegram за преглед, след което workflow-ът го насрочва за публикуване по график.',
+          },
+        ],
+      },
+      {
+        heading: 'Защо това е по-силно от “нека просто напишем една статия”',
+        body: 'Единичната статия рядко променя бизнеса. Повтаряемата система го прави. Когато keywords, content, визия и publish cadence са вързани в един процес, блогът започва да работи като канал, а не като случайна активност.',
+      },
+      {
+        heading: 'Какво остава за човека',
+        body: 'Финалният контрол. Ти одобряваш посоката, тона и фактите. Това е точният баланс: машината движи продукцията, а човекът пази качеството и търговския усет.',
+      },
+    ],
+    ctaLabel: 'Говори с нас за content automation',
+    ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
+    backHref: '/bg/blog',
+    backLabel: 'Назад към блога',
+    relatedServiceHref: '/bg/ai-avtomatizatsii',
+    relatedServiceLabel: 'AI автоматизации за бизнес',
+    metadata: {
+      title: 'AI автоматизации за SEO съдържание и седмичен блог workflow',
+      description: 'Как да автоматизираш SEO идеи, статии, thumbnails и седмичен publish workflow за по-постоянен content engine.',
+      alternates: localizedAlternates('/bg/blog/ai-avtomatizatsii-za-seo-sadarzhanie-i-blog-sistema', '/en/blog/ai-automation-seo-content-pipeline', 'bg'),
+      keywords: ['AI автоматизации за SEO', 'автоматизирано блог съдържание', 'content workflow за бизнес'],
+    },
+  },
+  enAiContentPipeline: {
+    locale: 'en',
+    path: '/en/blog/ai-automation-seo-content-pipeline',
+    title: 'How AI Automation Turns SEO Content Into a Weekly Growth System',
+    description: 'How service businesses can automate keyword research, article drafting, thumbnail creation, and scheduling without losing editorial control.',
+    image: '/img/blog-ai-content-pipeline.svg',
+    category: 'AI Automation',
+    readTime: '6 min read',
+    date: 'May 15, 2026',
+    intro: 'Most businesses know they need content, but very few have time to brainstorm topics, write articles, create thumbnails, and publish consistently every week. That is why the real leverage is not just AI writing. It is the AI system behind the whole content pipeline.',
+    sections: [
+      {
+        heading: 'The problem is not a lack of ideas. It is a lack of process.',
+        body: 'When publishing depends on spare time, it gets pushed back by client work, sales, delivery, and admin. The result is inconsistent SEO, rushed writing, and a blog that behaves more like an abandoned side project than a growth channel.',
+      },
+      {
+        heading: 'What a practical AI content workflow looks like',
+        list: [
+          'generate SEO topics based on your services and market',
+          'suggest the keyword, title angle, target customer, and search intent',
+          'draft the article in a tone close to your brand',
+          'create a thumbnail concept in your visual style',
+          'prepare the slug, meta description, and CTA',
+          'schedule review and publishing steps automatically',
+        ],
+      },
+      {
+        heading: 'Where the real business value comes from',
+        body: 'AI does not replace strategy. It removes the repetitive work between strategy and publishing. That means less blank-page friction, less context switching, and a much easier way to keep weekly content moving. Instead of starting from zero every time, the system surfaces the next logical action.',
+      },
+      {
+        heading: 'A strong example workflow',
+        subsections: [
+          {
+            title: '1. Ideation',
+            body: 'The system generates three SEO ideas for your site and explains why each one has ranking potential.',
+          },
+          {
+            title: '2. Production',
+            body: 'You choose one idea, and the AI prepares the full article, meta description, slug, and thumbnail concept.',
+          },
+          {
+            title: '3. Approval and scheduling',
+            body: 'The draft is sent to Telegram for review, then scheduled for publishing on a recurring content cadence.',
+          },
+        ],
+      },
+      {
+        heading: 'Why this is stronger than “let’s just write one article”',
+        body: 'A single article rarely changes the business. A repeatable system does. When keywords, content, visuals, and publishing cadence are connected, the blog starts behaving like a real acquisition channel instead of a random marketing task.',
+      },
+      {
+        heading: 'What still belongs to the human',
+        body: 'Final judgment. You still approve the angle, tone, claims, and priorities. That is the right division of labor: the machine moves production forward, and the human protects quality and commercial relevance.',
+      },
+    ],
+    ctaLabel: 'Talk to us about content automation',
+    ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
+    backHref: '/en/blog',
+    backLabel: 'Back to blog',
+    relatedServiceHref: '/en/ai-automation',
+    relatedServiceLabel: 'AI automation for business',
+    metadata: {
+      title: 'AI Automation for SEO Content, Thumbnails, and Weekly Publishing',
+      description: 'A practical look at automating SEO ideas, blog articles, thumbnails, and weekly publishing workflows for service businesses.',
+      alternates: localizedAlternates('/bg/blog/ai-avtomatizatsii-za-seo-sadarzhanie-i-blog-sistema', '/en/blog/ai-automation-seo-content-pipeline', 'en'),
+      keywords: ['ai automation for seo content', 'blog workflow automation', 'weekly content system'],
+    },
   },
 }
 
@@ -497,6 +636,7 @@ export const bgBlogArticles = [
   localizedArticles.bgLandingPageInsteadOfWebsite,
   localizedArticles.bgAiAutomationTimeSavings,
   localizedArticles.bgWebsiteTrustMistakes,
+  localizedArticles.bgAiContentPipeline,
 ]
 
 export const enBlogArticles = [
@@ -505,6 +645,7 @@ export const enBlogArticles = [
   localizedArticles.enLandingPageInsteadOfWebsite,
   localizedArticles.enAiAutomationTimeSavings,
   localizedArticles.enWebsiteTrustMistakes,
+  localizedArticles.enAiContentPipeline,
 ]
 
 export const caseStudies: Record<string, CaseStudyDefinition> = {

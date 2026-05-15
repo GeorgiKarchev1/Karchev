@@ -33,7 +33,7 @@ export default function EnglishBlogPage() {
           {enBlogArticles.map((article) => (
             <Link key={article.path} href={article.path} className="grid overflow-hidden rounded-[2rem] border border-[#2d232e]/10 bg-white/70 transition-colors hover:bg-white">
               <div className="relative aspect-[16/10] md:aspect-[16/9]">
-                <Image src="/blogimg.png" alt={article.title} fill className="object-cover" sizes="50vw" />
+                <Image src={article.image ?? '/blogimg.png'} alt={article.title} fill className="object-cover" sizes="50vw" />
               </div>
               <div className="p-8">
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-[#534b52]">{article.category}</p>

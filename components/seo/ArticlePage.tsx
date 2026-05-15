@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { absoluteUrl } from '@/lib/site'
@@ -18,6 +19,7 @@ export type ArticlePageProps = {
   path: string
   title: string
   description: string
+  image?: string
   category: string
   readTime: string
   date: string
@@ -37,6 +39,7 @@ export default function ArticlePage(props: ArticlePageProps) {
     path,
     title,
     description,
+    image,
     category,
     readTime,
     date,
@@ -52,6 +55,7 @@ export default function ArticlePage(props: ArticlePageProps) {
 
   const pageUrl = absoluteUrl(path)
   const homeUrl = absoluteUrl(locale === 'bg' ? '/bg' : '/en')
+  const heroImage = image ?? '/blogimg.png'
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -60,7 +64,7 @@ export default function ArticlePage(props: ArticlePageProps) {
         '@type': 'BlogPosting',
         headline: title,
         description,
-        image: absoluteUrl('/blogimg.png'),
+        image: absoluteUrl(heroImage),
         datePublished: '2026-04-25T00:00:00.000Z',
         dateModified: '2026-04-25T00:00:00.000Z',
         author: {
@@ -135,6 +139,9 @@ export default function ArticlePage(props: ArticlePageProps) {
         <h1 className="text-3xl md:text-5xl font-black text-[#2d232e] leading-tight tracking-tight mb-8">
           {title}
         </h1>
+        <div className="relative mb-8 aspect-[16/9] overflow-hidden rounded-[2rem] border border-[#2d232e]/10 bg-white/60">
+          <Image src={heroImage} alt={title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 760px" priority />
+        </div>
         <div className="w-16 h-1 bg-[#534b52] rounded-full mb-10" />
         <p className="text-lg md:text-xl leading-relaxed text-[#2d232e]/80 mb-12 font-medium">
           {intro}
