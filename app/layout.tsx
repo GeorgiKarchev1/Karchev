@@ -151,26 +151,7 @@ export default function RootLayout({
             }}
           />
           {children}
-          <a
-    href="https://t.me/GeorgiBox_bot"
-    target="_blank"
-    rel="noopener noreferrer"
-    style={{
-      position: 'fixed',
-      bottom: '20px',
-      right: '20px',
-      background: '#0088cc',
-      color: 'white',
-      padding: '12px 20px',
-      borderRadius: '50px',
-      textDecoration: 'none',
-      fontFamily: 'sans-serif',
-      boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-      zIndex: 9999,
-    }}
-  >
-    💬 Chat with us
-  </a>
+  
           <CookieBanner />
         </LanguageProvider>
       </body>
