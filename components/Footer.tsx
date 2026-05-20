@@ -133,9 +133,9 @@ export default function Footer() {
           </div>
         </div>
 
-          <div className="pt-8 border-t-2 border-[#2d232e] flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-sm font-medium text-[#2d232e]">{t('footer.rights')}</div>
-          <div className="flex gap-6 text-sm font-medium text-[#2d232e]">
+          <div className="pt-8 border-t-2 border-[#2d232e] flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+          <div className="text-sm font-medium text-[#2d232e] order-2 md:order-1">{t('footer.rights')}</div>
+          <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-3 text-sm font-medium text-[#2d232e] order-1 md:order-2">
             <Link href={homePath} className="hover:text-[#534b52] transition-colors">{homeLabel}</Link>
             <Link href={privacyPath} className="hover:text-[#534b52] transition-colors">{t('footer.privacy')}</Link>
             <Link href={termsPath} className="hover:text-[#534b52] transition-colors">{t('footer.terms')}</Link>

@@ -20,7 +20,6 @@ export default function Navbar() {
     { href: `${homePath}#solutions`, label: t('navbar.services') },
     { href: `${homePath}#portfolio`, label: t('navbar.portfolio') },
     { href: `${homePath}#how-it-works`, label: t('navbar.about') },
-    { href: locale === 'en' ? '/en/tools' : locale === 'bg' ? '/bg/tools' : '/tools', label: t('navbar.tools') },
     { href: locale === 'en' ? '/en/blog' : locale === 'bg' ? '/bg/blog' : '/blog', label: t('navbar.blog') },
   ]
 
