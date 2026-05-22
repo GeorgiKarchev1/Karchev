@@ -1,15 +1,44 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useRef, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import { useLanguage } from '@/context/LanguageContext'
 import FunnelModal from '@/components/FunnelModal'
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger, useGSAP)
+}
 
 export default function PriceCalculatorCTA() {
   const { language } = useLanguage()
   const isBG = language === 'BG'
   const [modalOpen, setModalOpen] = useState(false)
+  const rootRef = useRef<HTMLElement>(null)
+
+  useGSAP(
+    () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+      // 3D entrance for the panel
+      gsap.from('.cta-panel', {
+        y: 80, opacity: 0, rotateX: 14, scale: 0.96,
+        transformOrigin: '50% 100%',
+        duration: 1.1, ease: 'power3.out',
+        scrollTrigger: { trigger: '.cta-panel', start: 'top 85%' },
+      })
+
+      // Stagger stat cards
+      gsap.from('.cta-stat', {
+        y: 24, opacity: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1,
+        scrollTrigger: { trigger: '.cta-panel', start: 'top 70%' },
+      })
+
+    },
+    { scope: rootRef }
+  )
 
   const stats = isBG
     ? [{ value: '4', label: 'въпроса' }, { value: '~1', label: 'минута' }, { value: '0€', label: 'безплатно' }]
@@ -17,20 +46,14 @@ export default function PriceCalculatorCTA() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#f1f0ea] px-4 pt-20 pb-8 md:pt-28 md:pb-12">
+      <section ref={rootRef} className="relative overflow-hidden bg-[#f1f0ea] px-4 pt-20 pb-8 md:pt-28 md:pb-12">
         <div className="absolute inset-0 bg-grid opacity-[0.07] pointer-events-none" />
 
-        <div className="container-wide mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true }}
-            className="mx-auto max-w-5xl"
-          >
+        <div className="container-wide mx-auto relative z-10" style={{ perspective: '1400px' }}>
+          <div className="mx-auto max-w-5xl">
             <div
-              className="relative overflow-hidden rounded-[2rem] border border-[#2d232e]/10 bg-[#faf9f5]"
-              style={{ boxShadow: '0 24px 64px rgba(45,35,46,0.10), 0 1px 0 rgba(83,75,82,0.08)' }}
+              className="cta-panel relative overflow-hidden rounded-[2rem] border border-[#2d232e]/10 bg-[#faf9f5] will-change-transform"
+              style={{ boxShadow: '0 24px 64px rgba(45,35,46,0.10), 0 1px 0 rgba(83,75,82,0.08)', transformStyle: 'preserve-3d' }}
             >
               <div className="grid lg:grid-cols-2" style={{ minHeight: '480px' }}>
 
@@ -60,7 +83,7 @@ export default function PriceCalculatorCTA() {
 
                   <div className="grid grid-cols-3 gap-3">
                     {stats.map((s) => (
-                      <div key={s.label} className="flex flex-col items-center justify-center rounded-xl border border-[#2d232e]/10 bg-white/70 py-3.5 px-2 text-center">
+                      <div key={s.label} className="cta-stat flex flex-col items-center justify-center rounded-xl border border-[#2d232e]/10 bg-white/70 py-3.5 px-2 text-center">
                         <span className="text-xl font-black text-[#2d232e] leading-none mb-1">{s.value}</span>
                         <span className="text-[0.68rem] font-semibold uppercase tracking-wider text-[#534b52]/65">{s.label}</span>
                       </div>
@@ -81,7 +104,7 @@ export default function PriceCalculatorCTA() {
 
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

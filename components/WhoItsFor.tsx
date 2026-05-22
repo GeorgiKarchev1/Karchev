@@ -1,9 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
 
 const getPortfolioSites = (isBG: boolean) => [
   {
@@ -83,14 +90,51 @@ const getPortfolioSites = (isBG: boolean) => [
 export default function WhoItsFor() {
   const { t, language } = useLanguage();
   const portfolioSites = getPortfolioSites(language === "BG");
+  const rootRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce) return;
+
+      // Heading reveal
+      gsap.from(".portfolio-heading > *", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.1,
+        scrollTrigger: { trigger: ".portfolio-heading", start: "top 85%" },
+      });
+
+      // Simple stagger fade + rise — works great on every screen size
+      const cards = gsap.utils.toArray<HTMLElement>(".portfolio-card");
+      gsap.set(cards, { opacity: 0, y: 40 });
+
+      ScrollTrigger.batch(cards, {
+        start: "top 90%",
+        onEnter: (batch) =>
+          gsap.to(batch, {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: "power2.out",
+            stagger: 0.08,
+            overwrite: true,
+          }),
+      });
+    },
+    { scope: rootRef }
+  );
 
   return (
     <section
+      ref={rootRef}
       id="portfolio"
       className="py-20 md:py-32 bg-[#f1f0ea] overflow-hidden"
     >
       <div className="container-wide mx-auto">
-        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div className="portfolio-heading mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
             <div className="text-sm font-mono text-[#534b52] mb-4 tracking-widest uppercase">
               {t("portfolio.eyeBrow")}
@@ -109,45 +153,22 @@ export default function WhoItsFor() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {portfolioSites.map((site, index) => (
-            <motion.a
+            <a
               key={index}
               href={site.url}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 70, rotateX: 20, scale: 0.88 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
-              whileHover={{
-                y: -12,
-                rotateX: -6,
-                rotateY: index % 2 === 0 ? 4 : -4,
-                scale: 1.03,
-              }}
-              transition={{
-                delay: index * 0.09,
-                duration: 0.75,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              viewport={{ once: true }}
-              style={{
-                transformPerspective: 700,
-                transformStyle: "preserve-3d",
-              }}
-              className="group relative rounded-2xl bg-[#e0ddcf] border border-[#2d232e] hover:border-[#534b52]/40 transition-all duration-300 overflow-hidden cursor-pointer block"
+              className="portfolio-card group relative rounded-2xl bg-[#e0ddcf] border border-[#2d232e] overflow-hidden cursor-pointer block transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_18px_40px_-12px_rgba(45,35,46,0.25)] hover:border-[#534b52]/50 will-change-transform"
             >
               <div className="relative w-full aspect-video overflow-hidden bg-[#f1f0ea]">
                 <Image
                   src={site.img}
                   alt={site.name}
                   fill
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-[#f1f0ea]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="flex items-center gap-2 text-[#2d232e] font-semibold text-sm bg-[#e0ddcf]/80 backdrop-blur-sm px-4 py-2 rounded-full border border-[#534b52]/30">
-                    {t("portfolio.viewSite")}{" "}
-                    <ArrowUpRight className="w-4 h-4" />
-                  </div>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2d232e]/35 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
 
               <div className="p-6">
@@ -163,10 +184,10 @@ export default function WhoItsFor() {
                       {site.desc}
                     </p>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-[#2d232e] group-hover:text-[#534b52] shrink-0 mt-0.5 transition-colors" />
+                  <ArrowUpRight className="w-4 h-4 text-[#2d232e] group-hover:text-[#534b52] shrink-0 mt-0.5 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </div>
-            </motion.a>
+            </a>
           ))}
         </div>
       </div>
