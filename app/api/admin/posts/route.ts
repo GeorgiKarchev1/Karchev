@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { verifyToken, COOKIE_NAME } from '@/lib/auth'
-import { getAllPosts, createPost, deletePost, updatePost, BlogPost, getPostsStorageMode } from '@/lib/posts'
+import { verifyToken, COOKIE_NAME } from '../../../../lib/auth'
+import { getAllPosts, createPost, deletePost, updatePost, BlogPost, getPostsStorageMode } from '../../../../lib/posts'
 
 async function authorized(req: NextRequest) {
   const token = req.cookies.get(COOKIE_NAME)?.value ?? ''

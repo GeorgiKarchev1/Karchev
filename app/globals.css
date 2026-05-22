@@ -171,6 +171,16 @@
     transform-style: preserve-3d;
     perspective: 1000px;
   }
+
+  .os-input {
+    @apply w-full rounded-2xl border-2 border-[#2d232e] bg-[#f7f4ea] px-4 py-3 text-[#2d232e] outline-none transition placeholder:text-[#7b6f74];
+    box-shadow: 4px 4px 0px #2d232e;
+  }
+
+  .os-input:focus {
+    box-shadow: 2px 2px 0px #2d232e;
+    transform: translate(2px, 2px);
+  }
 }
 
 ::-webkit-scrollbar {
