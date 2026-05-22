@@ -1,13 +1,17 @@
-import OSShell from '@/components/os/OSShell'
+import PageHeader from '@/components/os/PageHeader'
 import OnboardingForm from '@/components/os/OnboardingForm'
 
 export default function OSOnboardingPage() {
   return (
-    <OSShell
-      title="Build your content operating system foundation"
-      description="Tell KarchX what you sell, who you serve, what people struggle with, and what outcomes matter. We’ll turn that into a usable content system."
-    >
-      <OnboardingForm />
-    </OSShell>
+    <>
+      <PageHeader
+        eyebrow="Step 1"
+        title="Build your content OS foundation"
+        description="Tell KarchX what you sell, who you serve, what people struggle with, and what outcomes matter. We turn that into pillars, ideas, hooks, and a weekly plan."
+      />
+      <div className="px-6 py-8 md:px-10 md:py-10">
+        <OnboardingForm />
+      </div>
+    </>
   )
 }
