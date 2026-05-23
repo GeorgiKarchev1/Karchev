@@ -67,18 +67,48 @@ export function mapApifyInstagramProfile(item: Record<string, any>): {
 
 export function mapApifyFacebookPage(item: Record<string, any>): SocialProfileContent {
   const categories = item.categories || item.category
-  const category = Array.isArray(categories) ? categories[0] : categories
+  const category = Array.isArray(categories)
+    ? categories.find((value) => value && value !== 'Profile') || categories[0]
+    : categories
+  const links = uniqueStrings([
+    item.website,
+    ...(Array.isArray(item.websites) ? item.websites : []),
+    item.alternativeSocialMedia,
+    item.additionalProperties?.alternativeSocialMedia,
+  ])
+  const about = uniqueStrings([
+    item.intro,
+    item.about,
+    item.description,
+    ...(Array.isArray(item.info) ? item.info : []),
+    item.WORK,
+    item.work,
+    item.additionalProperties?.WORK,
+    item.additionalProperties?.work,
+  ]).join('\n')
+  const address = uniqueStrings([
+    item.address,
+    item.current_city,
+    item.CURRENT_CITY,
+    item.hometown,
+    item.HOMETOWN,
+    item.additionalProperties?.current_city,
+    item.additionalProperties?.CURRENT_CITY,
+    item.additionalProperties?.hometown,
+    item.additionalProperties?.HOMETOWN,
+  ]).join('; ')
 
   return {
     platform: 'facebook',
     name: item.title || item.name,
     category,
-    about: item.intro || item.about || item.description,
-    website: item.website || item.websites?.[0],
+    about: about || undefined,
+    website: links[0],
+    links: links.length ? links : undefined,
     followers: numberOrUndefined(item.followers ?? item.followersCount),
     likes: numberOrUndefined(item.likes ?? item.likesCount),
     phone: item.phone,
-    address: item.address,
+    address: address || undefined,
   }
 }
 
@@ -166,7 +196,7 @@ export async function fetchFacebookEnrichment({
   token: string
   analyzeRecentPosts?: boolean
   fetcher?: FetchLike
-}): Promise<Pick<RawEnrichmentInput, 'socialProfile' | 'recentPosts'>> {
+}): Promise<Pick<RawEnrichmentInput, 'socialProfile' | 'linkedProfiles' | 'recentPosts'>> {
   const pageData = await runApifyActor({
     actor: APIFY_ACTORS.facebookPages,
     token,
@@ -190,8 +220,27 @@ export async function fetchFacebookEnrichment({
       .slice(0, 20)
   }
 
+  const socialProfile = mapApifyFacebookPage(first)
+  const linkedProfiles: SocialProfileContent[] = []
+  const instagramUrl = socialProfile.links?.find(isInstagramUrl)
+  if (instagramUrl) {
+    try {
+      const instagram = await fetchInstagramEnrichment({
+        url: instagramUrl,
+        token,
+        analyzeRecentPosts,
+        fetcher,
+      })
+      if (instagram.socialProfile) linkedProfiles.push(instagram.socialProfile)
+      if (instagram.recentPosts?.length) recentPosts = [...recentPosts, ...instagram.recentPosts].slice(0, 20)
+    } catch {
+      // Keep the Facebook import useful even if the linked Instagram profile is private or temporarily unavailable.
+    }
+  }
+
   return {
-    socialProfile: mapApifyFacebookPage(first),
+    socialProfile,
+    linkedProfiles: linkedProfiles.length ? linkedProfiles : undefined,
     recentPosts,
   }
 }
@@ -231,6 +280,20 @@ function assertApifyItemAvailable(item: unknown, label: string): asserts item is
   if (record.error) {
     const description = record.errorDescription || record.errorMessage || record.message || record.error
     throw new Error(`${label} failed: ${description}`)
+  }
+}
+
+function uniqueStrings(values: unknown[]) {
+  const strings = values.filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+  return Array.from(new Set(strings.map((value) => value.trim())))
+}
+
+function isInstagramUrl(value: string) {
+  try {
+    const host = new URL(value).hostname.replace(/^www\./, '').toLowerCase()
+    return host === 'instagram.com' || host.endsWith('.instagram.com')
+  } catch {
+    return false
   }
 }
 

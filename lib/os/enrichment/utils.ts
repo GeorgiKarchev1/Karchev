@@ -16,6 +16,7 @@ export interface SocialProfileContent {
   about?: string
   category?: string
   website?: string
+  links?: string[]
   followers?: number
   likes?: number
   phone?: string
@@ -35,6 +36,7 @@ export interface RawEnrichmentInput {
   url: string
   websitePages?: WebsitePageContent[]
   socialProfile?: SocialProfileContent
+  linkedProfiles?: SocialProfileContent[]
   recentPosts?: SocialPostContent[]
   manualText?: string
 }
@@ -124,23 +126,17 @@ export function buildContextFromEnrichment(input: RawEnrichmentInput) {
   ]
 
   if (input.socialProfile) {
-    const profile = input.socialProfile
+    sections.push(formatSocialProfileSection('Social profile:', input.socialProfile))
+  }
+
+  if (input.linkedProfiles?.length) {
     sections.push(
       [
-        'Social profile:',
-        profile.name ? `Name: ${profile.name}` : '',
-        profile.username ? `Username: ${profile.username}` : '',
-        profile.category ? `Category: ${profile.category}` : '',
-        profile.bio ? `Bio: ${profile.bio}` : '',
-        profile.about ? `About: ${profile.about}` : '',
-        profile.website ? `Website: ${profile.website}` : '',
-        typeof profile.followers === 'number' ? `Followers: ${profile.followers}` : '',
-        typeof profile.likes === 'number' ? `Likes: ${profile.likes}` : '',
-        profile.phone ? `Phone: ${profile.phone}` : '',
-        profile.address ? `Address: ${profile.address}` : '',
-      ]
-        .filter(Boolean)
-        .join('\n')
+        'Linked social profiles:',
+        ...input.linkedProfiles.map((profile, index) =>
+          formatSocialProfileSection(`Linked profile ${index + 1}:`, profile)
+        ),
+      ].join('\n\n')
     )
   }
 
@@ -175,4 +171,24 @@ export function buildContextFromEnrichment(input: RawEnrichmentInput) {
   }
 
   return sections.join('\n\n---\n\n')
+}
+
+function formatSocialProfileSection(title: string, profile: SocialProfileContent) {
+  return [
+    title,
+    `Platform: ${profile.platform}`,
+    profile.name ? `Name: ${profile.name}` : '',
+    profile.username ? `Username: ${profile.username}` : '',
+    profile.category ? `Category: ${profile.category}` : '',
+    profile.bio ? `Bio: ${profile.bio}` : '',
+    profile.about ? `About: ${profile.about}` : '',
+    profile.website ? `Website: ${profile.website}` : '',
+    profile.links?.length ? `Links: ${profile.links.join(', ')}` : '',
+    typeof profile.followers === 'number' ? `Followers: ${profile.followers}` : '',
+    typeof profile.likes === 'number' ? `Likes: ${profile.likes}` : '',
+    profile.phone ? `Phone: ${profile.phone}` : '',
+    profile.address ? `Address: ${profile.address}` : '',
+  ]
+    .filter(Boolean)
+    .join('\n')
 }
