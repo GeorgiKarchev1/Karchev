@@ -2,19 +2,50 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { ArrowRight, Loader2, Sparkles } from 'lucide-react'
+import { ArrowRight, Globe2, Instagram, Loader2, Search, Sparkles } from 'lucide-react'
 import { useOS } from '@/context/OSContext'
 import type {
   BusinessProfileInput,
   ContentGoal,
   OSBootstrapResult,
 } from '@/lib/os/types'
+import type { EnrichmentResult, EnrichmentSourceType } from '@/lib/os/enrichment/utils'
 
 const goals: { value: ContentGoal; label: string }[] = [
   { value: 'leads', label: 'Leads' },
   { value: 'trust', label: 'Trust' },
   { value: 'awareness', label: 'Awareness' },
   { value: 'education', label: 'Education' },
+]
+
+const importSources: {
+  value: Exclude<EnrichmentSourceType, 'manual'>
+  label: string
+  description: string
+  placeholder: string
+  icon: typeof Globe2
+}[] = [
+  {
+    value: 'website',
+    label: 'Website',
+    description: 'Best quality for offers, services, proof, FAQs, and positioning.',
+    placeholder: 'https://yourbusiness.com',
+    icon: Globe2,
+  },
+  {
+    value: 'instagram',
+    label: 'Instagram',
+    description: 'Great for bio, tone, social proof, and recent content patterns.',
+    placeholder: 'https://instagram.com/yourbusiness',
+    icon: Instagram,
+  },
+  {
+    value: 'facebook',
+    label: 'Facebook',
+    description: 'Good for local businesses, page details, reviews context, and posts.',
+    placeholder: 'https://facebook.com/yourbusiness',
+    icon: Search,
+  },
 ]
 
 const emptyForm: BusinessProfileInput = {
@@ -40,7 +71,13 @@ export default function OnboardingForm() {
 
   const [form, setForm] = useState<BusinessProfileInput>(emptyForm)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [importing, setImporting] = useState(false)
+  const [sourceType, setSourceType] = useState<Exclude<EnrichmentSourceType, 'manual'>>('website')
+  const [sourceUrl, setSourceUrl] = useState('')
+  const [analyzeRecentPosts, setAnalyzeRecentPosts] = useState(true)
+  const [importResult, setImportResult] = useState<EnrichmentResult | null>(null)
+  const [importError, setImportError] = useState<string | null>(null)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   useEffect(() => {
     if (profile) setForm(profile)
@@ -59,10 +96,44 @@ export default function OnboardingForm() {
     updateField('goals', next.length ? next : [goal])
   }
 
+  const handleImport = async () => {
+    setImporting(true)
+    setImportError(null)
+    setSubmitError(null)
+    setImportResult(null)
+
+    try {
+      const response = await fetchWithTimeout('/api/os/enrich', {
+        timeoutMs: 90_000,
+        fetchOptions: {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sourceType,
+            url: sourceUrl,
+            analyzeRecentPosts,
+          }),
+        },
+      })
+      const data = await response.json()
+      if (!response.ok) {
+        throw new Error(data.error || 'Import failed')
+      }
+
+      const enrichment = data as EnrichmentResult
+      setForm(enrichment.profile)
+      setImportResult(enrichment)
+    } catch (err) {
+      setImportError(getFriendlyImportErrorMessage(err))
+    } finally {
+      setImporting(false)
+    }
+  }
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setLoading(true)
-    setError(null)
+    setSubmitError(null)
     try {
       const response = await fetch('/api/os/bootstrap', {
         method: 'POST',
@@ -77,7 +148,7 @@ export default function OnboardingForm() {
       setBootstrap(data as OSBootstrapResult)
       router.push('/os/pillars')
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong')
+      setSubmitError(err instanceof Error ? err.message : 'Something went wrong')
     } finally {
       setLoading(false)
     }
@@ -95,6 +166,114 @@ export default function OnboardingForm() {
         onSubmit={handleSubmit}
         className="glass-card bg-[#f1f0ea] p-5 md:p-7"
       >
+        <div className="mb-6 rounded-2xl border-2 border-[#2d232e] bg-[#f7f4ea] p-4 shadow-[4px_4px_0px_#2d232e]">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#534b52]">
+                Quality import
+              </p>
+              <h3 className="mt-1 text-xl font-black text-[#2d232e]">
+                Start from website, Instagram, or Facebook
+              </h3>
+              <p className="mt-1 max-w-2xl text-sm leading-6 text-[#534b52]">
+                KarchX imports public business context, analyzes it with AI, then lets you review and edit everything before generating the Content OS.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
+            {importSources.map((source) => {
+              const active = sourceType === source.value
+              const Icon = source.icon
+              return (
+                <button
+                  key={source.value}
+                  type="button"
+                  onClick={() => setSourceType(source.value)}
+                  className={`rounded-2xl border-2 p-4 text-left transition ${
+                    active
+                      ? 'border-[#2d232e] bg-[#ddd7c8] shadow-[3px_3px_0px_#2d232e]'
+                      : 'border-[#2d232e]/30 bg-[#f1f0ea] hover:border-[#2d232e]'
+                  }`}
+                >
+                  <div className="flex items-center gap-2 font-black text-[#2d232e]">
+                    <Icon className="h-4 w-4" />
+                    {source.label}
+                  </div>
+                  <p className="mt-2 text-xs leading-5 text-[#534b52]">
+                    {source.description}
+                  </p>
+                </button>
+              )
+            })}
+          </div>
+
+          <div className="mt-4 grid gap-3 lg:grid-cols-[1fr_auto]">
+            <input
+              value={sourceUrl}
+              onChange={(e) => setSourceUrl(e.target.value)}
+              className="os-input"
+              placeholder={importSources.find((source) => source.value === sourceType)?.placeholder}
+            />
+            <button
+              type="button"
+              onClick={handleImport}
+              disabled={importing || !sourceUrl.trim()}
+              className="btn-primary disabled:opacity-60"
+            >
+              {importing ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
+              {importing ? 'Importing…' : 'Import profile'}
+            </button>
+          </div>
+
+          {sourceType !== 'website' ? (
+            <label className="mt-3 flex items-center gap-2 text-sm font-semibold text-[#534b52]">
+              <input
+                type="checkbox"
+                checked={analyzeRecentPosts}
+                onChange={(e) => setAnalyzeRecentPosts(e.target.checked)}
+                className="h-4 w-4 accent-[#534b52]"
+              />
+              Analyze recent posts for tone and content patterns
+            </label>
+          ) : null}
+
+          {importError ? (
+            <div className="mt-4 rounded-2xl border-2 border-red-200 bg-red-50 p-4 text-sm leading-6 text-red-800">
+              <span className="font-black">Import failed:</span> {importError}
+            </div>
+          ) : null}
+
+          {importResult ? (
+            <div className="mt-4 rounded-2xl border-2 border-[#2d232e]/20 bg-white/40 p-4">
+              <p className="text-sm font-black text-[#2d232e]">
+                Import ready — review the fields below before generating.
+              </p>
+              <div className="mt-3 grid gap-2 text-xs text-[#534b52] md:grid-cols-5">
+                {Object.entries(importResult.confidence).map(([key, value]) => (
+                  <div key={key} className="rounded-xl bg-[#f1f0ea] px-3 py-2">
+                    <span className="block font-bold uppercase tracking-wider">{key}</span>
+                    <span>{Math.round(value * 100)}% confidence</span>
+                  </div>
+                ))}
+              </div>
+              {importResult.missingInfo.length ? (
+                <div className="mt-3 text-sm leading-6 text-[#534b52]">
+                  <span className="font-bold text-[#2d232e]">Missing:</span>{' '}
+                  {importResult.missingInfo.join(', ')}
+                </div>
+              ) : null}
+              {importResult.suggestedQuestions.length ? (
+                <ul className="mt-2 space-y-1 text-sm leading-6 text-[#534b52]">
+                  {importResult.suggestedQuestions.slice(0, 3).map((question) => (
+                    <li key={question}>• {question}</li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+
         <div className="grid gap-4 md:grid-cols-2">
           <Field label="Business name">
             <input
@@ -180,8 +359,8 @@ export default function OnboardingForm() {
           </div>
         </div>
 
-        {error ? (
-          <p className="mt-4 text-sm font-semibold text-red-700">{error}</p>
+        {submitError ? (
+          <p className="mt-4 text-sm font-semibold text-red-700">{submitError}</p>
         ) : null}
 
         <div className="mt-6 flex flex-wrap items-center gap-4">
@@ -249,4 +428,41 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
       {children}
     </label>
   )
+}
+
+async function fetchWithTimeout(
+  url: string,
+  { fetchOptions, timeoutMs }: { fetchOptions: RequestInit; timeoutMs: number }
+) {
+  const controller = new AbortController()
+  const timer = window.setTimeout(() => controller.abort(), timeoutMs)
+
+  try {
+    return await fetch(url, { ...fetchOptions, signal: controller.signal })
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      throw new Error('Import timed out')
+    }
+    throw error
+  } finally {
+    window.clearTimeout(timer)
+  }
+}
+
+function getFriendlyImportErrorMessage(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error || '')
+
+  if (/OpenClaw dev model call failed/i.test(message) || /timed out/i.test(message) || /Import timed out/i.test(message)) {
+    return 'AI extraction timed out or failed. Try importing again, or paste the business details manually below.'
+  }
+
+  if (/This content isn't available/i.test(message) || /not_available/i.test(message)) {
+    return 'This Facebook profile/page is not publicly available to the importer. Try a public Facebook page, Instagram profile, or paste the details manually.'
+  }
+
+  if (/FIRECRAWL_API_KEY|APIFY_TOKEN|ANTHROPIC_API_KEY/i.test(message)) {
+    return 'Importer credentials are not configured on this environment.'
+  }
+
+  return message || 'Import failed. Paste the business details manually and try again.'
 }
