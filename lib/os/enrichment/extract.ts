@@ -113,11 +113,21 @@ export async function extractBusinessProfileFromContext({
   model?: string
 }): Promise<EnrichmentResult> {
   const prompt = buildBusinessProfilePrompt(rawContext)
-  const text =
-    provider === 'openclaw'
-      ? await runOpenClawModel(prompt, model)
-      : await runAnthropicModel({ prompt, model, apiKey })
+  if (provider === 'openclaw') {
+    let lastError: unknown
+    for (let attempt = 1; attempt <= 2; attempt += 1) {
+      try {
+        const text = await runOpenClawModel(prompt, model)
+        const result = parseEnrichmentModelJson(text)
+        return { ...result, rawContext }
+      } catch (error) {
+        lastError = error
+      }
+    }
+    throw lastError instanceof Error ? lastError : new Error('OpenClaw dev model call failed')
+  }
 
+  const text = await runAnthropicModel({ prompt, model, apiKey })
   const result = parseEnrichmentModelJson(text)
   return { ...result, rawContext }
 }

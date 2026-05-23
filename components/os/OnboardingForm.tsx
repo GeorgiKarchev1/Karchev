@@ -76,7 +76,8 @@ export default function OnboardingForm() {
   const [sourceUrl, setSourceUrl] = useState('')
   const [analyzeRecentPosts, setAnalyzeRecentPosts] = useState(true)
   const [importResult, setImportResult] = useState<EnrichmentResult | null>(null)
-  const [error, setError] = useState<string | null>(null)
+  const [importError, setImportError] = useState<string | null>(null)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   useEffect(() => {
     if (profile) setForm(profile)
@@ -97,18 +98,22 @@ export default function OnboardingForm() {
 
   const handleImport = async () => {
     setImporting(true)
-    setError(null)
+    setImportError(null)
+    setSubmitError(null)
     setImportResult(null)
 
     try {
-      const response = await fetch('/api/os/enrich', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          sourceType,
-          url: sourceUrl,
-          analyzeRecentPosts,
-        }),
+      const response = await fetchWithTimeout('/api/os/enrich', {
+        timeoutMs: 90_000,
+        fetchOptions: {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sourceType,
+            url: sourceUrl,
+            analyzeRecentPosts,
+          }),
+        },
       })
       const data = await response.json()
       if (!response.ok) {
@@ -119,11 +124,7 @@ export default function OnboardingForm() {
       setForm(enrichment.profile)
       setImportResult(enrichment)
     } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : 'Import failed. Paste the business details manually and try again.'
-      )
+      setImportError(getFriendlyImportErrorMessage(err))
     } finally {
       setImporting(false)
     }
@@ -132,7 +133,7 @@ export default function OnboardingForm() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setLoading(true)
-    setError(null)
+    setSubmitError(null)
     try {
       const response = await fetch('/api/os/bootstrap', {
         method: 'POST',
@@ -147,7 +148,7 @@ export default function OnboardingForm() {
       setBootstrap(data as OSBootstrapResult)
       router.push('/os/pillars')
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong')
+      setSubmitError(err instanceof Error ? err.message : 'Something went wrong')
     } finally {
       setLoading(false)
     }
@@ -235,6 +236,12 @@ export default function OnboardingForm() {
               />
               Analyze recent posts for tone and content patterns
             </label>
+          ) : null}
+
+          {importError ? (
+            <div className="mt-4 rounded-2xl border-2 border-red-200 bg-red-50 p-4 text-sm leading-6 text-red-800">
+              <span className="font-black">Import failed:</span> {importError}
+            </div>
           ) : null}
 
           {importResult ? (
@@ -352,8 +359,8 @@ export default function OnboardingForm() {
           </div>
         </div>
 
-        {error ? (
-          <p className="mt-4 text-sm font-semibold text-red-700">{error}</p>
+        {submitError ? (
+          <p className="mt-4 text-sm font-semibold text-red-700">{submitError}</p>
         ) : null}
 
         <div className="mt-6 flex flex-wrap items-center gap-4">
@@ -421,4 +428,41 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
       {children}
     </label>
   )
+}
+
+async function fetchWithTimeout(
+  url: string,
+  { fetchOptions, timeoutMs }: { fetchOptions: RequestInit; timeoutMs: number }
+) {
+  const controller = new AbortController()
+  const timer = window.setTimeout(() => controller.abort(), timeoutMs)
+
+  try {
+    return await fetch(url, { ...fetchOptions, signal: controller.signal })
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      throw new Error('Import timed out')
+    }
+    throw error
+  } finally {
+    window.clearTimeout(timer)
+  }
+}
+
+function getFriendlyImportErrorMessage(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error || '')
+
+  if (/OpenClaw dev model call failed/i.test(message) || /timed out/i.test(message) || /Import timed out/i.test(message)) {
+    return 'AI extraction timed out or failed. Try importing again, or paste the business details manually below.'
+  }
+
+  if (/This content isn't available/i.test(message) || /not_available/i.test(message)) {
+    return 'This Facebook profile/page is not publicly available to the importer. Try a public Facebook page, Instagram profile, or paste the details manually.'
+  }
+
+  if (/FIRECRAWL_API_KEY|APIFY_TOKEN|ANTHROPIC_API_KEY/i.test(message)) {
+    return 'Importer credentials are not configured on this environment.'
+  }
+
+  return message || 'Import failed. Paste the business details manually and try again.'
 }
