@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import {
   fetchFacebookEnrichment,
+  fetchInstagramEnrichment,
+  fetchWebsiteEnrichment,
   mapApifyFacebookPage,
   mapApifyInstagramProfile,
   mapFirecrawlDocuments,
@@ -27,6 +29,36 @@ describe('mapFirecrawlDocuments', () => {
       },
     ])
   })
+
+  it('keeps website scrape content even when Firecrawl omits source metadata', async () => {
+    const fetcher = async () =>
+      new Response(
+        JSON.stringify({
+          success: true,
+          data: {
+            markdown: '# Nana\nHair color correction and balayage in Plovdiv.',
+            metadata: { title: 'Nana Hair' },
+          },
+        }),
+        { status: 200, headers: { 'Content-Type': 'application/json' } }
+      )
+
+    await expect(
+      fetchWebsiteEnrichment({
+        url: 'https://example.com/nana',
+        apiKey: 'test-key',
+        fetcher: fetcher as typeof fetch,
+      })
+    ).resolves.toEqual({
+      websitePages: [
+        {
+          url: 'https://example.com/nana',
+          title: 'Nana Hair',
+          content: '# Nana\nHair color correction and balayage in Plovdiv.',
+        },
+      ],
+    })
+  })
 })
 
 describe('mapApifyInstagramProfile', () => {
@@ -51,6 +83,25 @@ describe('mapApifyInstagramProfile', () => {
       },
       posts: [{ text: 'Stop posting randomly.', url: 'https://instagram.com/p/1' }],
     })
+  })
+
+  it('sends a username, not the whole Instagram URL, to Apify', async () => {
+    let actorInput: Record<string, unknown> | undefined
+    const fetcher = async (_url: string | URL | Request, init?: RequestInit) => {
+      actorInput = JSON.parse(String(init?.body))
+      return new Response(
+        JSON.stringify([{ username: 'hair_by_.nana', fullName: 'Hair by Nana' }]),
+        { status: 201, headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
+    await fetchInstagramEnrichment({
+      url: 'https://www.instagram.com/hair_by_.nana/?hl=en',
+      token: 'test-token',
+      fetcher: fetcher as typeof fetch,
+    })
+
+    expect(actorInput?.usernames).toEqual(['hair_by_.nana'])
   })
 })
 
@@ -163,6 +214,55 @@ describe('mapApifyFacebookPage', () => {
     expect(buildContextFromEnrichment({ sourceType: 'facebook', url: 'https://fb.test', ...result })).toContain(
       'Linked social profiles:'
     )
+  })
+
+  it('continues with Facebook and linked Instagram context when Facebook posts are unavailable', async () => {
+    const fetcher = async (_url: string | URL | Request, init?: RequestInit) => {
+      const requestUrl = String(_url)
+      const body = JSON.parse(String(init?.body))
+      if (requestUrl.includes('facebook-posts-scraper')) {
+        return new Response(JSON.stringify({ error: { message: 'Facebook posts are unavailable' } }), {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        })
+      }
+
+      if (body.usernames) {
+        return new Response(
+          JSON.stringify([
+            {
+              username: 'hair_by_.nana',
+              fullName: 'Hair by Nana',
+              biography: 'Balayage and color correction in Plovdiv.',
+              latestPosts: [{ caption: 'Fresh blonde balayage.' }],
+            },
+          ]),
+          { status: 201, headers: { 'Content-Type': 'application/json' } }
+        )
+      }
+
+      return new Response(
+        JSON.stringify([
+          {
+            title: 'Фризьорски Салон Нана',
+            categories: ['Digital creator'],
+            websites: ['https://www.instagram.com/hair_by_.nana'],
+          },
+        ]),
+        { status: 201, headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
+    const result = await fetchFacebookEnrichment({
+      url: 'https://www.facebook.com/profile.php?id=123',
+      token: 'test-token',
+      analyzeRecentPosts: true,
+      fetcher: fetcher as typeof fetch,
+    })
+
+    expect(result.socialProfile?.name).toBe('Фризьорски Салон Нана')
+    expect(result.linkedProfiles?.[0]?.username).toBe('hair_by_.nana')
+    expect(result.recentPosts).toEqual([{ text: 'Fresh blonde balayage.' }])
   })
 
   it('surfaces Apify unavailable-profile errors instead of returning empty profiles', async () => {

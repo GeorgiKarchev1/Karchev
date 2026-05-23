@@ -154,7 +154,18 @@ export async function fetchWebsiteEnrichment({
     throw new Error(data?.error || 'Firecrawl website import failed')
   }
 
-  return { websitePages: mapFirecrawlDocuments([data.data]) }
+  const document = data.data as FirecrawlDocument | undefined
+  const documentWithUrl = document
+    ? {
+        ...document,
+        metadata: {
+          ...document.metadata,
+          sourceURL: document.metadata?.sourceURL || document.metadata?.url || url,
+        },
+      }
+    : document
+
+  return { websitePages: documentWithUrl ? mapFirecrawlDocuments([documentWithUrl]) : [] }
 }
 
 export async function fetchInstagramEnrichment({
@@ -172,7 +183,7 @@ export async function fetchInstagramEnrichment({
     actor: APIFY_ACTORS.instagramProfile,
     token,
     input: {
-      usernames: [url],
+      usernames: [normalizeInstagramUsername(url)],
       resultsLimit: analyzeRecentPosts ? 20 : 1,
     },
     fetcher,
@@ -208,16 +219,20 @@ export async function fetchFacebookEnrichment({
 
   let recentPosts: SocialPostContent[] = []
   if (analyzeRecentPosts) {
-    const postsData = await runApifyActor({
-      actor: APIFY_ACTORS.facebookPosts,
-      token,
-      input: { startUrls: [{ url }], resultsLimit: 20 },
-      fetcher,
-    })
-    recentPosts = (Array.isArray(postsData) ? postsData : [])
-      .map(mapApifyFacebookPost)
-      .filter((post): post is SocialPostContent => Boolean(post))
-      .slice(0, 20)
+    try {
+      const postsData = await runApifyActor({
+        actor: APIFY_ACTORS.facebookPosts,
+        token,
+        input: { startUrls: [{ url }], resultsLimit: 20 },
+        fetcher,
+      })
+      recentPosts = (Array.isArray(postsData) ? postsData : [])
+        .map(mapApifyFacebookPost)
+        .filter((post): post is SocialPostContent => Boolean(post))
+        .slice(0, 20)
+    } catch {
+      // Keep the Facebook profile import useful even if the posts actor cannot access the feed.
+    }
   }
 
   const socialProfile = mapApifyFacebookPage(first)
@@ -281,6 +296,21 @@ function assertApifyItemAvailable(item: unknown, label: string): asserts item is
     const description = record.errorDescription || record.errorMessage || record.message || record.error
     throw new Error(`${label} failed: ${description}`)
   }
+}
+
+function normalizeInstagramUsername(value: string) {
+  const trimmed = value.trim()
+  try {
+    const parsed = new URL(trimmed.startsWith('http') ? trimmed : `https://${trimmed}`)
+    const host = parsed.hostname.replace(/^www\./, '').toLowerCase()
+    if (host === 'instagram.com' || host.endsWith('.instagram.com')) {
+      return parsed.pathname.split('/').filter(Boolean)[0] || trimmed.replace(/^@/, '')
+    }
+  } catch {
+    // Fall through to handle raw usernames.
+  }
+
+  return trimmed.replace(/^@/, '').split(/[/?#]/)[0]
 }
 
 function uniqueStrings(values: unknown[]) {
