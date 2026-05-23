@@ -12,7 +12,7 @@ import {
   fetchInstagramEnrichment,
   fetchWebsiteEnrichment,
 } from '@/lib/os/enrichment/providers'
-import { extractBusinessProfileFromContext } from '@/lib/os/enrichment/extract'
+import { extractBusinessProfileFromContext, type OSAIProvider } from '@/lib/os/enrichment/extract'
 
 const enrichSchema = z.object({
   sourceType: z.enum(['website', 'instagram', 'facebook']).optional(),
@@ -76,14 +76,16 @@ export async function POST(request: Request) {
     }
 
     const rawContext = buildContextFromEnrichment(raw)
+    const aiProvider = ((process.env.OS_AI_PROVIDER as OSAIProvider | undefined) || 'anthropic')
     const anthropicKey = process.env.ANTHROPIC_API_KEY
-    if (!anthropicKey) {
+    if (aiProvider === 'anthropic' && !anthropicKey) {
       throw new Error('ANTHROPIC_API_KEY is not configured')
     }
 
     const result = await extractBusinessProfileFromContext({
       rawContext,
       apiKey: anthropicKey,
+      provider: aiProvider,
     })
 
     return NextResponse.json({

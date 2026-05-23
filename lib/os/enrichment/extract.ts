@@ -1,6 +1,10 @@
 import Anthropic from '@anthropic-ai/sdk'
+import { execFile } from 'node:child_process'
+import { promisify } from 'node:util'
 import { z } from 'zod'
 import type { EnrichmentResult } from './utils'
+
+const execFileAsync = promisify(execFile)
 
 const goalSchema = z.enum(['leads', 'trust', 'awareness', 'education'])
 
@@ -78,7 +82,9 @@ ${rawContext}`
 }
 
 export function parseEnrichmentModelJson(raw: string): EnrichmentResult {
-  const cleaned = raw.trim().replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```$/i, '')
+  const cleaned = extractJsonFromOpenClawOutput(
+    raw.trim().replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```$/i, '')
+  )
   const parsed = safeJsonParse(cleaned) ?? safeJsonParse(cleaned.match(/\{[\s\S]*\}/)?.[0] || '')
 
   if (!parsed) {
@@ -92,27 +98,80 @@ export function parseEnrichmentModelJson(raw: string): EnrichmentResult {
   }
 }
 
+export type OSAIProvider = 'anthropic' | 'openclaw'
+
 export async function extractBusinessProfileFromContext({
   rawContext,
   apiKey,
-  model = process.env.OS_ENRICHMENT_MODEL || 'claude-haiku-4-5-20251001',
+  provider = (process.env.OS_AI_PROVIDER as OSAIProvider | undefined) || 'anthropic',
+  model = process.env.OS_ENRICHMENT_MODEL ||
+    (provider === 'openclaw' ? 'openai-codex/gpt-5.5' : 'claude-haiku-4-5-20251001'),
 }: {
   rawContext: string
-  apiKey: string
+  apiKey?: string
+  provider?: OSAIProvider
   model?: string
 }): Promise<EnrichmentResult> {
+  const prompt = buildBusinessProfilePrompt(rawContext)
+  const text =
+    provider === 'openclaw'
+      ? await runOpenClawModel(prompt, model)
+      : await runAnthropicModel({ prompt, model, apiKey })
+
+  const result = parseEnrichmentModelJson(text)
+  return { ...result, rawContext }
+}
+
+export function extractJsonFromOpenClawOutput(raw: string) {
+  const trimmed = raw.trim()
+  const firstBrace = trimmed.indexOf('{')
+  const lastBrace = trimmed.lastIndexOf('}')
+  if (firstBrace === -1 || lastBrace === -1 || lastBrace <= firstBrace) {
+    return trimmed
+  }
+  return trimmed.slice(firstBrace, lastBrace + 1)
+}
+
+async function runAnthropicModel({
+  prompt,
+  model,
+  apiKey,
+}: {
+  prompt: string
+  model: string
+  apiKey?: string
+}) {
+  if (!apiKey) throw new Error('ANTHROPIC_API_KEY is not configured')
+
   const client = new Anthropic({ apiKey })
   const message = await client.messages.create({
     model,
     max_tokens: 4096,
     temperature: 0.2,
-    messages: [{ role: 'user', content: buildBusinessProfilePrompt(rawContext) }],
+    messages: [{ role: 'user', content: prompt }],
   })
 
   const block = message.content.find((part) => part.type === 'text')
-  const text = block && 'text' in block ? block.text : ''
-  const result = parseEnrichmentModelJson(text)
-  return { ...result, rawContext }
+  return block && 'text' in block ? block.text : ''
+}
+
+async function runOpenClawModel(prompt: string, model: string) {
+  try {
+    const { stdout, stderr } = await execFileAsync(
+      'openclaw',
+      ['infer', 'model', 'run', '--prompt', prompt, '--model', model],
+      {
+        timeout: 120_000,
+        maxBuffer: 1024 * 1024 * 5,
+      }
+    )
+    return [stdout, stderr].filter(Boolean).join('\n')
+  } catch (error) {
+    const maybe = error as { stdout?: string; stderr?: string; message?: string }
+    const output = [maybe.stdout, maybe.stderr].filter(Boolean).join('\n')
+    if (output && output.includes('{') && output.includes('}')) return output
+    throw new Error(maybe.message || 'OpenClaw dev model call failed')
+  }
 }
 
 function safeJsonParse(value: string) {
