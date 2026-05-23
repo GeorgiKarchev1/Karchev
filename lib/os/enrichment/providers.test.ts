@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import {
+  fetchFacebookEnrichment,
   mapApifyFacebookPage,
   mapApifyInstagramProfile,
   mapFirecrawlDocuments,
@@ -77,5 +78,28 @@ describe('mapApifyFacebookPage', () => {
       phone: '+359...',
       address: 'Plovdiv',
     })
+  })
+
+  it('surfaces Apify unavailable-profile errors instead of returning empty profiles', async () => {
+    const fetcher = async () =>
+      new Response(
+        JSON.stringify([
+          {
+            url: 'https://www.facebook.com/profile.php?id=123',
+            error: 'not_available',
+            errorDescription: "This content isn't available because the owner only shared it with a small group of people or changed who can see it, or it's been deleted.",
+          },
+        ]),
+        { status: 201, headers: { 'Content-Type': 'application/json' } }
+      )
+
+    await expect(
+      fetchFacebookEnrichment({
+        url: 'https://www.facebook.com/profile.php?id=123',
+        token: 'test-token',
+        analyzeRecentPosts: false,
+        fetcher: fetcher as typeof fetch,
+      })
+    ).rejects.toThrow('Facebook import failed: This content isn')
   })
 })

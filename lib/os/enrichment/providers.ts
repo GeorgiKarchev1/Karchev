@@ -148,7 +148,7 @@ export async function fetchInstagramEnrichment({
     fetcher,
   })
   const first = Array.isArray(data) ? data[0] : data
-  if (!first) throw new Error('Instagram import returned no profile data')
+  assertApifyItemAvailable(first, 'Instagram import')
   const mapped = mapApifyInstagramProfile(first)
   return {
     socialProfile: mapped.profile,
@@ -174,7 +174,7 @@ export async function fetchFacebookEnrichment({
     fetcher,
   })
   const first = Array.isArray(pageData) ? pageData[0] : pageData
-  if (!first) throw new Error('Facebook import returned no page data')
+  assertApifyItemAvailable(first, 'Facebook import')
 
   let recentPosts: SocialPostContent[] = []
   if (analyzeRecentPosts) {
@@ -220,6 +220,18 @@ async function runApifyActor({
     throw new Error(data?.error?.message || data?.error || `Apify actor ${actor} failed`)
   }
   return data
+}
+
+function assertApifyItemAvailable(item: unknown, label: string): asserts item is Record<string, any> {
+  if (!item || typeof item !== 'object') {
+    throw new Error(`${label} returned no profile data`)
+  }
+
+  const record = item as Record<string, any>
+  if (record.error) {
+    const description = record.errorDescription || record.errorMessage || record.message || record.error
+    throw new Error(`${label} failed: ${description}`)
+  }
 }
 
 function numberOrUndefined(value: unknown) {
