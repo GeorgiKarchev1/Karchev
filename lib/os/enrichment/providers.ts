@@ -5,7 +5,7 @@ import type {
   WebsitePageContent,
 } from './utils'
 
-const FIRECRAWL_CRAWL_URL = 'https://api.firecrawl.dev/v2/crawl'
+const FIRECRAWL_SCRAPE_URL = 'https://api.firecrawl.dev/v2/scrape'
 const APIFY_RUN_SYNC_URL = 'https://api.apify.com/v2/acts'
 
 const APIFY_ACTORS = {
@@ -98,7 +98,6 @@ export function mapApifyFacebookPost(item: Record<string, any>): SocialPostConte
 export async function fetchWebsiteEnrichment({
   url,
   apiKey,
-  limit = 12,
   fetcher = fetch,
 }: {
   url: string
@@ -106,7 +105,7 @@ export async function fetchWebsiteEnrichment({
   limit?: number
   fetcher?: FetchLike
 }): Promise<Pick<RawEnrichmentInput, 'websitePages'>> {
-  const response = await fetcher(FIRECRAWL_CRAWL_URL, {
+  const response = await fetcher(FIRECRAWL_SCRAPE_URL, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -114,20 +113,18 @@ export async function fetchWebsiteEnrichment({
     },
     body: JSON.stringify({
       url,
-      limit,
-      scrapeOptions: {
-        formats: ['markdown'],
-        onlyMainContent: true,
-      },
+      formats: ['markdown'],
+      onlyMainContent: true,
+      timeout: 60000,
     }),
   })
 
   const data = await response.json()
-  if (!response.ok) {
+  if (!response.ok || !data?.success) {
     throw new Error(data?.error || 'Firecrawl website import failed')
   }
 
-  return { websitePages: mapFirecrawlDocuments(data.data || []) }
+  return { websitePages: mapFirecrawlDocuments([data.data]) }
 }
 
 export async function fetchInstagramEnrichment({

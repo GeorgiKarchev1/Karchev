@@ -168,9 +168,9 @@ async function runOpenClawModel(prompt: string, model: string) {
     return [stdout, stderr].filter(Boolean).join('\n')
   } catch (error) {
     const maybe = error as { stdout?: string; stderr?: string; message?: string }
-    const output = [maybe.stdout, maybe.stderr].filter(Boolean).join('\n')
-    if (output && output.includes('{') && output.includes('}')) return output
-    throw new Error(maybe.message || 'OpenClaw dev model call failed')
+    const output = [maybe.stdout, maybe.stderr].filter(Boolean).join('\n').trim()
+    if (output) return output
+    throw new Error('OpenClaw dev model call failed')
   }
 }
 
