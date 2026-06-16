@@ -1,7 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { z } from 'zod'
+import { rateLimit, getClientIp, maybeSweep } from '../../../lib/rate-limit'
 
 const TO_EMAIL = 'goshoo429@gmail.com'
+
+// Max 5 submissions per minute per IP — generous for a real user, throttles abuse.
+const RATE_LIMIT = 5
+const RATE_WINDOW_MS = 60_000
+
+const leadSchema = z.object({
+  answers: z.record(z.unknown()).default({}),
+  lead: z.object({
+    name: z.string().trim().min(1).max(200),
+    email: z.string().trim().email().max(200),
+    phone: z.string().trim().max(50).optional().or(z.literal('')),
+    company: z.string().trim().max(200).optional().or(z.literal('')),
+  }),
+  result: z.object({
+    minPrice: z.union([z.number(), z.string()]),
+    maxPrice: z.union([z.number(), z.string()]),
+    recommendedType: z.string().max(200).optional().default('—'),
+  }),
+  lang: z.string().max(8).optional(),
+})
 
 const KEY_LABELS: Record<string, string> = {
   siteType:          'Тип сайт',
@@ -74,9 +96,33 @@ function row(k: string, v: unknown): string {
 }
 
 export async function POST(req: NextRequest) {
+  // Rate limit before doing any work (parsing, sending email).
+  maybeSweep()
+  const ip = getClientIp(req)
+  const limit = rateLimit(`submit-lead:${ip}`, RATE_LIMIT, RATE_WINDOW_MS)
+  if (!limit.success) {
+    return NextResponse.json(
+      { ok: false, error: 'Твърде много заявки. Опитайте отново след малко.' },
+      { status: 429, headers: { 'Retry-After': String(limit.retryAfter) } }
+    )
+  }
+
+  // Validate input — malformed payloads get a clean 400, not a 500.
+  let data: z.infer<typeof leadSchema>
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY)
-    const { answers, lead, result, lang } = await req.json()
+    data = leadSchema.parse(await req.json())
+  } catch {
+    return NextResponse.json({ ok: false, error: 'Невалидни данни' }, { status: 400 })
+  }
+
+  try {
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      console.error('[submit-lead] RESEND_API_KEY not set')
+      return NextResponse.json({ ok: false, error: 'Имейл услугата не е конфигурирана' }, { status: 503 })
+    }
+    const resend = new Resend(apiKey)
+    const { answers, lead, result, lang } = data
     const isBG = lang === 'BG'
 
     const answersHtml = Object.entries(answers as Record<string, unknown>)
@@ -108,13 +154,18 @@ export async function POST(req: NextRequest) {
   </table>
 </div>`
 
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: 'Karchev Калкулатор <onboarding@resend.dev>',
       to: TO_EMAIL,
       subject: `Ново запитване — ${lead.name} (${result.minPrice}–${result.maxPrice} EUR)`,
       html,
       replyTo: lead.email,
     })
+
+    if (error) {
+      console.error('[submit-lead] resend error', error)
+      return NextResponse.json({ ok: false, error: 'Изпращането се провали' }, { status: 502 })
+    }
 
     return NextResponse.json({ ok: true })
   } catch (err) {

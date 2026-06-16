@@ -1,11 +1,31 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { signToken, verifyToken, COOKIE_NAME, COOKIE_MAX_AGE } from '../../../../lib/auth'
+import { rateLimit, getClientIp, maybeSweep } from '../../../../lib/rate-limit'
+
+// Max 10 login attempts per 10 minutes per IP — blocks brute-forcing.
+const LOGIN_LIMIT = 10
+const LOGIN_WINDOW_MS = 10 * 60_000
 
 export async function POST(req: NextRequest) {
-  const { password } = await req.json()
+  maybeSweep()
+  const ip = getClientIp(req)
+  const limit = rateLimit(`admin-auth:${ip}`, LOGIN_LIMIT, LOGIN_WINDOW_MS)
+  if (!limit.success) {
+    return NextResponse.json(
+      { error: 'Твърде много опити. Опитайте отново по-късно.' },
+      { status: 429, headers: { 'Retry-After': String(limit.retryAfter) } }
+    )
+  }
+
+  let password: unknown
+  try {
+    ;({ password } = await req.json())
+  } catch {
+    return NextResponse.json({ error: 'Невалидна заявка' }, { status: 400 })
+  }
   const adminPassword = process.env.ADMIN_PASSWORD
 
-  if (!adminPassword || password !== adminPassword) {
+  if (!adminPassword || typeof password !== 'string' || password !== adminPassword) {
     return NextResponse.json({ error: 'Невалидна парола' }, { status: 401 })
   }
 
