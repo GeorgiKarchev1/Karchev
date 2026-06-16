@@ -13,6 +13,8 @@ const ROUTE_PAIRS: Array<[string, { bg: string; en: string }]> = [
   ['/en/landing-pages', { bg: '/bg/landing-stranitsi', en: '/en/landing-pages' }],
   ['/bg/ai-avtomatizatsii', { bg: '/bg/ai-avtomatizatsii', en: '/en/ai-automation' }],
   ['/en/ai-automation', { bg: '/bg/ai-avtomatizatsii', en: '/en/ai-automation' }],
+  ['/bg/ai-integratsiya', { bg: '/bg/ai-integratsiya', en: '/en/ai-integration' }],
+  ['/en/ai-integration', { bg: '/bg/ai-integratsiya', en: '/en/ai-integration' }],
   ['/bg/kazusi', { bg: '/bg/kazusi', en: '/en/case-studies' }],
   ['/en/case-studies', { bg: '/bg/kazusi', en: '/en/case-studies' }],
   ['/bg/kazusi/editing-bg', { bg: '/bg/kazusi/editing-bg', en: '/en/case-studies/editing-bg' }],

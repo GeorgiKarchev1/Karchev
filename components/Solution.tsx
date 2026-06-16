@@ -5,7 +5,7 @@ import { useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
-import { Check, Clapperboard, Globe } from 'lucide-react'
+import { Check, Workflow, Network } from 'lucide-react'
 import { useLanguage } from '@/context/LanguageContext'
 
 if (typeof window !== 'undefined') {
@@ -92,7 +92,7 @@ export default function Solution() {
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#534b52]/4 blur-[80px] pointer-events-none rounded-full" />
             <div className="p-10 md:p-12 relative">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#534b52]/10 text-[#534b52] text-xs font-bold uppercase tracking-wider mb-6 border border-[#534b52]/20">
-                <Clapperboard className="w-3.5 h-3.5" />
+                <Workflow className="w-3.5 h-3.5" />
                 {t('solution.content.badge')}
               </div>
               <h3 className="text-3xl md:text-4xl font-bold mb-4 text-[#2d232e]">{t('solution.content.title')}</h3>
@@ -124,7 +124,7 @@ export default function Solution() {
             <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#534b52]/3 blur-[80px] pointer-events-none rounded-full" />
             <div className="p-10 md:p-12 relative">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#2d232e]/5 text-[#2d232e] text-xs font-bold uppercase tracking-wider mb-6 border border-[#2d232e]/10">
-                <Globe className="w-3.5 h-3.5" />
+                <Network className="w-3.5 h-3.5" />
                 {t('solution.web.badge')}
               </div>
               <h3 className="text-3xl md:text-4xl font-bold mb-4 text-[#2d232e]">{t('solution.web.title')}</h3>

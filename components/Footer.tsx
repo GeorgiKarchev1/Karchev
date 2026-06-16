@@ -66,17 +66,17 @@ export default function Footer() {
             </div>
             <ul className="space-y-3">
               <li>
-                <Link href={locale === 'en' ? '/en/website-development' : '/bg/izrabotka-na-saitove'} className="text-[#2d232e] text-sm hover:text-[#534b52] transition-colors font-medium">
+                <Link href={locale === 'en' ? '/en/ai-integration' : '/bg/ai-integratsiya'} className="text-[#2d232e] text-sm hover:text-[#534b52] transition-colors font-medium">
                   {t('footer.service2')}
                 </Link>
               </li>
               <li>
-                <Link href={locale === 'en' ? '/en/landing-pages' : '/bg/landing-stranitsi'} className="text-[#2d232e] text-sm hover:text-[#534b52] transition-colors font-medium">
-                  Landing Pages
+                <Link href={locale === 'en' ? '/en/ai-automation' : '/bg/ai-avtomatizatsii'} className="text-[#2d232e] text-sm hover:text-[#534b52] transition-colors font-medium">
+                  {t('footer.service1')}
                 </Link>
               </li>
               <li>
-                <Link href={locale === 'en' ? '/en/ai-automation' : '/bg/ai-avtomatizatsii'} className="text-[#2d232e] text-sm hover:text-[#534b52] transition-colors font-medium">
+                <Link href="https://cal.com/georgi-karchev-3r9puz/30min" target="_blank" className="text-[#2d232e] text-sm hover:text-[#534b52] transition-colors font-medium">
                   {t('footer.service3')}
                 </Link>
               </li>

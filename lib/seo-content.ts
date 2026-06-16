@@ -445,4 +445,158 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       keywords: ['ai automation for small business', 'lead follow-up automation', 'content workflow automation'],
     },
   },
+  bgAiIntegration: {
+    locale: 'bg',
+    path: '/bg/ai-integratsiya',
+    title: 'AI интеграция за бизнес, която работи в продукция',
+    intro: 'Вграждаме AI директно в системите, които вече ползвате — CRM, имейл и вътрешни инструменти — така че да автоматизира реална работа от първия ден, а не да стои в презентация.',
+    primaryKeyword: 'AI интеграция за бизнес',
+    eyebrow: 'Услуга · България & ЕС',
+    ctaLabel: 'Запази безплатен AI одит',
+    ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
+    proof: [
+      'Бизнес с повтаряема ръчна работа, която яде времето на екипа',
+      'Основател, който е пробвал AI инструменти, но те не са влезли в ежедневието',
+      'Екип, който иска AI вътре в текущия си стек, а не нова платформа',
+    ],
+    offerTitle: 'Какво влиза в ангажимента',
+    offerPoints: [
+      'Одит на процесите, който подрежда къде AI спестява най-много време и пари първо.',
+      'Персонализирани AI агенти, които поемат повтаряемите задачи — изградени и тествани с реалните Ви данни.',
+      'Интеграция в текущия ти стек — CRM, имейл, таблици и вътрешни инструменти.',
+      'Постоянен мониторинг и подобрения, за да продължи системата да работи след launch.',
+    ],
+    outcomesTitle: 'Какъв резултат целим',
+    outcomes: [
+      'Часове ръчна рутина, премахнати от седмицата на екипа Ви.',
+      'По-бърз и по-постоянен follow-up, за да изпускате по-малко възможности.',
+      'AI, който работи в реалните ти операции, вместо да бъде изоставен.',
+    ],
+    faqTitle: 'Често задавани въпроси',
+    faqs: [
+      {
+        question: 'Трябва ли да имам конкретен CRM или stack?',
+        answer: 'Не. Започваме от инструментите, които вече използвате, и интегрираме AI там, където носи най-ясна стойност.',
+      },
+      {
+        question: 'Колко бързо ще видим резултати?',
+        answer: 'При повечето клиенти първият AI агент влиза в продукция за 2–4 седмици и работи с реални данни.',
+      },
+      {
+        question: 'AI ще замени ли екипа ми?',
+        answer: 'Не. Махаме повтаряемата работа, за да отделят хората ти време за продажби, обслужване и решения, които изискват човек.',
+      },
+      {
+        question: 'Сигурни ли са данните ни?',
+        answer: 'Да. Проектираме всяка интеграция около поверителността на данните и използваме модели и настройки, които пазят информацията ти и са в съответствие с GDPR.',
+      },
+      {
+        question: 'Какво се случва след launch?',
+        answer: 'Следим, поддържаме и подобряваме системата и добавяме нови автоматизации, докато бизнесът Ви расте.',
+      },
+    ],
+    relatedTitle: 'Следващи логични страници',
+    relatedLinks: [
+      {
+        href: '/bg/ai-avtomatizatsii',
+        label: 'AI автоматизации',
+        description: 'Когато искате да започнете с един конкретен процес и да го автоматизирате бързо.',
+      },
+      {
+        href: '/bg/tools',
+        label: 'Инструменти & ресурси',
+        description: 'Инструменти и workflows, които използваме за реални AI системи.',
+      },
+      {
+        href: '/bg/blog/kak-ai-avtomatizatsiite-pestyat-vreme-na-malak-biznes',
+        label: 'Как AI спестява време',
+        description: 'Статията, която обяснява къде AI реално връща часове на малък екип.',
+      },
+    ],
+    serviceName: 'AI интеграция за бизнес',
+    serviceDescription: 'AI интеграция и автоматизация, вградени в текущите ти системи — CRM, имейл и вътрешни инструменти.',
+    metadata: {
+      title: 'AI интеграция за бизнес | Karchev',
+      description: 'AI интеграция за бизнеси в България и ЕС: вграждаме AI агенти в CRM, имейл и вътрешните ти инструменти. Live в продукция за 2–4 седмици.',
+      alternates: localizedAlternates('/bg/ai-integratsiya', '/en/ai-integration', 'bg'),
+      keywords: ['AI интеграция за бизнес', 'внедряване на AI', 'AI агенти', 'автоматизация на процеси', 'AI в CRM'],
+    },
+  },
+  enAiIntegration: {
+    locale: 'en',
+    path: '/en/ai-integration',
+    title: 'AI integration for businesses that want results, not pilots',
+    intro: 'We build AI directly into the systems you already run — your CRM, inbox, and internal tools — so it automates real work from day one instead of sitting in a slide deck.',
+    primaryKeyword: 'ai integration for business',
+    eyebrow: 'Service · Bulgaria & EU',
+    ctaLabel: 'Book a free AI audit',
+    ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
+    proof: [
+      'Businesses with repetitive manual work eating their team\'s time',
+      'Founders who tried AI tools but never got them into daily operations',
+      'Teams that want AI inside their current stack, not a new platform to learn',
+    ],
+    offerTitle: 'What the engagement covers',
+    offerPoints: [
+      'A workflow audit that ranks where AI saves the most time and money first.',
+      'Custom AI agents that take over repetitive tasks, built and tested on your real data.',
+      'Integration into your existing stack — CRM, email, spreadsheets, and internal tools.',
+      'Ongoing monitoring and improvement so the system keeps working after launch.',
+    ],
+    outcomesTitle: 'What we are trying to improve',
+    outcomes: [
+      'Hours of manual busywork removed from your team\'s week.',
+      'Faster, more consistent follow-up so fewer opportunities slip.',
+      'AI that runs inside your real operations instead of being abandoned.',
+    ],
+    faqTitle: 'Common questions',
+    faqs: [
+      {
+        question: 'Do we need a specific CRM or tech stack already?',
+        answer: 'No. We start from the tools you already use and integrate AI where it creates the clearest value.',
+      },
+      {
+        question: 'How fast can we see results?',
+        answer: 'Most clients have their first AI agent live in production within 2–4 weeks, working on real data.',
+      },
+      {
+        question: 'Will AI replace our team?',
+        answer: 'No. We remove the repetitive work so your people spend their time on sales, service, and decisions that need a human.',
+      },
+      {
+        question: 'Is our data safe?',
+        answer: 'Yes. We design every integration around data privacy and use models and setups that keep your information protected and GDPR-aligned.',
+      },
+      {
+        question: 'What happens after launch?',
+        answer: 'We monitor, maintain, and improve the system, and add new automations as your business grows.',
+      },
+    ],
+    relatedTitle: 'Related pages',
+    relatedLinks: [
+      {
+        href: '/en/ai-automation',
+        label: 'AI automation',
+        description: 'When you want to start with one specific workflow and automate it fast.',
+      },
+      {
+        href: '/en/tools',
+        label: 'Tools & resources',
+        description: 'Useful tooling and workflows that inform our client AI systems.',
+      },
+      {
+        href: '/en/blog/how-ai-automation-saves-time-for-small-businesses',
+        label: 'How AI saves time',
+        description: 'An honest look at where AI actually returns hours to a small team.',
+      },
+    ],
+    serviceName: 'AI integration for business',
+    serviceDescription: 'AI integration and automation built into your existing systems — CRM, email, and internal tools.',
+    metadata: {
+      title: 'AI Integration for Business | Karchev',
+      description: 'AI integration for businesses in Bulgaria and the EU: we build AI agents into your CRM, inbox, and internal tools. Live in production in 2–4 weeks.',
+      alternates: localizedAlternates('/bg/ai-integratsiya', '/en/ai-integration', 'en'),
+      keywords: ['ai integration for business', 'ai implementation', 'custom ai agents', 'business process automation', 'ai in crm'],
+    },
+  },
 }

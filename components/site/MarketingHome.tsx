@@ -4,7 +4,6 @@ import Problem from '@/components/Problem'
 import Solution from '@/components/Solution'
 import About from '@/components/About'
 import WhoItsFor from '@/components/WhoItsFor'
-import PriceCalculatorCTA from '@/components/PriceCalculatorCTA'
 import Contact from '@/components/Contact'
 import FinalCTA from '@/components/FinalCTA'
 import Footer from '@/components/Footer'
@@ -16,7 +15,6 @@ export default function MarketingHome() {
       <Hero />
       <Problem />
       <Solution />
-      <PriceCalculatorCTA />
       <WhoItsFor />
       <Contact />
       <About />
