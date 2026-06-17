@@ -14,8 +14,6 @@ export const translations = {
             titleHighlight: 'Us',
             heading: 'We ship working AI, not slide decks.',
             p1: 'Most agencies sell you a strategy document and disappear. We build AI directly into the systems you already run — and stay to keep it working. The only result that matters is the time and money it gives you back.',
-            p2: 'We are operators, not consultants. We map where AI saves you the most, build the agent, integrate it into your real tools, and put it into production — usually in weeks.',
-            p3: 'No hype. No enterprise theatre. Just AI that quietly takes over the busywork so your team can do the work that actually moves the business.',
             stats: {
                 views: 'Hours saved per week',
                 reached: 'Tasks automated',
@@ -224,8 +222,6 @@ export const translations = {
             titleHighlight: 'Нас',
             heading: 'Доставяме работещ AI, не презентации.',
             p1: 'Повечето агенции Ви продават стратегически документ и изчезват. Ние внедряваме AI директно в системите, които вече използвате — и оставаме да го поддържаме. Единственият резултат, който има значение, е времето и парите, които Ви връща.',
-            p2: 'Ние сме оператори, не консултанти. Анализираме къде AI спестява най-много, изграждаме агента, интегрираме го в реалните Ви инструменти и го пускаме в продукция — обикновено за седмици.',
-            p3: 'Без излишен шум. Без enterprise театър. Само AI, който поема рутината, за да може екипът Ви да се фокусира върху работата, която реално движи бизнеса.',
             stats: {
                 views: 'Спестени часа седмично',
                 reached: 'Автоматизирани задачи',

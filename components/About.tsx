@@ -52,7 +52,7 @@ const About = () => {
 
         {/* Team cards */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-5xl mx-auto"
+          className="grid grid-cols-1 gap-6 md:gap-10 max-w-md mx-auto"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-80px' }}
@@ -94,53 +94,6 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Card — Antony */}
-          <motion.div variants={fadeUp} className="group relative">
-            <div className="absolute inset-0 bg-[#2d232e] rounded-2xl translate-x-[6px] translate-y-[6px] transition-transform duration-300 group-hover:translate-x-[10px] group-hover:translate-y-[10px]" />
-
-            <div className="relative border-2 border-[#2d232e] rounded-2xl overflow-hidden">
-              <div className="relative h-[480px] sm:h-[560px] md:h-[620px] overflow-hidden">
-                <Image
-                  src="/img/antony.png"
-                  alt="Antony — Co-Founder"
-                  fill
-                  quality={95}
-                  className="object-cover object-[center_8%] transition-transform duration-[1.4s] ease-out group-hover:scale-[1.03]"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2d232e] via-[#2d232e]/30 to-transparent [mask-image:linear-gradient(to_top,black_0%,black_35%,transparent_65%)]" />
-              </div>
-
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-7">
-                <div className="inline-block px-2.5 py-1 rounded-full bg-[#534b52] text-[#f1f0ea] text-[10px] font-black uppercase tracking-widest mb-3">
-                  {t('about.cofounder')}
-                </div>
-                <div className="text-2xl md:text-3xl font-black text-[#f1f0ea] leading-tight">
-                  Antony
-                </div>
-                <div className="text-sm text-white/50 font-medium mt-1.5">
-                  {t('about.role2')}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-        </motion.div>
-
-        {/* Bottom text row */}
-        <motion.div
-          className="mt-10 md:mt-14 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        >
-          <p className="text-[#2d232e]/60 text-sm md:text-base leading-relaxed font-medium border-l-2 border-[#534b52]/40 pl-4">
-            {t('about.p2')}
-          </p>
-          <p className="text-[#2d232e]/60 text-sm md:text-base leading-relaxed font-medium border-l-2 border-[#534b52]/40 pl-4">
-            {t('about.p3')}
-          </p>
         </motion.div>
 
       </div>

@@ -3,8 +3,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import {
-  Plus, Trash2, Eye, EyeOff, LogOut, Sparkles, X, Check, Loader2, PenLine, Globe
+  Plus, Trash2, Eye, EyeOff, LogOut, Sparkles, X, Check, Loader2, PenLine, Globe, BarChart3
 } from 'lucide-react'
+import AdminStats from '@/components/admin/AdminStats'
 
 interface Post {
   id: string
@@ -44,6 +45,7 @@ function formatDate(iso: string) {
 
 export default function AdminDashboard() {
   const router = useRouter()
+  const [tab, setTab] = useState<'stats' | 'blog'>('stats')
   const [posts, setPosts] = useState<Post[]>([])
   const [storageMode, setStorageMode] = useState<'local' | 'blob'>('local')
   const [loading, setLoading] = useState(true)
@@ -156,13 +158,15 @@ export default function AdminDashboard() {
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <button
-              onClick={() => setShowCreate(true)}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#2d232e] text-[#f1f0ea] font-bold text-sm hover:bg-[#534b52] transition-colors"
-            >
-              <Plus className="w-4 h-4" />
-              Нова статия
-            </button>
+            {tab === 'blog' && (
+              <button
+                onClick={() => setShowCreate(true)}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#2d232e] text-[#f1f0ea] font-bold text-sm hover:bg-[#534b52] transition-colors"
+              >
+                <Plus className="w-4 h-4" />
+                Нова статия
+              </button>
+            )}
             <button
               onClick={logout}
               className="flex items-center gap-2 px-3 py-2 rounded-xl border-2 border-[#2d232e]/15 text-sm font-medium hover:border-[#2d232e]/40 transition-colors"
@@ -174,7 +178,35 @@ export default function AdminDashboard() {
         </div>
       </header>
 
+      {/* Tab bar */}
+      <div className="max-w-5xl mx-auto px-6 pt-8">
+        <div className="inline-flex rounded-xl border-2 border-[#2d232e]/10 bg-white/60 p-1">
+          {([
+            { id: 'stats', label: 'Analytics & SEO', icon: <BarChart3 className="w-4 h-4" /> },
+            { id: 'blog', label: 'Блог', icon: <PenLine className="w-4 h-4" /> },
+          ] as const).map((t) => (
+            <button
+              key={t.id}
+              onClick={() => setTab(t.id)}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-colors ${
+                tab === t.id ? 'bg-[#2d232e] text-[#f1f0ea]' : 'text-[#2d232e]/50 hover:text-[#2d232e]'
+              }`}
+            >
+              {t.icon}
+              {t.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {tab === 'stats' && (
+        <div className="max-w-5xl mx-auto px-6 py-10">
+          <AdminStats />
+        </div>
+      )}
+
       {/* Post list */}
+      {tab === 'blog' && (
       <div className="max-w-5xl mx-auto px-6 py-10">
         {loading ? (
           <div className="flex items-center justify-center py-20">
@@ -238,6 +270,7 @@ export default function AdminDashboard() {
           </div>
         )}
       </div>
+      )}
 
       {/* Create modal */}
       {showCreate && (

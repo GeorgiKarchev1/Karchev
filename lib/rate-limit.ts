@@ -15,9 +15,14 @@ type Bucket = { count: number; resetAt: number }
 const buckets = new Map<string, Bucket>()
 
 export function getClientIp(req: NextRequest): string {
+  // Prefer the platform-set header (Vercel writes the real client IP to
+  // x-real-ip and overwrites it on every request). x-forwarded-for is
+  // client-controllable, so it's only a last-resort fallback.
+  const real = req.headers.get('x-real-ip')
+  if (real) return real.trim()
   const forwarded = req.headers.get('x-forwarded-for')
   if (forwarded) return forwarded.split(',')[0].trim()
-  return req.headers.get('x-real-ip') ?? 'unknown'
+  return 'unknown'
 }
 
 export interface RateLimitResult {

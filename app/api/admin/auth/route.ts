@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { signToken, verifyToken, COOKIE_NAME, COOKIE_MAX_AGE } from '../../../../lib/auth'
+import { signToken, verifyToken, passwordMatches, COOKIE_NAME, COOKIE_MAX_AGE } from '../../../../lib/auth'
 import { rateLimit, getClientIp, maybeSweep } from '../../../../lib/rate-limit'
 
 // Max 10 login attempts per 10 minutes per IP — blocks brute-forcing.
@@ -23,13 +23,17 @@ export async function POST(req: NextRequest) {
   } catch {
     return NextResponse.json({ error: 'Невалидна заявка' }, { status: 400 })
   }
-  const adminPassword = process.env.ADMIN_PASSWORD
 
-  if (!adminPassword || typeof password !== 'string' || password !== adminPassword) {
+  if (!(await passwordMatches(password))) {
     return NextResponse.json({ error: 'Невалидна парола' }, { status: 401 })
   }
 
-  const token = await signToken(password)
+  const token = await signToken()
+  if (!token) {
+    // ADMIN_SECRET is missing/weak — fail closed instead of issuing a forgeable session.
+    return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+  }
+
   const res = NextResponse.json({ ok: true })
   res.cookies.set(COOKIE_NAME, token, {
     httpOnly: true,

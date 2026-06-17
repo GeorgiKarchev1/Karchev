@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { getAllPosts } from '@/lib/posts'
+import { getPublishedPosts } from '@/lib/posts'
 import { absoluteUrl } from '@/lib/site'
+import { sanitizeHtml } from '@/lib/sanitize'
 
 export const dynamic = 'force-dynamic'
 
@@ -12,7 +13,7 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const posts = await getAllPosts()
+  const posts = await getPublishedPosts()
   const post = posts.find((p) => p.slug === params.slug)
   if (!post) return {}
 
@@ -34,12 +35,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function DynamicBulgarianBlogPost({ params }: Props) {
-  const posts = await getAllPosts()
+  const posts = await getPublishedPosts()
   const post = posts.find((p) => p.slug === params.slug)
 
   if (!post || !post.content) {
     notFound()
   }
+
+  const safeContent = sanitizeHtml(post.content)
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -110,7 +113,7 @@ export default async function DynamicBulgarianBlogPost({ params }: Props) {
             prose-p:mb-5 prose-p:leading-relaxed
             prose-li:mb-1 prose-ul:mb-5 prose-ul:pl-6
             prose-strong:text-[#2d232e] prose-strong:font-bold"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{ __html: safeContent }}
         />
       </article>
 

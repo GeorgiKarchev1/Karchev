@@ -83,6 +83,17 @@ const VALUE_LABELS: Record<string, string> = {
   no_content:      'Без съдържание',
 }
 
+// Escape user-supplied text before it lands in the notification email's HTML,
+// so a crafted name/company/answer can't inject markup into the message.
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 function translateValue(v: unknown): string {
   if (Array.isArray(v)) return v.map(item => VALUE_LABELS[item] ?? item).join(', ')
   const s = String(v ?? '—')
@@ -90,8 +101,8 @@ function translateValue(v: unknown): string {
 }
 
 function row(k: string, v: unknown): string {
-  const keyLabel = KEY_LABELS[k] ?? k
-  const val = translateValue(v)
+  const keyLabel = escapeHtml(KEY_LABELS[k] ?? k)
+  const val = escapeHtml(translateValue(v))
   return `<tr><td style="padding:6px 12px;color:#888;font-size:13px;white-space:nowrap">${keyLabel}</td><td style="padding:6px 12px;font-size:13px;color:#2d232e">${val}</td></tr>`
 }
 

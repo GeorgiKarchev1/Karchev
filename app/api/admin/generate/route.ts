@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { verifyToken, COOKIE_NAME } from '../../../../lib/auth'
+import { rateLimit, getClientIp, maybeSweep } from '../../../../lib/rate-limit'
+import { sanitizeHtml } from '../../../../lib/sanitize'
 import Anthropic from '@anthropic-ai/sdk'
+
+// Each call hits the paid Anthropic API — cap usage to prevent cost abuse even
+// from an authenticated session.
+const GEN_LIMIT = 20
+const GEN_WINDOW_MS = 60 * 60_000 // 20 generations / hour / IP
 
 async function authorized(req: NextRequest) {
   const token = req.cookies.get(COOKIE_NAME)?.value ?? ''
@@ -10,8 +17,19 @@ async function authorized(req: NextRequest) {
 export async function POST(req: NextRequest) {
   if (!(await authorized(req))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
+  maybeSweep()
+  const limit = rateLimit(`admin-generate:${getClientIp(req)}`, GEN_LIMIT, GEN_WINDOW_MS)
+  if (!limit.success) {
+    return NextResponse.json(
+      { error: 'Твърде много заявки. Опитайте по-късно.' },
+      { status: 429, headers: { 'Retry-After': String(limit.retryAfter) } }
+    )
+  }
+
   const { topic, language } = await req.json()
-  if (!topic) return NextResponse.json({ error: 'Missing topic' }, { status: 400 })
+  if (!topic || typeof topic !== 'string' || topic.length > 500) {
+    return NextResponse.json({ error: 'Missing or invalid topic' }, { status: 400 })
+  }
 
   const apiKey = process.env.ANTHROPIC_API_KEY
   if (!apiKey) return NextResponse.json({ error: 'ANTHROPIC_API_KEY not set' }, { status: 500 })
@@ -66,6 +84,10 @@ Return ONLY a valid JSON object (no markdown, no backticks) in this format:
     if (!jsonMatch) return NextResponse.json({ error: 'Failed to parse AI response' }, { status: 500 })
     parsed = JSON.parse(jsonMatch[0])
   }
+
+  // Sanitize AI-produced HTML before it is ever rendered (preview or storage),
+  // closing the prompt-injection -> stored-XSS path.
+  if (typeof parsed.content === 'string') parsed.content = sanitizeHtml(parsed.content)
 
   return NextResponse.json(parsed)
 }

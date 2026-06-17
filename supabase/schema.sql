@@ -53,3 +53,54 @@ create table if not exists weekly_plans (
   plan_json jsonb not null,
   created_at timestamptz default now()
 );
+
+-- =====================================================================
+-- Row Level Security
+-- =====================================================================
+-- Without RLS the public anon key (NEXT_PUBLIC_SUPABASE_ANON_KEY, shipped to
+-- the browser) can read/write every row in every table. Enable RLS on all
+-- tables and scope access to the authenticated owner via auth.uid().
+-- Run this whole file against the Supabase SQL editor.
+
+alter table profiles          enable row level security;
+alter table workspaces        enable row level security;
+alter table business_profiles enable row level security;
+alter table content_pillars   enable row level security;
+alter table content_ideas     enable row level security;
+alter table weekly_plans      enable row level security;
+
+-- profiles: a user may only see and manage their own profile row.
+drop policy if exists "profiles_self" on profiles;
+create policy "profiles_self" on profiles
+  for all using (id = auth.uid()) with check (id = auth.uid());
+
+-- workspaces: only the owner.
+drop policy if exists "workspaces_owner" on workspaces;
+create policy "workspaces_owner" on workspaces
+  for all using (owner_id = auth.uid()) with check (owner_id = auth.uid());
+
+-- Helper predicate reused by all workspace-scoped child tables:
+-- the row's workspace must be owned by the current user.
+drop policy if exists "business_profiles_owner" on business_profiles;
+create policy "business_profiles_owner" on business_profiles
+  for all
+  using (workspace_id in (select id from workspaces where owner_id = auth.uid()))
+  with check (workspace_id in (select id from workspaces where owner_id = auth.uid()));
+
+drop policy if exists "content_pillars_owner" on content_pillars;
+create policy "content_pillars_owner" on content_pillars
+  for all
+  using (workspace_id in (select id from workspaces where owner_id = auth.uid()))
+  with check (workspace_id in (select id from workspaces where owner_id = auth.uid()));
+
+drop policy if exists "content_ideas_owner" on content_ideas;
+create policy "content_ideas_owner" on content_ideas
+  for all
+  using (workspace_id in (select id from workspaces where owner_id = auth.uid()))
+  with check (workspace_id in (select id from workspaces where owner_id = auth.uid()));
+
+drop policy if exists "weekly_plans_owner" on weekly_plans;
+create policy "weekly_plans_owner" on weekly_plans
+  for all
+  using (workspace_id in (select id from workspaces where owner_id = auth.uid()))
+  with check (workspace_id in (select id from workspaces where owner_id = auth.uid()));
