@@ -62,13 +62,15 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_80%_55%_at_85%_10%,rgba(83,75,82,0.10)_0%,transparent_60%),radial-gradient(ellipse_70%_50%_at_10%_95%,rgba(45,35,46,0.08)_0%,transparent_60%)]" />
       <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden" aria-hidden="true">
         <img
-          src="/img/hero-background-mobile-generated.png"
+          src="/img/hero-background-mobile-generated.webp"
           alt=""
+          decoding="async"
           className="hero-illustration-mobile"
         />
         <img
-          src="/img/hero-background-generated.png"
+          src="/img/hero-background-generated.webp"
           alt=""
+          decoding="async"
           className="hero-illustration-desktop"
         />
       </div>

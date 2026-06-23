@@ -49,10 +49,12 @@ export default function FinalCTA() {
     <section className="py-24 md:py-40 relative overflow-hidden bg-[#e0ddcf] flex items-center justify-center border-t-2 border-b-2 border-[#2d232e]">
       <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden" aria-hidden="true">
         <picture>
-          <source media="(min-width: 1024px)" srcSet="/img/final-cta-background-desktop-generated.png" />
+          <source media="(min-width: 1024px)" srcSet="/img/final-cta-background-desktop-generated.webp" />
           <img
-            src="/img/final-cta-background-small-generated-v3.png"
+            src="/img/final-cta-background-small-generated-v3.webp"
             alt=""
+            loading="lazy"
+            decoding="async"
             className="final-cta-illustration-media"
           />
         </picture>

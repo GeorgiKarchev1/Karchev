@@ -2,9 +2,26 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { headers } from 'next/headers'
 import Script from 'next/script'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import { LanguageProvider } from '@/context/LanguageContext'
 import CookieBanner from '@/components/CookieBanner'
 import { BASE_URL, getHtmlLang } from '@/lib/site'
+
+// Self-hosted via next/font: no render-blocking request to fonts.googleapis.com
+// (which the CSP also blocks), no layout shift, and the files are preloaded.
+const inter = Inter({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['400', '500', '600'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -80,7 +97,7 @@ export default function RootLayout({
   const initialLanguage = htmlLang === 'en' ? 'EN' : 'BG'
 
   return (
-    <html lang={htmlLang} className="scroll-smooth overflow-x-hidden">
+    <html lang={htmlLang} className={`${inter.variable} ${spaceGrotesk.variable} scroll-smooth overflow-x-hidden`}>
       <body className="font-sans antialiased text-white overflow-x-hidden">
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`

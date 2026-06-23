@@ -35,11 +35,18 @@ const nextConfig = {
       'https://*.clarity.ms',
     ].join(' ')
 
+    // Next.js dev mode (webpack HMR / React Refresh) evaluates bundled code via
+    // eval(); without 'unsafe-eval' the dev client crashes and nothing hydrates
+    // (framer-motion content stays invisible). Production never needs eval, so it
+    // stays strict.
+    const isDev = process.env.NODE_ENV !== 'production'
+    const scriptEval = isDev ? " 'unsafe-eval'" : ''
+
     const csp = [
       "default-src 'self'",
       // Next.js injects inline bootstrap scripts; 'unsafe-inline' is required
       // without a nonce setup. XSS is additionally mitigated by HTML sanitization.
-      `script-src 'self' 'unsafe-inline' ${analytics}`,
+      `script-src 'self' 'unsafe-inline'${scriptEval} ${analytics}`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https:",
       "font-src 'self' data:",
