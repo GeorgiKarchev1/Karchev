@@ -102,6 +102,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.65,
     },
     {
+      url: `${baseUrl}/bg/kak-da-polzvam-ai-ako-nishto-ne-razbiram`,
+      lastModified: new Date('2026-06-23'),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/bg/blog/kolko-struva-sait-za-malak-biznes`,
       lastModified: new Date('2026-04-25'),
       changeFrequency: 'monthly',

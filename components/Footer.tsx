@@ -85,6 +85,13 @@ export default function Footer() {
                   {t('footer.blogLink')}
                 </Link>
               </li>
+              {locale !== 'en' && (
+                <li>
+                  <Link href="/bg/kak-da-polzvam-ai-ako-nishto-ne-razbiram" className="text-[#2d232e] text-sm hover:text-[#534b52] transition-colors font-medium">
+                    AI за начинаещи
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
