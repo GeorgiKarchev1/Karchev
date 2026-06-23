@@ -33,11 +33,13 @@ export async function GET(req: NextRequest) {
   }
   if (!token) return NextResponse.json({ error: 'Google auth failed' }, { status: 502 })
 
-  // GSC data lags ~2-3 days; query a 28-day window ending 3 days ago.
+  // GSC data lags ~2-3 days; query a 90-day window ending 3 days ago.
+  // A wider window surfaces every query the site has ever ranked for —
+  // a 28-day window on a new site shows only the 1-2 most recent ones.
   const end = new Date()
   end.setDate(end.getDate() - 3)
   const start = new Date(end)
-  start.setDate(start.getDate() - 28)
+  start.setDate(start.getDate() - 90)
   const startDate = ymd(start)
   const endDate = ymd(end)
 

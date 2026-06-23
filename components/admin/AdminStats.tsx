@@ -132,7 +132,7 @@ export default function AdminStats() {
   return (
     <div className="space-y-10">
       <div className="flex items-center justify-between">
-        <p className="text-xs font-bold uppercase tracking-widest text-[#2d232e]/40">Трафик & SEO · последните 28 дни</p>
+        <p className="text-xs font-bold uppercase tracking-widest text-[#2d232e]/40">Трафик (28 дни) · SEO (90 дни)</p>
         <button onClick={load} className="flex items-center gap-2 px-3 py-1.5 rounded-lg border-2 border-[#2d232e]/15 text-xs font-bold hover:border-[#2d232e]/40 transition-colors">
           <RefreshCw className="w-3.5 h-3.5" /> Обнови
         </button>
