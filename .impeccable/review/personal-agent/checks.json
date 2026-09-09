@@ -1,0 +1,163 @@
+[
+  {
+    "lang": "bg",
+    "width": 1440,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "viewport": 1440,
+      "overflow": [],
+      "font": "__Golos_Text_03e20f, sans-serif",
+      "bodyColor": "rgb(241, 240, 234)",
+      "images": true,
+      "smallTargets": []
+    },
+    "interactions": "tabs: all keys; FAQ; mobile menu; language destination; no portfolio/product name"
+  },
+  {
+    "lang": "bg",
+    "width": 768,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "viewport": 768,
+      "overflow": [],
+      "font": "__Golos_Text_03e20f, sans-serif",
+      "bodyColor": "rgb(241, 240, 234)",
+      "images": true,
+      "smallTargets": []
+    },
+    "interactions": "tabs: all keys; FAQ; mobile menu; language destination; no portfolio/product name"
+  },
+  {
+    "lang": "bg",
+    "width": 390,
+    "height": 844,
+    "errors": [],
+    "geometry": {
+      "viewport": 390,
+      "overflow": [],
+      "font": "__Golos_Text_03e20f, sans-serif",
+      "bodyColor": "rgb(241, 240, 234)",
+      "images": true,
+      "smallTargets": []
+    },
+    "interactions": "tabs: all keys; FAQ; mobile menu; language destination; no portfolio/product name"
+  },
+  {
+    "lang": "bg",
+    "width": 320,
+    "height": 740,
+    "errors": [],
+    "geometry": {
+      "viewport": 320,
+      "overflow": [],
+      "font": "__Golos_Text_03e20f, sans-serif",
+      "bodyColor": "rgb(241, 240, 234)",
+      "images": true,
+      "smallTargets": []
+    },
+    "interactions": "tabs: all keys; FAQ; mobile menu; language destination; no portfolio/product name"
+  },
+  {
+    "lang": "bg",
+    "width": 844,
+    "height": 390,
+    "errors": [],
+    "geometry": {
+      "viewport": 844,
+      "overflow": [],
+      "font": "__Golos_Text_03e20f, sans-serif",
+      "bodyColor": "rgb(241, 240, 234)",
+      "images": true,
+      "smallTargets": []
+    },
+    "interactions": "tabs: all keys; FAQ; mobile menu; language destination; no portfolio/product name"
+  },
+  {
+    "lang": "en",
+    "width": 1440,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "viewport": 1440,
+      "overflow": [],
+      "font": "__Golos_Text_03e20f, sans-serif",
+      "bodyColor": "rgb(241, 240, 234)",
+      "images": true,
+      "smallTargets": []
+    },
+    "interactions": "tabs: all keys; FAQ; mobile menu; language destination; no portfolio/product name"
+  },
+  {
+    "lang": "en",
+    "width": 768,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "viewport": 768,
+      "overflow": [],
+      "font": "__Golos_Text_03e20f, sans-serif",
+      "bodyColor": "rgb(241, 240, 234)",
+      "images": true,
+      "smallTargets": []
+    },
+    "interactions": "tabs: all keys; FAQ; mobile menu; language destination; no portfolio/product name"
+  },
+  {
+    "lang": "en",
+    "width": 390,
+    "height": 844,
+    "errors": [],
+    "geometry": {
+      "viewport": 390,
+      "overflow": [],
+      "font": "__Golos_Text_03e20f, sans-serif",
+      "bodyColor": "rgb(241, 240, 234)",
+      "images": true,
+      "smallTargets": []
+    },
+    "interactions": "tabs: all keys; FAQ; mobile menu; language destination; no portfolio/product name"
+  },
+  {
+    "lang": "en",
+    "width": 320,
+    "height": 740,
+    "errors": [],
+    "geometry": {
+      "viewport": 320,
+      "overflow": [],
+      "font": "__Golos_Text_03e20f, sans-serif",
+      "bodyColor": "rgb(241, 240, 234)",
+      "images": true,
+      "smallTargets": []
+    },
+    "interactions": "tabs: all keys; FAQ; mobile menu; language destination; no portfolio/product name"
+  },
+  {
+    "lang": "en",
+    "width": 844,
+    "height": 390,
+    "errors": [],
+    "geometry": {
+      "viewport": 844,
+      "overflow": [],
+      "font": "__Golos_Text_03e20f, sans-serif",
+      "bodyColor": "rgb(241, 240, 234)",
+      "images": true,
+      "smallTargets": []
+    },
+    "interactions": "tabs: all keys; FAQ; mobile menu; language destination; no portfolio/product name"
+  },
+  {
+    "lang": "bg",
+    "form": "mocked failure/retry success, no external submission"
+  },
+  {
+    "lang": "en",
+    "form": "mocked failure/retry success, no external submission"
+  },
+  {
+    "cookie": "dismissal passed"
+  }
+]

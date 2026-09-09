@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import './studio.css'
 import { headers } from 'next/headers'
 import Script from 'next/script'
-import { Inter, Space_Grotesk } from 'next/font/google'
+import { Inter, Space_Grotesk, Manrope } from 'next/font/google'
 import { LanguageProvider } from '@/context/LanguageContext'
 import CookieBanner from '@/components/CookieBanner'
 import { BASE_URL, getHtmlLang } from '@/lib/site'
@@ -23,6 +24,13 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 })
 
+const marketing = Manrope({
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-marketing',
+  display: 'swap',
+  adjustFontFallback: false,
+})
+
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   icons: {
@@ -31,17 +39,17 @@ export const metadata: Metadata = {
     shortcut: '/img/newfav.png',
   },
   title: {
-    default: 'Karchev | Websites, Content & AI Systems for Growth',
-    template: '%s | Karchev'
+    default: 'KARCHX | Your Personalised AI Agent',
+    template: '%s | KARCHX'
   },
-  description: 'Karchev builds conversion-focused websites, content systems, and AI automations for businesses in Bulgaria and international markets.',
+  description: 'One AI agent built specifically for you. Your tasks, your tools and your rules, with a personal approach from our first conversation to setup.',
   keywords: [
-    'website development bulgaria',
-    'landing page development',
-    'content production',
+    'personalised ai agent',
+    'custom ai agent',
+    'ai integration',
     'ai automation for business',
-    'small business website',
-    'Karchev',
+    'business process automation',
+    'KARCHX',
   ],
   authors: [{ name: 'Georgi Karchev', url: BASE_URL }],
   creator: 'Georgi Karchev',
@@ -50,22 +58,22 @@ export const metadata: Metadata = {
     locale: 'en_US',
     alternateLocale: ['bg_BG'],
     url: BASE_URL,
-    title: 'Karchev | Websites, Content & AI Systems for Growth',
-    description: 'Conversion-focused websites, content production, and AI automation for businesses in Bulgaria and beyond.',
-    siteName: 'Karchev',
+    title: 'KARCHX | Your Personalised AI Agent',
+    description: 'One AI agent configured around your tasks, information and tools. Built individually by KARCHX.',
+    siteName: 'KARCHX',
     images: [
       {
         url: '/img/og-image.png',
         width: 1536,
         height: 1024,
-        alt: 'Karchev',
+        alt: 'KARCHX',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Karchev | Websites, Content & AI Systems for Growth',
-    description: 'Conversion-focused websites, content production, and AI automation for businesses.',
+    title: 'KARCHX | Your Personalised AI Agent',
+    description: 'Your own AI agent, built around your tasks and tools.',
     images: ['/img/og-image.png'],
   },
   robots: {
@@ -97,7 +105,7 @@ export default function RootLayout({
   const initialLanguage = htmlLang === 'en' ? 'EN' : 'BG'
 
   return (
-    <html lang={htmlLang} className={`${inter.variable} ${spaceGrotesk.variable} scroll-smooth overflow-x-hidden`}>
+    <html lang={htmlLang} className={`${inter.variable} ${spaceGrotesk.variable} ${marketing.variable} scroll-smooth overflow-x-hidden`}>
       <body className="font-sans antialiased text-white overflow-x-hidden">
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
@@ -129,7 +137,7 @@ export default function RootLayout({
                 '@graph': [
                   {
                     '@type': 'Organization',
-                    name: 'Karchev',
+                    name: 'KARCHX',
                     url: BASE_URL,
                     logo: `${BASE_URL}/img/newfav.png`,
                     image: `${BASE_URL}/img/og-image.png`,
@@ -148,15 +156,14 @@ export default function RootLayout({
                   },
                   {
                     '@type': 'ProfessionalService',
-                    name: 'Karchev',
+                    name: 'KARCHX',
                     url: BASE_URL,
                     image: `${BASE_URL}/img/og-image.png`,
                     areaServed: ['Bulgaria', 'United States'],
                     serviceType: [
-                      'Website development',
-                      'Landing page development',
-                      'Content production',
-                      'AI automation',
+                      'Custom AI agents',
+                      'AI integration',
+                      'Business process automation',
                     ],
                     founder: {
                       '@type': 'Person',

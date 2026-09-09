@@ -1,0 +1,240 @@
+{
+  "checks": [
+    {
+      "lang": "bg",
+      "width": 1440,
+      "title": "Вашият AI агент. По Вашите правила.",
+      "text": "Вашият AI агент. По Вашите правила.",
+      "lines": 2,
+      "headingHeight": 120,
+      "wordCount": 6,
+      "byline": 0,
+      "about": true,
+      "overflow": false,
+      "ctaVisible": true,
+      "animations": 0,
+      "errors": []
+    },
+    {
+      "lang": "bg",
+      "width": 390,
+      "title": "Вашият AI агент. По Вашите правила.",
+      "text": "Вашият AI агент. По Вашите правила.",
+      "lines": 2,
+      "headingHeight": 80,
+      "wordCount": 6,
+      "byline": 0,
+      "about": true,
+      "overflow": false,
+      "ctaVisible": true,
+      "animations": 0,
+      "errors": []
+    },
+    {
+      "lang": "bg",
+      "width": 320,
+      "title": "Вашият AI агент. По Вашите правила.",
+      "text": "Вашият AI агент. По Вашите правила.",
+      "lines": 2,
+      "headingHeight": 72,
+      "wordCount": 6,
+      "byline": 0,
+      "about": true,
+      "overflow": false,
+      "ctaVisible": true,
+      "animations": 0,
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "title": "Your own AI agent. Built on your terms.",
+      "text": "Your own AI agent. Built on your terms.",
+      "lines": 2,
+      "headingHeight": 120,
+      "wordCount": 8,
+      "byline": 0,
+      "about": true,
+      "overflow": false,
+      "ctaVisible": true,
+      "animations": 0,
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "title": "Your own AI agent. Built on your terms.",
+      "text": "Your own AI agent. Built on your terms.",
+      "lines": 2,
+      "headingHeight": 80,
+      "wordCount": 8,
+      "byline": 0,
+      "about": true,
+      "overflow": false,
+      "ctaVisible": true,
+      "animations": 0,
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 320,
+      "title": "Your own AI agent. Built on your terms.",
+      "text": "Your own AI agent. Built on your terms.",
+      "lines": 2,
+      "headingHeight": 72,
+      "wordCount": 8,
+      "byline": 0,
+      "about": true,
+      "overflow": false,
+      "ctaVisible": true,
+      "animations": 0,
+      "errors": []
+    }
+  ],
+  "frames": [
+    {
+      "time": 150,
+      "words": [
+        {
+          "text": "Вашият",
+          "opacity": "0.568017",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.863934, -0.503606, 0, 0, 0.503606, 0.863934, 0, 0, 27.215, 0, 1)"
+        },
+        {
+          "text": "AI",
+          "opacity": "0.231957",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.591126, -0.806579, 0, 0, 0.806579, 0.591126, 0, 0, 48.3867, 0, 1)"
+        },
+        {
+          "text": "агент.",
+          "opacity": "0",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.34202, -0.939693, 0, 0, 0.939693, 0.34202, 0, 0, 63, 0, 1)"
+        },
+        {
+          "text": "По",
+          "opacity": "0",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.34202, -0.939693, 0, 0, 0.939693, 0.34202, 0, 0, 63, 0, 1)"
+        },
+        {
+          "text": "Вашите",
+          "opacity": "0",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.34202, -0.939693, 0, 0, 0.939693, 0.34202, 0, 0, 63, 0, 1)"
+        },
+        {
+          "text": "правила.",
+          "opacity": "0",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.34202, -0.939693, 0, 0, 0.939693, 0.34202, 0, 0, 63, 0, 1)"
+        }
+      ]
+    },
+    {
+      "time": 400,
+      "words": [
+        {
+          "text": "Вашият",
+          "opacity": "0.946192",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.99784, -0.0656918, 0, 0, 0.0656918, 0.99784, 0, 0, 3.38992, 0, 1)"
+        },
+        {
+          "text": "AI",
+          "opacity": "0.909329",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.993871, -0.110549, 0, 0, 0.110549, 0.993871, 0, 0, 5.71225, 0, 1)"
+        },
+        {
+          "text": "агент.",
+          "opacity": "0.840841",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.981154, -0.193227, 0, 0, 0.193227, 0.981154, 0, 0, 10.027, 0, 1)"
+        },
+        {
+          "text": "По",
+          "opacity": "0.330944",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.684115, -0.729374, 0, 0, 0.729374, 0.684115, 0, 0, 42.1505, 0, 1)"
+        },
+        {
+          "text": "Вашите",
+          "opacity": "0.0692367",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.42019, -0.907436, 0, 0, 0.907436, 0.42019, 0, 0, 58.6381, 0, 1)"
+        },
+        {
+          "text": "правила.",
+          "opacity": "0",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.34202, -0.939693, 0, 0, 0.939693, 0.34202, 0, 0, 63, 0, 1)"
+        }
+      ]
+    },
+    {
+      "time": 800,
+      "words": [
+        {
+          "text": "Вашият",
+          "opacity": "0.999658",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 1, -0.000417774, 0, 0, 0.000417774, 1, 0, 0, 0.021543, 0, 1)"
+        },
+        {
+          "text": "AI",
+          "opacity": "0.997655",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.999996, -0.00286489, 0, 0, 0.00286489, 0.999996, 0, 0, 0.147732, 0, 1)"
+        },
+        {
+          "text": "агент.",
+          "opacity": "0.993346",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.999967, -0.00812978, 0, 0, 0.00812978, 0.999967, 0, 0, 0.419226, 0, 1)"
+        },
+        {
+          "text": "По",
+          "opacity": "0.973839",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.999489, -0.0319564, 0, 0, 0.0319564, 0.999489, 0, 0, 1.64815, 0, 1)"
+        },
+        {
+          "text": "Вашите",
+          "opacity": "0.954809",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.998476, -0.0551827, 0, 0, 0.0551827, 0.998476, 0, 0, 2.84701, 0, 1)"
+        },
+        {
+          "text": "правила.",
+          "opacity": "0.923909",
+          "transform": "matrix3d(1, 0, 0, 0, 0, 0.995682, -0.0928288, 0, 0, 0.0928288, 0.995682, 0, 0, 4.79373, 0, 1)"
+        }
+      ]
+    },
+    {
+      "time": 1400,
+      "words": [
+        {
+          "text": "Вашият",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "AI",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "агент.",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "По",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "Вашите",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "правила.",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ]
+    }
+  ],
+  "wave": 6,
+  "reducedMotionCancelled": true,
+  "touch": true,
+  "nojs": true
+}

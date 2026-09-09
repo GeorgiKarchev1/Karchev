@@ -103,12 +103,12 @@ export default function AiDemoChat() {
   return (
     <div className="mx-auto w-full max-w-[640px] overflow-hidden rounded-[28px] border border-[#2d232e]/12 bg-white/85 shadow-[0_40px_100px_-45px_rgba(45,35,46,0.55)] backdrop-blur-xl">
       {/* Header */}
-      <div className="relative flex items-center gap-3 bg-gradient-to-r from-[#2d232e] via-[#3a2f3b] to-[#534b52] px-5 py-4 text-[#f1f0ea]">
+      <div className="relative flex items-center gap-3 bg-gradient-to-r from-[#2d232e] via-[#3a2f3b] to-[#534b52] px-5 py-4 text-[#F5F5F0]">
         <span className="relative h-10 w-10 shrink-0">
           <img
             src={AVATAR}
             alt="Карчи"
-            className="h-10 w-10 rounded-full object-cover ring-2 ring-[#f1f0ea]/20"
+            className="h-10 w-10 rounded-full object-cover ring-2 ring-[#F5F5F0]/20"
           />
           <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-[#2d232e] bg-green-400">
             <span className="absolute inset-0 animate-ping rounded-full bg-green-400/70" />
@@ -116,12 +116,12 @@ export default function AiDemoChat() {
         </span>
         <div className="leading-tight">
           <p className="text-sm font-black tracking-tight">Карчи · AI асистент</p>
-          <p className="text-[11px] text-[#f1f0ea]/55">демо на живо · отговаря на български</p>
+          <p className="text-[11px] text-[#F5F5F0]/55">демо на живо · отговаря на български</p>
         </div>
         <button
           onClick={reset}
           aria-label="Нов разговор"
-          className="ml-auto flex h-8 w-8 items-center justify-center rounded-full text-[#f1f0ea]/55 transition-colors hover:bg-[#f1f0ea]/10 hover:text-[#f1f0ea]"
+          className="ml-auto flex h-8 w-8 items-center justify-center rounded-full text-[#F5F5F0]/55 transition-colors hover:bg-[#F5F5F0]/10 hover:text-[#F5F5F0]"
         >
           <RotateCcw className="h-4 w-4" />
         </button>
@@ -130,7 +130,7 @@ export default function AiDemoChat() {
       {/* Messages */}
       <div
         ref={scrollRef}
-        className="h-[360px] space-y-4 overflow-y-auto bg-gradient-to-b from-[#f6f3ed] to-[#f1f0ea] px-4 py-5 md:px-5"
+        className="h-[360px] space-y-4 overflow-y-auto bg-gradient-to-b from-[#f6f3ed] to-[#F5F5F0] px-4 py-5 md:px-5"
       >
         <AnimatePresence initial={false}>
           {messages.map((m, i) => {
@@ -144,7 +144,7 @@ export default function AiDemoChat() {
                 className={`flex gap-2.5 ${m.role === 'user' ? 'flex-row-reverse' : ''}`}
               >
                 {m.role === 'user' ? (
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#534b52] text-[#f1f0ea]">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#534b52] text-[#F5F5F0]">
                     <User className="h-4 w-4" />
                   </span>
                 ) : (
@@ -153,7 +153,7 @@ export default function AiDemoChat() {
                 <div
                   className={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                     m.role === 'user'
-                      ? 'rounded-tr-sm bg-[#2d232e] text-[#f1f0ea]'
+                      ? 'rounded-tr-sm bg-[#2d232e] text-[#F5F5F0]'
                       : 'rounded-tl-sm border border-[#2d232e]/8 bg-white text-[#2d232e]'
                   }`}
                 >
@@ -226,7 +226,7 @@ export default function AiDemoChat() {
             onChange={(e) => setInput(e.target.value)}
             maxLength={600}
             placeholder="Напиши съобщение на български…"
-            className="w-full rounded-full border border-[#2d232e]/12 bg-[#f1f0ea] px-4 py-2.5 pr-12 text-sm text-[#2d232e] outline-none transition-colors placeholder:text-[#2d232e]/40 focus:border-[#534b52]"
+            className="w-full rounded-full border border-[#2d232e]/12 bg-[#F5F5F0] px-4 py-2.5 pr-12 text-sm text-[#2d232e] outline-none transition-colors placeholder:text-[#2d232e]/40 focus:border-[#534b52]"
           />
           {input.length > 480 && (
             <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-medium text-[#2d232e]/35">
@@ -238,7 +238,7 @@ export default function AiDemoChat() {
           type="submit"
           disabled={busy || !input.trim()}
           aria-label="Изпрати"
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#2d232e] text-[#f1f0ea] transition-all hover:bg-[#534b52] active:scale-95 disabled:opacity-40 disabled:active:scale-100"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#2d232e] text-[#F5F5F0] transition-all hover:bg-[#534b52] active:scale-95 disabled:opacity-40 disabled:active:scale-100"
         >
           <Send className="h-4 w-4" />
         </button>

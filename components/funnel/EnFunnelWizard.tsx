@@ -168,7 +168,7 @@ export default function EnFunnelWizard({ onClose }: { onClose?: () => void }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#f1f0ea] flex flex-col">
+    <div className="min-h-screen bg-[#F5F5F0] flex flex-col">
       <header className="flex items-center justify-between px-5 py-4 border-b border-[#2d232e]/8">
         <Link href="/en" className="font-black text-lg tracking-tight text-[#2d232e]">KARCHX</Link>
         {onClose
@@ -239,7 +239,7 @@ function EnStep1({ answers, set, onNext, onBack }: any) {
     { value: 'business_site', title: 'Business website',    description: 'Services, hospitality, consultancy, professional firm, etc.' },
     { value: 'landing_page',  title: 'Landing page',        description: 'One focused page for a specific offer, service, or campaign.' },
     { value: 'ecommerce',     title: 'Online store',        description: 'Products, cart, payments, and order management.' },
-    { value: 'unsure',        title: "I'm not sure yet",    description: "We'll help you figure out what makes sense." },
+    { value: 'unsure',        title: "I'm not sure yet",    description: "I'll help you figure out what makes sense." },
   ]
   return (
     <div>
@@ -302,7 +302,7 @@ function EnStep4({ answers, set, onNext, onBack }: any) {
     { value: 'one_page',   title: '1 page',       description: 'Great for landing pages or a single core service.' },
     { value: 'three_five', title: '3–5 pages',    description: 'Home, About, Services, Contact and more.' },
     { value: 'five_ten',   title: '5–10 pages',   description: 'More services, subpages, or a more complex structure.' },
-    { value: 'unsure',     title: "I'm not sure", description: "We'll estimate based on your answers." },
+    { value: 'unsure',     title: "I'm not sure", description: "I'll estimate based on your answers." },
   ]
   return (
     <div>
@@ -407,9 +407,9 @@ function EnStepLead({ lead, setLead, onBack, onNext, error }: {
   return (
     <div>
       <div className="mb-8">
-        <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-3">Before we begin</p>
+        <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-3">Before I begin</p>
         <h2 className="text-2xl md:text-3xl font-black text-[#2d232e] mb-2 leading-snug">
-          Where should we send the estimate?
+          Where should I send the estimate?
         </h2>
         <p className="text-sm text-[#2d232e]/55 leading-relaxed">
           You'll get your price range and a short recommendation right after answering the questions.
@@ -458,7 +458,7 @@ function EnResultScreen({ result, answers, lead, onReset }: {
   const selectedFeatures = (answers.features ?? []).filter(f => f !== 'none' && EN_FEATURE_LABELS[f])
 
   return (
-    <div className="min-h-screen bg-[#f1f0ea] flex flex-col">
+    <div className="min-h-screen bg-[#F5F5F0] flex flex-col">
       <header className="flex items-center justify-between px-5 py-4 border-b border-[#2d232e]/8">
         <Link href="/en" className="font-black text-lg tracking-tight text-[#2d232e]">KARCHX</Link>
         <button onClick={onReset} className="text-xs text-[#2d232e]/50 hover:text-[#2d232e] transition-colors font-medium">← Start over</button>
@@ -484,7 +484,7 @@ function EnResultScreen({ result, answers, lead, onReset }: {
           )}
           {result.warnings.includes('ecommerce_budget_mismatch') && (
             <div className="mb-6 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-sm font-medium">
-              ⚠️ An e-commerce store is unlikely to be realistic under €500. We'll find the right approach together.
+              ⚠️ An e-commerce store is unlikely to be realistic under €500. Let's find the right approach together.
             </div>
           )}
 
@@ -521,7 +521,7 @@ function EnResultScreen({ result, answers, lead, onReset }: {
             <p className="text-xs font-bold uppercase tracking-widest text-[#e0ddcf]/40 mb-2">Want an exact quote?</p>
             <h3 className="text-xl font-black text-[#e0ddcf] mb-2 leading-snug">Book a free 30-minute call.</h3>
             <p className="text-sm text-[#e0ddcf]/60 leading-relaxed mb-6">
-              We'll tell you exactly what you need, what you don't, and what it would realistically cost.
+              I'll tell you exactly what you need, what you don't, and what it would realistically cost.
             </p>
             <a href="https://cal.com/georgi-karchev-3r9puz/30min" target="_blank" rel="noopener noreferrer"
               className="block w-full py-3.5 rounded-full bg-[#e0ddcf] text-[#2d232e] font-black text-sm hover:bg-white transition-colors mb-3">

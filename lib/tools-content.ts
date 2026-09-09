@@ -81,7 +81,7 @@ export const toolsPages: Record<string, ToolsPageDefinition> = {
     ],
     metadata: {
       title: 'Безплатни AI и dev инструменти',
-      description: 'Безплатни MCP сървъри, Claude Code setup ресурси и automation инструменти от Karchev.',
+      description: 'Безплатни MCP сървъри, Claude Code setup ресурси и automation инструменти от KARCHX.',
       alternates: localizedAlternates('/bg/tools', '/en/tools', 'bg'),
     },
   },
@@ -118,7 +118,7 @@ export const toolsPages: Record<string, ToolsPageDefinition> = {
     ],
     metadata: {
       title: 'Free AI and Developer Tools',
-      description: 'Free MCP servers, Claude Code setup resources, and automation tools by Karchev.',
+      description: 'Free MCP servers, Claude Code setup resources, and automation tools by KARCHX.',
       alternates: localizedAlternates('/bg/tools', '/en/tools', 'en'),
     },
   },

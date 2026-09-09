@@ -16,7 +16,7 @@ export default function HowItWorks() {
   ]
 
   return (
-    <section id="how-it-works" className="py-20 md:py-32 bg-[#f1f0ea] relative overflow-hidden">
+    <section id="how-it-works" className="py-16 md:py-24 bg-[#f1f0ea] relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
 
       <div className="container-wide mx-auto relative z-10">

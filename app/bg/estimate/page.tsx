@@ -12,9 +12,9 @@ export const metadata: Metadata = {
     locale: 'bg_BG',
     alternateLocale: ['en_US'],
     url: 'https://www.karchx.com/bg/estimate',
-    title: 'Колко ще струва сайтът ти? — Безплатна оценка | Karchev',
+    title: 'Колко ще струва сайтът ти? — Безплатна оценка | KARCHX',
     description: 'Честна ориентировъчна цена за сайт, landing page или онлайн магазин след 8 кратки въпроса.',
-    siteName: 'Karchev',
+    siteName: 'KARCHX',
   },
 }
 

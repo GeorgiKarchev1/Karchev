@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { installRevealFailsafe } from '@/lib/reveal'
 import { useGSAP } from '@gsap/react'
 import { EyeOff, Globe, TrendingDown, AlertCircle } from 'lucide-react'
 import { useLanguage } from '@/context/LanguageContext'
@@ -83,12 +84,14 @@ export default function Problem() {
         card.addEventListener('mouseenter', onEnter)
         card.addEventListener('mouseleave', onLeave)
       })
+
+      return installRevealFailsafe(['.problem-heading > *', '.problem-card'], rootRef.current)
     },
     { scope: rootRef }
   )
 
   return (
-    <section ref={rootRef} className="py-20 md:py-32 bg-[#f1f0ea] relative overflow-hidden">
+    <section ref={rootRef} className="py-16 md:py-24 bg-[#f1f0ea] relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[400px] bg-[#534b52]/6 blur-[130px] pointer-events-none rounded-full" />
 
       <div className="container-wide mx-auto relative z-10">

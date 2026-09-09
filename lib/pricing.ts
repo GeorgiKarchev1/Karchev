@@ -213,7 +213,7 @@ export function calculateBgEstimate(answers: BgAnswers): EstimateResult {
     business_site: 'Представителен фирмен сайт с ясна структура, бързо зареждане и страници, насочени към запитвания.',
     ecommerce:     'Онлайн магазин с продуктова система, количка, плащания и управление на поръчки.',
     blog:          'Блог платформа с удобна система за публикуване и организация на съдържанието.',
-    unsure:        'Ще разберем заедно на базата на разговор — диапазонът е ориентировъчен.',
+    unsure:        'Ще преценим заедно на базата на разговор — диапазонът е ориентировъчен.',
   }
 
   return {
@@ -310,7 +310,7 @@ export function calculateEnEstimate(answers: EnAnswers): EstimateResult {
     landing_page: "A focused landing page seems like the right fit — one strong page built around a single offer that drives people to take action.",
     business_site: "A custom business website makes the most sense — clear structure, fast loading, and pages designed to turn visitors into enquiries.",
     ecommerce: "Your project looks like an e-commerce store — product listings, cart, payments, and order management.",
-    unsure: "We'll figure out the best fit together on a call — this range is a starting point.",
+    unsure: "I'll figure out the best fit together on a call — this range is a starting point.",
   }
 
   return {

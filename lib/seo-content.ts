@@ -65,16 +65,11 @@ export const servicePages: Record<string, ServicePageDefinition> = {
         label: 'Колко струва сайт за малък бизнес',
         description: 'Статията, която обяснява честно различните ценови диапазони и какво влиза в тях.',
       },
-      {
-        href: '/bg/kazusi',
-        label: 'Казуси',
-        description: 'Реални проекти и как подхождаме, когато сайтът трябва да носи доверие и резултати.',
-      },
     ],
     serviceName: 'Изработка на сайтове за бизнес',
     serviceDescription: 'Бързи фирмени сайтове и маркетинг сайтове с ясна структура, силен copy direction и SEO-ready техническа основа.',
     metadata: {
-      title: 'Изработка на сайт за бизнес | Karchev',
+      title: 'Изработка на сайт за бизнес | KARCHX',
       description: 'Изработка на сайтове за бизнес в България с фокус върху скорост, доверие и повече качествени запитвания.',
       alternates: localizedAlternates('/bg/izrabotka-na-saitove', '/en/website-development', 'bg'),
       keywords: ['изработка на сайт', 'изработка на сайт за бизнес', 'фирмен сайт', 'уеб дизайн за бизнес'],
@@ -94,7 +89,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       'Рекламни кампании, които пращат трафик към конкретна страница',
       'Тест на нов продукт, оферта или funnel без тежък сайт',
     ],
-    offerTitle: 'Какво включваме',
+    offerTitle: 'Какво включвам',
     offerPoints: [
       'Messaging around one primary offer и една основна конверсия.',
       'Секция след секция логика: проблем, решение, proof, objection handling, CTA.',
@@ -115,7 +110,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       },
       {
         question: 'Може ли после да стане част от по-голям сайт?',
-        answer: 'Да. Често правим landing page като първа стъпка и после надграждаме към пълен site structure.',
+        answer: 'Да. Често правя landing page като първа стъпка и после надграждам към пълен site structure.',
       },
       {
         question: 'Подходящо ли е за локален бизнес?',
@@ -138,16 +133,11 @@ export const servicePages: Record<string, ServicePageDefinition> = {
         label: 'AI автоматизации',
         description: 'Landing page е по-силен, когато формата и follow-up процесът са автоматизирани.',
       },
-      {
-        href: '/bg/kazusi/yordan-kolev',
-        label: 'Казус: Yordan Kolev',
-        description: 'Личен бранд сайт, в който доверието и ясният CTA са по-важни от визуалния шум.',
-      },
     ],
     serviceName: 'Landing страници за бизнес',
     serviceDescription: 'Landing страници за услуги, кампании и оферти с фокус върху ясна структура и директна конверсия.',
     metadata: {
-      title: 'Landing страници за бизнес | Karchev',
+      title: 'Landing страници за бизнес | KARCHX',
       description: 'Landing страници за услуги, кампании и lead generation с ясна оферта, силен CTA и бързо зареждане.',
       alternates: localizedAlternates('/bg/landing-stranitsi', '/en/landing-pages', 'bg'),
       keywords: ['landing страница', 'landing страница цена', 'landing page за бизнес', 'lead generation page'],
@@ -157,7 +147,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     locale: 'bg',
     path: '/bg/ai-avtomatizatsii',
     title: 'AI автоматизации за малък бизнес без enterprise театър',
-    intro: 'Автоматизираме запитвания, content ops и вътрешни процеси така, че да спестяваш време и да не губиш lead-ове по пътя.',
+    intro: 'Автоматизирам запитвания, content ops и вътрешни процеси така, че да спестяваш време и да не губиш lead-ове по пътя.',
     primaryKeyword: 'AI автоматизации за бизнес',
     eyebrow: 'Услуга · България',
     ctaLabel: 'Нека видим какво може да се автоматизира',
@@ -184,7 +174,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     faqs: [
       {
         question: 'Трябва ли да имам CRM или сложен stack?',
-        answer: 'Не. Започваме от това какво вече използваш и надграждаме само там, където има реална полза.',
+        answer: 'Не. Започвам от това какво вече използваш и надграждам само там, където има реална полза.',
       },
       {
         question: 'Автоматизациите заменят ли човека?',
@@ -209,18 +199,13 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       {
         href: '/tools',
         label: 'Tools & resources',
-        description: 'Инструменти и workflows, които използваме за реални automation системи.',
-      },
-      {
-        href: '/bg/kazusi/editing-bg',
-        label: 'Казус: Editing.bg',
-        description: 'Пример как automation логиката става част от самия продукт, а не само add-on.',
+        description: 'Инструменти и workflows, които използвам за реални automation системи.',
       },
     ],
     serviceName: 'AI автоматизации за бизнес',
     serviceDescription: 'AI автоматизации и леки workflow системи за сайтове, lead capture, content operations и административни процеси.',
     metadata: {
-      title: 'AI автоматизации за бизнес | Karchev',
+      title: 'AI автоматизации за бизнес | KARCHX',
       description: 'AI автоматизации за малък бизнес: lead follow-up, content workflows и интеграции между сайт, календар и CRM.',
       alternates: localizedAlternates('/bg/ai-avtomatizatsii', '/en/ai-automation', 'bg'),
       keywords: ['AI автоматизации за бизнес', 'чатбот за бизнес', 'автоматизация на запитвания', 'AI workflows'],
@@ -230,7 +215,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     locale: 'en',
     path: '/en/website-development',
     title: 'Website development for service businesses that need qualified leads',
-    intro: 'We build fast, conversion-focused websites that explain the offer clearly, establish trust fast, and turn visits into real sales conversations.',
+    intro: 'I build fast, conversion-focused websites that explain the offer clearly, establish trust fast, and turn visits into real sales conversations.',
     primaryKeyword: 'website development for service business',
     eyebrow: 'Service · United States',
     ctaLabel: 'Book a free strategy call',
@@ -247,7 +232,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       'Fast front-end, mobile-first UX, and solid technical SEO foundations.',
       'Forms, calendar routing, analytics, and light automation where it matters.',
     ],
-    outcomesTitle: 'What we are trying to improve',
+    outcomesTitle: 'What I am trying to improve',
     outcomes: [
       'Stronger first-impression trust and clarity.',
       'More qualified inbound conversations instead of passive traffic.',
@@ -261,7 +246,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       },
       {
         question: 'Do you handle messaging or only design and development?',
-        answer: 'We handle structure and message direction too, because design without a clear offer usually underperforms.',
+        answer: 'I handle structure and message direction too, because design without a clear offer usually underperforms.',
       },
       {
         question: 'Is this a fit for smaller service businesses?',
@@ -269,7 +254,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       },
       {
         question: 'Can the site expand later?',
-        answer: 'Yes. We design the foundation so you can layer in landing pages, blog content, case studies, and automations later.',
+        answer: 'Yes. I design the foundation so you can layer in landing pages, blog content, case studies, and automations later.',
       },
     ],
     relatedTitle: 'Related pages',
@@ -283,11 +268,6 @@ export const servicePages: Record<string, ServicePageDefinition> = {
         href: '/en/blog/website-cost-small-business-bulgaria',
         label: 'Website cost breakdown',
         description: 'An honest pricing article that explains where site budgets actually go.',
-      },
-      {
-        href: '/en/case-studies',
-        label: 'Case studies',
-        description: 'Real work, strategic decisions, and the outcomes we optimize for.',
       },
     ],
     serviceName: 'Website development for service businesses',
@@ -313,7 +293,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       'Ads traffic that needs a clearer destination than a homepage',
       'Local and service businesses that need a direct lead-generation page',
     ],
-    offerTitle: 'What we build into the page',
+    offerTitle: 'What I build into the page',
     offerPoints: [
       'One-offer messaging with a single primary conversion goal.',
       'Section flow built around trust, proof, objections, and CTA timing.',
@@ -334,7 +314,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       },
       {
         question: 'Can this become part of a larger site later?',
-        answer: 'Yes. We often start with the page that converts first and expand into a broader site structure after that.',
+        answer: 'Yes. I often start with the page that converts first and expand into a broader site structure after that.',
       },
       {
         question: 'Is this useful for local businesses too?',
@@ -342,7 +322,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       },
       {
         question: 'How much copy does a page need?',
-        answer: 'Enough to establish clarity and trust. We avoid padding pages with generic filler just to make them look longer.',
+        answer: 'Enough to establish clarity and trust. I avoid padding pages with generic filler just to make them look longer.',
       },
     ],
     relatedTitle: 'Useful next steps',
@@ -356,11 +336,6 @@ export const servicePages: Record<string, ServicePageDefinition> = {
         href: '/en/ai-automation',
         label: 'AI automation',
         description: 'A landing page performs better when lead capture and follow-up are systematized.',
-      },
-      {
-        href: '/en/case-studies/yordan-kolev',
-        label: 'Case study: Yordan Kolev',
-        description: 'A personal brand site where trust and CTA clarity mattered more than visual noise.',
       },
     ],
     serviceName: 'Landing page development',
@@ -376,7 +351,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     locale: 'en',
     path: '/en/ai-automation',
     title: 'AI automation for small businesses that need leverage, not hype',
-    intro: 'We automate lead follow-up, content workflows, and repetitive internal tasks so your team spends less time on admin and more time on revenue-generating work.',
+    intro: 'I automate lead follow-up, content workflows, and repetitive internal tasks so your team spends less time on admin and more time on revenue-generating work.',
     primaryKeyword: 'ai automation for small business',
     eyebrow: 'Service · United States',
     ctaLabel: 'Find the highest-leverage workflow',
@@ -393,7 +368,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       'Integrations between the website, calendar, CRM, email, and internal tools.',
       'Practical systems built for small businesses, not bloated enterprise process maps.',
     ],
-    outcomesTitle: 'What we want to improve',
+    outcomesTitle: 'What I want to improve',
     outcomes: [
       'Less manual busywork.',
       'Faster response after new inbound leads.',
@@ -403,7 +378,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     faqs: [
       {
         question: 'Do I need a full CRM stack already in place?',
-        answer: 'No. We start from what you already use and only add layers when they create clear operational value.',
+        answer: 'No. I start from what you already use and only add layers when they create clear operational value.',
       },
       {
         question: 'Is the goal to replace people?',
@@ -428,12 +403,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       {
         href: '/tools',
         label: 'Tools & resources',
-        description: 'Useful tooling and workflows that inform our client automation systems.',
-      },
-      {
-        href: '/en/case-studies/editing-bg',
-        label: 'Case study: Editing.bg',
-        description: 'A product where automation was part of the user and ops flow, not an afterthought.',
+        description: 'Useful tooling and workflows that inform my client automation systems.',
       },
     ],
     serviceName: 'AI automation for small business',
@@ -449,7 +419,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     locale: 'bg',
     path: '/bg/ai-integratsiya',
     title: 'AI интеграция за бизнес, която работи в продукция',
-    intro: 'Вграждаме AI директно в системите, които вече ползвате — CRM, имейл и вътрешни инструменти — така че да автоматизира реална работа от първия ден, а не да стои в презентация.',
+    intro: 'Вграждам AI директно в системите, които вече ползвате — CRM, имейл и вътрешни инструменти — така че да автоматизира реална работа от първия ден, а не да стои в презентация.',
     primaryKeyword: 'AI интеграция за бизнес',
     eyebrow: 'Услуга · България & ЕС',
     ctaLabel: 'Запази безплатен AI одит',
@@ -476,7 +446,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     faqs: [
       {
         question: 'Трябва ли да имам конкретен CRM или stack?',
-        answer: 'Не. Започваме от инструментите, които вече използвате, и интегрираме AI там, където носи най-ясна стойност.',
+        answer: 'Не. Започвам от инструментите, които вече използвате, и интегрирам AI там, където носи най-ясна стойност.',
       },
       {
         question: 'Колко бързо ще видим резултати?',
@@ -488,11 +458,11 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       },
       {
         question: 'Сигурни ли са данните ни?',
-        answer: 'Да. Проектираме всяка интеграция около поверителността на данните и използваме модели и настройки, които пазят информацията ти и са в съответствие с GDPR.',
+        answer: 'Да. Проектирам всяка интеграция около поверителността на данните и използвам модели и настройки, които пазят информацията ти и са в съответствие с GDPR.',
       },
       {
         question: 'Какво се случва след launch?',
-        answer: 'Следим, поддържаме и подобряваме системата и добавяме нови автоматизации, докато бизнесът Ви расте.',
+        answer: 'Следя, поддържам и подобрявам системата и добавям нови автоматизации, докато бизнесът Ви расте.',
       },
     ],
     relatedTitle: 'Следващи логични страници',
@@ -505,7 +475,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       {
         href: '/bg/tools',
         label: 'Инструменти & ресурси',
-        description: 'Инструменти и workflows, които използваме за реални AI системи.',
+        description: 'Инструменти и workflows, които използвам за реални AI системи.',
       },
       {
         href: '/bg/blog/kak-ai-avtomatizatsiite-pestyat-vreme-na-malak-biznes',
@@ -516,8 +486,8 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     serviceName: 'AI интеграция за бизнес',
     serviceDescription: 'AI интеграция и автоматизация, вградени в текущите ти системи — CRM, имейл и вътрешни инструменти.',
     metadata: {
-      title: 'AI интеграция за бизнес | Karchev',
-      description: 'AI интеграция за бизнеси в България и ЕС: вграждаме AI агенти в CRM, имейл и вътрешните ти инструменти. Live в продукция за 2–4 седмици.',
+      title: 'AI интеграция за бизнес | KARCHX',
+      description: 'AI интеграция за бизнеси в България и ЕС: вграждам AI агенти в CRM, имейл и вътрешните ти инструменти. Live в продукция за 2–4 седмици.',
       alternates: localizedAlternates('/bg/ai-integratsiya', '/en/ai-integration', 'bg'),
       keywords: ['AI интеграция за бизнес', 'внедряване на AI', 'AI агенти', 'автоматизация на процеси', 'AI в CRM'],
     },
@@ -526,7 +496,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     locale: 'en',
     path: '/en/ai-integration',
     title: 'AI integration for businesses that want results, not pilots',
-    intro: 'We build AI directly into the systems you already run — your CRM, inbox, and internal tools — so it automates real work from day one instead of sitting in a slide deck.',
+    intro: 'I build AI directly into the systems you already run — your CRM, inbox, and internal tools — so it automates real work from day one instead of sitting in a slide deck.',
     primaryKeyword: 'ai integration for business',
     eyebrow: 'Service · Bulgaria & EU',
     ctaLabel: 'Book a free AI audit',
@@ -543,7 +513,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       'Integration into your existing stack — CRM, email, spreadsheets, and internal tools.',
       'Ongoing monitoring and improvement so the system keeps working after launch.',
     ],
-    outcomesTitle: 'What we are trying to improve',
+    outcomesTitle: 'What I am trying to improve',
     outcomes: [
       'Hours of manual busywork removed from your team\'s week.',
       'Faster, more consistent follow-up so fewer opportunities slip.',
@@ -553,7 +523,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     faqs: [
       {
         question: 'Do we need a specific CRM or tech stack already?',
-        answer: 'No. We start from the tools you already use and integrate AI where it creates the clearest value.',
+        answer: 'No. I start from the tools you already use and integrate AI where it creates the clearest value.',
       },
       {
         question: 'How fast can we see results?',
@@ -561,15 +531,15 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       },
       {
         question: 'Will AI replace our team?',
-        answer: 'No. We remove the repetitive work so your people spend their time on sales, service, and decisions that need a human.',
+        answer: 'No. I remove the repetitive work so your people spend their time on sales, service, and decisions that need a human.',
       },
       {
         question: 'Is our data safe?',
-        answer: 'Yes. We design every integration around data privacy and use models and setups that keep your information protected and GDPR-aligned.',
+        answer: 'Yes. I design every integration around data privacy and use models and setups that keep your information protected and GDPR-aligned.',
       },
       {
         question: 'What happens after launch?',
-        answer: 'We monitor, maintain, and improve the system, and add new automations as your business grows.',
+        answer: 'I monitor, maintain, and improve the system, and add new automations as your business grows.',
       },
     ],
     relatedTitle: 'Related pages',
@@ -582,7 +552,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
       {
         href: '/en/tools',
         label: 'Tools & resources',
-        description: 'Useful tooling and workflows that inform our client AI systems.',
+        description: 'Useful tooling and workflows that inform my client AI systems.',
       },
       {
         href: '/en/blog/how-ai-automation-saves-time-for-small-businesses',
@@ -593,8 +563,8 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     serviceName: 'AI integration for business',
     serviceDescription: 'AI integration and automation built into your existing systems — CRM, email, and internal tools.',
     metadata: {
-      title: 'AI Integration for Business | Karchev',
-      description: 'AI integration for businesses in Bulgaria and the EU: we build AI agents into your CRM, inbox, and internal tools. Live in production in 2–4 weeks.',
+      title: 'AI Integration for Business | KARCHX',
+      description: 'AI integration for businesses in Bulgaria and the EU: I build AI agents into your CRM, inbox, and internal tools. Live in production in 2–4 weeks.',
       alternates: localizedAlternates('/bg/ai-integratsiya', '/en/ai-integration', 'en'),
       keywords: ['ai integration for business', 'ai implementation', 'custom ai agents', 'business process automation', 'ai in crm'],
     },

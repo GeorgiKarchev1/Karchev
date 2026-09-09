@@ -70,7 +70,7 @@ export default function ServiceLandingPage({
         description: serviceDescription,
         provider: {
           '@type': 'Organization',
-          name: 'Karchev',
+          name: 'KARCHX',
           url: absoluteUrl('/'),
         },
         url: pageUrl,
@@ -110,7 +110,7 @@ export default function ServiceLandingPage({
   }
 
   return (
-    <main className="min-h-screen bg-[#f1f0ea] text-[#2d232e] selection:bg-[#534b52]/30">
+    <main className="min-h-screen bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navbar />
 
@@ -133,7 +133,7 @@ export default function ServiceLandingPage({
               <Link
                 href={ctaHref}
                 target={ctaHref.startsWith('http') ? '_blank' : undefined}
-                className="inline-flex items-center rounded-full bg-[#2d232e] px-6 py-3.5 text-sm font-black text-[#f1f0ea] transition-colors hover:bg-[#534b52]"
+                className="inline-flex items-center rounded-full bg-[#2d232e] px-6 py-3.5 text-sm font-black text-[#F5F5F0] transition-colors hover:bg-[#534b52]"
               >
                 {ctaLabel}
               </Link>
@@ -169,7 +169,7 @@ export default function ServiceLandingPage({
               ))}
             </ul>
           </div>
-          <div className="rounded-[2rem] border border-[#2d232e]/10 bg-[#2d232e] p-8 text-[#f1f0ea]">
+          <div className="rounded-[2rem] border border-[#2d232e]/10 bg-[#2d232e] p-8 text-[#F5F5F0]">
             <p className="mb-4 text-xs font-black uppercase tracking-[0.22em] text-white/55">
               {outcomesTitle}
             </p>

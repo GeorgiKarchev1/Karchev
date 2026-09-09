@@ -12,9 +12,9 @@ export const metadata: Metadata = {
     locale: 'en_US',
     alternateLocale: ['bg_BG'],
     url: 'https://www.karchx.com/en/estimate',
-    title: 'What Will Your Website Cost? — Free Estimate | Karchev',
+    title: 'What Will Your Website Cost? — Free Estimate | KARCHX',
     description: 'Answer 8 quick questions and get an honest website price estimate.',
-    siteName: 'Karchev',
+    siteName: 'KARCHX',
   },
 }
 

@@ -1,0 +1,40 @@
+[
+  {
+    "width": 1440,
+    "errors": [],
+    "intro": {
+      "titleTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "coreTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "trace": [
+        "0px",
+        "0px",
+        "0px"
+      ],
+      "lcp": 804,
+      "cls": 0
+    },
+    "scrollContour": true,
+    "processAdvance": true,
+    "reducedMotion": true,
+    "cpuThrottle": 1
+  },
+  {
+    "width": 390,
+    "errors": [],
+    "intro": {
+      "titleTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "coreTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "trace": [
+        "0px",
+        "0px",
+        "0px"
+      ],
+      "lcp": 188,
+      "cls": 0
+    },
+    "scrollContour": true,
+    "processAdvance": true,
+    "reducedMotion": true,
+    "cpuThrottle": 4
+  }
+]

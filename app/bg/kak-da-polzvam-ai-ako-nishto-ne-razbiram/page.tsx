@@ -33,8 +33,8 @@ export const metadata: Metadata = {
     title: 'Как да ползвам AI, ако нищо не разбирам? Пробвай на живо',
     description:
       'Пробвай как е да говориш с изкуствен интелект — на български, безплатно, без нищо за инсталиране. За начинаещи и скептици.',
-    siteName: 'Karchev',
-    images: [{ url: '/img/og-image.png', width: 1536, height: 1024, alt: 'Karchev' }],
+    siteName: 'KARCHX',
+    images: [{ url: '/img/og-image.png', width: 1536, height: 1024, alt: 'KARCHX' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -116,12 +116,12 @@ export default function HowToUseAiFunnelPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f1f0ea] text-[#2d232e] selection:bg-[#534b52]/30">
+    <main className="min-h-screen bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navbar />
 
       {/* 1 ─ HERO: one clear promise + one primary action */}
-      <section className="bg-gradient-to-b from-[#f6f3ed] to-[#f1f0ea] px-6 pb-16 pt-36 text-center md:px-8 md:pb-20 md:pt-44">
+      <section className="bg-gradient-to-b from-[#f6f3ed] to-[#F5F5F0] px-6 pb-16 pt-36 text-center md:px-8 md:pb-20 md:pt-44">
         <div className="mx-auto max-w-2xl">
           <p className="text-xs font-black uppercase tracking-[0.22em] text-[#534b52]">AI за начинаещи</p>
           <h1 className="mx-auto mt-5 max-w-[18ch] text-4xl font-black leading-[1.05] tracking-tight md:text-6xl">
@@ -133,7 +133,7 @@ export default function HowToUseAiFunnelPage() {
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="#probvai"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#2d232e] px-8 py-4 text-sm font-black text-[#f1f0ea] shadow-lg shadow-[#2d232e]/10 transition-colors hover:bg-[#534b52] sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#2d232e] px-8 py-4 text-sm font-black text-[#F5F5F0] shadow-lg shadow-[#2d232e]/10 transition-colors hover:bg-[#534b52] sm:w-auto"
             >
               Пробвай бота безплатно <ArrowDown className="h-4 w-4" />
             </a>
@@ -156,7 +156,7 @@ export default function HowToUseAiFunnelPage() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-black uppercase tracking-[0.22em] text-[#534b52]">Опитай на живо</p>
           <h2 className="mt-4 text-3xl font-black leading-tight tracking-tight md:text-4xl">
-            Говори с Карчи — нашия AI асистент
+            Говори с Карчи — моя AI асистент
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-[#2d232e]/70">
             Истински AI. Пиши му на български, както би писал на приятел — и усети за 30 секунди какво е.
@@ -191,27 +191,27 @@ export default function HowToUseAiFunnelPage() {
       </section>
 
       {/* 4 ─ BUSINESS: the conversion moment, high-contrast dark band */}
-      <section className="bg-[#2d232e] px-6 py-16 text-[#f1f0ea] md:px-8 md:py-24">
+      <section className="bg-[#2d232e] px-6 py-16 text-[#F5F5F0] md:px-8 md:py-24">
         <div className="mx-auto max-w-3xl">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-[#f1f0ea]/50">За твоя бизнес</p>
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-[#F5F5F0]/50">За твоя бизнес</p>
           <h2 className="mt-4 max-w-[20ch] text-3xl font-black leading-tight tracking-tight md:text-4xl">
             Хареса ли ти? Това може да работи за бизнеса ти.
           </h2>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-[#f1f0ea]/70">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-[#F5F5F0]/70">
             Същият тип асистент може да отговаря на клиентите ти, да пише публикации и да поема рутината.
-            Не е нужно ти да ставаш експерт — ние вграждаме AI в инструментите, които вече ползваш.
+            Не е нужно ти да ставаш експерт — аз вграждам AI в инструментите, които вече ползваш.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/bg/ai-integratsiya"
-              className="inline-flex items-center gap-2 rounded-full bg-[#f1f0ea] px-6 py-3.5 text-sm font-black text-[#2d232e] transition-colors hover:bg-white"
+              className="inline-flex items-center gap-2 rounded-full bg-[#F5F5F0] px-6 py-3.5 text-sm font-black text-[#2d232e] transition-colors hover:bg-white"
             >
               AI интеграция за бизнес <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href={BOOKING_URL}
               target="_blank"
-              className="inline-flex items-center rounded-full border border-[#f1f0ea]/30 px-6 py-3.5 text-sm font-black text-[#f1f0ea] transition-colors hover:bg-[#f1f0ea]/10"
+              className="inline-flex items-center rounded-full border border-[#F5F5F0]/30 px-6 py-3.5 text-sm font-black text-[#F5F5F0] transition-colors hover:bg-[#F5F5F0]/10"
             >
               Запази безплатен разговор
             </Link>

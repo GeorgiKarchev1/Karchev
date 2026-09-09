@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { installRevealFailsafe } from '@/lib/reveal'
 import { useGSAP } from '@gsap/react'
 import { useLanguage } from '@/context/LanguageContext'
 import FunnelModal from '@/components/FunnelModal'
@@ -36,6 +37,8 @@ export default function PriceCalculatorCTA() {
         scrollTrigger: { trigger: '.cta-panel', start: 'top 70%' },
       })
 
+
+      return installRevealFailsafe(['.cta-panel', '.cta-stat'], rootRef.current)
     },
     { scope: rootRef }
   )

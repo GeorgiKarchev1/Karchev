@@ -166,7 +166,7 @@ export async function POST(req: NextRequest) {
 </div>`
 
     const { error } = await resend.emails.send({
-      from: 'Karchev Калкулатор <onboarding@resend.dev>',
+      from: 'KARCHX Калкулатор <onboarding@resend.dev>',
       to: TO_EMAIL,
       subject: `Ново запитване — ${lead.name} (${result.minPrice}–${result.maxPrice} EUR)`,
       html,

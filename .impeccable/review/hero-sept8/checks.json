@@ -1,0 +1,587 @@
+[
+  {
+    "lang": "bg",
+    "width": 1440,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "viewport": 1440,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 80,
+        "width": 1280,
+        "center": 720
+      },
+      "intro": {
+        "x": 413.09375,
+        "width": 613.796875,
+        "center": 719.9921875
+      },
+      "photo": {
+        "x": 200,
+        "width": 1040,
+        "center": 720
+      },
+      "profileBackground": "rgb(23, 23, 23)",
+      "portraitFilter": "none",
+      "profileStacked": true,
+      "faqHeadingAbove": true,
+      "navLogoFilter": "brightness(0)",
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=1080&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0,
+      "hero": {
+        "copyAboveStage": true,
+        "ctaInFirstViewport": true,
+        "requestBeforeResult": true,
+        "oldDiagram": false,
+        "disclaimer": "Илюстративен пример с измислени данни.\nВижте възможностите",
+        "copyLines": [
+          1,
+          1
+        ]
+      }
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "bg",
+    "width": 1280,
+    "height": 1025,
+    "errors": [],
+    "geometry": {
+      "viewport": 1280,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 56,
+        "width": 1168,
+        "center": 640
+      },
+      "intro": {
+        "x": 333.09375,
+        "width": 613.796875,
+        "center": 639.9921875
+      },
+      "photo": {
+        "x": 120,
+        "width": 1040,
+        "center": 640
+      },
+      "profileBackground": "rgb(23, 23, 23)",
+      "portraitFilter": "none",
+      "profileStacked": true,
+      "faqHeadingAbove": true,
+      "navLogoFilter": "brightness(0)",
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=1080&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0,
+      "hero": {
+        "copyAboveStage": true,
+        "ctaInFirstViewport": true,
+        "requestBeforeResult": true,
+        "oldDiagram": false,
+        "disclaimer": "Илюстративен пример с измислени данни.\nВижте възможностите",
+        "copyLines": [
+          1,
+          1
+        ]
+      }
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "bg",
+    "width": 768,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "viewport": 768,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 36,
+        "width": 696,
+        "center": 384
+      },
+      "intro": {
+        "x": 77.09375,
+        "width": 613.796875,
+        "center": 383.9921875
+      },
+      "photo": {
+        "x": 36,
+        "width": 696,
+        "center": 384
+      },
+      "profileBackground": "rgb(23, 23, 23)",
+      "portraitFilter": "none",
+      "profileStacked": true,
+      "faqHeadingAbove": true,
+      "navLogoFilter": "brightness(0)",
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=750&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0,
+      "hero": {
+        "copyAboveStage": true,
+        "ctaInFirstViewport": true,
+        "requestBeforeResult": true,
+        "oldDiagram": false,
+        "disclaimer": "Илюстративен пример с измислени данни.\nВижте възможностите",
+        "copyLines": [
+          1,
+          1
+        ]
+      }
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "bg",
+    "width": 390,
+    "height": 844,
+    "errors": [],
+    "geometry": {
+      "viewport": 390,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 20,
+        "width": 350,
+        "center": 195
+      },
+      "intro": {
+        "x": 20,
+        "width": 350,
+        "center": 195
+      },
+      "photo": {
+        "x": 20,
+        "width": 350,
+        "center": 195
+      },
+      "profileBackground": "rgb(23, 23, 23)",
+      "portraitFilter": "none",
+      "profileStacked": true,
+      "faqHeadingAbove": true,
+      "navLogoFilter": "brightness(0)",
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=750&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0,
+      "hero": {
+        "copyAboveStage": true,
+        "ctaInFirstViewport": true,
+        "requestBeforeResult": true,
+        "oldDiagram": false,
+        "disclaimer": "Илюстративен пример с измислени данни.\nВижте възможностите",
+        "copyLines": [
+          1,
+          1
+        ]
+      }
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "bg",
+    "width": 320,
+    "height": 740,
+    "errors": [],
+    "geometry": {
+      "viewport": 320,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 20,
+        "width": 280,
+        "center": 160
+      },
+      "intro": {
+        "x": 20,
+        "width": 280,
+        "center": 160
+      },
+      "photo": {
+        "x": 20,
+        "width": 280,
+        "center": 160
+      },
+      "profileBackground": "rgb(23, 23, 23)",
+      "portraitFilter": "none",
+      "profileStacked": true,
+      "faqHeadingAbove": true,
+      "navLogoFilter": "brightness(0)",
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=384&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0,
+      "hero": {
+        "copyAboveStage": true,
+        "ctaInFirstViewport": true,
+        "requestBeforeResult": true,
+        "oldDiagram": false,
+        "disclaimer": "Илюстративен пример с измислени данни.\nВижте възможностите",
+        "copyLines": [
+          1,
+          1
+        ]
+      }
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "bg",
+    "width": 844,
+    "height": 390,
+    "errors": [],
+    "geometry": {
+      "viewport": 844,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 36,
+        "width": 772,
+        "center": 422
+      },
+      "intro": {
+        "x": 115.09375,
+        "width": 613.796875,
+        "center": 421.9921875
+      },
+      "photo": {
+        "x": 36,
+        "width": 772,
+        "center": 422
+      },
+      "profileBackground": "rgb(23, 23, 23)",
+      "portraitFilter": "none",
+      "profileStacked": true,
+      "faqHeadingAbove": true,
+      "navLogoFilter": "brightness(0)",
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=828&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0,
+      "hero": {
+        "copyAboveStage": true,
+        "ctaInFirstViewport": false,
+        "requestBeforeResult": true,
+        "oldDiagram": false,
+        "disclaimer": "Илюстративен пример с измислени данни.\nВижте възможностите",
+        "copyLines": [
+          1,
+          1
+        ]
+      }
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "en",
+    "width": 1440,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "viewport": 1440,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 80,
+        "width": 1280,
+        "center": 720
+      },
+      "intro": {
+        "x": 413.09375,
+        "width": 613.796875,
+        "center": 719.9921875
+      },
+      "photo": {
+        "x": 200,
+        "width": 1040,
+        "center": 720
+      },
+      "profileBackground": "rgb(23, 23, 23)",
+      "portraitFilter": "none",
+      "profileStacked": true,
+      "faqHeadingAbove": true,
+      "navLogoFilter": "brightness(0)",
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=1080&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0,
+      "hero": {
+        "copyAboveStage": true,
+        "ctaInFirstViewport": true,
+        "requestBeforeResult": true,
+        "oldDiagram": false,
+        "disclaimer": "Illustrative example using fictional data.\nExplore the possibilities",
+        "copyLines": [
+          1,
+          1
+        ]
+      }
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "en",
+    "width": 1280,
+    "height": 1025,
+    "errors": [],
+    "geometry": {
+      "viewport": 1280,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 56,
+        "width": 1168,
+        "center": 640
+      },
+      "intro": {
+        "x": 333.09375,
+        "width": 613.796875,
+        "center": 639.9921875
+      },
+      "photo": {
+        "x": 120,
+        "width": 1040,
+        "center": 640
+      },
+      "profileBackground": "rgb(23, 23, 23)",
+      "portraitFilter": "none",
+      "profileStacked": true,
+      "faqHeadingAbove": true,
+      "navLogoFilter": "brightness(0)",
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=1080&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0,
+      "hero": {
+        "copyAboveStage": true,
+        "ctaInFirstViewport": true,
+        "requestBeforeResult": true,
+        "oldDiagram": false,
+        "disclaimer": "Illustrative example using fictional data.\nExplore the possibilities",
+        "copyLines": [
+          1,
+          1
+        ]
+      }
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "en",
+    "width": 768,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "viewport": 768,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 36,
+        "width": 696,
+        "center": 384
+      },
+      "intro": {
+        "x": 77.09375,
+        "width": 613.796875,
+        "center": 383.9921875
+      },
+      "photo": {
+        "x": 36,
+        "width": 696,
+        "center": 384
+      },
+      "profileBackground": "rgb(23, 23, 23)",
+      "portraitFilter": "none",
+      "profileStacked": true,
+      "faqHeadingAbove": true,
+      "navLogoFilter": "brightness(0)",
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=750&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0,
+      "hero": {
+        "copyAboveStage": true,
+        "ctaInFirstViewport": true,
+        "requestBeforeResult": true,
+        "oldDiagram": false,
+        "disclaimer": "Illustrative example using fictional data.\nExplore the possibilities",
+        "copyLines": [
+          1,
+          1
+        ]
+      }
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "en",
+    "width": 390,
+    "height": 844,
+    "errors": [],
+    "geometry": {
+      "viewport": 390,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 20,
+        "width": 350,
+        "center": 195
+      },
+      "intro": {
+        "x": 20,
+        "width": 350,
+        "center": 195
+      },
+      "photo": {
+        "x": 20,
+        "width": 350,
+        "center": 195
+      },
+      "profileBackground": "rgb(23, 23, 23)",
+      "portraitFilter": "none",
+      "profileStacked": true,
+      "faqHeadingAbove": true,
+      "navLogoFilter": "brightness(0)",
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=750&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0,
+      "hero": {
+        "copyAboveStage": true,
+        "ctaInFirstViewport": true,
+        "requestBeforeResult": true,
+        "oldDiagram": false,
+        "disclaimer": "Illustrative example using fictional data.\nExplore the possibilities",
+        "copyLines": [
+          1,
+          1
+        ]
+      }
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "en",
+    "width": 320,
+    "height": 740,
+    "errors": [],
+    "geometry": {
+      "viewport": 320,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 20,
+        "width": 280,
+        "center": 160
+      },
+      "intro": {
+        "x": 20,
+        "width": 280,
+        "center": 160
+      },
+      "photo": {
+        "x": 20,
+        "width": 280,
+        "center": 160
+      },
+      "profileBackground": "rgb(23, 23, 23)",
+      "portraitFilter": "none",
+      "profileStacked": true,
+      "faqHeadingAbove": true,
+      "navLogoFilter": "brightness(0)",
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=384&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0,
+      "hero": {
+        "copyAboveStage": true,
+        "ctaInFirstViewport": true,
+        "requestBeforeResult": true,
+        "oldDiagram": false,
+        "disclaimer": "Illustrative example using fictional data.\nExplore the possibilities",
+        "copyLines": [
+          1,
+          1
+        ]
+      }
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "en",
+    "width": 844,
+    "height": 390,
+    "errors": [],
+    "geometry": {
+      "viewport": 844,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 36,
+        "width": 772,
+        "center": 422
+      },
+      "intro": {
+        "x": 115.09375,
+        "width": 613.796875,
+        "center": 421.9921875
+      },
+      "photo": {
+        "x": 36,
+        "width": 772,
+        "center": 422
+      },
+      "profileBackground": "rgb(23, 23, 23)",
+      "portraitFilter": "none",
+      "profileStacked": true,
+      "faqHeadingAbove": true,
+      "navLogoFilter": "brightness(0)",
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=828&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0,
+      "hero": {
+        "copyAboveStage": true,
+        "ctaInFirstViewport": false,
+        "requestBeforeResult": true,
+        "oldDiagram": false,
+        "disclaimer": "Illustrative example using fictional data.\nExplore the possibilities",
+        "copyLines": [
+          1,
+          1
+        ]
+      }
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "motion": {
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "src": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=1080&q=75",
+      "loaded": true
+    },
+    "mobile": "390px; DPR 3; 4x CPU; reduced-motion switch",
+    "errors": []
+  }
+]

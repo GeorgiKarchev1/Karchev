@@ -22,6 +22,16 @@ const nextConfig = {
   },
   // Enable React strict mode for better performance insights
   reactStrictMode: true,
+  // The case-studies section was retired; its URLs may still be indexed, so send
+  // them to the language home rather than letting them 404.
+  async redirects() {
+    return [
+      { source: '/bg/kazusi', destination: '/bg', permanent: true },
+      { source: '/bg/kazusi/:slug*', destination: '/bg', permanent: true },
+      { source: '/en/case-studies', destination: '/en', permanent: true },
+      { source: '/en/case-studies/:slug*', destination: '/en', permanent: true },
+    ]
+  },
   async headers() {
     // Analytics scripts already live on the site (GA4, Tag Manager, MS Clarity);
     // they must be explicitly allowed or the CSP would silently stop tracking.

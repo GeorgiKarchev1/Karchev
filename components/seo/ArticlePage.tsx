@@ -74,7 +74,7 @@ export default function ArticlePage(props: ArticlePageProps) {
         },
         publisher: {
           '@type': 'Organization',
-          name: 'Karchev',
+          name: 'KARCHX',
           url: absoluteUrl('/'),
           logo: {
             '@type': 'ImageObject',
@@ -115,7 +115,7 @@ export default function ArticlePage(props: ArticlePageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-[#f1f0ea] text-[#2d232e] selection:bg-[#534b52]/30">
+    <main className="min-h-screen bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navbar />
 
@@ -196,7 +196,7 @@ export default function ArticlePage(props: ArticlePageProps) {
               : 'If this topic is relevant to your business, the next step is turning it into a stronger offer or a page that actually converts.'}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link href={relatedServiceHref} className="inline-flex items-center rounded-full bg-[#2d232e] px-6 py-3.5 text-sm font-black text-[#f1f0ea] transition-colors hover:bg-[#534b52]">
+            <Link href={relatedServiceHref} className="inline-flex items-center rounded-full bg-[#2d232e] px-6 py-3.5 text-sm font-black text-[#F5F5F0] transition-colors hover:bg-[#534b52]">
               {relatedServiceLabel}
             </Link>
             <Link href={ctaHref} target="_blank" className="inline-flex items-center rounded-full border border-[#2d232e] px-6 py-3.5 text-sm font-black text-[#2d232e] transition-colors hover:bg-white">

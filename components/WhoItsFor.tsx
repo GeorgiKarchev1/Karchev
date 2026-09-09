@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { installRevealFailsafe } from "@/lib/reveal";
 import { useGSAP } from "@gsap/react";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
@@ -123,7 +124,9 @@ export default function WhoItsFor() {
             overwrite: true,
           }),
       });
-    },
+  
+      return installRevealFailsafe([".portfolio-heading", ".portfolio-card"], rootRef.current);
+  },
     { scope: rootRef }
   );
 
@@ -131,7 +134,7 @@ export default function WhoItsFor() {
     <section
       ref={rootRef}
       id="portfolio"
-      className="py-20 md:py-32 bg-[#f1f0ea] overflow-hidden"
+      className="py-16 md:py-24 bg-[#f1f0ea] overflow-hidden"
     >
       <div className="container-wide mx-auto">
         <div className="portfolio-heading mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">

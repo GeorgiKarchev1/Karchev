@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { installRevealFailsafe } from '@/lib/reveal'
 import { useGSAP } from '@gsap/react'
 import { Check, Workflow, Network } from 'lucide-react'
 import { useLanguage } from '@/context/LanguageContext'
@@ -51,6 +52,8 @@ export default function Solution() {
           scrollTrigger: { trigger: card, start: 'top 70%' },
         })
       })
+
+      return installRevealFailsafe(['.solution-eyebrow', '.solution-title', '.solution-sub', '.solution-card', '.feature-item'], rootRef.current)
     },
     { scope: rootRef }
   )
@@ -68,7 +71,7 @@ export default function Solution() {
   ]
 
   return (
-    <section ref={rootRef} id="solutions" className="py-20 md:py-32 bg-[#f1f0ea] relative overflow-hidden">
+    <section ref={rootRef} id="solutions" className="py-16 md:py-24 bg-[#f1f0ea] relative overflow-hidden">
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-[#534b52]/5 blur-[130px] pointer-events-none rounded-full" />
 
       <div className="container-wide mx-auto relative z-10">

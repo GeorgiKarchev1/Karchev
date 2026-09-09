@@ -54,7 +54,7 @@ export default function FunnelModal({ open, onClose }: Props) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.97 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-x-4 top-[5%] bottom-[5%] z-[101] mx-auto max-w-lg rounded-[1.5rem] bg-[#f1f0ea] shadow-2xl overflow-hidden flex flex-col"
+            className="fixed inset-x-4 top-[5%] bottom-[5%] z-[101] mx-auto max-w-lg rounded-[1.5rem] bg-[#F5F5F0] shadow-2xl overflow-hidden flex flex-col"
             style={{ boxShadow: '0 32px 80px rgba(45,35,46,0.3), 0 0 0 1px rgba(45,35,46,0.08)' }}
           >
             {isBG

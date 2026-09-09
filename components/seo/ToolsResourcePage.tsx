@@ -87,13 +87,13 @@ export default function ToolsResourcePage(props: ToolsResourcePageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-[#f1f0ea] text-[#2d232e] selection:bg-[#534b52]/30">
+    <main className="min-h-screen bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navbar />
 
       <section className="pt-40 pb-20 px-6 md:px-8 max-w-[1400px] mx-auto">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border-2 border-[#2d232e] bg-[#f1f0ea] text-xs font-bold uppercase tracking-widest text-[#534b52]">
+          <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border-2 border-[#2d232e] bg-[#F5F5F0] text-xs font-bold uppercase tracking-widest text-[#534b52]">
             <Wrench className="w-3 h-3" />
             {eyebrow}
           </div>
@@ -118,7 +118,7 @@ export default function ToolsResourcePage(props: ToolsResourcePageProps) {
           {tools.map((tool) => (
             <div
               key={tool.id}
-              className={`relative bg-[#f1f0ea] border-2 border-[#2d232e] rounded-2xl p-7 flex flex-col gap-5 transition-all duration-300 ${
+              className={`relative bg-[#F5F5F0] border-2 border-[#2d232e] rounded-2xl p-7 flex flex-col gap-5 transition-all duration-300 ${
                 tool.status === 'available'
                   ? 'shadow-[4px_4px_0px_#2d232e] hover:shadow-[6px_6px_0px_#2d232e] hover:-translate-y-0.5 hover:-translate-x-0.5 cursor-pointer'
                   : 'opacity-75'
@@ -195,14 +195,14 @@ export default function ToolsResourcePage(props: ToolsResourcePageProps) {
         <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-white/40 mb-2">{ctaEyebrow}</p>
-            <h2 className="text-2xl md:text-3xl font-black text-[#f1f0ea] leading-tight">
+            <h2 className="text-2xl md:text-3xl font-black text-[#F5F5F0] leading-tight">
               {ctaTitle}
             </h2>
           </div>
           <Link
             href={ctaHref}
             target="_blank"
-            className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#f1f0ea] text-[#2d232e] text-sm font-black border-2 border-[#f1f0ea] hover:bg-[#534b52] hover:text-[#f1f0ea] hover:border-[#534b52] transition-all duration-300 group"
+            className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#F5F5F0] text-[#2d232e] text-sm font-black border-2 border-[#F5F5F0] hover:bg-[#534b52] hover:text-[#F5F5F0] hover:border-[#534b52] transition-all duration-300 group"
           >
             {ctaLabel}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

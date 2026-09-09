@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function BulgarianBlogPage() {
   return (
-    <main className="min-h-screen bg-[#f1f0ea] text-[#2d232e] selection:bg-[#534b52]/30">
+    <main className="min-h-screen bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
       <Navbar />
 
       <section className="pt-40 pb-20 px-6 md:px-8 max-w-[1200px] mx-auto">

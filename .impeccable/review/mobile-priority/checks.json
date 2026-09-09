@@ -1,0 +1,459 @@
+[
+  {
+    "lang": "bg",
+    "width": 1440,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "viewport": 1440,
+      "overflow": [],
+      "headingAlign": "start",
+      "introAlign": "start",
+      "heading": {
+        "x": 80,
+        "width": 645.09375,
+        "center": 402.546875
+      },
+      "intro": {
+        "x": 80,
+        "width": 435.234375,
+        "center": 297.6171875
+      },
+      "photo": {
+        "x": 920,
+        "width": 440,
+        "center": 1140
+      },
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=640&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "bg",
+    "width": 768,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "viewport": 768,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 59,
+        "width": 650,
+        "center": 384
+      },
+      "intro": {
+        "x": 157.390625,
+        "width": 453.21875,
+        "center": 384
+      },
+      "photo": {
+        "x": 144,
+        "width": 480,
+        "center": 384
+      },
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=640&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "bg",
+    "width": 430,
+    "height": 932,
+    "errors": [],
+    "geometry": {
+      "viewport": 430,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 20,
+        "width": 390,
+        "center": 215
+      },
+      "intro": {
+        "x": 20,
+        "width": 390,
+        "center": 215
+      },
+      "photo": {
+        "x": 20,
+        "width": 390,
+        "center": 215
+      },
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=640&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "bg",
+    "width": 390,
+    "height": 844,
+    "errors": [],
+    "geometry": {
+      "viewport": 390,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 20,
+        "width": 350,
+        "center": 195
+      },
+      "intro": {
+        "x": 20,
+        "width": 350,
+        "center": 195
+      },
+      "photo": {
+        "x": 20,
+        "width": 350,
+        "center": 195
+      },
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=750&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "bg",
+    "width": 360,
+    "height": 800,
+    "errors": [],
+    "geometry": {
+      "viewport": 360,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 20,
+        "width": 320,
+        "center": 180
+      },
+      "intro": {
+        "x": 20,
+        "width": 320,
+        "center": 180
+      },
+      "photo": {
+        "x": 20,
+        "width": 320,
+        "center": 180
+      },
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=384&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "bg",
+    "width": 320,
+    "height": 740,
+    "errors": [],
+    "geometry": {
+      "viewport": 320,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 20,
+        "width": 280,
+        "center": 160
+      },
+      "intro": {
+        "x": 20,
+        "width": 280,
+        "center": 160
+      },
+      "photo": {
+        "x": 20,
+        "width": 280,
+        "center": 160
+      },
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=384&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "bg",
+    "width": 844,
+    "height": 390,
+    "errors": [],
+    "geometry": {
+      "viewport": 844,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 97,
+        "width": 650,
+        "center": 422
+      },
+      "intro": {
+        "x": 195.390625,
+        "width": 453.21875,
+        "center": 422
+      },
+      "photo": {
+        "x": 182,
+        "width": 480,
+        "center": 422
+      },
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=640&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "en",
+    "width": 1440,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "viewport": 1440,
+      "overflow": [],
+      "headingAlign": "start",
+      "introAlign": "start",
+      "heading": {
+        "x": 80,
+        "width": 645.09375,
+        "center": 402.546875
+      },
+      "intro": {
+        "x": 80,
+        "width": 435.234375,
+        "center": 297.6171875
+      },
+      "photo": {
+        "x": 920,
+        "width": 440,
+        "center": 1140
+      },
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=640&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "en",
+    "width": 768,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "viewport": 768,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 59,
+        "width": 650,
+        "center": 384
+      },
+      "intro": {
+        "x": 157.390625,
+        "width": 453.21875,
+        "center": 384
+      },
+      "photo": {
+        "x": 144,
+        "width": 480,
+        "center": 384
+      },
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=640&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "en",
+    "width": 430,
+    "height": 932,
+    "errors": [],
+    "geometry": {
+      "viewport": 430,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 20,
+        "width": 390,
+        "center": 215
+      },
+      "intro": {
+        "x": 20,
+        "width": 390,
+        "center": 215
+      },
+      "photo": {
+        "x": 20,
+        "width": 390,
+        "center": 215
+      },
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=640&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "en",
+    "width": 390,
+    "height": 844,
+    "errors": [],
+    "geometry": {
+      "viewport": 390,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 20,
+        "width": 350,
+        "center": 195
+      },
+      "intro": {
+        "x": 20,
+        "width": 350,
+        "center": 195
+      },
+      "photo": {
+        "x": 20,
+        "width": 350,
+        "center": 195
+      },
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=750&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "en",
+    "width": 360,
+    "height": 800,
+    "errors": [],
+    "geometry": {
+      "viewport": 360,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 20,
+        "width": 320,
+        "center": 180
+      },
+      "intro": {
+        "x": 20,
+        "width": 320,
+        "center": 180
+      },
+      "photo": {
+        "x": 20,
+        "width": 320,
+        "center": 180
+      },
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=384&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "en",
+    "width": 320,
+    "height": 740,
+    "errors": [],
+    "geometry": {
+      "viewport": 320,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 20,
+        "width": 280,
+        "center": 160
+      },
+      "intro": {
+        "x": 20,
+        "width": 280,
+        "center": 160
+      },
+      "photo": {
+        "x": 20,
+        "width": 280,
+        "center": 160
+      },
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=384&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "lang": "en",
+    "width": 844,
+    "height": 390,
+    "errors": [],
+    "geometry": {
+      "viewport": 844,
+      "overflow": [],
+      "headingAlign": "center",
+      "introAlign": "center",
+      "heading": {
+        "x": 97,
+        "width": 650,
+        "center": 422
+      },
+      "intro": {
+        "x": 195.390625,
+        "width": 453.21875,
+        "center": 422
+      },
+      "photo": {
+        "x": 182,
+        "width": 480,
+        "center": 422
+      },
+      "photoSource": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=640&q=75",
+      "images": true,
+      "smallTargets": [],
+      "aboutLinks": 0
+    },
+    "interactions": "tabs all keys; FAQ; mobile menu; locale destination"
+  },
+  {
+    "motion": {
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "src": "http://127.0.0.1:3000/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=1080&q=75",
+      "loaded": true
+    },
+    "mobile": "390px; DPR 3; 4x CPU; reduced-motion switch",
+    "errors": []
+  }
+]

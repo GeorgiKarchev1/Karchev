@@ -36,7 +36,7 @@ export default function OfferStack() {
   ];
 
   return (
-    <section className="py-20 md:py-32 bg-[#2d232e] relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-[#2d232e] relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-[#534b52]/6 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container-wide mx-auto relative z-10">

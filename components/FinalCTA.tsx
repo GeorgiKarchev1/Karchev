@@ -46,7 +46,7 @@ export default function FinalCTA() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-24 md:py-40 relative overflow-hidden bg-[#e0ddcf] flex items-center justify-center border-t-2 border-b-2 border-[#2d232e]">
+    <section className="py-20 md:py-28 relative overflow-hidden bg-[#e0ddcf] flex items-center justify-center border-t-2 border-b-2 border-[#2d232e]">
       <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden" aria-hidden="true">
         <picture>
           <source media="(min-width: 1024px)" srcSet="/img/final-cta-background-desktop-generated.webp" />

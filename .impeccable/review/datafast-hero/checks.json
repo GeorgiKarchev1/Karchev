@@ -1,0 +1,690 @@
+[
+  {
+    "lang": "bg",
+    "width": 1440,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "h": {
+        "x": 220,
+        "y": 144,
+        "width": 1000,
+        "height": 70.390625,
+        "bottom": 214.390625,
+        "center": 720
+      },
+      "intro": {
+        "x": 385.203125,
+        "y": 240.390625,
+        "width": 669.59375,
+        "height": 61.1875,
+        "bottom": 301.578125,
+        "center": 720
+      },
+      "cta": {
+        "x": 592.078125,
+        "y": 331.578125,
+        "width": 255.828125,
+        "height": 56,
+        "bottom": 387.578125,
+        "center": 719.9921875
+      },
+      "demo": {
+        "x": 160,
+        "y": 466.953125,
+        "width": 1120,
+        "height": 678.59375,
+        "bottom": 1145.546875,
+        "center": 720
+      },
+      "headline": "AI агент за Вашата работа.",
+      "introText": "Изграждам Ваш личен AI агент за запитвания, документи и повтарящи се задачи — с Вашите инструменти, информация и правила.",
+      "headingAlign": "center",
+      "introAlign": "center",
+      "headlineLines": 1,
+      "overflow": [],
+      "photoFilter": "none",
+      "photoWidth": 1040,
+      "photoLoaded": true,
+      "profileStacked": true,
+      "aboutLinks": 0,
+      "oldArt": 0,
+      "demonstrations": 1,
+      "h1count": 1,
+      "smallTargets": [],
+      "readable": true
+    },
+    "interactions": "tabs, demo anchor, FAQ, menu Escape, language destination"
+  },
+  {
+    "lang": "bg",
+    "width": 1280,
+    "height": 1025,
+    "errors": [],
+    "geometry": {
+      "h": {
+        "x": 140,
+        "y": 144,
+        "width": 1000,
+        "height": 62.640625,
+        "bottom": 206.640625,
+        "center": 640
+      },
+      "intro": {
+        "x": 305.203125,
+        "y": 232.640625,
+        "width": 669.59375,
+        "height": 61.1875,
+        "bottom": 293.828125,
+        "center": 640
+      },
+      "cta": {
+        "x": 512.078125,
+        "y": 323.828125,
+        "width": 255.828125,
+        "height": 56,
+        "bottom": 379.828125,
+        "center": 639.9921875
+      },
+      "demo": {
+        "x": 80,
+        "y": 459.203125,
+        "width": 1120,
+        "height": 678.59375,
+        "bottom": 1137.796875,
+        "center": 640
+      },
+      "headline": "AI агент за Вашата работа.",
+      "introText": "Изграждам Ваш личен AI агент за запитвания, документи и повтарящи се задачи — с Вашите инструменти, информация и правила.",
+      "headingAlign": "center",
+      "introAlign": "center",
+      "headlineLines": 1,
+      "overflow": [],
+      "photoFilter": "none",
+      "photoWidth": 1040,
+      "photoLoaded": true,
+      "profileStacked": true,
+      "aboutLinks": 0,
+      "oldArt": 0,
+      "demonstrations": 1,
+      "h1count": 1,
+      "smallTargets": [],
+      "readable": true
+    },
+    "interactions": "tabs, demo anchor, FAQ, menu Escape, language destination"
+  },
+  {
+    "lang": "bg",
+    "width": 768,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "h": {
+        "x": 36,
+        "y": 136,
+        "width": 696,
+        "height": 54.0625,
+        "bottom": 190.0625,
+        "center": 384
+      },
+      "intro": {
+        "x": 49.203125,
+        "y": 216.0625,
+        "width": 669.59375,
+        "height": 61.1875,
+        "bottom": 277.25,
+        "center": 384
+      },
+      "cta": {
+        "x": 256.078125,
+        "y": 307.25,
+        "width": 255.828125,
+        "height": 56,
+        "bottom": 363.25,
+        "center": 383.9921875
+      },
+      "demo": {
+        "x": 36,
+        "y": 442.625,
+        "width": 696,
+        "height": 955.390625,
+        "bottom": 1398.015625,
+        "center": 384
+      },
+      "headline": "AI агент за Вашата работа.",
+      "introText": "Изграждам Ваш личен AI агент за запитвания, документи и повтарящи се задачи — с Вашите инструменти, информация и правила.",
+      "headingAlign": "center",
+      "introAlign": "center",
+      "headlineLines": 1,
+      "overflow": [],
+      "photoFilter": "none",
+      "photoWidth": 696,
+      "photoLoaded": true,
+      "profileStacked": true,
+      "aboutLinks": 0,
+      "oldArt": 0,
+      "demonstrations": 1,
+      "h1count": 1,
+      "smallTargets": [],
+      "readable": true
+    },
+    "interactions": "tabs, demo anchor, FAQ, menu Escape, language destination"
+  },
+  {
+    "lang": "bg",
+    "width": 390,
+    "height": 844,
+    "errors": [],
+    "geometry": {
+      "h": {
+        "x": 20,
+        "y": 112,
+        "width": 350,
+        "height": 85.78125,
+        "bottom": 197.78125,
+        "center": 195
+      },
+      "intro": {
+        "x": 20,
+        "y": 219.78125,
+        "width": 350,
+        "height": 108.75,
+        "bottom": 328.53125,
+        "center": 195
+      },
+      "cta": {
+        "x": 71.078125,
+        "y": 354.53125,
+        "width": 247.828125,
+        "height": 56,
+        "bottom": 410.53125,
+        "center": 194.9921875
+      },
+      "demo": {
+        "x": 20,
+        "y": 559.46875,
+        "width": 350,
+        "height": 1149.03125,
+        "bottom": 1708.5,
+        "center": 195
+      },
+      "headline": "AI агент за Вашата работа.",
+      "introText": "Изграждам Ваш личен AI агент за запитвания, документи и повтарящи се задачи — с Вашите инструменти, информация и правила.",
+      "headingAlign": "center",
+      "introAlign": "center",
+      "headlineLines": 2,
+      "overflow": [],
+      "photoFilter": "none",
+      "photoWidth": 350,
+      "photoLoaded": true,
+      "profileStacked": true,
+      "aboutLinks": 0,
+      "oldArt": 0,
+      "demonstrations": 1,
+      "h1count": 1,
+      "smallTargets": [],
+      "readable": true
+    },
+    "interactions": "tabs, demo anchor, FAQ, menu Escape, language destination"
+  },
+  {
+    "lang": "bg",
+    "width": 320,
+    "height": 740,
+    "errors": [],
+    "geometry": {
+      "h": {
+        "x": 20,
+        "y": 112,
+        "width": 280,
+        "height": 74.78125,
+        "bottom": 186.78125,
+        "center": 160
+      },
+      "intro": {
+        "x": 20,
+        "y": 208.78125,
+        "width": 280,
+        "height": 135.9375,
+        "bottom": 344.71875,
+        "center": 160
+      },
+      "cta": {
+        "x": 36.078125,
+        "y": 370.71875,
+        "width": 247.828125,
+        "height": 56,
+        "bottom": 426.71875,
+        "center": 159.9921875
+      },
+      "demo": {
+        "x": 20,
+        "y": 575.65625,
+        "width": 280,
+        "height": 1315.359375,
+        "bottom": 1891.015625,
+        "center": 160
+      },
+      "headline": "AI агент за Вашата работа.",
+      "introText": "Изграждам Ваш личен AI агент за запитвания, документи и повтарящи се задачи — с Вашите инструменти, информация и правила.",
+      "headingAlign": "center",
+      "introAlign": "center",
+      "headlineLines": 2,
+      "overflow": [],
+      "photoFilter": "none",
+      "photoWidth": 280,
+      "photoLoaded": true,
+      "profileStacked": true,
+      "aboutLinks": 0,
+      "oldArt": 0,
+      "demonstrations": 1,
+      "h1count": 1,
+      "smallTargets": [],
+      "readable": true
+    },
+    "interactions": "tabs, demo anchor, FAQ, menu Escape, language destination"
+  },
+  {
+    "lang": "bg",
+    "width": 844,
+    "height": 390,
+    "errors": [],
+    "geometry": {
+      "h": {
+        "x": 72,
+        "y": 136,
+        "width": 700,
+        "height": 59.40625,
+        "bottom": 195.40625,
+        "center": 422
+      },
+      "intro": {
+        "x": 87.203125,
+        "y": 221.40625,
+        "width": 669.59375,
+        "height": 61.1875,
+        "bottom": 282.59375,
+        "center": 422
+      },
+      "cta": {
+        "x": 294.078125,
+        "y": 312.59375,
+        "width": 255.828125,
+        "height": 56,
+        "bottom": 368.59375,
+        "center": 421.9921875
+      },
+      "demo": {
+        "x": 36,
+        "y": 447.96875,
+        "width": 772,
+        "height": 928.390625,
+        "bottom": 1376.359375,
+        "center": 422
+      },
+      "headline": "AI агент за Вашата работа.",
+      "introText": "Изграждам Ваш личен AI агент за запитвания, документи и повтарящи се задачи — с Вашите инструменти, информация и правила.",
+      "headingAlign": "center",
+      "introAlign": "center",
+      "headlineLines": 1,
+      "overflow": [],
+      "photoFilter": "none",
+      "photoWidth": 772,
+      "photoLoaded": true,
+      "profileStacked": true,
+      "aboutLinks": 0,
+      "oldArt": 0,
+      "demonstrations": 1,
+      "h1count": 1,
+      "smallTargets": [],
+      "readable": true
+    },
+    "interactions": "tabs, demo anchor, FAQ, menu Escape, language destination"
+  },
+  {
+    "lang": "en",
+    "width": 1440,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "h": {
+        "x": 220,
+        "y": 144,
+        "width": 1000,
+        "height": 70.390625,
+        "bottom": 214.390625,
+        "center": 720
+      },
+      "intro": {
+        "x": 385.203125,
+        "y": 240.390625,
+        "width": 669.59375,
+        "height": 61.1875,
+        "bottom": 301.578125,
+        "center": 720
+      },
+      "cta": {
+        "x": 588.515625,
+        "y": 331.578125,
+        "width": 262.953125,
+        "height": 56,
+        "bottom": 387.578125,
+        "center": 719.9921875
+      },
+      "demo": {
+        "x": 160,
+        "y": 466.953125,
+        "width": 1120,
+        "height": 678.59375,
+        "bottom": 1145.546875,
+        "center": 720
+      },
+      "headline": "An AI agent for your work.",
+      "introText": "I build your personal AI agent for enquiries, documents and repetitive tasks — using your tools, information and rules.",
+      "headingAlign": "center",
+      "introAlign": "center",
+      "headlineLines": 1,
+      "overflow": [],
+      "photoFilter": "none",
+      "photoWidth": 1040,
+      "photoLoaded": true,
+      "profileStacked": true,
+      "aboutLinks": 0,
+      "oldArt": 0,
+      "demonstrations": 1,
+      "h1count": 1,
+      "smallTargets": [],
+      "readable": true
+    },
+    "interactions": "tabs, demo anchor, FAQ, menu Escape, language destination"
+  },
+  {
+    "lang": "en",
+    "width": 1280,
+    "height": 1025,
+    "errors": [],
+    "geometry": {
+      "h": {
+        "x": 140,
+        "y": 144,
+        "width": 1000,
+        "height": 62.640625,
+        "bottom": 206.640625,
+        "center": 640
+      },
+      "intro": {
+        "x": 305.203125,
+        "y": 232.640625,
+        "width": 669.59375,
+        "height": 61.1875,
+        "bottom": 293.828125,
+        "center": 640
+      },
+      "cta": {
+        "x": 508.515625,
+        "y": 323.828125,
+        "width": 262.953125,
+        "height": 56,
+        "bottom": 379.828125,
+        "center": 639.9921875
+      },
+      "demo": {
+        "x": 80,
+        "y": 459.203125,
+        "width": 1120,
+        "height": 678.59375,
+        "bottom": 1137.796875,
+        "center": 640
+      },
+      "headline": "An AI agent for your work.",
+      "introText": "I build your personal AI agent for enquiries, documents and repetitive tasks — using your tools, information and rules.",
+      "headingAlign": "center",
+      "introAlign": "center",
+      "headlineLines": 1,
+      "overflow": [],
+      "photoFilter": "none",
+      "photoWidth": 1040,
+      "photoLoaded": true,
+      "profileStacked": true,
+      "aboutLinks": 0,
+      "oldArt": 0,
+      "demonstrations": 1,
+      "h1count": 1,
+      "smallTargets": [],
+      "readable": true
+    },
+    "interactions": "tabs, demo anchor, FAQ, menu Escape, language destination"
+  },
+  {
+    "lang": "en",
+    "width": 768,
+    "height": 1000,
+    "errors": [],
+    "geometry": {
+      "h": {
+        "x": 36,
+        "y": 136,
+        "width": 696,
+        "height": 54.0625,
+        "bottom": 190.0625,
+        "center": 384
+      },
+      "intro": {
+        "x": 49.203125,
+        "y": 216.0625,
+        "width": 669.59375,
+        "height": 61.1875,
+        "bottom": 277.25,
+        "center": 384
+      },
+      "cta": {
+        "x": 252.515625,
+        "y": 307.25,
+        "width": 262.953125,
+        "height": 56,
+        "bottom": 363.25,
+        "center": 383.9921875
+      },
+      "demo": {
+        "x": 36,
+        "y": 442.625,
+        "width": 696,
+        "height": 928.390625,
+        "bottom": 1371.015625,
+        "center": 384
+      },
+      "headline": "An AI agent for your work.",
+      "introText": "I build your personal AI agent for enquiries, documents and repetitive tasks — using your tools, information and rules.",
+      "headingAlign": "center",
+      "introAlign": "center",
+      "headlineLines": 1,
+      "overflow": [],
+      "photoFilter": "none",
+      "photoWidth": 696,
+      "photoLoaded": true,
+      "profileStacked": true,
+      "aboutLinks": 0,
+      "oldArt": 0,
+      "demonstrations": 1,
+      "h1count": 1,
+      "smallTargets": [],
+      "readable": true
+    },
+    "interactions": "tabs, demo anchor, FAQ, menu Escape, language destination"
+  },
+  {
+    "lang": "en",
+    "width": 390,
+    "height": 844,
+    "errors": [],
+    "geometry": {
+      "h": {
+        "x": 20,
+        "y": 112,
+        "width": 350,
+        "height": 85.78125,
+        "bottom": 197.78125,
+        "center": 195
+      },
+      "intro": {
+        "x": 20,
+        "y": 219.78125,
+        "width": 350,
+        "height": 81.5625,
+        "bottom": 301.34375,
+        "center": 195
+      },
+      "cta": {
+        "x": 67.515625,
+        "y": 327.34375,
+        "width": 254.953125,
+        "height": 56,
+        "bottom": 383.34375,
+        "center": 194.9921875
+      },
+      "demo": {
+        "x": 20,
+        "y": 532.28125,
+        "width": 350,
+        "height": 1122.640625,
+        "bottom": 1654.921875,
+        "center": 195
+      },
+      "headline": "An AI agent for your work.",
+      "introText": "I build your personal AI agent for enquiries, documents and repetitive tasks — using your tools, information and rules.",
+      "headingAlign": "center",
+      "introAlign": "center",
+      "headlineLines": 2,
+      "overflow": [],
+      "photoFilter": "none",
+      "photoWidth": 350,
+      "photoLoaded": true,
+      "profileStacked": true,
+      "aboutLinks": 0,
+      "oldArt": 0,
+      "demonstrations": 1,
+      "h1count": 1,
+      "smallTargets": [],
+      "readable": true
+    },
+    "interactions": "tabs, demo anchor, FAQ, menu Escape, language destination"
+  },
+  {
+    "lang": "en",
+    "width": 320,
+    "height": 740,
+    "errors": [],
+    "geometry": {
+      "h": {
+        "x": 20,
+        "y": 112,
+        "width": 280,
+        "height": 74.78125,
+        "bottom": 186.78125,
+        "center": 160
+      },
+      "intro": {
+        "x": 20,
+        "y": 208.78125,
+        "width": 280,
+        "height": 108.75,
+        "bottom": 317.53125,
+        "center": 160
+      },
+      "cta": {
+        "x": 32.515625,
+        "y": 343.53125,
+        "width": 254.953125,
+        "height": 56,
+        "bottom": 399.53125,
+        "center": 159.9921875
+      },
+      "demo": {
+        "x": 20,
+        "y": 548.46875,
+        "width": 280,
+        "height": 1229.8125,
+        "bottom": 1778.28125,
+        "center": 160
+      },
+      "headline": "An AI agent for your work.",
+      "introText": "I build your personal AI agent for enquiries, documents and repetitive tasks — using your tools, information and rules.",
+      "headingAlign": "center",
+      "introAlign": "center",
+      "headlineLines": 2,
+      "overflow": [],
+      "photoFilter": "none",
+      "photoWidth": 280,
+      "photoLoaded": true,
+      "profileStacked": true,
+      "aboutLinks": 0,
+      "oldArt": 0,
+      "demonstrations": 1,
+      "h1count": 1,
+      "smallTargets": [],
+      "readable": true
+    },
+    "interactions": "tabs, demo anchor, FAQ, menu Escape, language destination"
+  },
+  {
+    "lang": "en",
+    "width": 844,
+    "height": 390,
+    "errors": [],
+    "geometry": {
+      "h": {
+        "x": 72,
+        "y": 136,
+        "width": 700,
+        "height": 59.40625,
+        "bottom": 195.40625,
+        "center": 422
+      },
+      "intro": {
+        "x": 87.203125,
+        "y": 221.40625,
+        "width": 669.59375,
+        "height": 61.1875,
+        "bottom": 282.59375,
+        "center": 422
+      },
+      "cta": {
+        "x": 290.515625,
+        "y": 312.59375,
+        "width": 262.953125,
+        "height": 56,
+        "bottom": 368.59375,
+        "center": 421.9921875
+      },
+      "demo": {
+        "x": 36,
+        "y": 447.96875,
+        "width": 772,
+        "height": 928.390625,
+        "bottom": 1376.359375,
+        "center": 422
+      },
+      "headline": "An AI agent for your work.",
+      "introText": "I build your personal AI agent for enquiries, documents and repetitive tasks — using your tools, information and rules.",
+      "headingAlign": "center",
+      "introAlign": "center",
+      "headlineLines": 1,
+      "overflow": [],
+      "photoFilter": "none",
+      "photoWidth": 772,
+      "photoLoaded": true,
+      "profileStacked": true,
+      "aboutLinks": 0,
+      "oldArt": 0,
+      "demonstrations": 1,
+      "h1count": 1,
+      "smallTargets": [],
+      "readable": true
+    },
+    "interactions": "tabs, demo anchor, FAQ, menu Escape, language destination"
+  },
+  {
+    "normalMotion": "390px,DPR3,4xCPU; fully visible headline and dynamic reduced-motion reset",
+    "errors": []
+  }
+]

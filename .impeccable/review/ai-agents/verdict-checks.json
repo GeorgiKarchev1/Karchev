@@ -1,0 +1,74 @@
+[
+  {
+    "lang": "bg",
+    "width": 1440,
+    "errors": [],
+    "crmColor": "rgb(133, 84, 47)",
+    "crmBackground": "rgb(244, 229, 213)",
+    "overflow": 0,
+    "images": true
+  },
+  {
+    "lang": "bg",
+    "width": 768,
+    "errors": [],
+    "crmColor": "rgb(133, 84, 47)",
+    "crmBackground": "rgb(244, 229, 213)",
+    "overflow": 0,
+    "images": true
+  },
+  {
+    "lang": "bg",
+    "width": 390,
+    "errors": [],
+    "crmColor": "rgb(133, 84, 47)",
+    "crmBackground": "rgb(244, 229, 213)",
+    "overflow": 0,
+    "images": true
+  },
+  {
+    "lang": "bg",
+    "width": 320,
+    "errors": [],
+    "crmColor": "rgb(133, 84, 47)",
+    "crmBackground": "rgb(244, 229, 213)",
+    "overflow": 0,
+    "images": true
+  },
+  {
+    "lang": "en",
+    "width": 1440,
+    "errors": [],
+    "crmColor": "rgb(133, 84, 47)",
+    "crmBackground": "rgb(244, 229, 213)",
+    "overflow": 0,
+    "images": true
+  },
+  {
+    "lang": "en",
+    "width": 768,
+    "errors": [],
+    "crmColor": "rgb(133, 84, 47)",
+    "crmBackground": "rgb(244, 229, 213)",
+    "overflow": 0,
+    "images": true
+  },
+  {
+    "lang": "en",
+    "width": 390,
+    "errors": [],
+    "crmColor": "rgb(133, 84, 47)",
+    "crmBackground": "rgb(244, 229, 213)",
+    "overflow": 0,
+    "images": true
+  },
+  {
+    "lang": "en",
+    "width": 320,
+    "errors": [],
+    "crmColor": "rgb(133, 84, 47)",
+    "crmBackground": "rgb(244, 229, 213)",
+    "overflow": 0,
+    "images": true
+  }
+]

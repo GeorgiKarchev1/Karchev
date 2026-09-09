@@ -1,0 +1,13 @@
+[
+  {
+    "lang": "bg",
+    "form": "mocked failure and successful retry; no email sent"
+  },
+  {
+    "lang": "en",
+    "form": "mocked failure and successful retry; no email sent"
+  },
+  {
+    "cookie": "dismissal works"
+  }
+]

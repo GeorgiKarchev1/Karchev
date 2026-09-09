@@ -5,13 +5,13 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #f1f0ea;
+    background-color: #F5F5F0;
   }
 
   body {
     @apply antialiased;
     font-family: var(--font-inter), system-ui, sans-serif;
-    background-color: #f1f0ea;
+    background-color: #F5F5F0;
     color: #2d232e;
   }
 
@@ -131,18 +131,26 @@
   }
 
   .btn-primary {
-    @apply bg-[#534b52] text-[#f1f0ea] border-2 border-[#2d232e] font-bold px-8 py-4 rounded-full transition-all duration-300 ease-out active:translate-y-[2px] active:translate-x-[2px] active:shadow-[1px_1px_0px_#2d232e] text-lg inline-flex items-center justify-center gap-2 z-10;
+    @apply bg-[#534b52] text-[#F5F5F0] border-2 border-[#2d232e] font-bold px-8 py-4 rounded-full transition-all duration-300 ease-out active:translate-y-[2px] active:translate-x-[2px] active:shadow-[1px_1px_0px_#2d232e] text-lg inline-flex items-center justify-center gap-2 z-10;
     box-shadow: 4px 4px 0px #2d232e;
   }
 
   .btn-primary:hover {
     background-color: #2d232e;
-    color: #f1f0ea;
+    color: #F5F5F0;
   }
 
   .btn-secondary {
-    @apply bg-[#f1f0ea] border-2 border-[#2d232e] text-[#2d232e] font-bold px-8 py-4 rounded-full hover:bg-[#534b52] hover:text-[#f1f0ea] transition-all duration-300 active:translate-y-[2px] active:translate-x-[2px] active:shadow-[1px_1px_0px_#2d232e] text-lg;
+    @apply bg-[#F5F5F0] border-2 border-[#2d232e] text-[#2d232e] font-bold px-8 py-4 rounded-full hover:bg-[#534b52] hover:text-[#F5F5F0] transition-all duration-300 active:translate-y-[2px] active:translate-x-[2px] active:shadow-[1px_1px_0px_#2d232e] text-lg;
     box-shadow: 4px 4px 0px #2d232e;
+  }
+
+  /* Quiet tier. btn-primary and btn-secondary carry identical weight (2px
+     border + 4px hard shadow) and differ only in fill, so neither can sit
+     below the other. This recedes: no shadow, hairline border, smaller type —
+     for the alternative action beside a committed primary. */
+  .btn-quiet {
+    @apply bg-transparent border border-[#2d232e]/25 text-[#2d232e]/80 font-semibold px-6 py-3 rounded-full hover:border-[#2d232e] hover:text-[#2d232e] transition-all duration-300 text-base inline-flex items-center justify-center gap-2;
   }
 
   .glass-card {
@@ -162,7 +170,7 @@
   }
 
   .section-padding {
-    @apply py-20 md:py-32 px-4;
+    @apply py-16 md:py-24 px-4;
   }
 
   /* 3D card tilt effect helper */
@@ -187,7 +195,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f0ea;
+  background: #F5F5F0;
 }
 
 ::-webkit-scrollbar-thumb {

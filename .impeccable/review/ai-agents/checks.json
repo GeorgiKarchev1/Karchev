@@ -1,0 +1,345 @@
+[
+  {
+    "lang": "bg",
+    "width": 1440,
+    "geometry": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "overflow": [],
+      "images": [
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Ftheagency.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Feditingbg.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        }
+      ],
+      "h1": "AI агенти.\nРеална работа.",
+      "font": "__Lora_88bcf1, __Lora_Fallback_88bcf1, serif",
+      "lang": "bg"
+    },
+    "errors": [],
+    "interactive": "tabs + keyboard, FAQ, projects, language link, mobile menu passed"
+  },
+  {
+    "lang": "bg",
+    "width": 768,
+    "geometry": {
+      "width": 768,
+      "scrollWidth": 768,
+      "overflow": [],
+      "images": [
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Ftheagency.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Feditingbg.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        }
+      ],
+      "h1": "AI агенти.\nРеална работа.",
+      "font": "__Lora_88bcf1, __Lora_Fallback_88bcf1, serif",
+      "lang": "bg"
+    },
+    "errors": [],
+    "interactive": "tabs + keyboard, FAQ, projects, language link, mobile menu passed"
+  },
+  {
+    "lang": "bg",
+    "width": 390,
+    "geometry": {
+      "width": 390,
+      "scrollWidth": 390,
+      "overflow": [],
+      "images": [
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Ftheagency.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Feditingbg.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        }
+      ],
+      "h1": "AI агенти.\nРеална работа.",
+      "font": "__Lora_88bcf1, __Lora_Fallback_88bcf1, serif",
+      "lang": "bg"
+    },
+    "errors": [],
+    "interactive": "tabs + keyboard, FAQ, projects, language link, mobile menu passed"
+  },
+  {
+    "lang": "bg",
+    "width": 320,
+    "geometry": {
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": [],
+      "images": [
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Ftheagency.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Feditingbg.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        }
+      ],
+      "h1": "AI агенти.\nРеална работа.",
+      "font": "__Lora_88bcf1, __Lora_Fallback_88bcf1, serif",
+      "lang": "bg"
+    },
+    "errors": [],
+    "interactive": "tabs + keyboard, FAQ, projects, language link, mobile menu passed"
+  },
+  {
+    "lang": "en",
+    "width": 1440,
+    "geometry": {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "overflow": [],
+      "images": [
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Ftheagency.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Feditingbg.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        }
+      ],
+      "h1": "AI agents.\nReal work.",
+      "font": "__Lora_88bcf1, __Lora_Fallback_88bcf1, serif",
+      "lang": "en"
+    },
+    "errors": [],
+    "interactive": "tabs + keyboard, FAQ, projects, language link, mobile menu passed"
+  },
+  {
+    "lang": "en",
+    "width": 768,
+    "geometry": {
+      "width": 768,
+      "scrollWidth": 768,
+      "overflow": [],
+      "images": [
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Ftheagency.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Feditingbg.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        }
+      ],
+      "h1": "AI agents.\nReal work.",
+      "font": "__Lora_88bcf1, __Lora_Fallback_88bcf1, serif",
+      "lang": "en"
+    },
+    "errors": [],
+    "interactive": "tabs + keyboard, FAQ, projects, language link, mobile menu passed"
+  },
+  {
+    "lang": "en",
+    "width": 390,
+    "geometry": {
+      "width": 390,
+      "scrollWidth": 390,
+      "overflow": [],
+      "images": [
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Ftheagency.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Feditingbg.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        }
+      ],
+      "h1": "AI agents.\nReal work.",
+      "font": "__Lora_88bcf1, __Lora_Fallback_88bcf1, serif",
+      "lang": "en"
+    },
+    "errors": [],
+    "interactive": "tabs + keyboard, FAQ, projects, language link, mobile menu passed"
+  },
+  {
+    "lang": "en",
+    "width": 320,
+    "geometry": {
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": [],
+      "images": [
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Fazseriozen_optimized_1000.jpg&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Ftheagency.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/_next/image?url=%2Fimg%2Feditingbg.png&w=3840&q=75",
+          "ok": true
+        },
+        {
+          "src": "/img/logokarch.png",
+          "ok": true
+        }
+      ],
+      "h1": "AI agents.\nReal work.",
+      "font": "__Lora_88bcf1, __Lora_Fallback_88bcf1, serif",
+      "lang": "en"
+    },
+    "errors": [],
+    "interactive": "tabs + keyboard, FAQ, projects, language link, mobile menu passed"
+  },
+  {
+    "lang": "bg",
+    "contact": "mocked failure and successful retry passed; no external submission"
+  },
+  {
+    "lang": "en",
+    "contact": "mocked failure and successful retry passed; no external submission"
+  },
+  {
+    "cookie": "dismissal passed"
+  },
+  {
+    "path": "/bg/estimate",
+    "status": 200
+  },
+  {
+    "path": "/en/estimate",
+    "status": 200
+  },
+  {
+    "path": "/bg/ai-integratsiya",
+    "status": 200
+  },
+  {
+    "path": "/en/ai-integration",
+    "status": 200
+  },
+  {
+    "path": "/bg/ai-avtomatizatsii",
+    "status": 200
+  },
+  {
+    "path": "/en/ai-automation",
+    "status": 200
+  },
+  {
+    "path": "/bg/blog",
+    "status": 200
+  },
+  {
+    "path": "/en/blog",
+    "status": 200
+  },
+  {
+    "path": "/bg/kak-da-polzvam-ai-ako-nishto-ne-razbiram",
+    "status": 200
+  },
+  {
+    "path": "/politiki/biskvitki",
+    "status": 200
+  },
+  {
+    "path": "/policies/cookies",
+    "status": 200
+  }
+]

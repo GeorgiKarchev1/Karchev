@@ -1,122 +1,90 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ArrowRight } from 'lucide-react'
-import LanguageSwitcher from './LanguageSwitcher'
+import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { useLanguage } from '@/context/LanguageContext'
-import { getRouteLocale } from '@/lib/site'
+import { getLocalizedSwitchPath, getRouteLocale } from '@/lib/site'
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { t } = useLanguage()
-  const pathname = usePathname()
-  const locale = pathname ? getRouteLocale(pathname) : null
-  const homePath = locale === 'en' ? '/en' : locale === 'bg' ? '/bg' : '/'
-  const navItems = [
-    { href: `${homePath}#solutions`, label: t('navbar.services') },
-    { href: `${homePath}#portfolio`, label: t('navbar.portfolio') },
-    { href: `${homePath}#how-it-works`, label: t('navbar.about') },
-    { href: locale === 'en' ? '/en/blog' : locale === 'bg' ? '/bg/blog' : '/blog', label: t('navbar.blog') },
+  const { t, language } = useLanguage()
+  const pathname = usePathname() || '/'
+  const locale = getRouteLocale(pathname) || (language === 'EN' ? 'en' : 'bg')
+  const home = '/' + locale
+  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const toggle = useRef<HTMLButtonElement>(null)
+  const nav = useRef<HTMLElement>(null)
+  const items = [
+    { href: home + '#demo', label: language === 'EN' ? 'Your agent' : 'Вашият агент' },
+    { href: home + '#solutions', label: language === 'EN' ? 'Personalisation' : 'Персонализация' },
+    { href: home + '#how-it-works', label: t('navbar.about') },
+    { href: home + '/blog', label: t('navbar.blog') },
   ]
 
+  useEffect(() => { setOpen(false) }, [pathname])
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    // rAF-throttled so the scroll handler never lands in the frame budget.
+    let frame = 0
+    const onScroll = () => {
+      if (frame) return
+      frame = requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 80)
+        frame = 0
+      })
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (frame) cancelAnimationFrame(frame)
+    }
   }, [])
+  useEffect(() => {
+    if (!open) return
+    const close = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(false)
+        toggle.current?.focus()
+      }
+    }
+    const outside = (event: PointerEvent) => {
+      if (!nav.current?.contains(event.target as Node)) setOpen(false)
+    }
+    document.addEventListener('keydown', close)
+    document.addEventListener('pointerdown', outside)
+    return () => {
+      document.removeEventListener('keydown', close)
+      document.removeEventListener('pointerdown', outside)
+    }
+  }, [open])
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled
-        ? 'bg-[#f1f0ea]/90 backdrop-blur-md border-b border-[#2d232e] py-4'
-        : 'bg-transparent py-6'
-    }`}>
-      <div className="container-wide mx-auto flex items-center justify-between">
-        <Link
-          href={homePath}
-          className="shrink-0 transition-opacity hover:opacity-75"
-          aria-label="Karchev home"
-        >
-          <img
-            src="/img/logokarch.png"
-            alt="Karchev"
-            width="1500"
-            height="500"
-            className="block h-auto w-[120px] lg:w-[144px] xl:w-[156px]"
-            style={{ filter: 'drop-shadow(0 0 6px rgba(241,240,234,0.8))' }}
-          />
+    <nav ref={nav} className={scrolled ? 'studio-nav is-scrolled' : 'studio-nav'} aria-label={language === 'EN' ? 'Main navigation' : 'Основна навигация'}>
+      <div className="studio-wrap studio-nav-inner">
+        <Link href={home} className="studio-brand" aria-label="KARCHX">
+          <img src="/img/logokarch.png" alt="KARCHX" width="1500" height="500" />
         </Link>
-
-        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
-          {navItems.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className="text-sm font-bold text-[#2d232e] hover:text-[#534b52] transition-colors"
-              style={{ textShadow: '0 0 8px rgba(241,240,234,0.9), 0 0 16px rgba(241,240,234,0.7)' }}
-            >
-              {label}
-            </Link>
-          ))}
-
-          <div className="w-px h-4 bg-[#2d232e]" />
-          <LanguageSwitcher />
-
-          <Link
-            href="https://cal.com/georgi-karchev-3r9puz/30min"
-            target="_blank"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#534b52] text-[#e0ddcf] text-sm font-semibold hover:bg-[#2d232e] transition-all duration-300 group"
-          >
-            {t('navbar.bookMeeting')}
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
+        <div className="studio-desktop-links">
+          {items.map(item => <Link key={item.href} href={item.href} className="studio-nav-link">{item.label}</Link>)}
         </div>
-
-        <button
-          className="lg:hidden text-[#2d232e] p-2 drop-shadow-[0_0_6px_rgba(241,240,234,0.9)]"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X /> : <Menu />}
-        </button>
+        <div className="studio-nav-actions">
+          <a className="studio-language" href={getLocalizedSwitchPath(pathname, locale === 'en' ? 'bg' : 'en')} hrefLang={locale === 'en' ? 'bg' : 'en'} aria-label={locale === 'en' ? 'Превключи на български' : 'Switch to English'}>
+            <span className={locale === 'en' ? 'active' : ''}>EN</span><span aria-hidden="true">/</span><span className={locale === 'bg' ? 'active' : ''}>BG</span>
+          </a>
+          <a href="https://cal.com/georgi-karchev-3r9puz/30min" target="_blank" rel="noopener noreferrer" className="studio-nav-book">
+            {language === 'EN' ? "Let's talk" : 'Да поговорим'}<ArrowUpRight size={17} aria-hidden="true" />
+          </a>
+          <button ref={toggle} className="studio-menu-toggle" aria-expanded={open} aria-controls="studio-mobile-menu" aria-label={language === 'EN' ? (open ? 'Close menu' : 'Open menu') : (open ? 'Затвори менюто' : 'Отвори менюто')} onClick={() => setOpen(!open)}>
+            {open ? <X size={23} /> : <Menu size={23} />}
+          </button>
+        </div>
       </div>
-
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="absolute top-full left-0 right-0 bg-[#f1f0ea] border-b border-[#2d232e] overflow-hidden lg:hidden"
-          >
-            <div className="flex flex-col items-center p-6 gap-6">
-              {navItems.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className="text-xl font-bold text-[#2d232e] hover:text-[#534b52] transition-colors text-center w-full"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {label}
-                </Link>
-              ))}
-              <Link
-                href="https://cal.com/georgi-karchev-3r9puz/30min"
-                target="_blank"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 mt-2 rounded-full bg-[#534b52] text-[#f1f0ea] text-base font-bold border-2 border-[#2d232e] shadow-[4px_4px_0px_#2d232e] hover:bg-[#2d232e] transition-all duration-300 active:translate-y-[2px] active:translate-x-[2px] active:shadow-[1px_1px_0px_#2d232e] w-full"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t('navbar.bookMeeting')}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {open && <div id="studio-mobile-menu" className="studio-mobile-menu">
+        {items.map(item => <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}<ArrowUpRight size={22} aria-hidden="true" /></Link>)}
+        <a href="https://cal.com/georgi-karchev-3r9puz/30min" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>{t('navbar.bookMeeting')}<ArrowUpRight size={22} aria-hidden="true" /></a>
+      </div>}
     </nav>
   )
 }

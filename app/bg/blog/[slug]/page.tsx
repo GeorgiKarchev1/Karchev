@@ -59,7 +59,7 @@ export default async function DynamicBulgarianBlogPost({ params }: Props) {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Karchev',
+      name: 'KARCHX',
       url: absoluteUrl('/'),
       logo: {
         '@type': 'ImageObject',
@@ -74,7 +74,7 @@ export default async function DynamicBulgarianBlogPost({ params }: Props) {
   }
 
   return (
-    <main className="min-h-screen bg-[#f1f0ea] text-[#2d232e] selection:bg-[#534b52]/30">
+    <main className="min-h-screen bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navbar />
 

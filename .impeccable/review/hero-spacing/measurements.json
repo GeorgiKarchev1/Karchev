@@ -1,0 +1,42 @@
+[
+  {
+    "lang": "bg",
+    "width": 1440,
+    "heroPadding": "96px 0px 80px",
+    "copyPadding": "96px 0px",
+    "whiteSpaceAfterCommitments": 80,
+    "secondSectionTopPadding": "96px",
+    "ctaBottom": 472,
+    "overflow": false
+  },
+  {
+    "lang": "bg",
+    "width": 390,
+    "heroPadding": "80px 0px 64px",
+    "copyPadding": "64px 0px",
+    "whiteSpaceAfterCommitments": 64,
+    "secondSectionTopPadding": "80px",
+    "ctaBottom": 424,
+    "overflow": false
+  },
+  {
+    "lang": "en",
+    "width": 1440,
+    "heroPadding": "96px 0px 80px",
+    "copyPadding": "96px 0px",
+    "whiteSpaceAfterCommitments": 80,
+    "secondSectionTopPadding": "96px",
+    "ctaBottom": 472,
+    "overflow": false
+  },
+  {
+    "lang": "en",
+    "width": 390,
+    "heroPadding": "80px 0px 64px",
+    "copyPadding": "64px 0px",
+    "whiteSpaceAfterCommitments": 64,
+    "secondSectionTopPadding": "80px",
+    "ctaBottom": 400,
+    "overflow": false
+  }
+]

@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
 import type { ArticlePageProps } from '@/components/seo/ArticlePage'
-import type { CaseStudyPageProps } from '@/components/seo/CaseStudyPage'
 import { localizedAlternates } from '@/lib/site'
 
 type ArticleDefinition = ArticlePageProps & { metadata: Metadata }
-type CaseStudyDefinition = CaseStudyPageProps & { metadata: Metadata }
 
 export const localizedArticles: Record<string, ArticleDefinition> = {
   bgWebsiteCost: {
@@ -16,7 +14,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
     category: 'Уеб Разработка',
     readTime: '5 мин четене',
     date: '25 Април 2026',
-    intro: 'Всеки път когато някой ни пита "колко струва един сайт?" знаем какво следва — или им даваме честен отговор и изглеждаме по-скъпи от съседната агенция, или им казваме "зависи" и звучим като всички останали. Решихме да изберем честния отговор.',
+    intro: 'Всеки път когато някой ме пита "колко струва един сайт?" знам какво следва — или му давам честен отговор и изглеждам по-скъпо от съседната агенция, или му казвам "зависи" и звучим като всички останали. Решихме да изберем честния отговор.',
     sections: [
       {
         heading: 'Защо цените са толкова различни?',
@@ -53,8 +51,8 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
         body: 'Понякога защото в цената влизат branding, copywriting и SEO стратегия. Понякога просто защото могат. Истинският въпрос е не "колко струва?", а "какво получавам за тези пари?"',
       },
       {
-        heading: 'Какво правим ние?',
-        body: 'Работим в диапазона 400-1500€ за персонализирани сайтове и не приемаме проект, ако не вярваме, че ще донесе реален резултат. Ако ситуацията ти не изисква голяма инвестиция, ще го кажем директно.',
+        heading: 'Как подхождам аз?',
+        body: 'Работя в диапазона 400-1500€ за персонализирани сайтове и не приемам проект, ако не вярвам, че ще донесе реален резултат. Ако ситуацията ти не изисква голяма инвестиция, ще го кажем директно.',
       },
     ],
     ctaLabel: 'Запази безплатен разговор',
@@ -79,7 +77,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
     category: 'Web Development',
     readTime: '5 min read',
     date: 'April 25, 2026',
-    intro: 'Every time someone asks us how much a website costs, the same problem shows up: either you give a real answer and sound expensive, or you say "it depends" and sound like every vague agency on the internet.',
+    intro: 'Every time someone asks me how much a website costs, the same problem shows up: either you give a real answer and sound expensive, or you say "it depends" and sound like every vague agency on the internet.',
     sections: [
       {
         heading: 'Why are the prices all over the place?',
@@ -116,8 +114,8 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
         body: 'Sometimes because the scope includes brand work, strategy, and copy. Sometimes because the quote is padded. The important question is not the number alone, but the logic behind it.',
       },
       {
-        heading: 'How we approach it',
-        body: 'We usually work in the custom site range and stay direct about what is and is not worth paying for. If a business does not need a bigger build, we say that plainly.',
+        heading: 'How I approach it',
+        body: 'I usually work in the custom site range and stay direct about what is and is not worth paying for. If a business does not need a bigger build, I say that plainly.',
       },
     ],
     ctaLabel: 'Book a free call',
@@ -312,7 +310,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
         body: 'One offer, one audience, one conversion goal usually points to a landing page. More complexity usually points to a full site.',
       },
     ],
-    ctaLabel: 'See our landing page service',
+    ctaLabel: 'See my landing page service',
     ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
     backHref: '/en/blog',
     backLabel: 'Back to blog',
@@ -556,7 +554,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
         body: 'Финалният контрол. Ти одобряваш посоката, тона и фактите. Това е точният баланс: машината движи продукцията, а човекът пази качеството и търговския усет.',
       },
     ],
-    ctaLabel: 'Говори с нас за content automation',
+    ctaLabel: 'Говори с мен за content automation',
     ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
     backHref: '/bg/blog',
     backLabel: 'Назад към блога',
@@ -625,7 +623,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
         body: 'Final judgment. You still approve the angle, tone, claims, and priorities. That is the right division of labor: the machine moves production forward, and the human protects quality and commercial relevance.',
       },
     ],
-    ctaLabel: 'Talk to us about content automation',
+    ctaLabel: 'Talk to me about content automation',
     ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
     backHref: '/en/blog',
     backLabel: 'Back to blog',
@@ -657,130 +655,3 @@ export const enBlogArticles = [
   localizedArticles.enWebsiteTrustMistakes,
   localizedArticles.enAiContentPipeline,
 ]
-
-export const caseStudies: Record<string, CaseStudyDefinition> = {
-  bgEditing: {
-    locale: 'bg',
-    path: '/bg/kazusi/editing-bg',
-    title: 'Editing.bg — marketplace логика, сайт и automation мислене в едно',
-    description: 'Платформа, която трябваше да изглежда ясна за клиента, но и да работи гладко за екипа зад нея.',
-    client: 'Editing.bg',
-    category: 'Казус · Уеб & Автоматизация',
-    challenge: 'Проектът изискваше едновременно ясно UX изживяване, доверие към услугата и логика, която не товари екипа с излишни ръчни стъпки.',
-    solution: [
-      'Ясна структура около услугата и marketplace логиката.',
-      'UX, който показва стойността бързо и не губи потребителя в шум.',
-      'Automation-first мислене за процесите зад самата платформа.',
-    ],
-    outcome: [
-      'По-подредено представяне на услугата и платформата.',
-      'По-силен bridge между front-end изживяването и operational flow-а.',
-      'Основа, върху която сайтът и процесите могат да се надграждат заедно.',
-    ],
-    metrics: [
-      { label: 'Тип проект', value: 'Marketplace' },
-      { label: 'Фокус', value: 'Automation' },
-      { label: 'Роля', value: 'UX + Build' },
-    ],
-    liveUrl: 'https://editing.bg/',
-    image: '/img/editingbg.png',
-    metadata: {
-      title: 'Казус: Editing.bg',
-      description: 'Как структурираме marketplace сайт и automation логика така, че да работят като една система.',
-      alternates: localizedAlternates('/bg/kazusi/editing-bg', '/en/case-studies/editing-bg', 'bg'),
-    },
-  },
-  enEditing: {
-    locale: 'en',
-    path: '/en/case-studies/editing-bg',
-    title: 'Editing.bg — where marketplace UX and automation logic had to work together',
-    description: 'A platform that needed to feel clear for users while staying operationally practical behind the scenes.',
-    client: 'Editing.bg',
-    category: 'Case Study · Web & Automation',
-    challenge: 'The platform had to communicate value clearly on the front-end while reducing internal friction in the workflow behind it.',
-    solution: [
-      'A clearer structure around the offer and the platform model.',
-      'UX that highlights value early instead of burying it in clutter.',
-      'Automation-minded decisions in the parts users do not see but teams feel every day.',
-    ],
-    outcome: [
-      'A stronger bridge between front-end trust and operational practicality.',
-      'Cleaner presentation of the platform and service.',
-      'A foundation where the website and the workflow can evolve together.',
-    ],
-    metrics: [
-      { label: 'Project type', value: 'Marketplace' },
-      { label: 'Focus', value: 'Automation' },
-      { label: 'Role', value: 'UX + Build' },
-    ],
-    liveUrl: 'https://editing.bg/',
-    image: '/img/editingbg.png',
-    metadata: {
-      title: 'Case Study: Editing.bg',
-      description: 'How we approached a platform where marketplace UX and automation thinking needed to support each other.',
-      alternates: localizedAlternates('/bg/kazusi/editing-bg', '/en/case-studies/editing-bg', 'en'),
-    },
-  },
-  bgYordan: {
-    locale: 'bg',
-    path: '/bg/kazusi/yordan-kolev',
-    title: 'Yordan Kolev — личен бранд сайт с фокус върху доверие и ясна оферта',
-    description: 'Персонален сайт, който трябва да превърне вниманието към личния бранд в по-ясна бизнес оферта и по-силен conversion flow.',
-    client: 'Yordan Kolev',
-    category: 'Казус · Личен Бранд',
-    challenge: 'При личните брандове рискът е сайтът да стане само визитка. Тук целта беше да работи като доверителен asset и да води към реално действие.',
-    solution: [
-      'Структура, която подрежда личния бранд около резултатите и офертата.',
-      'По-изчистено насочване към CTA вместо разсейващи елементи.',
-      'Сайт, който изглежда сериозно и помага на позиционирането, не просто да стои красиво.',
-    ],
-    outcome: [
-      'По-ясно представяне на експертизата и офертата.',
-      'По-силен trust layer за първи контакт.',
-      'Страница, която е по-полезна за organic, direct и referral трафик едновременно.',
-    ],
-    metrics: [
-      { label: 'Тип сайт', value: 'Personal Brand' },
-      { label: 'Фокус', value: 'Trust + CTA' },
-      { label: 'Подход', value: 'Offer-first' },
-    ],
-    liveUrl: 'https://yordankolev.com/',
-    image: '/img/yordankolev.png',
-    metadata: {
-      title: 'Казус: Yordan Kolev',
-      description: 'Как personal brand сайтът на Yordan Kolev беше структуриран около доверие, яснота и conversion logic.',
-      alternates: localizedAlternates('/bg/kazusi/yordan-kolev', '/en/case-studies/yordan-kolev', 'bg'),
-    },
-  },
-  enYordan: {
-    locale: 'en',
-    path: '/en/case-studies/yordan-kolev',
-    title: 'Yordan Kolev — a personal brand site built around trust and a clearer offer',
-    description: 'A personal brand website designed to turn attention into a stronger business proposition and cleaner conversion path.',
-    client: 'Yordan Kolev',
-    category: 'Case Study · Personal Brand',
-    challenge: 'Personal brand sites often become decorative biographies. The goal here was to make the site function as a trust asset that moves visitors toward action.',
-    solution: [
-      'An offer-first structure instead of a generic personal profile layout.',
-      'Cleaner CTA direction and less visual noise.',
-      'Positioning that supports credibility and business intent at the same time.',
-    ],
-    outcome: [
-      'Clearer presentation of expertise and offer.',
-      'A stronger trust layer for first-time visitors.',
-      'A page that supports organic, direct, and referral traffic more effectively.',
-    ],
-    metrics: [
-      { label: 'Site type', value: 'Personal Brand' },
-      { label: 'Focus', value: 'Trust + CTA' },
-      { label: 'Approach', value: 'Offer-first' },
-    ],
-    liveUrl: 'https://yordankolev.com/',
-    image: '/img/yordankolev.png',
-    metadata: {
-      title: 'Case Study: Yordan Kolev',
-      description: 'How we structured Yordan Kolev’s personal brand site around trust, clarity, and conversion logic.',
-      alternates: localizedAlternates('/bg/kazusi/yordan-kolev', '/en/case-studies/yordan-kolev', 'en'),
-    },
-  },
-}

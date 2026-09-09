@@ -103,7 +103,7 @@ function Step1({ answers, set, onNext, displayStep, totalSteps }: any) {
     { value: 'business_site', title: 'Представителен сайт (фирмен)', description: 'Сайт, който представя вашата фирма или услуги.' },
     { value: 'ecommerce',     title: 'Онлайн магазин',               description: 'Продукти, количка, плащания и поръчки.' },
     { value: 'landing_page',  title: 'Лендинг страница',             description: 'Една страница за конкретна услуга или кампания.' },
-    { value: 'unsure',        title: 'Не съм сигурен',               description: 'Ще ви помогнем да разберете кое има смисъл.' },
+    { value: 'unsure',        title: 'Не съм сигурен',               description: 'Ще ви помогна да разберете кое има смисъл.' },
   ]
   return (
     <div>
@@ -286,7 +286,7 @@ function ResultScreen({ result, answers, onReset }: {
       <div className="bg-[#2d232e] rounded-2xl p-5 text-center">
         <h3 className="text-base font-black text-[#e0ddcf] mb-1">Искате точна цена?</h3>
         <p className="text-xs text-[#e0ddcf]/60 leading-relaxed mb-4">
-          Запазете безплатен 30-минутен разговор — ще ви кажем директно какво ви трябва.
+          Запазете безплатен 30-минутен разговор — ще ви кажа директно какво ви трябва.
         </p>
         <a href="https://cal.com/georgi-karchev-3r9puz/30min" target="_blank" rel="noopener noreferrer"
           className="block w-full py-3 rounded-full bg-[#e0ddcf] text-[#2d232e] font-black text-sm hover:bg-white transition-colors mb-2">

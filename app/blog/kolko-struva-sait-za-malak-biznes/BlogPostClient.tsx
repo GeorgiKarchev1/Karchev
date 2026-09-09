@@ -15,7 +15,7 @@ const content = {
     date: "25 Април 2026",
     title: "Колко струва сайт за малък бизнес в България — честен отговор",
     intro:
-      'Всеки път когато някой ни пита "колко струва един сайт?" знаем какво следва — или им даваме честен отговор и изглеждаме по-скъпи от съседната агенция, или им казваме "зависи" и звучим като всички останали. Решихме да изберем честния отговор.',
+      'Всеки път когато някой ме пита "колко струва един сайт?" знам какво следва — или му давам честен отговор и изглеждам по-скъпо от съседната агенция, или му казвам "зависи" и звуча като всички останали. Решихме да изберем честния отговор.',
     sections: [
       {
         heading: "Защо цените са толкова различни?",
@@ -30,7 +30,7 @@ const content = {
           },
           {
             title: "Персонализиран сайт — 400 до 1300€",
-            body: "Тук вече говорим за нещо направено специално за теб. Дизайн по мярка, бързо зареждане, структура която кара хората да се обаждат. Това е вариантът за ресторант, козметичен салон, адвокат, счетоводител — всеки бизнес, който иска сайтът му реално да работи. Повечето наши клиенти влизат в тази категория.",
+            body: "Тук вече говорим за нещо направено специално за теб. Дизайн по мярка, бързо зареждане, структура която кара хората да се обаждат. Това е вариантът за ресторант, козметичен салон, адвокат, счетоводител — всеки бизнес, който иска сайтът му реално да работи. Повечето от клиентите ми влизат в тази категория.",
           },
           {
             title: "Онлайн магазин — 1000 до 3000€+",
@@ -52,7 +52,7 @@ const content = {
         body: 'Понякога защото в цената влизат брандинг, копирайтинг и SEO стратегия — неща с реална стойност. Понякога просто защото могат. Въпросът, който трябва да зададеш не е "колко струва?" а "какво ще получа за тези пари?" Ако агенцията не може да ти отговори конкретно — бягай.',
       },
       {
-        heading: "Какво правим ние?",
+        heading: "Как подхождам аз?",
         body: "Работим в диапазона 400-1500€ за персонализирани сайтове и не приемаме проект ако не сме сигурни, че можем да донесем реален резултат. Ако смятаме, че ситуацията ти не изисква голяма инвестиция — ще ти го кажем директно. Ако искаш да разбереш точно какво ти трябва, запази безплатен разговор. 30 минути, без задължения, без глупости.",
       },
     ],
@@ -69,7 +69,7 @@ const content = {
     title:
       "How Much Does a Website Cost for a Small Business in Bulgaria — an Honest Answer",
     intro:
-      'Every time someone asks us "how much does a website cost?" we know what follows — either we give an honest answer and look more expensive than the agency next door, or we say "it depends" and sound like everyone else. We chose the honest answer.',
+      'Every time someone asks me "how much does a website cost?" I know what follows — either I give an honest answer and look more expensive than the agency next door, or I say "it depends" and sound like everyone else. I chose the honest answer.',
     sections: [
       {
         heading: "Why are prices so different?",
@@ -84,7 +84,7 @@ const content = {
           },
           {
             title: "Custom website — €400 to €1,300",
-            body: "Here we're talking about something built specifically for you. Custom design, fast loading, structure that makes people pick up the phone. This is the option for restaurants, beauty salons, lawyers, accountants — any business that wants their site to actually work. Most of our clients fall into this category.",
+            body: "Here I'm talking about something built specifically for you. Custom design, fast loading, structure that makes people pick up the phone. This is the option for restaurants, beauty salons, lawyers, accountants — any business that wants their site to actually work. Most of my clients fall into this category.",
           },
           {
             title: "Online store — €1,000 to €3,000+",
@@ -106,8 +106,8 @@ const content = {
         body: 'Sometimes because the price includes branding, copywriting, and SEO strategy — things with real value. Sometimes simply because they can. The question you should ask isn\'t "how much does it cost?" but "what will I get for that money?" If the agency can\'t answer you specifically — run.',
       },
       {
-        heading: "What do we do?",
-        body: "We work in the €400-€1,500 range for custom websites and don't accept a project unless we're confident we can deliver real results. If we think your situation doesn't require a large investment — we'll tell you directly. If you want to know exactly what you need, book a free call. 30 minutes, no obligations, no bullshit.",
+        heading: "How do I approach it?",
+        body: "I work in the €400-€1,500 range for custom websites and don't accept a project unless I'm confident I can deliver real results. If I think your situation doesn't require a large investment — I'll tell you directly. If you want to know exactly what you need, book a free call. 30 minutes, no obligations, no bullshit.",
       },
     ],
     cta: "Book a Free Call",
@@ -155,7 +155,7 @@ export default function BlogPostClient() {
     },
     publisher: {
       "@type": "Organization",
-      name: "Karchev",
+      name: "KARCHX",
       url: "https://www.karchx.com",
       logo: {
         "@type": "ImageObject",
@@ -173,7 +173,7 @@ export default function BlogPostClient() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f1f0ea] text-[#2d232e]">
+    <main className="min-h-screen bg-[#F5F5F0] text-[#2d232e]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
@@ -192,7 +192,7 @@ export default function BlogPostClient() {
           </Link>
           <button
             onClick={() => setLang(lang === "BG" ? "EN" : "BG")}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-[#2d232e] text-sm font-bold hover:bg-[#2d232e] hover:text-[#f1f0ea] transition-all duration-200"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-[#2d232e] text-sm font-bold hover:bg-[#2d232e] hover:text-[#F5F5F0] transition-all duration-200"
           >
             <Globe className="w-4 h-4" />
             {c.switchLabel}
@@ -281,7 +281,7 @@ export default function BlogPostClient() {
             href={c.ctaLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#f1f0ea] text-[#2d232e] text-sm font-black border-2 border-[#f1f0ea] hover:bg-[#534b52] hover:text-[#f1f0ea] hover:border-[#534b52] transition-all duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#F5F5F0] text-[#2d232e] text-sm font-black border-2 border-[#F5F5F0] hover:bg-[#534b52] hover:text-[#F5F5F0] hover:border-[#534b52] transition-all duration-300"
           >
             {c.cta} →
           </a>
