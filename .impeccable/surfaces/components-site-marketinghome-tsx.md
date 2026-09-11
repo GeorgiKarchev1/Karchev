@@ -31,6 +31,6 @@ Previous exclusions still hold: no abstract 3D shapes, dark draft panel, orbit d
 
 Latest follow-up: the user explicitly likes this hero. Remove only its “Изграден лично от / Георги Карчев” attribution and thumbnail, and add expressive text animation. Preserve the approved layout and copy, plus the large profile further down the page. No new design direction is authorized by this refinement.
 
-Spacing follow-up: the user wants the opening to breathe and specifically requests more separation from the second section. Preserve the approved composition and motion, add a 192px white interval after commitments (128px mobile), expand the copy inset and give the second heading more top space.
+September 10 spacing correction supersedes the earlier request for a 192px/128px interval: the owner now finds the hero too empty, especially below the three commitments. Keep the composition and motion, reduce hero bottom padding to 48px desktop / 32px mobile, copy padding to 64px/48px desktop and 40px/32px mobile, and personalisation top padding to 64px/56px. Retain the navigation clearance and commitment wrapping. Change the shared booking label to “Безплатен разговор” / “Free call”.
 
-The owner explicitly rejected the initial 80px/64px interval as insufficient. The current 192px/128px spacing is a deliberate, user-directed exception to the earlier compact spacing scale.
+September 10 edge follow-up: remove the thin pale viewport scrollbar rail on the homepage so the dark personalisation section reaches the right edge. Keep native scrolling and the existing section colors. Personalisation and the light process section already share a boundary with no intervening margin.

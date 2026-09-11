@@ -14,7 +14,7 @@ const content = {
   bg: {
     title: 'Вашият AI агент.', titleSecond: 'По Вашите правила.',
     intro: 'Делегирайте запитвания, документи и рутинни задачи на агент, изграден с Вашата информация и свързан с инструментите Ви.',
-    cta: 'Обсъдете Вашия агент', note: '30 минути. Безплатно и без задължения.',
+    cta: 'Безплатен разговор', note: '30 минути. Безплатно и без задължения.',
     promises: ['Изцяло персонализиран', 'Свързан с Вашите инструменти', 'Изграденото остава Ваше'],
     differenceTitle: 'Изграден около Вас.', differenceSecond: 'До последния детайл.',
     differenceIntro: 'Първо разбирам как работите. След това изграждам агент, съобразен с конкретните Ви задачи, информация и нужди.',
@@ -47,7 +47,7 @@ const content = {
   en: {
     title: 'Your own AI agent.', titleSecond: 'Built on your terms.',
     intro: 'Delegate enquiries, documents and routine tasks to an agent built with your information and connected to the tools you use.',
-    cta: 'Let’s discuss your agent', note: '30 minutes. Free, with no commitment.',
+    cta: 'Free call', note: '30 minutes. Free, with no commitment.',
     promises: ['Fully personalised', 'Connected to your tools', 'Everything built stays yours'],
     differenceTitle: 'Built around you.', differenceSecond: 'Down to the details.',
     differenceIntro: 'First, I understand how you work. Then I build an agent around your specific tasks, information and needs.',

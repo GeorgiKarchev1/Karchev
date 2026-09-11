@@ -1,4 +1,8 @@
 /* Public agent presentation. White, graphite and silver experiment requested by the owner. */
+/* Let the homepage sections reach the viewport edge without the legacy pale scrollbar rail. */
+html:has(.agent-site) { scrollbar-width: none; }
+html:has(.agent-site)::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
 .agent-site, .studio-nav, .studio-footer, .studio-contact, .studio-cookie {
   --studio-canvas: #f5f5f5;
   --studio-ink: #171717;
@@ -15,7 +19,6 @@
 .agent-site h2, .studio-contact h2 { font-size: clamp(36px, 3.5vw, 52px); font-weight: 500; line-height: 1.12; text-wrap: balance; }
 .agent-site h2 > span, .studio-contact h2 > span { color: #5c5c5c; }
 .agent-site ::selection, .studio-contact ::selection { background: #171717; color: #f5f5f5; }
-.agent-site { scrollbar-color: #5c5c5c #f5f5f5; }
 .agent-site main > section[id] { scroll-margin-top: 100px; }
 .agent-site :focus-visible, .studio-nav :focus-visible, .studio-footer :focus-visible, .studio-contact :focus-visible, .studio-cookie :focus-visible { outline: 2px solid #5c5c5c; outline-offset: 5px; }
 .studio-wrap { width: calc(100% - 112px); max-width: 1280px; margin-inline: auto; }
@@ -53,9 +56,9 @@
 .agent-link:hover > svg { transform: translate(3px, -3px); }
 
 /* A personal offer and a word-by-word introduction, followed by one action. */
-.agent-hero { --hero-ease: cubic-bezier(.32, .72, 0, 1); background: #ffffff; padding: 96px 0 192px; }
+.agent-hero { --hero-ease: cubic-bezier(.32, .72, 0, 1); background: #ffffff; padding: 96px 0 48px; }
 .agent-hero-inner { width: calc(100% - 64px); max-width: 1120px; }
-.agent-hero-copy { min-width: 0; padding: 96px 0; text-align: center; }
+.agent-hero-copy { min-width: 0; padding: 64px 0 48px; text-align: center; }
 .agent-hero h1 { max-width: 680px; margin-inline: auto; font-size: 60px; line-height: 1; font-weight: 600; letter-spacing: -.04em; text-wrap: balance; color: #171717; }
 .agent-title-line { display: block; }
 .agent-title-mask { display: inline-block; overflow: hidden; vertical-align: top; padding-block: .25em; margin-block: -.25em; perspective: 800px; }
@@ -125,7 +128,7 @@
 @keyframes agent-example-in { from { opacity: .4; transform: translateY(12px); clip-path: inset(0 0 8% 0); } to { opacity: 1; transform: none; clip-path: inset(0); } }
 
 /* Personalisation, delivery and direct contact. */
-.agent-principles { background: #171717; color: #f5f5f5; padding-block: 96px 82px; border-radius: 32px 32px 0 0; }
+.agent-principles { background: #171717; color: #f5f5f5; padding-block: 64px 82px; border-radius: 32px 32px 0 0; }
 .agent-principles h2 > span { color: #c8c8c8; }
 .agent-principles .agent-section-heading > p { color: #c8c8c8; }
 .agent-principles-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 55px; }
@@ -266,9 +269,9 @@
   .studio-footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
 @media (max-width: 700px) {
-  .agent-hero { padding: 80px 0 128px; }
+  .agent-hero { padding: 80px 0 32px; }
   .agent-hero .agent-hero-inner { width: calc(100% - 32px); }
-  .agent-hero-copy { padding: 64px 0; }
+  .agent-hero-copy { padding: 40px 0 32px; }
   .agent-hero h1 { font-size: 36px; line-height: 40px; }
   .agent-hero-copy > p { max-width: 448px; margin-top: 24px; font-size: 16px; line-height: 24px; }
   .agent-call-note { max-width: 100%; }
@@ -304,7 +307,7 @@
   .workbench-request { margin-left: 8px; padding: 16px; }
   .workbench-request p, .workbench-answer p { font-size: 16px; line-height: 1.65; }
   .workbench-request > span, .workbench-answer > span, .workbench-handoff { font-size: 12px; }
-  .agent-principles { padding-block: 80px 38px; border-radius: 24px 24px 0 0; }
+  .agent-principles { padding-block: 56px 38px; border-radius: 24px 24px 0 0; }
   .agent-principles-list { grid-template-columns: 1fr; gap: 0; }
   .agent-principles-list article { display: grid; grid-template-columns: 65px 1fr; gap: 0 22px; padding-block: 27px; }
   .agent-principle-drawing { grid-row: 1 / 3; width: 100px; transform: scale(.58); transform-origin: left center; }
