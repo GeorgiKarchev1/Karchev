@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import type { ArticlePageProps } from '@/components/seo/ArticlePage'
-import { localizedAlternates } from '@/lib/site'
+import { localizedAlternates, withSocialMetadata } from '@/lib/site'
 
 type ArticleDefinition = ArticlePageProps & { metadata: Metadata }
 
-export const localizedArticles: Record<string, ArticleDefinition> = {
+const articleDefinitions: Record<string, ArticleDefinition> = {
   bgWebsiteCost: {
     locale: 'bg',
     path: '/bg/blog/kolko-struva-sait-za-malak-biznes',
@@ -363,7 +363,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
     relatedServiceHref: '/bg/ai-avtomatizatsii',
     relatedServiceLabel: 'AI автоматизации за бизнес',
     metadata: {
-      title: 'Как AI автоматизациите пестят време на малък бизнес',
+      title: 'Как AI автоматизациите пестят време на бизнеса',
       description: 'Практически AI автоматизации за малък бизнес: follow-up, content workflows и по-малко административна загуба на време.',
       alternates: localizedAlternates('/bg/blog/kak-ai-avtomatizatsiite-pestyat-vreme-na-malak-biznes', '/en/blog/how-ai-automation-saves-time-for-small-businesses', 'bg'),
       keywords: ['AI автоматизации за малък бизнес', 'как AI пести време', 'автоматизации за бизнес'],
@@ -561,7 +561,7 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
     relatedServiceHref: '/bg/ai-avtomatizatsii',
     relatedServiceLabel: 'AI автоматизации за бизнес',
     metadata: {
-      title: 'AI автоматизации за SEO съдържание и седмичен блог workflow',
+      title: 'AI автоматизации за SEO съдържание',
       description: 'Как да автоматизираш SEO идеи, статии, thumbnails и седмичен publish workflow за по-постоянен content engine.',
       alternates: localizedAlternates('/bg/blog/ai-avtomatizatsii-za-seo-sadarzhanie-i-blog-sistema', '/en/blog/ai-automation-seo-content-pipeline', 'bg'),
       keywords: ['AI автоматизации за SEO', 'автоматизирано блог съдържание', 'content workflow за бизнес'],
@@ -630,13 +630,28 @@ export const localizedArticles: Record<string, ArticleDefinition> = {
     relatedServiceHref: '/en/ai-automation',
     relatedServiceLabel: 'AI automation for business',
     metadata: {
-      title: 'AI Automation for SEO Content, Thumbnails, and Weekly Publishing',
+      title: 'AI Automation for SEO Content Pipeline',
       description: 'A practical look at automating SEO ideas, blog articles, thumbnails, and weekly publishing workflows for service businesses.',
       alternates: localizedAlternates('/bg/blog/ai-avtomatizatsii-za-seo-sadarzhanie-i-blog-sistema', '/en/blog/ai-automation-seo-content-pipeline', 'en'),
       keywords: ['ai automation for seo content', 'blog workflow automation', 'weekly content system'],
     },
   },
 }
+
+export const localizedArticles: Record<string, ArticleDefinition> = Object.fromEntries(
+  Object.entries(articleDefinitions).map(([key, article]) => [
+    key,
+    {
+      ...article,
+      metadata: withSocialMetadata(article.metadata, {
+        locale: article.locale,
+        path: article.path,
+        type: 'article',
+        image: article.image,
+      }),
+    },
+  ])
+)
 
 export const bgBlogArticles = [
   localizedArticles.bgWebsiteCost,

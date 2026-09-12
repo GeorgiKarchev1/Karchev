@@ -71,7 +71,7 @@ export default function ServiceLandingPage({
         provider: {
           '@type': 'Organization',
           name: 'KARCHX',
-          url: absoluteUrl('/'),
+          url: absoluteUrl('/bg'),
         },
         url: pageUrl,
         serviceType: serviceName,
@@ -110,7 +110,7 @@ export default function ServiceLandingPage({
   }
 
   return (
-    <main className="min-h-screen bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
+    <main className="min-h-dvh bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navbar />
 

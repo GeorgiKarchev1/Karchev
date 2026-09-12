@@ -1,10 +1,12 @@
 import { MetadataRoute } from 'next'
+import { getPublishedPosts } from '@/lib/posts'
+import { BASE_URL } from '@/lib/site'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.karchx.com'
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = BASE_URL
   const lastModified = new Date('2026-05-12T00:00:00.000Z')
 
-  return [
+  const staticEntries: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/bg`,
       lastModified,
@@ -197,23 +199,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
-    {
-      url: `${baseUrl}/policies/privacy-policy`,
-      lastModified,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/policies/terms-of-service`,
-      lastModified,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/policies/cookies`,
-      lastModified,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
   ]
+
+  // Posts written in the admin panel are not in the static list above, so
+  // without this they would only ever be discovered via the blog index.
+  let cmsEntries: MetadataRoute.Sitemap = []
+  try {
+    const posts = await getPublishedPosts()
+    const known = new Set(staticEntries.map((e) => e.url))
+    cmsEntries = posts
+      .map((post) => ({
+        url: `${baseUrl}/bg/blog/${post.slug}`,
+        lastModified: new Date(post.updatedAt ?? post.createdAt),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+      }))
+      .filter((entry) => !known.has(entry.url))
+  } catch {
+    // A sitemap missing the newest posts still beats a build that fails.
+  }
+
+  return [...staticEntries, ...cmsEntries]
 }

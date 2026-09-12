@@ -145,19 +145,21 @@ export default function AdminDashboard() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f1f0ea] text-[#2d232e]">
+    <main className="min-h-dvh bg-[#f1f0ea] text-[#2d232e]">
       {/* Header */}
       <header className="sticky top-0 z-10 border-b-2 border-[#2d232e]/10 bg-[#f1f0ea]/95 backdrop-blur">
-        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <PenLine className="w-5 h-5 text-[#534b52]" />
-            <span className="font-black text-lg">Admin Blog</span>
-            <span className="text-xs font-bold uppercase tracking-widest text-[#2d232e]/30 ml-2">Panel</span>
+        {/* Fixed h-16 + no wrap pushed the logout button past the viewport on a
+            phone, and html/body overflow-x-hidden silently clipped it. */}
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 sm:py-0 sm:h-16 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            <PenLine className="w-5 h-5 text-[#534b52] shrink-0" />
+            <span className="font-black text-lg truncate">Admin Blog</span>
+            <span className="hidden sm:inline text-xs font-bold uppercase tracking-widest text-[#2d232e]/30 ml-2">Panel</span>
             <span className="hidden sm:inline-flex rounded-full border border-[#534b52]/20 bg-white/70 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#534b52]">
               {storageMode === 'blob' ? 'Vercel Blob' : 'Local JSON'}
             </span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {tab === 'blog' && (
               <button
                 onClick={() => setShowCreate(true)}
@@ -245,22 +247,22 @@ export default function AdminDashboard() {
                   <a
                     href={`/blog/${post.slug}`}
                     target="_blank"
-                    className="p-2 rounded-lg text-[#2d232e]/30 hover:text-[#2d232e] hover:bg-[#2d232e]/5 transition-colors"
-                    title="Преглед"
+                    className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center p-2 rounded-lg text-[#2d232e]/30 hover:text-[#2d232e] hover:bg-[#2d232e]/5 transition-colors"
+                    title="Преглед" aria-label="Преглед на статията"
                   >
                     <Globe className="w-4 h-4" />
                   </a>
                   <button
                     onClick={() => togglePublish(post)}
-                    className="p-2 rounded-lg text-[#2d232e]/30 hover:text-[#2d232e] hover:bg-[#2d232e]/5 transition-colors"
-                    title={post.published ? 'Скрий' : 'Публикувай'}
+                    className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center p-2 rounded-lg text-[#2d232e]/30 hover:text-[#2d232e] hover:bg-[#2d232e]/5 transition-colors"
+                    title={post.published ? 'Скрий' : 'Публикувай'} aria-label={post.published ? 'Скрий статията' : 'Публикувай статията'}
                   >
                     {post.published ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                   </button>
                   <button
                     onClick={() => deletePost(post.id)}
-                    className="p-2 rounded-lg text-red-400/60 hover:text-red-500 hover:bg-red-50 transition-colors"
-                    title="Изтрий"
+                    className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center p-2 rounded-lg text-red-400/60 hover:text-red-500 hover:bg-red-50 transition-colors"
+                    title="Изтрий" aria-label="Изтрий статията"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>

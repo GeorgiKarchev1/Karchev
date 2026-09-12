@@ -33,11 +33,11 @@ export function LanguageProvider({
     const [language, setLanguageState] = useState<Language>(initialLanguage ?? 'BG')
 
     useEffect(() => {
-        if (initialLanguage) {
-            setLanguageState(initialLanguage)
-            setCookie('user-lang-preference', initialLanguage)
-            return
-        }
+        // A route-derived language is already authoritative (see app/bg,
+        // app/en). Don't persist it as a preference — that would overwrite a
+        // choice the visitor made by hand just because they opened one page in
+        // the other language.
+        if (initialLanguage) return
 
         // User has manually chosen a language before — respect that
         const userPref = getCookie('user-lang-preference')

@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { verifyToken, COOKIE_NAME } from '@/lib/auth'
-import { getRouteLocale } from '@/lib/site'
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
@@ -13,30 +12,18 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  const requestHeaders = new Headers(request.headers)
-  const routeLocale = getRouteLocale(pathname)
-  const cookieLocale = request.cookies.get('user-lang-preference')?.value
-  const country = request.headers.get('x-vercel-ip-country') ?? ''
-  const detectedLocale =
-    routeLocale ??
-    (cookieLocale === 'EN' || cookieLocale === 'BG'
-      ? cookieLocale.toLowerCase()
-      : country === 'BG'
-        ? 'bg'
-        : 'en')
+  const response = NextResponse.next()
 
-  requestHeaders.set('x-site-locale', detectedLocale)
-
-  const response = NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  })
-
-  // Only set the detected-country cookie if not already set by user preference
+  // Page language now comes from the URL (app/bg, app/en and the policy
+  // subtrees each provide it), so no locale header is forwarded here — reading
+  // request headers in the root layout used to force every route in the app to
+  // render dynamically.
+  //
+  // This cookie is still the only language hint for routes that carry no locale
+  // in the path (/admin, /os), where the cookie banner falls back to it.
   if (!request.cookies.has('user-lang-preference')) {
-    const detectedLang = country === 'BG' ? 'BG' : 'EN'
-    response.cookies.set('detected-country-lang', detectedLang, {
+    const country = request.headers.get('x-vercel-ip-country') ?? ''
+    response.cookies.set('detected-country-lang', country === 'BG' ? 'BG' : 'EN', {
       path: '/',
       maxAge: 60 * 60 * 24, // 1 day
       sameSite: 'lax',
@@ -47,5 +34,9 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|img/).*)'],
+  // Skip Next internals, metadata routes and static files: middleware on an
+  // asset request is pure latency now that the pages themselves are static.
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|img/|blog/|.*\\.(?:png|jpg|jpeg|gif|webp|avif|svg|ico|woff2?|ttf|txt|xml|webmanifest)$).*)',
+  ],
 }

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ArrowUp, ArrowUpRight } from 'lucide-react'
@@ -15,7 +16,7 @@ export default function Footer() {
     <footer className="studio-footer">
       <div className="studio-wrap">
         <div className="studio-footer-top">
-          <div className="studio-footer-about"><Link href={'/' + locale} className="studio-footer-logo" aria-label="KARCHX"><img src="/img/logokarch.png" alt="KARCHX" width="1500" height="500" /></Link><p>{bg ? 'Един AI агент. Изграден специално за Вас.' : 'One AI agent. Built specifically for you.'}</p></div>
+          <div className="studio-footer-about"><Link href={'/' + locale} className="studio-footer-logo" aria-label="KARCHX"><Image src="/img/logokarch.png" alt="KARCHX" width={135} height={45} /></Link><p>{bg ? 'Един AI агент. Изграден специално за Вас.' : 'One AI agent. Built specifically for you.'}</p></div>
           <div><h2>{bg ? 'Вашият агент' : 'Your agent'}</h2><Link href={'/' + locale + '#solutions'}>{bg ? 'Персонализация' : 'Personalisation'}</Link><Link href={'/' + locale + '#how-it-works'}>{bg ? 'Как го изграждам' : 'How it is built'}</Link><a href="https://cal.com/georgi-karchev-3r9puz/30min" target="_blank" rel="noopener noreferrer">{bg ? 'Да поговорим' : 'Let’s talk'}</a></div>
           <div><h2>{t('footer.resourcesTitle')}</h2><Link href={'/' + locale + '#demo'}>{bg ? 'Възможности' : 'Possibilities'}</Link><Link href={'/' + locale + '#faq'}>{bg ? 'Често задавани въпроси' : 'Common questions'}</Link><Link href={'/' + locale + '/blog'}>{t('footer.blogLink')}</Link></div>
           <div><h2>{t('footer.connectTitle')}</h2><a href="mailto:georgikarchev5@gmail.com">georgikarchev5@gmail.com<ArrowUpRight size={15} aria-hidden="true" /></a><a href="https://www.linkedin.com/in/georgi-karchev-415901244/" target="_blank" rel="noopener noreferrer">LinkedIn<ArrowUpRight size={15} aria-hidden="true" /></a><p>{bg ? 'България · Работа с клиенти в ЕС' : 'Bulgaria · Working across the EU'}</p></div>

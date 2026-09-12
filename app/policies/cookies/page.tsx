@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy | KarchX',
+  title: 'Cookie Policy',
   description: 'How KarchX uses cookies and how you can manage them.',
-  robots: { index: false, follow: false },
+  robots: { index: false, follow: true },
 }
 
 export default function CookiesPage() {
   return (
-    <main className="min-h-screen bg-[#f6f3ed] text-[#2d232e]">
+    <main className="min-h-dvh bg-[#f6f3ed] text-[#2d232e]">
       <div className="max-w-3xl mx-auto px-6 py-20">
 
         <div className="flex items-center justify-between mb-10">

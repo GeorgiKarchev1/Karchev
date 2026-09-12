@@ -33,6 +33,35 @@ export type ArticlePageProps = {
   relatedServiceLabel: string
 }
 
+// Schema.org dates have to match the date the page actually shows. These were
+// hardcoded to a single literal, so five of six posts published a
+// datePublished that contradicted their own byline.
+const MONTHS: Record<string, number> = {
+  януари: 1, февруари: 2, март: 3, април: 4, май: 5, юни: 6,
+  юли: 7, август: 8, септември: 9, октомври: 10, ноември: 11, декември: 12,
+  january: 1, february: 2, march: 3, april: 4, may: 5, june: 6,
+  july: 7, august: 8, september: 9, october: 10, november: 11, december: 12,
+}
+
+/** Accepts "12 Май 2026" (bg) and "May 12, 2026" (en). */
+function toIsoDate(display: string): string | undefined {
+  const cleaned = display.replace(/,/g, ' ').trim()
+  const parts = cleaned.split(/\s+/)
+  if (parts.length < 3) return undefined
+
+  const numeric = parts.filter((t) => /^\d+$/.test(t))
+  const word = parts.find((t) => MONTHS[t.toLowerCase()] !== undefined)
+  if (!word || numeric.length < 2) return undefined
+
+  const month = MONTHS[word.toLowerCase()]
+  const day = Number(numeric.find((n) => Number(n) <= 31))
+  const year = Number(numeric.find((n) => Number(n) > 31))
+  if (!month || !day || !year) return undefined
+
+  const pad = (n: number) => String(n).padStart(2, '0')
+  return `${year}-${pad(month)}-${pad(day)}T00:00:00.000Z`
+}
+
 export default function ArticlePage(props: ArticlePageProps) {
   const {
     locale,
@@ -57,6 +86,8 @@ export default function ArticlePage(props: ArticlePageProps) {
   const homeUrl = absoluteUrl(locale === 'bg' ? '/bg' : '/en')
   const heroImage = image ?? '/blogimg.png'
 
+  const publishedIso = toIsoDate(date)
+
   const structuredData = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -65,17 +96,16 @@ export default function ArticlePage(props: ArticlePageProps) {
         headline: title,
         description,
         image: absoluteUrl(heroImage),
-        datePublished: '2026-04-25T00:00:00.000Z',
-        dateModified: '2026-04-25T00:00:00.000Z',
+        ...(publishedIso ? { datePublished: publishedIso, dateModified: publishedIso } : {}),
         author: {
           '@type': 'Person',
           name: 'Georgi Karchev',
-          url: absoluteUrl('/'),
+          url: absoluteUrl(locale === 'bg' ? '/bg' : '/en'),
         },
         publisher: {
           '@type': 'Organization',
           name: 'KARCHX',
-          url: absoluteUrl('/'),
+          url: absoluteUrl(locale === 'bg' ? '/bg' : '/en'),
           logo: {
             '@type': 'ImageObject',
             url: absoluteUrl('/img/newfav.png'),
@@ -85,7 +115,7 @@ export default function ArticlePage(props: ArticlePageProps) {
           '@type': 'WebPage',
           '@id': pageUrl,
         },
-        inLanguage: locale === 'bg' ? 'bg' : 'en',
+        inLanguage: locale === 'bg' ? 'bg-BG' : 'en-US',
         articleSection: category,
       },
       {
@@ -115,7 +145,7 @@ export default function ArticlePage(props: ArticlePageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
+    <main className="min-h-dvh bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navbar />
 

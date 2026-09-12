@@ -4,17 +4,20 @@ import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { bgBlogArticles } from '@/lib/editorial-content'
-import { localizedAlternates } from '@/lib/site'
+import { localizedAlternates, withSocialMetadata } from '@/lib/site'
 
-export const metadata: Metadata = {
-  title: 'Блог за уеб разработка, конверсия и AI',
-  description: 'Практически статии за сайтове, landing pages, цени, конверсия и AI автоматизации за бизнес.',
-  alternates: localizedAlternates('/bg/blog', '/en/blog', 'bg'),
-}
+export const metadata: Metadata = withSocialMetadata(
+  {
+    title: 'Блог за уеб разработка, конверсия и AI',
+    description: 'Практически статии за сайтове, landing pages, цени, конверсия и AI автоматизации за бизнес.',
+    alternates: localizedAlternates('/bg/blog', '/en/blog', 'bg'),
+  },
+  { locale: 'bg', path: '/bg/blog' }
+)
 
 export default function BulgarianBlogPage() {
   return (
-    <main className="min-h-screen bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
+    <main className="min-h-dvh bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
       <Navbar />
 
       <section className="pt-40 pb-20 px-6 md:px-8 max-w-[1200px] mx-auto">
@@ -31,7 +34,7 @@ export default function BulgarianBlogPage() {
       <section className="px-6 md:px-8 pb-24 max-w-[1200px] mx-auto">
         <div className="grid gap-6 md:grid-cols-2">
           {bgBlogArticles.map((article) => (
-            <Link key={article.path} href={article.path} className="grid overflow-hidden rounded-[2rem] border border-[#2d232e]/10 bg-white/70 transition-colors hover:bg-white">
+            <Link key={article.path} href={article.path} className="grid grid-cols-[minmax(0,1fr)] overflow-hidden rounded-[2rem] border border-[#2d232e]/10 bg-white/70 transition-colors hover:bg-white">
               <div className="relative aspect-[16/10] md:aspect-[16/9]">
                 <Image src={article.image ?? '/blogimg.png'} alt={article.title} fill className="object-cover" sizes="50vw" />
               </div>

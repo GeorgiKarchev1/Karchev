@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Check, X } from 'lucide-react'
 import { calculateBgEstimate, BgAnswers, EstimateResult } from '@/lib/pricing'
 
@@ -10,12 +9,6 @@ interface LeadData {
   email: string
   phone: string
   consent: boolean
-}
-
-const stepVariants = {
-  initial: { opacity: 0, y: 12 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } },
-  exit:    { opacity: 0, y: -8, transition: { duration: 0.16 } },
 }
 
 async function submitLead(answers: BgAnswers, lead: LeadData, result: EstimateResult): Promise<void> {
@@ -34,8 +27,7 @@ function ProgressBar({ step, total }: { step: number; total: number }) {
   const pct = Math.round((step / total) * 100)
   return (
     <div className="w-full h-1 bg-[#2d232e]/10 rounded-full overflow-hidden">
-      <motion.div className="h-full bg-[#534b52] rounded-full" initial={{ width: 0 }}
-        animate={{ width: `${pct}%` }} transition={{ duration: 0.35, ease: 'easeOut' }} />
+      <div className="funnel-progress h-full rounded-full bg-[#534b52]" style={{ width: `${pct}%` }} />
     </div>
   )
 }
@@ -187,7 +179,7 @@ function Step4({ answers, set, onNext, onBack, displayStep, totalSteps }: any) {
       <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-2">Въпрос {displayStep} от {totalSteps}</p>
       <h2 className="text-xl font-black text-[#2d232e] mb-1 leading-snug">Какъв е вашият бюджет?</h2>
       <p className="text-xs text-[#2d232e]/50 mb-4 font-medium">Това спестява най-много време.</p>
-      <div className="grid grid-cols-2 gap-2.5">
+      <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
         {options.map(o => (
           <OptionCard key={o.value} title={o.title} selected={answers.budget === o.value} onClick={() => set('budget', o.value)} />
         ))}
@@ -249,7 +241,7 @@ function ResultScreen({ result, answers, onReset }: {
   const selectedFeatures = (answers.features ?? []).filter(f => f !== 'unsure' && FEATURE_LABELS[f])
 
   return (
-    <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+    <div className="funnel-fade">
       <div className="text-center mb-5">
         <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-2">Ориентировъчна цена</p>
         <div className="text-4xl font-black text-[#2d232e] tracking-tight mb-1">
@@ -297,7 +289,7 @@ function ResultScreen({ result, answers, onReset }: {
           Започни отново
         </button>
       </div>
-    </motion.div>
+    </div>
   )
 }
 
@@ -356,7 +348,7 @@ export default function BgFunnelWizard({ onClose }: { onClose?: () => void }) {
   const stepProps = { answers, set, onNext: next, onBack: back, displayStep, totalSteps }
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex min-h-dvh flex-col">
       <div className="flex items-center justify-between px-6 py-4 border-b border-[#2d232e]/8 flex-shrink-0">
         <span className="font-black text-base tracking-tight text-[#2d232e]">KARCHX</span>
         {onClose && (
@@ -374,21 +366,19 @@ export default function BgFunnelWizard({ onClose }: { onClose?: () => void }) {
       )}
 
       <div className="flex-1 overflow-y-auto px-6 py-5">
-        <AnimatePresence mode="wait">
-          {result ? (
-            <motion.div key="result" variants={stepVariants} initial="initial" animate="animate" exit="exit">
-              <ResultScreen result={result} answers={answers} onReset={handleReset} />
-            </motion.div>
-          ) : (
-            <motion.div key={step} variants={stepVariants} initial="initial" animate="animate" exit="exit">
-              {step === 1 && <Step1 {...stepProps} />}
-              {step === 2 && <Step2 {...stepProps} />}
-              {step === 3 && <Step3 {...stepProps} />}
-              {step === 4 && <Step4 {...stepProps} />}
-              {step === 5 && <StepLead lead={lead} setLead={setLead} onBack={back} onNext={handleLeadNext} error={leadError} />}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {result ? (
+          <div key="result" className="funnel-step">
+            <ResultScreen result={result} answers={answers} onReset={handleReset} />
+          </div>
+        ) : (
+          <div key={step} className="funnel-step">
+            {step === 1 && <Step1 {...stepProps} />}
+            {step === 2 && <Step2 {...stepProps} />}
+            {step === 3 && <Step3 {...stepProps} />}
+            {step === 4 && <Step4 {...stepProps} />}
+            {step === 5 && <StepLead lead={lead} setLead={setLead} onBack={back} onNext={handleLeadNext} error={leadError} />}
+          </div>
+        )}
       </div>
     </div>
   )

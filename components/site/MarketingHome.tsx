@@ -32,8 +32,8 @@ const content = {
       { title: 'Включваме го в ежедневието Ви', text: 'Предавам изграденото, показвам Ви как да го използвате и уточняваме поддръжката.' },
     ],
     aboutTitle: 'Личен подход.', aboutSecond: 'От човек до човек.',
-    aboutText: 'Аз съм Георги Карчев. Ще работите директно с мен — от първия разговор до настройката на Вашия агент. Ще вникна в задачите Ви, ще изградя решението и ще го настроим заедно, така че да бъде полезно в реалната Ви работа.',
-    role: 'Георги Карчев', roleDetail: 'Човекът зад KARCHX',
+    aboutText: 'Аз съм Георги Кърчев. Ще работите директно с мен — от първия разговор до настройката на Вашия агент. Ще вникна в задачите Ви, ще изградя решението и ще го настроим заедно, така че да бъде полезно в реалната Ви работа.',
+    role: 'Георги Кърчев', roleDetail: 'Човекът зад KARCHX',
     faqTitle: 'Нека изясним детайлите.',
     faqs: [
       { q: 'Какво означава „персонализиран за мен“?', a: 'Определяме заедно задачите, източниците на информация, инструментите и правилата на Вашия агент. След това изграждам и настройвам конкретното решение. Обхватът зависи от Вашите нужди.' },
@@ -96,8 +96,13 @@ function HeroTitleLine({ text, startIndex = 0 }: { text: string; startIndex?: nu
             <span className="agent-title-mask">
               <span className="agent-title-word" style={{
                 '--word-delay': `${(startIndex + index) * 75}ms`,
-                '--word-ink-from': `rgb(${Array(3).fill(Math.round(start * 102)).join(' ')})`,
-                '--word-ink-to': `rgb(${Array(3).fill(Math.round(end * 102)).join(' ')})`,
+                // The gradient fades each line from black toward grey. It used to
+                // end at rgb(102) = #666, which is lighter than the body copy
+                // below it (#5c5c5c) — so the tail of the headline read as
+                // fainter than the paragraph, worst on phones where it wraps
+                // more. Capped well short of the body colour.
+                '--word-ink-from': `rgb(${Array(3).fill(Math.round(start * 64)).join(' ')})`,
+                '--word-ink-to': `rgb(${Array(3).fill(Math.round(end * 64)).join(' ')})`,
               } as CSSProperties}>{word}</span>
             </span>
             {index < words.length - 1 ? ' ' : null}
@@ -182,7 +187,7 @@ export default function MarketingHome() {
             <h2 id="about-title">{c.aboutTitle}<br /><span>{c.aboutSecond}</span></h2>
             <figure className="agent-about-person">
               <div className="agent-about-photo">
-                <Image src="/img/azseriozen_optimized_1000.jpg" alt={bg ? 'Портрет на Георги Карчев' : 'Portrait of Georgi Karchev'} fill sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1150px) calc(100vw - 72px), 1040px" />
+                <Image src="/img/azseriozen_optimized_1000.jpg" alt={bg ? 'Портрет на Георги Кърчев' : 'Portrait of Georgi Karchev'} fill sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1150px) calc(100vw - 72px), 1040px" />
               </div>
               <figcaption className="agent-about-note">
                 <p>{c.aboutText}</p>

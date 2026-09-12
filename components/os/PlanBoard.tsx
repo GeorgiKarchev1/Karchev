@@ -123,8 +123,8 @@ export default function PlanBoard() {
               </select>
               <button
                 onClick={() => removeDay(index)}
-                className="rounded-full border-2 border-[#2d232e] bg-[#f7f4ea] p-1.5 text-[#534b52] transition hover:bg-[#ddd7c8] hover:text-[#2d232e]"
-                title="Remove day"
+                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border-2 border-[#2d232e] bg-[#f7f4ea] p-1.5 text-[#534b52] transition hover:bg-[#ddd7c8] hover:text-[#2d232e]"
+                title="Remove day" aria-label="Remove day"
               >
                 <Trash2 className="h-3.5 w-3.5" />
               </button>
@@ -164,7 +164,7 @@ export default function PlanBoard() {
               />
             </Field>
 
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               <Field label="Format">
                 <input
                   value={row.format}

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Политика за бисквитки | KarchX',
+  title: 'Политика за бисквитки',
   description: 'Как KarchX използва бисквитки и как можете да ги управлявате.',
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://www.karchx.com/politiki/biskvitki' },
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function CookiesPage() {
   return (
-    <main className="min-h-screen bg-[#f6f3ed] text-[#2d232e]">
+    <main className="min-h-dvh bg-[#f6f3ed] text-[#2d232e]">
       <div className="max-w-3xl mx-auto px-6 py-20">
 
         <div className="flex items-center justify-between mb-10">

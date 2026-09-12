@@ -12,6 +12,8 @@ export interface BlogPost {
   image: string
   published: boolean
   createdAt: string
+  /** Set on every edit, so Article schema can report a real dateModified. */
+  updatedAt?: string
   content?: string
 }
 
@@ -99,7 +101,7 @@ export async function updatePost(id: string, updates: Partial<BlogPost>): Promis
   const idx = posts.findIndex((post) => post.id === id)
   if (idx === -1) return false
 
-  posts[idx] = { ...posts[idx], ...updates }
+  posts[idx] = { ...posts[idx], ...updates, updatedAt: new Date().toISOString() }
   await persistPosts(posts)
   return true
 }

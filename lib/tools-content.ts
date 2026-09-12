@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import type { ToolsResourcePageProps } from '@/components/seo/ToolsResourcePage'
-import { localizedAlternates } from '@/lib/site'
+import { localizedAlternates, withSocialMetadata } from '@/lib/site'
 
 type ToolsPageDefinition = ToolsResourcePageProps & { metadata: Metadata }
 
@@ -47,7 +47,7 @@ const tools = [
   },
 ]
 
-export const toolsPages: Record<string, ToolsPageDefinition> = {
+const toolsPageDefinitions: Record<string, ToolsPageDefinition> = {
   bgTools: {
     locale: 'bg',
     path: '/bg/tools',
@@ -123,3 +123,17 @@ export const toolsPages: Record<string, ToolsPageDefinition> = {
     },
   },
 }
+
+export const toolsPages: Record<string, ToolsPageDefinition> = Object.fromEntries(
+  Object.entries(toolsPageDefinitions).map(([key, page]) => [
+    key,
+    {
+      ...page,
+      metadata: withSocialMetadata(page.metadata, {
+        locale: page.locale,
+        path: page.path,
+        type: 'website',
+      }),
+    },
+  ])
+)

@@ -36,7 +36,7 @@ export default function OSMobileNav() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`whitespace-nowrap rounded-full border-2 px-3 py-1.5 text-xs font-semibold transition ${
+                className={`whitespace-nowrap rounded-full border-2 px-4 py-2.5 text-xs font-semibold transition ${
                   active
                     ? 'border-[#2d232e] bg-[#534b52] text-[#f1f0ea] shadow-[2px_2px_0px_#2d232e]'
                     : 'border-[#2d232e] bg-[#f1f0ea] text-[#2d232e]'

@@ -87,7 +87,7 @@ export default function ToolsResourcePage(props: ToolsResourcePageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
+    <main className="min-h-dvh bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navbar />
 

@@ -6,7 +6,9 @@ import { getPublishedPosts } from '@/lib/posts'
 import { absoluteUrl } from '@/lib/site'
 import { sanitizeHtml } from '@/lib/sanitize'
 
-export const dynamic = 'force-dynamic'
+// Posts come from Blob/JSON storage. Revalidating on a timer serves them from
+// the cache instead of re-rendering on every request (and every crawl).
+export const revalidate = 300
 
 interface Props {
   params: { slug: string }
@@ -74,7 +76,7 @@ export default async function DynamicBulgarianBlogPost({ params }: Props) {
   }
 
   return (
-    <main className="min-h-screen bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
+    <main className="min-h-dvh bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navbar />
 

@@ -28,13 +28,13 @@ html:has(.agent-site)::-webkit-scrollbar { display: none; width: 0; height: 0; }
 /* Navigation and actions */
 .studio-nav { position: fixed; inset: 0 0 auto; z-index: 60; height: 86px; background: #ffffff; border-bottom: 1px solid transparent; transition: border-color .25s, background .25s; }
 .studio-nav.is-scrolled { background: #f5f5f5; border-bottom-color: #d9d9d9; }
-.studio-nav-inner { display: flex; align-items: center; height: 100%; gap: 42px; }
+.studio-nav-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; height: 100%; gap: 42px; }
 .studio-brand { display: flex; width: 136px; min-height: 44px; align-items: center; flex-shrink: 0; }
 .studio-brand img { width: 100%; height: auto; filter: brightness(0); }
-.studio-desktop-links { display: flex; align-items: center; gap: 28px; margin-inline: auto; }
+.studio-desktop-links { display: flex; align-items: center; justify-content: center; gap: 28px; }
 .studio-nav-link { font-size: 14px; font-weight: 500; padding-block: 15px; text-underline-offset: 7px; }
 .studio-nav-link:hover { text-decoration: underline; }
-.studio-nav-actions { display: flex; align-items: center; gap: 26px; }
+.studio-nav-actions { display: flex; align-items: center; justify-content: flex-end; gap: 26px; }
 .studio-language { display: flex; align-items: center; justify-content: center; gap: 7px; min-width: 66px; min-height: 44px; font-size: 12px; color: #5c5c5c; }
 .studio-language .active { color: #171717; font-weight: 700; }
 .studio-nav-book { min-height: 46px; display: inline-flex; align-items: center; justify-content: space-between; gap: 22px; padding: 6px 7px 6px 21px; border: 1px solid #171717; border-radius: 99px; font-size: 13px; font-weight: 500; transition: background .3s, color .3s; }
@@ -42,7 +42,12 @@ html:has(.agent-site)::-webkit-scrollbar { display: none; width: 0; height: 0; }
 .studio-nav-book:hover { background: #e9e9e9; }
 .studio-nav-book:hover > svg { transform: rotate(45deg); }
 .studio-menu-toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid #b0b0b0; border-radius: 50%; }
-.studio-mobile-menu { background: #f5f5f5; border-bottom: 1px solid #d9d9d9; padding: 14px 24px 24px; max-height: calc(100dvh - 72px); overflow-y: auto; animation: agent-menu-in .25s var(--agent-ease); }
+/* Dims and blocks the page behind an open mobile menu. The panel only covers
+   the top of the screen, so without this the hero stayed visible and tappable
+   underneath it. Sits below the panel but above the page. */
+.studio-menu-scrim { position: fixed; inset: 86px 0 0; z-index: 55; background: rgba(23, 23, 23, .38); animation: agent-scrim-in .25s var(--agent-ease); }
+@keyframes agent-scrim-in { from { opacity: 0; } to { opacity: 1; } }
+.studio-mobile-menu { position: relative; z-index: 61; background: #f5f5f5; border-bottom: 1px solid #d9d9d9; padding: 14px 24px 24px; max-height: calc(100dvh - 72px); overflow-y: auto; animation: agent-menu-in .25s var(--agent-ease); }
 .studio-mobile-menu > a { display: flex; justify-content: space-between; align-items: center; padding-block: 17px; border-top: 1px solid #d9d9d9; font-size: 20px; }
 @keyframes agent-menu-in { from { opacity: .5; transform: translateY(-8px); } }
 .studio-button { display: inline-flex; align-items: center; justify-content: space-between; gap: 26px; min-height: 56px; padding: 7px 8px 7px 25px; background: #171717; color: #f5f5f5; border-radius: 99px; font-size: 14px; font-weight: 500; transition: background .3s, transform .3s var(--agent-ease); }
@@ -186,28 +191,58 @@ html:has(.agent-site)::-webkit-scrollbar { display: none; width: 0; height: 0; }
 @keyframes agent-faq-in { from { transform: translateY(-6px); opacity: .4; } }
 .agent-site summary::-webkit-details-marker { display: none; }
 .studio-contact { background: #e9e9e9; padding-block: 86px; scroll-margin-top: 95px; }
-.studio-contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 120px; }
+.studio-contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
 .studio-contact h2 { max-width: 14ch; }
 .studio-contact-intro > p { font-size: 16px; color: #5c5c5c; line-height: 1.8; max-width: 40ch; margin-block: 26px; }
 .studio-contact-intro > .studio-contact-note { font-size: 12px; margin-block: 16px 30px; }
 .studio-contact-intro ul { display: grid; gap: 12px; font-size: 13px; color: #5c5c5c; }
 .studio-contact-intro li { display: flex; align-items: center; gap: 10px; }
 .studio-contact-intro li::before { content: ''; width: 4px; height: 4px; background: #5c5c5c; border-radius: 50%; }
-.studio-form-heading { font-size: 17px; font-weight: 500; margin-bottom: 28px; }
-.studio-field { margin-bottom: 25px; }
-.studio-field label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; line-height: 1.5; }
-.studio-field input, .studio-field textarea { display: block; width: 100%; background: transparent; border: 0; border-bottom: 1px solid #7a7a7a; border-radius: 0; padding: 10px 0 13px; color: #171717; font-size: 16px; line-height: 1.6; caret-color: #171717; transition: border-color .25s; }
-.studio-field input::placeholder, .studio-field textarea::placeholder { color: #5c5c5c; opacity: 1; }
-.studio-field textarea { min-height: 100px; resize: vertical; }
-.studio-submit { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 20px; min-height: 56px; border-radius: 99px; padding: 8px 9px 8px 24px; background: #171717; color: #f5f5f5; font-size: 15px; font-weight: 500; transition: background .3s; }
+.studio-contact-grid { align-items: start; }
+
+/* The form sits in its own card. On the flat section background the bare
+   underlined inputs read as an unfinished wireframe. */
+.studio-contact-form { background: #ffffff; border: 1px solid var(--studio-line); border-radius: 20px; padding: 34px 32px; }
+/* Two short fields share a row so the form reads as 4 steps, not 5 chores. */
+.studio-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+.studio-field { margin-bottom: 20px; min-width: 0; }
+.studio-field label { display: block; font-size: 12px; font-weight: 500; color: var(--studio-muted); margin-bottom: 7px; line-height: 1.5; transition: color .2s; }
+.studio-field label .req { color: #842b36; margin-left: 2px; }
+.studio-field input, .studio-field textarea {
+  display: block; width: 100%; background: #fafafa; border: 1px solid var(--studio-line);
+  border-radius: 10px; padding: 12px 14px; color: var(--studio-ink); font-size: 15px;
+  line-height: 1.6; font-family: inherit; caret-color: var(--studio-ink);
+  transition: border-color .2s, background .2s, box-shadow .2s;
+}
+.studio-field input::placeholder, .studio-field textarea::placeholder { color: #9a9a9a; opacity: 1; }
+.studio-field input:hover, .studio-field textarea:hover { border-color: #bdbdbd; }
+.studio-field input:focus, .studio-field textarea:focus {
+  outline: none; background: #ffffff; border-color: var(--studio-ink);
+  box-shadow: 0 0 0 3px rgba(23, 23, 23, .08);
+}
+.studio-field:focus-within label { color: var(--studio-ink); }
+.studio-field textarea { min-height: 104px; resize: vertical; }
+/* Only flag a bad value once the field has been touched and left. */
+.studio-field input[aria-invalid='true'], .studio-field textarea[aria-invalid='true'] { border-color: #842b36; background: #fdf7f7; }
+.studio-field-error { font-size: 12px; color: #842b36; margin-top: 6px; line-height: 1.5; }
+
+/* Honeypot: off-screen for people, irresistible to bots. */
+.studio-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.studio-submit { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 20px; min-height: 56px; border-radius: 99px; padding: 8px 9px 8px 24px; margin-top: 4px; background: #171717; color: #f5f5f5; font-size: 15px; font-weight: 500; transition: background .3s; }
 .studio-submit > svg { padding: 9px; width: 38px; height: 38px; border-radius: 50%; background: #e9e9e9; color: #171717; transition: transform .4s var(--agent-ease); }
 .studio-submit:hover { background: #5c5c5c; }
 .studio-submit:hover > svg:not(.studio-spinner) { transform: rotate(45deg); }
 .studio-submit:disabled { opacity: .65; cursor: wait; }
-.studio-form-error { font-size: 14px; line-height: 1.7; margin-block: 14px; color: #842b36; }
-.studio-success { min-height: 400px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 22px; }
-.studio-success h3 { font-size: 30px; }
-.studio-success p { font-size: 16px; line-height: 1.8; }
+.studio-form-error { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; line-height: 1.6; margin-block: 14px; padding: 12px 14px; border-radius: 10px; background: #fdf2f2; border: 1px solid #f0d4d4; color: #842b36; }
+.studio-form-error a { text-decoration: underline; }
+.studio-form-note { font-size: 12px; color: var(--studio-muted); line-height: 1.6; margin-top: 14px; }
+
+.studio-success { min-height: 340px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 16px; }
+.studio-success > svg { color: #2f7d4f; }
+.studio-success h3 { font-size: 27px; font-weight: 500; }
+.studio-success p { font-size: 15px; line-height: 1.75; color: var(--studio-muted); }
+.studio-success button { font-size: 13px; font-weight: 500; text-decoration: underline; text-underline-offset: 4px; color: var(--studio-muted); }
 .studio-spinner { animation: studio-spin .8s linear infinite; }
 @keyframes studio-spin { to { transform: rotate(360deg); } }
 .studio-footer { background: #171717; color: #f5f5f5; padding-block: 60px 20px; }
@@ -249,7 +284,7 @@ html:has(.agent-site)::-webkit-scrollbar { display: none; width: 0; height: 0; }
   .agent-hero h1 { font-size: 60px; }
   .agent-demo-heading { flex-direction: column; align-items: center; gap: 8px; text-align: center; }
   .studio-desktop-links { display: none; }
-  .studio-nav-actions { margin-left: auto; }
+  .studio-nav-inner { grid-template-columns: auto 1fr; }
   .studio-menu-toggle { display: flex; }
   .agent-section-heading { grid-template-columns: 1fr; gap: 22px; }
   .agent-section-heading > p { max-width: 60ch; }
@@ -260,19 +295,22 @@ html:has(.agent-site)::-webkit-scrollbar { display: none; width: 0; height: 0; }
   .workbench-process { margin-top: 20px; }
   .workbench-options > .workbench-disclaimer { margin-top: 20px; max-width: 65ch; }
   .workbench-example { min-height: 0; }
-  .agent-principles-list { gap: 26px; }
-  .agent-principles-list h3 { font-size: 20px; }
-  .agent-principles-list p { font-size: 15px; }
-  .agent-process { gap: 40px; }
-  .agent-process { grid-template-columns: .9fr 1.1fr; }
-  .studio-contact-grid { gap: 40px; }
+  /* Three columns of heading+paragraph are too narrow below ~900px, so the
+     list becomes the stacked icon-beside-text layout here rather than at 700px. */
+  .agent-principles-list { grid-template-columns: 1fr; gap: 0; }
+  .agent-principles-list article { display: grid; grid-template-columns: 65px 1fr; gap: 0 22px; padding-block: 27px; }
+  .agent-principle-drawing { grid-row: 1 / 3; width: 100px; transform: scale(.58); transform-origin: left center; }
+  .agent-principles-list h3 { margin-top: 0; font-size: 20px; }
+  .agent-principles-list p { font-size: 15px; margin-top: 12px; }
+  .agent-process { grid-template-columns: 1fr; gap: 40px; }
+  .studio-contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .studio-footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
 @media (max-width: 700px) {
   .agent-hero { padding: 80px 0 32px; }
   .agent-hero .agent-hero-inner { width: calc(100% - 32px); }
   .agent-hero-copy { padding: 40px 0 32px; }
-  .agent-hero h1 { font-size: 36px; line-height: 40px; }
+  .agent-hero h1 { font-size: clamp(34px, 10.2vw, 42px); line-height: 1.12; }
   .agent-hero-copy > p { max-width: 448px; margin-top: 24px; font-size: 16px; line-height: 24px; }
   .agent-call-note { max-width: 100%; }
   .agent-promises { gap: 12px 24px; padding: 24px 0; }
@@ -288,8 +326,15 @@ html:has(.agent-site)::-webkit-scrollbar { display: none; width: 0; height: 0; }
   .studio-nav-actions { gap: 12px; }
   .studio-nav-book { display: none; }
   .studio-button { font-size: 14px; gap: 18px; }
-  .agent-site h2, .studio-contact h2 { font-size: clamp(32px, 8.5vw, 43px); line-height: 1.17; }
+  .agent-site h2, .studio-contact h2 { font-size: clamp(32px, 8.5vw, 43px); line-height: 1.26; }
   .agent-section-heading { gap: 22px; margin-bottom: 32px; }
+  /* Stacked on a phone, so centre the heading rather than leaving it ragged
+     against the left edge. The intro paragraph below stays left-aligned, which
+     keeps longer copy comfortable to read. */
+  .agent-principles .agent-section-heading > h2 { text-align: center; }
+  /* The three hero promises repeat what the sections below spell out; on a
+     phone they only pushed the call-to-action further up the scroll. */
+  .agent-promises { display: none; }
   .agent-section-heading > p { font-size: 16px; line-height: 1.75; }
   .workbench-toolbar { flex-direction: column; align-items: stretch; gap: 14px; padding: 20px; }
   .workbench-toolbar > span { text-align: center; }
@@ -336,8 +381,12 @@ html:has(.agent-site)::-webkit-scrollbar { display: none; width: 0; height: 0; }
   .studio-contact .studio-button { width: 100%; }
   .studio-contact-intro > p { font-size: 16px; }
   .studio-contact-intro > .studio-contact-note { margin-bottom: 26px; }
+  /* 16px keeps iOS from zooming the viewport when a field takes focus. */
   .studio-field input, .studio-field textarea { font-size: 16px; }
-  .studio-field { margin-bottom: 27px; }
+  .studio-field { margin-bottom: 18px; }
+  /* Side-by-side fields are too narrow to type into on a phone. */
+  .studio-field-row { grid-template-columns: 1fr; gap: 0; }
+  .studio-contact-form { padding: 24px 20px; border-radius: 18px; }
   .studio-success { min-height: 250px; }
   .studio-footer { padding-top: 45px; }
   .studio-footer-top { gap: 29px 20px; padding-bottom: 30px; }
@@ -351,7 +400,6 @@ html:has(.agent-site)::-webkit-scrollbar { display: none; width: 0; height: 0; }
   .studio-cookie { bottom: max(12px, env(safe-area-inset-bottom)); right: 12px; width: min(370px, calc(100% - 24px)); }
 }
 @media (max-width: 379px) {
-  .agent-hero h1 { font-size: 30px; line-height: 36px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto !important; }

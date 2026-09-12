@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Check, X } from 'lucide-react'
 import Link from 'next/link'
 import { calculateEnEstimate, EnAnswers, EstimateResult } from '@/lib/pricing'
@@ -22,12 +21,7 @@ function ProgressBar({ step, total }: { step: number; total: number }) {
   const pct = Math.round((step / total) * 100)
   return (
     <div className="w-full h-1 bg-[#2d232e]/10 rounded-full overflow-hidden">
-      <motion.div
-        className="h-full bg-[#534b52] rounded-full"
-        initial={{ width: 0 }}
-        animate={{ width: `${pct}%` }}
-        transition={{ duration: 0.4, ease: 'easeOut' }}
-      />
+      <div className="funnel-progress h-full rounded-full bg-[#534b52]" style={{ width: `${pct}%` }} />
     </div>
   )
 }
@@ -108,12 +102,6 @@ function QLabel({ children }: { children: React.ReactNode }) {
   return <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-3">{children}</p>
 }
 
-const stepVariants = {
-  initial: { opacity: 0, y: 12 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.28, ease: [0.22, 1, 0.36, 1] } },
-  exit: { opacity: 0, y: -8, transition: { duration: 0.18 } },
-}
-
 const QUESTION_STEPS = 8
 
 async function submitLead(answers: EnAnswers, lead: LeadData, result: EstimateResult): Promise<void> {
@@ -168,7 +156,7 @@ export default function EnFunnelWizard({ onClose }: { onClose?: () => void }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#F5F5F0] flex flex-col">
+    <div className="min-h-dvh bg-[#F5F5F0] flex flex-col">
       <header className="flex items-center justify-between px-5 py-4 border-b border-[#2d232e]/8">
         <Link href="/en" className="font-black text-lg tracking-tight text-[#2d232e]">KARCHX</Link>
         {onClose
@@ -190,20 +178,18 @@ export default function EnFunnelWizard({ onClose }: { onClose?: () => void }) {
 
       <div className="flex-1 flex items-start justify-center px-4 py-8 md:py-12">
         <div className="w-full max-w-lg">
-          <AnimatePresence mode="wait">
-            <motion.div key={step} variants={stepVariants} initial="initial" animate="animate" exit="exit">
-              {step === 0 && <EnIntro onStart={next} />}
-              {step === 1 && <EnStepLead lead={lead} setLead={setLead} onBack={back} onNext={handleLeadNext} error={leadError} />}
-              {step === 2 && <EnStep1 answers={answers} set={set} onNext={next} onBack={back} />}
-              {step === 3 && <EnStep2 answers={answers} set={set} onNext={next} onBack={back} />}
-              {step === 4 && <EnStep3 answers={answers} set={set} onNext={next} onBack={back} />}
-              {step === 5 && <EnStep4 answers={answers} set={set} onNext={next} onBack={back} />}
-              {step === 6 && <EnStep5 answers={answers} set={set} onNext={next} onBack={back} />}
-              {step === 7 && <EnStep6 answers={answers} toggleFeature={toggleFeature} onNext={next} onBack={back} />}
-              {step === 8 && <EnStep7 answers={answers} set={set} onNext={next} onBack={back} />}
-              {step === 9 && <EnStep8 answers={answers} set={set} onNext={handleFinish} onBack={back} />}
-            </motion.div>
-          </AnimatePresence>
+          <div key={step} className="funnel-step">
+            {step === 0 && <EnIntro onStart={next} />}
+            {step === 1 && <EnStepLead lead={lead} setLead={setLead} onBack={back} onNext={handleLeadNext} error={leadError} />}
+            {step === 2 && <EnStep1 answers={answers} set={set} onNext={next} onBack={back} />}
+            {step === 3 && <EnStep2 answers={answers} set={set} onNext={next} onBack={back} />}
+            {step === 4 && <EnStep3 answers={answers} set={set} onNext={next} onBack={back} />}
+            {step === 5 && <EnStep4 answers={answers} set={set} onNext={next} onBack={back} />}
+            {step === 6 && <EnStep5 answers={answers} set={set} onNext={next} onBack={back} />}
+            {step === 7 && <EnStep6 answers={answers} toggleFeature={toggleFeature} onNext={next} onBack={back} />}
+            {step === 8 && <EnStep7 answers={answers} set={set} onNext={next} onBack={back} />}
+            {step === 9 && <EnStep8 answers={answers} set={set} onNext={handleFinish} onBack={back} />}
+          </div>
         </div>
       </div>
     </div>
@@ -266,7 +252,7 @@ function EnStep2({ answers, set, onNext, onBack }: any) {
     <div>
       <QLabel>Question 2</QLabel>
       <h2 className="text-2xl md:text-3xl font-black text-[#2d232e] mb-6 leading-snug">What industry are you in?</h2>
-      <div className="grid grid-cols-2 gap-2.5">
+      <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
         {options.map(o => <OptionCard key={o.value} title={o.title} selected={answers.industry === o.value} onClick={() => set('industry', o.value)} />)}
       </div>
       {answers.industry === 'other' && (
@@ -393,7 +379,7 @@ function EnStep8({ answers, set, onNext, onBack }: any) {
       <p className="text-sm text-[#2d232e]/50 mb-6 font-medium leading-relaxed">
         This helps us show you the option that makes sense — not the most expensive one.
       </p>
-      <div className="grid grid-cols-2 gap-2.5">
+      <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
         {options.map(o => <OptionCard key={o.value} title={o.title} selected={answers.budget === o.value} onClick={() => set('budget', o.value)} />)}
       </div>
       <NavButtons onBack={onBack} onNext={onNext} nextLabel="See My Estimate" nextDisabled={!answers.budget} />
@@ -458,14 +444,14 @@ function EnResultScreen({ result, answers, lead, onReset }: {
   const selectedFeatures = (answers.features ?? []).filter(f => f !== 'none' && EN_FEATURE_LABELS[f])
 
   return (
-    <div className="min-h-screen bg-[#F5F5F0] flex flex-col">
+    <div className="min-h-dvh bg-[#F5F5F0] flex flex-col">
       <header className="flex items-center justify-between px-5 py-4 border-b border-[#2d232e]/8">
         <Link href="/en" className="font-black text-lg tracking-tight text-[#2d232e]">KARCHX</Link>
         <button onClick={onReset} className="text-xs text-[#2d232e]/50 hover:text-[#2d232e] transition-colors font-medium">← Start over</button>
       </header>
 
       <div className="flex-1 px-4 py-10 max-w-lg mx-auto w-full">
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+        <div className="funnel-fade">
 
           <div className="text-center mb-10">
             <p className="text-xs font-bold uppercase tracking-widest text-[#534b52] mb-3">Your estimated website investment</p>
@@ -533,7 +519,7 @@ function EnResultScreen({ result, answers, lead, onReset }: {
             </button>
           </div>
 
-        </motion.div>
+        </div>
       </div>
     </div>
   )

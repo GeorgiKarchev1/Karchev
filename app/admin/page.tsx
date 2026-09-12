@@ -58,7 +58,7 @@ export default function AdminLoginPage() {
 
   if (checkingSession) {
     return (
-      <main className="min-h-screen bg-[#f1f0ea] flex items-center justify-center px-4">
+      <main className="min-h-dvh bg-[#f1f0ea] flex items-center justify-center px-4">
         <div className="flex items-center gap-3 text-[#534b52]">
           <Loader2 className="w-5 h-5 animate-spin" />
           <span className="text-sm font-bold tracking-wide">Проверка на сесия...</span>
@@ -68,7 +68,7 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f1f0ea] flex items-center justify-center px-4">
+    <main className="min-h-dvh bg-[#f1f0ea] flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="flex items-center justify-center mb-8">
           <div className="w-12 h-12 rounded-2xl bg-[#2d232e] flex items-center justify-center">

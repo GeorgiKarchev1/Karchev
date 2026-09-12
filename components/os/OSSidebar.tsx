@@ -37,7 +37,7 @@ export default function OSSidebar() {
   const { hasContent, profile } = useOS()
 
   return (
-    <aside className="flex h-screen flex-col border-r-2 border-[#2d232e] bg-[#ddd7c8]">
+    <aside className="flex h-dvh flex-col border-r-2 border-[#2d232e] bg-[#ddd7c8]">
       <div className="border-b-2 border-[#2d232e] px-5 py-5">
         <Link
           href="/bg"

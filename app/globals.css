@@ -206,3 +206,40 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #534b52;
 }
+
+/* ---------------------------------------------------------------------------
+   Funnel / chat entrance animations.
+
+   These replace framer-motion in the estimate wizards and the AI demo chat.
+   The library was ~37 kB gzip in the initial bundle of three lead-generation
+   routes, to do opacity/translate fades that CSS does natively. Elements are
+   keyed in React, so a key change remounts them and replays the animation.
+   --------------------------------------------------------------------------- */
+@keyframes funnel-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes funnel-rise-sm {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes funnel-pop {
+  from { opacity: 0; transform: translateY(12px) scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+.funnel-step  { animation: funnel-rise .25s cubic-bezier(.22, 1, .36, 1) both; }
+.funnel-fade  { animation: funnel-rise .4s cubic-bezier(.22, 1, .36, 1) both; }
+.funnel-msg   { animation: funnel-pop .28s cubic-bezier(.22, 1, .36, 1) both; }
+.funnel-hint  { animation: funnel-rise-sm .28s cubic-bezier(.22, 1, .36, 1) both; }
+
+/* Staggered suggestion chips, matching the old per-index delay. */
+.funnel-chip  { animation: funnel-rise-sm .28s cubic-bezier(.22, 1, .36, 1) both; animation-delay: calc(100ms + var(--chip-index, 0) * 60ms); }
+
+/* The progress bar animates its own width rather than being driven by JS. */
+.funnel-progress { transition: width .35s ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .funnel-step, .funnel-fade, .funnel-msg, .funnel-hint, .funnel-chip { animation: none; }
+  .funnel-progress { transition: none; }
+}

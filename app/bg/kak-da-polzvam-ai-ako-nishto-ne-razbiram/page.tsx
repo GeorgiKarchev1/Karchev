@@ -10,9 +10,9 @@ const PATH = '/bg/kak-da-polzvam-ai-ako-nishto-ne-razbiram'
 const BOOKING_URL = 'https://cal.com/georgi-karchev-3r9puz/30min'
 
 export const metadata: Metadata = {
-  title: 'Как да ползвам AI, ако нищо не разбирам? Пробвай на живо',
+  title: 'Как да ползвам AI, ако нищо не разбирам?',
   description:
-    'Не разбираш от технологии и AI ти звучи плашещо? Пробвай тук как е да говориш с изкуствен интелект — на български, безплатно, без да инсталираш нищо. За начинаещи и скептици.',
+    'Не разбираш от технологии и AI ти звучи плашещо? Пробвай тук как е да говориш с изкуствен интелект — на български, безплатно и без да инсталираш нищо.',
   alternates: { canonical: absoluteUrl(PATH) },
   keywords: [
     'как да ползвам AI ако нищо не разбирам',
@@ -116,7 +116,7 @@ export default function HowToUseAiFunnelPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
+    <main className="min-h-dvh bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Navbar />
 

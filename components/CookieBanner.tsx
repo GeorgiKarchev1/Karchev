@@ -2,16 +2,24 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { X } from 'lucide-react'
 import { useLanguage } from '@/context/LanguageContext'
-import { getPolicyPath } from '@/lib/site'
+import { getPolicyPath, getRouteLocale } from '@/lib/site'
 
 const COOKIE_KEY = 'karchev_cookie_consent'
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
   const { language } = useLanguage()
-  const bg = language === 'BG'
+  const pathname = usePathname()
+
+  // This banner lives in the root layout, outside the per-locale subtrees, so
+  // the context language here is the cookie/geo guess rather than the one the
+  // page is actually written in. Prefer the locale in the URL when there is
+  // one, so an English page never gets a Bulgarian consent notice.
+  const routeLocale = getRouteLocale(pathname ?? '')
+  const bg = routeLocale ? routeLocale === 'bg' : language === 'BG'
 
   useEffect(() => {
     try { setVisible(!localStorage.getItem(COOKIE_KEY)) } catch { setVisible(true) }

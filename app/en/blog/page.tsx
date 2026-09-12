@@ -4,17 +4,20 @@ import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { enBlogArticles } from '@/lib/editorial-content'
-import { localizedAlternates } from '@/lib/site'
+import { localizedAlternates, withSocialMetadata } from '@/lib/site'
 
-export const metadata: Metadata = {
-  title: 'Blog on Websites, Conversion and AI Automation',
-  description: 'Focused articles on website strategy, landing pages, pricing, conversion, and AI automation for service businesses.',
-  alternates: localizedAlternates('/bg/blog', '/en/blog', 'en'),
-}
+export const metadata: Metadata = withSocialMetadata(
+  {
+    title: 'Blog on Websites, Conversion and AI Automation',
+    description: 'Focused articles on website strategy, landing pages, pricing, conversion, and AI automation for service businesses.',
+    alternates: localizedAlternates('/bg/blog', '/en/blog', 'en'),
+  },
+  { locale: 'en', path: '/en/blog' }
+)
 
 export default function EnglishBlogPage() {
   return (
-    <main className="min-h-screen bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
+    <main className="min-h-dvh bg-[#F5F5F0] text-[#2d232e] selection:bg-[#534b52]/30">
       <Navbar />
 
       <section className="pt-40 pb-20 px-6 md:px-8 max-w-[1200px] mx-auto">
@@ -31,7 +34,7 @@ export default function EnglishBlogPage() {
       <section className="px-6 md:px-8 pb-24 max-w-[1200px] mx-auto">
         <div className="grid gap-6 md:grid-cols-2">
           {enBlogArticles.map((article) => (
-            <Link key={article.path} href={article.path} className="grid overflow-hidden rounded-[2rem] border border-[#2d232e]/10 bg-white/70 transition-colors hover:bg-white">
+            <Link key={article.path} href={article.path} className="grid grid-cols-[minmax(0,1fr)] overflow-hidden rounded-[2rem] border border-[#2d232e]/10 bg-white/70 transition-colors hover:bg-white">
               <div className="relative aspect-[16/10] md:aspect-[16/9]">
                 <Image src={article.image ?? '/blogimg.png'} alt={article.title} fill className="object-cover" sizes="50vw" />
               </div>

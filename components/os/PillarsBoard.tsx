@@ -103,8 +103,8 @@ export default function PillarsBoard() {
               </span>
               <button
                 onClick={() => removePillar(pillar.id)}
-                className="rounded-full border-2 border-[#2d232e] bg-[#f7f4ea] p-1.5 text-[#534b52] transition hover:bg-[#ddd7c8] hover:text-[#2d232e]"
-                title="Remove pillar"
+                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border-2 border-[#2d232e] bg-[#f7f4ea] p-1.5 text-[#534b52] transition hover:bg-[#ddd7c8] hover:text-[#2d232e]"
+                title="Remove pillar" aria-label="Remove pillar"
               >
                 <Trash2 className="h-3.5 w-3.5" />
               </button>

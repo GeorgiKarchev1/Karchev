@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import type { ServiceLandingPageProps } from '@/components/seo/ServiceLandingPage'
-import { localizedAlternates } from '@/lib/site'
+import { localizedAlternates, withSocialMetadata } from '@/lib/site'
 
 type ServicePageDefinition = ServiceLandingPageProps & {
   metadata: Metadata
 }
 
-export const servicePages: Record<string, ServicePageDefinition> = {
+const servicePageDefinitions: Record<string, ServicePageDefinition> = {
   bgWebsiteDevelopment: {
     locale: 'bg',
     path: '/bg/izrabotka-na-saitove',
@@ -69,7 +69,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     serviceName: 'Изработка на сайтове за бизнес',
     serviceDescription: 'Бързи фирмени сайтове и маркетинг сайтове с ясна структура, силен copy direction и SEO-ready техническа основа.',
     metadata: {
-      title: 'Изработка на сайт за бизнес | KARCHX',
+      title: 'Изработка на сайт за бизнес',
       description: 'Изработка на сайтове за бизнес в България с фокус върху скорост, доверие и повече качествени запитвания.',
       alternates: localizedAlternates('/bg/izrabotka-na-saitove', '/en/website-development', 'bg'),
       keywords: ['изработка на сайт', 'изработка на сайт за бизнес', 'фирмен сайт', 'уеб дизайн за бизнес'],
@@ -137,7 +137,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     serviceName: 'Landing страници за бизнес',
     serviceDescription: 'Landing страници за услуги, кампании и оферти с фокус върху ясна структура и директна конверсия.',
     metadata: {
-      title: 'Landing страници за бизнес | KARCHX',
+      title: 'Landing страници за бизнес',
       description: 'Landing страници за услуги, кампании и lead generation с ясна оферта, силен CTA и бързо зареждане.',
       alternates: localizedAlternates('/bg/landing-stranitsi', '/en/landing-pages', 'bg'),
       keywords: ['landing страница', 'landing страница цена', 'landing page за бизнес', 'lead generation page'],
@@ -197,7 +197,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
         description: 'Автоматизациите работят по-силно, когато входящият трафик влиза в ясен conversion flow.',
       },
       {
-        href: '/tools',
+        href: '/bg/tools',
         label: 'Tools & resources',
         description: 'Инструменти и workflows, които използвам за реални automation системи.',
       },
@@ -205,7 +205,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     serviceName: 'AI автоматизации за бизнес',
     serviceDescription: 'AI автоматизации и леки workflow системи за сайтове, lead capture, content operations и административни процеси.',
     metadata: {
-      title: 'AI автоматизации за бизнес | KARCHX',
+      title: 'AI автоматизации за бизнес',
       description: 'AI автоматизации за малък бизнес: lead follow-up, content workflows и интеграции между сайт, календар и CRM.',
       alternates: localizedAlternates('/bg/ai-avtomatizatsii', '/en/ai-automation', 'bg'),
       keywords: ['AI автоматизации за бизнес', 'чатбот за бизнес', 'автоматизация на запитвания', 'AI workflows'],
@@ -401,7 +401,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
         description: 'The front-end conversion layer becomes stronger when the backend follow-up is automated.',
       },
       {
-        href: '/tools',
+        href: '/bg/tools',
         label: 'Tools & resources',
         description: 'Useful tooling and workflows that inform my client automation systems.',
       },
@@ -486,7 +486,7 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     serviceName: 'AI интеграция за бизнес',
     serviceDescription: 'AI интеграция и автоматизация, вградени в текущите ти системи — CRM, имейл и вътрешни инструменти.',
     metadata: {
-      title: 'AI интеграция за бизнес | KARCHX',
+      title: 'AI интеграция за бизнес',
       description: 'AI интеграция за бизнеси в България и ЕС: вграждам AI агенти в CRM, имейл и вътрешните ти инструменти. Live в продукция за 2–4 седмици.',
       alternates: localizedAlternates('/bg/ai-integratsiya', '/en/ai-integration', 'bg'),
       keywords: ['AI интеграция за бизнес', 'внедряване на AI', 'AI агенти', 'автоматизация на процеси', 'AI в CRM'],
@@ -563,10 +563,26 @@ export const servicePages: Record<string, ServicePageDefinition> = {
     serviceName: 'AI integration for business',
     serviceDescription: 'AI integration and automation built into your existing systems — CRM, email, and internal tools.',
     metadata: {
-      title: 'AI Integration for Business | KARCHX',
+      title: 'AI Integration for Business',
       description: 'AI integration for businesses in Bulgaria and the EU: I build AI agents into your CRM, inbox, and internal tools. Live in production in 2–4 weeks.',
       alternates: localizedAlternates('/bg/ai-integratsiya', '/en/ai-integration', 'en'),
       keywords: ['ai integration for business', 'ai implementation', 'custom ai agents', 'business process automation', 'ai in crm'],
     },
   },
 }
+
+// Every service page gets a localised social card derived from its own title,
+// description and path (see withSocialMetadata).
+export const servicePages: Record<string, ServicePageDefinition> = Object.fromEntries(
+  Object.entries(servicePageDefinitions).map(([key, page]) => [
+    key,
+    {
+      ...page,
+      metadata: withSocialMetadata(page.metadata, {
+        locale: page.locale,
+        path: page.path,
+        type: 'website',
+      }),
+    },
+  ])
+)

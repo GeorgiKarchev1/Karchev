@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { Send, User, RotateCcw } from 'lucide-react'
 
 const AVATAR = '/img/georgi-avatar.webp'
@@ -132,82 +131,64 @@ export default function AiDemoChat() {
         ref={scrollRef}
         className="h-[360px] space-y-4 overflow-y-auto bg-gradient-to-b from-[#f6f3ed] to-[#F5F5F0] px-4 py-5 md:px-5"
       >
-        <AnimatePresence initial={false}>
-          {messages.map((m, i) => {
-            const isLast = i === messages.length - 1
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 12, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                className={`flex gap-2.5 ${m.role === 'user' ? 'flex-row-reverse' : ''}`}
+        {messages.map((m, i) => {
+          const isLast = i === messages.length - 1
+          return (
+            <div
+              key={i}
+              className={`funnel-msg flex gap-2.5 ${m.role === 'user' ? 'flex-row-reverse' : ''}`}
+            >
+              {m.role === 'user' ? (
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#534b52] text-[#F5F5F0]">
+                  <User className="h-4 w-4" />
+                </span>
+              ) : (
+                <img src={AVATAR} alt="Карчи" className="h-8 w-8 shrink-0 rounded-full object-cover" />
+              )}
+              <div
+                className={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                  m.role === 'user'
+                    ? 'rounded-tr-sm bg-[#2d232e] text-[#F5F5F0]'
+                    : 'rounded-tl-sm border border-[#2d232e]/8 bg-white text-[#2d232e]'
+                }`}
               >
-                {m.role === 'user' ? (
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#534b52] text-[#F5F5F0]">
-                    <User className="h-4 w-4" />
-                  </span>
-                ) : (
-                  <img src={AVATAR} alt="Карчи" className="h-8 w-8 shrink-0 rounded-full object-cover" />
+                {m.content}
+                {m.role === 'assistant' && isLast && status === 'streaming' && (
+                  <span className="ml-0.5 inline-block h-4 w-[2px] -mb-0.5 animate-pulse bg-[#534b52] align-middle" />
                 )}
-                <div
-                  className={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
-                    m.role === 'user'
-                      ? 'rounded-tr-sm bg-[#2d232e] text-[#F5F5F0]'
-                      : 'rounded-tl-sm border border-[#2d232e]/8 bg-white text-[#2d232e]'
-                  }`}
-                >
-                  {m.content}
-                  {m.role === 'assistant' && isLast && status === 'streaming' && (
-                    <span className="ml-0.5 inline-block h-4 w-[2px] -mb-0.5 animate-pulse bg-[#534b52] align-middle" />
-                  )}
-                </div>
-              </motion.div>
-            )
-          })}
-        </AnimatePresence>
+              </div>
+            </div>
+          )
+        })}
 
         {status === 'thinking' && (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex gap-2.5"
-          >
+          <div className="funnel-hint flex gap-2.5">
             <img src={AVATAR} alt="Карчи" className="h-8 w-8 shrink-0 rounded-full object-cover" />
             <div className="flex items-center gap-1 rounded-2xl rounded-tl-sm border border-[#2d232e]/8 bg-white px-4 py-3">
               <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#534b52] [animation-delay:-0.3s]" />
               <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#534b52] [animation-delay:-0.15s]" />
               <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#534b52]" />
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
 
       {/* Suggestions */}
-      <AnimatePresence>
-        {showSuggestions && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="flex flex-wrap gap-2 px-4 pb-3 md:px-5"
-          >
-            {SUGGESTIONS.map((s, idx) => (
-              <motion.button
-                key={s}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + idx * 0.06 }}
-                onClick={() => send(s)}
-                disabled={busy}
-                className="rounded-full border border-[#2d232e]/15 bg-white/80 px-3 py-1.5 text-xs font-semibold text-[#2d232e]/80 transition-all hover:border-[#534b52]/40 hover:bg-white hover:shadow-sm disabled:opacity-50"
-              >
-                {s}
-              </motion.button>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {showSuggestions && (
+        <div className="funnel-hint flex flex-wrap gap-2 px-4 pb-3 md:px-5">
+          {SUGGESTIONS.map((s, idx) => (
+            <button
+              key={s}
+              style={{ '--chip-index': idx } as React.CSSProperties}
+              onClick={() => send(s)}
+              disabled={busy}
+              className="funnel-chip rounded-full border border-[#2d232e]/15 bg-white/80 px-3 py-2.5 text-xs font-semibold text-[#2d232e]/80 transition-all hover:border-[#534b52]/40 hover:bg-white hover:shadow-sm disabled:opacity-50"
+            >
+              {s}
+            </button>
+          ))}
+        </div>
+      )}
 
       {error && <p className="px-4 pb-2 text-xs font-medium text-red-700/80 md:px-5">{error}</p>}
 
@@ -238,7 +219,7 @@ export default function AiDemoChat() {
           type="submit"
           disabled={busy || !input.trim()}
           aria-label="Изпрати"
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#2d232e] text-[#F5F5F0] transition-all hover:bg-[#534b52] active:scale-95 disabled:opacity-40 disabled:active:scale-100"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#2d232e] text-[#F5F5F0] transition-all hover:bg-[#534b52] active:scale-95 disabled:opacity-40 disabled:active:scale-100"
         >
           <Send className="h-4 w-4" />
         </button>

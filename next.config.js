@@ -2,8 +2,12 @@
 const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ['@vercel/blob'],
+    // lucide-react ships ~1000 icons; make the per-icon tree-shaking explicit
+    // rather than relying on the bundler inferring it.
+    optimizePackageImports: ['lucide-react'],
   },
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -24,12 +28,25 @@ const nextConfig = {
   reactStrictMode: true,
   // The case-studies section was retired; its URLs may still be indexed, so send
   // them to the language home rather than letting them 404.
+  //
+  // The unprefixed routes below used to be `redirect()` calls inside page
+  // components, which answer 307 (temporary) and cost a serverless render.
+  // Declaring them here makes them permanent 308s resolved at the edge, so any
+  // link equity on the old URLs consolidates onto the locale-prefixed ones.
   async redirects() {
     return [
       { source: '/bg/kazusi', destination: '/bg', permanent: true },
       { source: '/bg/kazusi/:slug*', destination: '/bg', permanent: true },
       { source: '/en/case-studies', destination: '/en', permanent: true },
       { source: '/en/case-studies/:slug*', destination: '/en', permanent: true },
+      { source: '/', destination: '/bg', permanent: true },
+      { source: '/blog', destination: '/bg/blog', permanent: true },
+      // Exclude anything with a file extension: public/blog/ holds the post
+      // thumbnails, and a bare ':slug*' matched those too, 308-ing every
+      // thumbnail to a 404 instead of serving the SVG.
+      { source: '/blog/:slug((?!.*\\.).*)', destination: '/bg/blog/:slug', permanent: true },
+      { source: '/tools', destination: '/bg/tools', permanent: true },
+      { source: '/estimate', destination: '/bg/estimate', permanent: true },
     ]
   },
   async headers() {
@@ -69,6 +86,31 @@ const nextConfig = {
     ].join('; ')
 
     return [
+      {
+        // Files under public/ are served with `max-age=0` by default, so the
+        // logo and social images were revalidated on every page load. They are
+        // not content-hashed, so cache for a day and refresh in the background
+        // rather than marking them immutable.
+        source: '/:all*(svg|png|jpg|jpeg|webp|avif|ico|woff2)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, stale-while-revalidate=604800',
+          },
+        ],
+      },
+      {
+        // The admin CMS and the internal content-OS tool have no business in
+        // search results. robots.txt stops the crawl; this stops the URL being
+        // indexed anyway if someone links to it. Works for client components,
+        // which cannot export `metadata`.
+        source: '/:path(admin|os)/:rest*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+      {
+        source: '/:path(admin|os)',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
       {
         source: '/:path*',
         headers: [

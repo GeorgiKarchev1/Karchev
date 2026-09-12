@@ -172,15 +172,15 @@ export default function HooksBoard() {
                 <div className="flex items-center gap-1">
                   <button
                     onClick={() => copyHook(hook)}
-                    className="rounded-full border-2 border-[#2d232e] bg-[#f7f4ea] p-1.5 text-[#2d232e] transition hover:bg-[#ddd7c8]"
-                    title="Copy hook"
+                    className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border-2 border-[#2d232e] bg-[#f7f4ea] p-1.5 text-[#2d232e] transition hover:bg-[#ddd7c8]"
+                    title="Copy hook" aria-label="Copy hook"
                   >
                     {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
                   </button>
                   <button
                     onClick={() => removeHook(hook.id)}
-                    className="rounded-full border-2 border-[#2d232e] bg-[#f7f4ea] p-1.5 text-[#534b52] transition hover:bg-[#ddd7c8] hover:text-[#2d232e]"
-                    title="Remove hook"
+                    className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border-2 border-[#2d232e] bg-[#f7f4ea] p-1.5 text-[#534b52] transition hover:bg-[#ddd7c8] hover:text-[#2d232e]"
+                    title="Remove hook" aria-label="Remove hook"
                   >
                     <Trash2 className="h-3.5 w-3.5" />
                   </button>

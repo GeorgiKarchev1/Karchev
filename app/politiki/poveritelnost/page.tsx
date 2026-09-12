@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Политика за поверителност | KarchX',
+  title: 'Политика за поверителност',
   description: 'Как KarchX събира, използва и защитава личните ви данни.',
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://www.karchx.com/politiki/poveritelnost' },
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-[#f6f3ed] text-[#2d232e]">
+    <main className="min-h-dvh bg-[#f6f3ed] text-[#2d232e]">
       <div className="max-w-3xl mx-auto px-6 py-20">
 
         <div className="flex items-center justify-between mb-10">

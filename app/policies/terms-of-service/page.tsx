@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | KarchX',
+  title: 'Terms of Service',
   description: 'Terms and conditions for using KarchX services — web development, content production and automations.',
-  robots: { index: false, follow: false },
+  robots: { index: false, follow: true },
 }
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-[#f6f3ed] text-[#2d232e]">
+    <main className="min-h-dvh bg-[#f6f3ed] text-[#2d232e]">
       <div className="max-w-3xl mx-auto px-6 py-20">
 
         <div className="flex items-center justify-between mb-10">

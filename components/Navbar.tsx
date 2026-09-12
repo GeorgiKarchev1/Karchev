@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
@@ -60,11 +61,20 @@ export default function Navbar() {
     }
   }, [open])
 
+  // Without this the page behind the open menu still scrolls under the finger.
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
   return (
     <nav ref={nav} className={scrolled ? 'studio-nav is-scrolled' : 'studio-nav'} aria-label={language === 'EN' ? 'Main navigation' : 'Основна навигация'}>
       <div className="studio-wrap studio-nav-inner">
         <Link href={home} className="studio-brand" aria-label="KARCHX">
-          <img src="/img/logokarch.png" alt="KARCHX" width="1500" height="500" />
+          {/* Rendered at 119px (.studio-brand). Served through next/image so
+              the 1500x500 source becomes a right-sized AVIF/WebP instead of an
+              85 kB PNG on every page. */}
+          <Image src="/img/logokarch.png" alt="KARCHX" width={135} height={45} priority />
         </Link>
         <div className="studio-desktop-links">
           {items.map(item => <Link key={item.href} href={item.href} className="studio-nav-link">{item.label}</Link>)}
@@ -81,6 +91,7 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+      {open && <div className="studio-menu-scrim" onClick={() => setOpen(false)} aria-hidden="true" />}
       {open && <div id="studio-mobile-menu" className="studio-mobile-menu">
         {items.map(item => <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}<ArrowUpRight size={22} aria-hidden="true" /></Link>)}
         <a href="https://cal.com/georgi-karchev-3r9puz/30min" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>{t('navbar.bookMeeting')}<ArrowUpRight size={22} aria-hidden="true" /></a>

@@ -1,12 +1,11 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import './studio.css'
-import { headers } from 'next/headers'
 import Script from 'next/script'
 import { Inter, Space_Grotesk, Manrope } from 'next/font/google'
 import { LanguageProvider } from '@/context/LanguageContext'
 import CookieBanner from '@/components/CookieBanner'
-import { BASE_URL, getHtmlLang } from '@/lib/site'
+import { BASE_URL } from '@/lib/site'
 
 // Self-hosted via next/font: no render-blocking request to fonts.googleapis.com
 // (which the CSP also blocks), no layout shift, and the files are preloaded.
@@ -100,12 +99,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const localeHeader = headers().get('x-site-locale')
-  const htmlLang = getHtmlLang(localeHeader === 'en' ? 'en' : localeHeader === 'bg' ? 'bg' : null)
-  const initialLanguage = htmlLang === 'en' ? 'EN' : 'BG'
-
+  // lang is Bulgarian here because BG is the primary market and every
+  // non-localised route is Bulgarian. The /en and /policies subtrees correct
+  // it in their own layouts.
   return (
-    <html lang={htmlLang} className={`${inter.variable} ${spaceGrotesk.variable} ${marketing.variable} scroll-smooth overflow-x-hidden`}>
+    <html lang="bg" className={`${inter.variable} ${spaceGrotesk.variable} ${marketing.variable} scroll-smooth overflow-x-hidden`}>
+      <head>
+        {/* The analytics scripts below load afterInteractive; warming DNS+TLS
+            here takes the handshake off their critical path. */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://www.clarity.ms" crossOrigin="" />
+      </head>
       <body className="font-sans antialiased text-white overflow-x-hidden">
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
@@ -128,7 +133,7 @@ export default function RootLayout({
             gtag('config', 'G-HYR74PQ33D');
           `}
         </Script>
-        <LanguageProvider initialLanguage={initialLanguage}>
+        <LanguageProvider>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -156,19 +161,42 @@ export default function RootLayout({
                   },
                   {
                     '@type': 'ProfessionalService',
+                    '@id': `${BASE_URL}/#business`,
                     name: 'KARCHX',
-                    url: BASE_URL,
+                    // Point at /bg, not the bare domain: the root only 308s here.
+                    url: `${BASE_URL}/bg`,
                     image: `${BASE_URL}/img/og-image.png`,
-                    areaServed: ['Bulgaria', 'United States'],
+                    priceRange: '\u20AC\u20AC',
+                    // Bulgaria is the primary market, so say so in a typed way
+                    // rather than as a bare string.
+                    address: {
+                      '@type': 'PostalAddress',
+                      addressCountry: 'BG',
+                    },
+                    areaServed: [
+                      { '@type': 'Country', name: 'Bulgaria' },
+                      { '@type': 'Country', name: 'United States' },
+                    ],
+                    inLanguage: ['bg-BG', 'en-US'],
                     serviceType: [
                       'Custom AI agents',
                       'AI integration',
                       'Business process automation',
+                      'Website development',
+                      'Landing page development',
                     ],
                     founder: {
                       '@type': 'Person',
                       name: 'Georgi Karchev',
                     },
+                  },
+                  {
+                    '@type': 'WebSite',
+                    '@id': `${BASE_URL}/#website`,
+                    name: 'KARCHX',
+                    url: BASE_URL,
+                    inLanguage: 'bg-BG',
+                    publisher: { '@id': `${BASE_URL}/#business` },
                   },
                 ],
               }),

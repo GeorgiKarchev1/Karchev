@@ -94,16 +94,55 @@ function escapeHtml(s: string): string {
     .replace(/'/g, '&#39;')
 }
 
+// System stack only — Gmail/Outlook strip <style> blocks and web fonts, so the
+// safe path is inline styles with fonts every OS already ships.
+const FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"
+
+// A full-width, tappable mailto:/tel: button. Stacked (one per row) rather than
+// side-by-side — a 320px phone screen can't reliably fit two inline buttons
+// once a real email address is in there.
+function actionButton(href: string, label: string, value: string): string {
+  return `<tr><td style="padding:0 0 10px"><a href="${href}" style="display:block;background:#2d232e;color:#ffffff;text-decoration:none;font-family:${FONT};font-size:15px;font-weight:600;padding:14px 18px;border-radius:8px;word-break:break-word">${escapeHtml(
+    label
+  )}: ${escapeHtml(value)}</a></td></tr>`
+}
+
+// tel: only tolerates digits and a leading +; strip the spaces/parens/dashes a
+// person types so tapping the button actually dials instead of silently no-op-ing.
+function telHref(phone: string): string {
+  return `tel:${escapeHtml(phone.replace(/[^0-9+]/g, ''))}`
+}
+
+// Subject lines are an email header, not HTML — escapeHtml doesn't apply here,
+// but a stray newline could still smuggle in extra headers, so flatten it.
+function subjectSafe(s: string): string {
+  return s.replace(/[\r\n]+/g, ' ').trim()
+}
+
 function translateValue(v: unknown): string {
   if (Array.isArray(v)) return v.map(item => VALUE_LABELS[item] ?? item).join(', ')
   const s = String(v ?? '—')
   return VALUE_LABELS[s] ?? s
 }
 
-function row(k: string, v: unknown): string {
-  const keyLabel = escapeHtml(KEY_LABELS[k] ?? k)
-  const val = escapeHtml(translateValue(v))
-  return `<tr><td style="padding:6px 12px;color:#888;font-size:13px;white-space:nowrap">${keyLabel}</td><td style="padding:6px 12px;font-size:13px;color:#2d232e">${val}</td></tr>`
+type AnswerRow = { label: string; value: string }
+
+// Splits the raw answers object into picked options (compact, scannable rows)
+// vs. hand-typed text (the "...Other" fields from an "other, please specify"
+// input) — the latter is the customer's own words and deserves the same
+// reading room as the contact form's message, not a cramped table cell.
+function collectAnswers(answers: Record<string, unknown>): { structured: AnswerRow[]; freeText: AnswerRow[] } {
+  const structured: AnswerRow[] = []
+  const freeText: AnswerRow[] = []
+  for (const [k, v] of Object.entries(answers)) {
+    if (v === undefined || v === null || v === '' || (Array.isArray(v) && v.length === 0)) continue
+    const value = translateValue(v)
+    if (!value.trim()) continue
+    const label = KEY_LABELS[k] ?? k
+    if (k.endsWith('Other')) freeText.push({ label, value })
+    else structured.push({ label, value })
+  }
+  return { structured, freeText }
 }
 
 export async function POST(req: NextRequest) {
@@ -135,41 +174,114 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(apiKey)
     const { answers, lead, result, lang } = data
     const isBG = lang === 'BG'
+    const sentAt = new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' })
 
-    const answersHtml = Object.entries(answers as Record<string, unknown>)
-      .map(([k, v]) => row(k, v))
+    const { structured, freeText } = collectAnswers(answers as Record<string, unknown>)
+
+    const minPriceStr = String(result.minPrice)
+    const maxPriceStr = String(result.maxPrice)
+
+    const companyRow = lead.company
+      ? `<tr><td style="padding:0 24px 4px"><p style="margin:0;font-family:${FONT};font-size:13px;color:#8a8a8a">Компания</p><p style="margin:2px 0 0;font-family:${FONT};font-size:15px;color:#1a1a1a">${escapeHtml(
+          lead.company
+        )}</p></td></tr>`
+      : ''
+
+    // Each hand-typed answer gets the same high-contrast, generously-spaced
+    // panel as the contact form's message — it's the customer's own words.
+    const freeTextHtml = freeText
+      .map(
+        ({ label, value }) =>
+          `<tr><td style="padding:16px 24px 0"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#faf8f3;border:1px solid #ece8dd;border-radius:10px"><tr><td style="padding:18px 20px"><p style="margin:0 0 8px;font-family:${FONT};font-size:12px;font-weight:700;color:#8a8377;text-transform:uppercase;letter-spacing:.04em">${escapeHtml(
+            label
+          )}</p><p style="margin:0;font-family:${FONT};font-size:16px;line-height:1.6;color:#1a1a1a;white-space:pre-wrap">${escapeHtml(
+            value
+          )}</p></td></tr></table></td></tr>`
+      )
       .join('')
 
+    // Picked options stay compact — they're metadata, secondary to the free text above.
+    const structuredRowsHtml = structured
+      .map(
+        ({ label, value }, i) =>
+          `<tr><td style="padding:9px 0;border-top:${
+            i === 0 ? 'none' : '1px solid #ece8dd'
+          };font-family:${FONT};font-size:13px;color:#8a8a8a;white-space:nowrap;vertical-align:top">${escapeHtml(
+            label
+          )}</td><td style="padding:9px 0 9px 14px;border-top:${
+            i === 0 ? 'none' : '1px solid #ece8dd'
+          };font-family:${FONT};font-size:14px;color:#2d2d2d">${escapeHtml(value)}</td></tr>`
+      )
+      .join('')
+
+    const structuredSection = structuredRowsHtml
+      ? `<tr><td style="padding:20px 24px 24px"><p style="margin:0 0 8px;font-family:${FONT};font-size:12px;font-weight:700;color:#8a8377;text-transform:uppercase;letter-spacing:.04em">Отговори</p><table role="presentation" width="100%" cellpadding="0" cellspacing="0">${structuredRowsHtml}</table></td></tr>`
+      : ''
+
     const html = `
-<div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#2d232e">
-  <h2 style="margin:0 0 4px">Ново запитване от калкулатора${isBG ? '' : ' (EN)'}</h2>
-  <p style="color:#888;margin:0 0 24px;font-size:13px">${new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' })}</p>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f2f1ec;padding:24px 12px">
+<tr><td align="center">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;border-radius:12px;overflow:hidden">
+<tr><td style="padding:28px 24px 20px">
+<p style="margin:0 0 6px;font-family:${FONT};font-size:12px;color:#9a9a9a;letter-spacing:.02em">${escapeHtml(
+      sentAt
+    )} · Калкулатор${isBG ? '' : ' (EN)'}</p>
+<h1 style="margin:0 0 14px;font-family:${FONT};font-size:24px;line-height:1.3;color:#1a1a1a;font-weight:800">${escapeHtml(
+      lead.name
+    )}</h1>
+<table role="presentation" cellpadding="0" cellspacing="0" style="background:#2d232e;border-radius:8px">
+<tr><td style="padding:10px 16px">
+<p style="margin:0;font-family:${FONT};font-size:12px;color:#c9c2cc">Оценка</p>
+<p style="margin:2px 0 0;font-family:${FONT};font-size:17px;font-weight:700;color:#ffffff">${escapeHtml(
+      minPriceStr
+    )}–${escapeHtml(maxPriceStr)} EUR <span style="font-weight:400;color:#c9c2cc;font-size:13px">· ${escapeHtml(
+      result.recommendedType
+    )}</span></p>
+</td></tr>
+</table>
+</td></tr>
+<tr><td style="padding:0 24px">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+${actionButton(`mailto:${escapeHtml(lead.email)}`, 'Имейл', lead.email)}
+${lead.phone ? actionButton(telHref(lead.phone), 'Телефон', lead.phone) : ''}
+</table>
+</td></tr>
+${companyRow}
+${freeTextHtml}
+${structuredSection}
+</table>
+</td></tr>
+</table>`
 
-  <h3 style="margin:0 0 8px;font-size:15px">Контакт</h3>
-  <table style="width:100%;border-collapse:collapse;background:#f8f7f2;border-radius:8px;overflow:hidden;margin-bottom:24px">
-    ${row('Име', lead.name)}
-    ${row('Имейл', lead.email)}
-    ${lead.phone ? row('Телефон', lead.phone) : ''}
-    ${lead.company ? row('Компания', lead.company) : ''}
-  </table>
-
-  <h3 style="margin:0 0 8px;font-size:15px">Оценка</h3>
-  <table style="width:100%;border-collapse:collapse;background:#f8f7f2;border-radius:8px;overflow:hidden;margin-bottom:24px">
-    ${row('Диапазон', `${result.minPrice} – ${result.maxPrice} EUR`)}
-    ${row('Тип проект', result.recommendedType)}
-  </table>
-
-  <h3 style="margin:0 0 8px;font-size:15px">Отговори</h3>
-  <table style="width:100%;border-collapse:collapse;background:#f8f7f2;border-radius:8px;overflow:hidden">
-    ${answersHtml}
-  </table>
-</div>`
+    // Plain-text alternative for text-only clients — not escaped, since it isn't HTML.
+    const textLines = [
+      `Ново запитване от калкулатора${isBG ? '' : ' (EN)'}`,
+      sentAt,
+      '',
+      `Оценка: ${minPriceStr}–${maxPriceStr} EUR`,
+      `Тип проект: ${result.recommendedType}`,
+      '',
+      `Име: ${lead.name}`,
+      `Имейл: ${lead.email}`,
+    ]
+    if (lead.phone) textLines.push(`Телефон: ${lead.phone}`)
+    if (lead.company) textLines.push(`Компания: ${lead.company}`)
+    if (freeText.length) {
+      textLines.push('')
+      for (const { label, value } of freeText) textLines.push(`${label}:`, value, '')
+    }
+    if (structured.length) {
+      textLines.push('Отговори:')
+      for (const { label, value } of structured) textLines.push(`- ${label}: ${value}`)
+    }
+    const text = textLines.join('\n')
 
     const { error } = await resend.emails.send({
       from: 'KARCHX Калкулатор <onboarding@resend.dev>',
       to: TO_EMAIL,
-      subject: `Ново запитване — ${lead.name} (${result.minPrice}–${result.maxPrice} EUR)`,
+      subject: `${subjectSafe(lead.name)} — оферта ${subjectSafe(minPriceStr)}–${subjectSafe(maxPriceStr)}€`,
       html,
+      text,
       replyTo: lead.email,
     })
 
