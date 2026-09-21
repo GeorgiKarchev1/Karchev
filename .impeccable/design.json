@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-08T08:50:25.861716Z",
-  "title": "Design System: KARCHX public agent system",
+  "generatedAt": "2026-09-21T13:28:44.794322Z",
+  "title": "Design System: KARCHX Growth Systems",
   "extensions": {
     "colorMeta": {
       "ink": {
@@ -168,12 +168,42 @@
           "oklch(83.57% 0 0)",
           "oklch(95.00% 0 0)"
         ]
+      },
+      "hero-hover": {
+        "role": "primary",
+        "displayName": "Hero hover",
+        "canonical": "#383838",
+        "tonalRamp": [
+          "oklch(15.00% 0 0)",
+          "oklch(26.43% 0 0)",
+          "oklch(37.86% 0 0)",
+          "oklch(49.29% 0 0)",
+          "oklch(60.71% 0 0)",
+          "oklch(72.14% 0 0)",
+          "oklch(83.57% 0 0)",
+          "oklch(95.00% 0 0)"
+        ]
+      },
+      "hero-active": {
+        "role": "primary",
+        "displayName": "Hero active",
+        "canonical": "#505050",
+        "tonalRamp": [
+          "oklch(15.00% 0 0)",
+          "oklch(26.43% 0 0)",
+          "oklch(37.86% 0 0)",
+          "oklch(49.29% 0 0)",
+          "oklch(60.71% 0 0)",
+          "oklch(72.14% 0 0)",
+          "oklch(83.57% 0 0)",
+          "oklch(95.00% 0 0)"
+        ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Centered bilingual hero at 60px/1 and weight 600; 36px/40px at 700px and 30px/36px below 380px. Heading and introduction cap at 680px."
+        "purpose": "Open two-line hero heading; fluid 64–96px desktop, weight 500 and 1.17 line-height. Unmasked text retains visible overflow."
       },
       "headline": {
         "displayName": "Headline",
@@ -189,7 +219,7 @@
       },
       "lead": {
         "displayName": "Lead",
-        "purpose": "Hero introduction at 18px/28px with a 680px maximum width; mobile 16px/24px with a 448px maximum. Founder note retains 18px/1.8, becoming 16px."
+        "purpose": "Hero introduction: 47ch maximum; becomes 16px at 900px. Existing founder prose retains its own leading."
       },
       "control": {
         "displayName": "Control",
@@ -197,7 +227,7 @@
       },
       "annotation": {
         "displayName": "Annotation",
-        "purpose": "Compact process context and labels; the hero uses local 12px/16px terms and mobile commitments."
+        "purpose": "Quiet payment, first-client availability and call terms; retained compact context elsewhere."
       },
       "label": {
         "displayName": "Label",
@@ -205,25 +235,66 @@
       },
       "hero-control": {
         "displayName": "Hero control",
-        "purpose": "Compact rectangular booking action with 16px/24px semibold text."
+        "purpose": "Medium-weight label on the new rectangular call action."
+      },
+      "display-tablet": {
+        "displayName": "Tablet display",
+        "purpose": "Bulgarian hero at the 900px breakpoint."
+      },
+      "display-tablet-en": {
+        "displayName": "English tablet display",
+        "purpose": "The longer English hero line uses its own tablet size to preserve the composition."
+      },
+      "display-mobile": {
+        "displayName": "Mobile display",
+        "purpose": "Bulgarian hero at the 700px breakpoint, with flush-left lines and 1.2 line-height."
+      },
+      "display-mobile-en": {
+        "displayName": "English mobile display",
+        "purpose": "Locale-specific mobile fluid size keeps the two English headline lines whole."
+      },
+      "hero-price": {
+        "displayName": "Hero price",
+        "purpose": "Compact amount in the unboxed offer below the main introduction."
+      },
+      "hero-price-compact": {
+        "displayName": "Compact hero price",
+        "purpose": "Price at 900px and below."
+      },
+      "guarantee-title": {
+        "displayName": "Guarantee heading",
+        "purpose": "Detailed free-continuation statement in the retained pricing section."
+      },
+      "guarantee-title-mobile": {
+        "displayName": "Mobile guarantee heading",
+        "purpose": "Guarantee statement at the 700px breakpoint."
+      },
+      "hero-control-mobile": {
+        "displayName": "Mobile hero control",
+        "purpose": "Smaller call-action label at 700px."
       }
     },
     "shadows": [],
     "motion": [
       {
         "name": "hero-ease",
-        "value": "cubic-bezier(.32, .72, 0, 1)",
-        "purpose": "Hero entrance and booking-action state transitions."
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "One decorative-arrow settle and small hero control movements."
       },
       {
-        "name": "hero-entrance",
-        "value": "words: .85s,75ms stagger,translateY(105%),rotateX(-70deg); supporting copy/action/commitments: .8s, delays .3s/.45s/.6s",
-        "purpose": "Finite word unfold and supporting entrance; reduced motion displays static content."
+        "name": "hero-arrow-settle",
+        "value": "900ms; translate(-9px, 9px) to none",
+        "purpose": "Finite heading-arrow entrance only when reduced motion is not requested; text is never animated or hidden."
       },
       {
         "name": "hero-action-transition",
-        "value": ".7s",
-        "purpose": "Hero background and transform changes use hero-ease; hover arrow moves 4px right and active action scales to .98."
+        "value": "background .25s ease; arrow .35s hero-ease",
+        "purpose": "Hover moves the action arrow 2px right and up; active changes background without scaling."
+      },
+      {
+        "name": "hero-details-transition",
+        "value": ".3s hero-ease; translateX(3px)",
+        "purpose": "Small hover response on the pricing-details link."
       },
       {
         "name": "agent-ease",
@@ -264,11 +335,6 @@
         "name": "reduced-motion",
         "value": "static",
         "purpose": "Revert GSAP and remove CSS animation, transitions and smooth scrolling; retain all content."
-      },
-      {
-        "name": "hero-word-wave",
-        "value": "700ms;45ms stagger;translateY:-6px",
-        "purpose": "One mouse-entry wave via Web Animations API. No touch trigger; preference changes cancel active waves."
       }
     ],
     "breakpoints": [
@@ -283,21 +349,17 @@
       {
         "name": "mobile",
         "value": "700px"
-      },
-      {
-        "name": "small-mobile-hero",
-        "value": "379px"
       }
     ]
   },
   "components": [
     {
-      "name": "Hero booking action",
+      "name": "Hero call action",
       "kind": "button",
       "refersTo": "button-hero",
-      "description": "Compact graphite rectangle with a small inline arrow; the hero’s sole booking action.",
-      "html": "<a class=\"ds-hero-action\" href=\"https://cal.com/georgi-karchev-3r9puz/30min\" target=\"_blank\" rel=\"noopener noreferrer\"><span>Let’s discuss your agent</span><svg viewBox=\"0 0 256 256\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"16\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M40 128h176M144 56l72 72-72 72\"/></svg></a>",
-      "css": ".ds-hero-action{box-sizing:border-box;font-family:var(--font-marketing,\"Manrope\"),sans-serif;display:inline-flex;justify-content:center;align-items:center;gap:16px;min-height:48px;max-width:100%;padding:8px 12px;border:1px solid var(--studio-ink,#171717);border-radius:8px;background:var(--studio-ink,#171717);color:#ffffff;font-size:16px;line-height:24px;font-weight:600;text-decoration:none;transition:background .7s var(--hero-ease,cubic-bezier(.32,.72,0,1)),transform .7s var(--hero-ease,cubic-bezier(.32,.72,0,1));}.ds-hero-action>svg{flex-shrink:0;transition:transform .7s var(--hero-ease,cubic-bezier(.32,.72,0,1));}.ds-hero-action:hover{background:#313131;}.ds-hero-action:hover>svg{transform:translateX(4px);}.ds-hero-action:active{transform:scale(.98);}.ds-hero-action:focus-visible{outline:2px solid var(--studio-ink,#171717);outline-offset:4px;}@media(prefers-reduced-motion:reduce){.ds-hero-action,.ds-hero-action>svg{transition:none!important;animation:none!important;transform:none!important;}}@media(hover:none){.ds-hero-action:hover>svg{transform:none;}}"
+      "description": "Medium-weight graphite rectangle linking to the native contact section; the hero’s sole call action.",
+      "html": "<a class=\"ds-hero-action\" href=\"/en#contact\">Let’s talk<svg viewBox=\"0 0 24 24\" width=\"21\" height=\"21\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10M7 17 17 7\"/></svg></a>",
+      "css": ".ds-hero-action{font-family:var(--font-marketing,\"Manrope\"),sans-serif;display:inline-flex;align-items:center;justify-content:space-between;gap:30px;min-height:56px;padding:14px 24px;border-radius:8px;background:#171717;color:#ffffff;font-size:16px;line-height:1.5;font-weight:500;text-decoration:none;transition:background .25s ease;}.ds-hero-action>svg{flex-shrink:0;transition:transform .35s cubic-bezier(.16,1,.3,1);}.ds-hero-action:hover{background:#383838;}.ds-hero-action:hover>svg{transform:translate(2px,-2px);}.ds-hero-action:active{background:#505050;}.ds-hero-action:focus-visible{outline:2px solid #171717;outline-offset:5px;}@media(max-width:1150px){.ds-hero-action{gap:20px;padding-inline:20px;}}@media(max-width:700px){.ds-hero-action{min-height:52px;padding:12px 20px;gap:24px;font-size:15px;}}@media(prefers-reduced-motion:reduce){.ds-hero-action,.ds-hero-action>svg{transition:none!important;animation:none!important;}}"
     },
     {
       "name": "Retained primary action",
@@ -363,52 +425,31 @@
     }
   ],
   "narrative": {
-    "northStar": "One agent. Your configuration.",
-    "overview": "White, graphite and silver keep the personal AI-agent offer readable. Manrope carries a centered introduction, a compact rectangular booking action and an animated word-by-word headline. Fine rules and retained pill actions support the rest of the page. A dark vertical founder chapter introduces the builder through a large original-color portrait and a personal note.\n\nThis records the September 8, 2026 homepage as currently built at `/bg` and `/en`, plus shared navigation, contact, footer and cookie presentation. The offer is one unnamed, individually configured agent. The latest hero follows the user-selected `landing-page-design` skill from `/Users/Apple/Desktop/agentscontrol`; it replaces the earlier DataFast/Marc Lou iteration and excludes the rejected three-tab workbench. Page composition and the inherited parent seed `32aa0fba` remain in the [surface brief](.impeccable/surfaces/components-site-marketinghome-tsx.md), with product facts in [PRODUCT.md](PRODUCT.md). Secondary page bodies, `/os` and `/admin` retain their own systems.\n\nThe user approved the composition, then requested removal of the hero attribution and stronger text animation. The follow-up is recorded in [motion validation](.impeccable/review/hero-text-motion/VALIDATION.md). Ground truth is `components/site/MarketingHome.tsx`, `app/studio.css`, `app/layout.tsx` and `lib/agent-motion.ts`. The [preceding finish review](.impeccable/review/landing-skill-hero/FINISH-REVIEW.md) gives the scoped hero a **ship** disposition with no material correction. [Validation](.impeccable/review/landing-skill-hero/VALIDATION.md) and [checks](.impeccable/review/landing-skill-hero/checks.json) record the production build, scoped ESLint, TypeScript, eight production viewport cases and 14 inspected captures. That earlier disposition applies to the composition before the motion follow-up; it does not record whole-site approval or deployment.",
+    "northStar": "From interest to a sale. With a working system.",
+    "overview": "This record describes the September 21, 2026 clean hero replacement in the established marketing identity. Its current authority is the [clean-hero direction](.impeccable/review/clean-hero/DIRECTION.md), supported by the [surface brief](.impeccable/surfaces/components-site-marketinghome-tsx.md) and [finish review](.impeccable/review/clean-hero/FINISH-REVIEW.md). Ground truth is `components/site/GrowthHero.tsx`, `app/hero.css`, `components/site/MarketingHome.tsx`, `app/studio.css`, `app/layout.tsx` and `lib/agent-motion.ts`. Earlier centered, masked-word and five-option hero records are historical evidence, not current visual authority. The five old comparison URLs redirect to the Bulgarian homepage.\n\nConfirmed commercial facts and native contact behavior live in [.agents/product-marketing-context.md](.agents/product-marketing-context.md). PRODUCT.md was deliberately deleted by the owner and has not been restored. Secondary resource page bodies, `/os` and `/admin` retain their own systems. Non-hero primitives remain the retained documentation baseline; this handoff verifies the hero and its offer terms, not a full-site token audit. The scoped review describes implementation quality; it does not establish owner approval, deployment status or measured conversion improvement. No raster assets were created or modified for this hero.",
     "keyCharacteristics": [
       "White and light-gray fields, graphite typography and silver support surfaces; original photo colors remain intact.",
-      "One Manrope hierarchy for Bulgarian and English, with a centered offer at every width.",
-      "A compact rectangular hero action; retained pill actions elsewhere.",
-      "Fine rules and a large original-color photographic profile further down the page.",
-      "A masked word-by-word hero entrance, a finite mouse wave and retained scroll-responsive process motion with complete static content."
+      "One Manrope hierarchy for Bulgarian and English, with open line boxes and locale-aware responsive display sizes.",
+      "A stepped desktop hero heading, left-aligned mobile lines and one rectangular call action beside direct phone contact.",
+      "Fine rules, an unboxed compact offer and a large original-color photographic profile further down the page.",
+      "One finite decorative-arrow entrance; the heading and supporting content remain visible without motion or JavaScript."
     ],
-    "rules": [
-      {
-        "name": "The Surface Pair Rule",
-        "body": "Use graphite text on light fields, light-gray canvas text on graphite, and light-gray copy for supporting text on dark fields. Focus outlines use muted gray on light fields, graphite for the hero action, and silver in the dark personalisation chapter and footer.",
-        "section": "colors"
-      },
-      {
-        "name": "The Bilingual Type Rule",
-        "body": "Preserve the same hierarchy and font coverage in English and Bulgarian; let text reflow naturally at narrow widths.",
-        "section": "typography"
-      },
-      {
-        "name": "The Readable Offer Rule",
-        "body": "Keep the hero introduction centered and immediately understandable, followed by its booking action, terms and existing commitments.",
-        "section": "layout"
-      },
-      {
-        "name": "The Flat Surface Rule",
-        "body": "Use tone, spacing and fine rules to separate the existing content surfaces.",
-        "section": "elevation"
-      }
-    ],
+    "rules": [],
     "dos": [
       "Do use the established surface pairs and contrasting focus outlines.",
       "Do preserve bilingual hierarchy, visible labels, keyboard interaction and touch-sized controls.",
-      "Do keep the centered offer readable, with one hero booking action, clear terms and the real builder’s name.",
+      "Do keep the stepped hero heading and its compact offer readable, with one call action, direct phone contact and clear terms.",
       "Do keep full content available without motion and honor dynamic reduced-motion changes.",
       "Do preserve the founder portrait in its original colors, the existing logo and their provenance records."
     ],
     "donts": [
-      "Don't introduce green UI styling; natural photographic colors remain intact and semantic form-error red remains a local state.",
+      "Don't introduce green brand styling; natural photographic colors and semantic form feedback remain intact.",
       "Don't replace Manrope or change the distinct hero and retained action shapes without a separate design task.",
       "Don't apply this homepage system to secondary page bodies, `/os` or `/admin` without a separate design task.",
       "Don't restore the homepage web portfolio or promote the future KarchX OS as the current offer.",
       "Don't manufacture metrics, testimonials or proof-shaped decoration, or present illustrative tasks as live execution.",
       "Don't restore the rejected three-tab workbench or obscure the homepage offer with unrelated technical artwork, abstract 3D sculpture, an orbit or a configuration diagram.",
-      "Don't extend the hero’s text-only gradient to section backgrounds.",
+      "Don't restore the rejected hero masks, text gradient or price cards; the current opening uses plain text, open space and one fine rule.",
       "Don't turn local artwork colors, radii or functional labels into global tokens or decorative kickers.",
       "Don't add scroll pinning or continuous decorative animation to these public surfaces."
     ]

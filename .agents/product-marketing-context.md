@@ -8,7 +8,7 @@ Updated 2026-09-21 from the owner's instructions. Supersedes AI-agent-only posit
 - First market: Bulgaria, Bulgarian language. Georgi Karchev, founder, based in Plovdiv. Public phone: 0895 739 335 (+359895739335).
 - Owner has landing-page work and some social-media results. No proven complete Growth Systems case yet. Owner explicitly prefers presenting projects/results personally in meetings, not publishing a portfolio or metrics now.
 - No warm business contacts yet. Owner can dedicate the necessary time. Sell, deliver, document, systemize, then automate.
-- Existing approved visual identity, large original founder portrait and motion remain. Site is authorised to carry clear Bulgarian explanations, affordable introductory pricing and an ungated practical PDF.
+- Established white/graphite/silver identity, Manrope typography, large original-color founder portrait and retained section behavior remain. The owner rejected all five previous hero concepts and requested a clean, eye-catching replacement using the agentscontrol references. The new hero has its own restrained arrow motion; the former hero text animation is superseded. Site is authorised to carry clear Bulgarian explanations, affordable introductory pricing and an ungated practical PDF.
 - Latest owner instruction: website first. Do not make the public lead journey depend on GHL. The separately configured GHL trial remains for evaluation; no DNS work or full setup is requested.
 
 ## Public offer — latest owner update
@@ -21,7 +21,8 @@ Updated 2026-09-21 from the owner's instructions. Supersedes AI-agent-only posit
 - Free first call: up to 30 minutes, phone, no purchase obligation. Mon–Fri 10:00–18:00 Sofia. Visitor suggests a time; Georgi confirms personally. No automatic reservation.
 - Native website enquiry form → Resend. Default receiving address: goshoo429@gmail.com; public direct email: georgikarchev5@gmail.com. Production sending configuration is set; local and live tests accepted. Inbox receipt confirmation remains outstanding.
 - Lead magnet: /bg/checklist and /resources/karchx-12-proverki.pdf. Four Bulgarian pages, ungated.
-- Main hero: stronger split offer with visible €250 and free-continuation commitment. Four further compositions at /bg/hero-varianti/2 through /5; /1 previews the main version. Comparison routes are noindex.
+- One current BG/EN hero: a plain two-line Manrope heading, offset on desktop and aligned left on mobile; short explanatory copy; free-call CTA and direct phone; compact €250/two-week strip with upfront payment and free-continuation terms. No masked text, gradient, price card or alternate-composition selector. All five former `/bg/hero-varianti/1`–`/5` URLs redirect to `/bg` and retain noindex metadata.
+- Current scoped visual authority: `.impeccable/review/clean-hero/DIRECTION.md`; implementation review: `.impeccable/review/clean-hero/FINISH-REVIEW.md`. Earlier hero-option records are historical. Review does not imply owner approval or measured conversion improvement.
 
 ## Working hypotheses
 

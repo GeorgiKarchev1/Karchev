@@ -4,6 +4,8 @@ description: A focused growth-systems offer in white, graphite and silver, with 
 colors:
   ink: "#171717"
   muted: "#5c5c5c"
+  hero-hover: "#383838"
+  hero-active: "#505050"
   canvas: "#f5f5f5"
   surface: "#ffffff"
   silver: "#e9e9e9"
@@ -16,10 +18,56 @@ colors:
 typography:
   display:
     fontFamily: "Manrope, sans-serif"
-    fontSize: "60px"
-    fontWeight: 600
-    lineHeight: 1
+    fontSize: "clamp(64px, 6.67vw, 96px)"
+    fontWeight: 500
+    lineHeight: 1.17
     letterSpacing: "-.04em"
+  display-tablet:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "64px"
+    fontWeight: 500
+    lineHeight: 1.17
+    letterSpacing: "-.04em"
+  display-tablet-en:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "60px"
+    fontWeight: 500
+    lineHeight: 1.17
+    letterSpacing: "-.04em"
+  display-mobile:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "clamp(36px, 10.9vw, 60px)"
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: "-.04em"
+  display-mobile-en:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "clamp(31px, 9.7vw, 56px)"
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: "-.04em"
+  hero-price:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "48px"
+    fontWeight: 500
+    lineHeight: 1.15
+    letterSpacing: "-.04em"
+  hero-price-compact:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "40px"
+    fontWeight: 500
+    lineHeight: 1.15
+    letterSpacing: "-.04em"
+  guarantee-title:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "30px"
+    fontWeight: 500
+    lineHeight: 1.3
+  guarantee-title-mobile:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "24px"
+    fontWeight: 500
+    lineHeight: 1.3
   headline:
     fontFamily: "Manrope, sans-serif"
     fontSize: "clamp(36px, 3.5vw, 52px)"
@@ -41,12 +89,17 @@ typography:
     fontFamily: "Manrope, sans-serif"
     fontSize: "18px"
     fontWeight: 400
-    lineHeight: "28px"
+    lineHeight: 1.65
   hero-control:
     fontFamily: "Manrope, sans-serif"
     fontSize: "16px"
-    fontWeight: 600
-    lineHeight: "24px"
+    fontWeight: 500
+    lineHeight: 1.5
+  hero-control-mobile:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "15px"
+    fontWeight: 500
+    lineHeight: 1.5
   control:
     fontFamily: "Manrope, sans-serif"
     fontSize: "14px"
@@ -79,8 +132,16 @@ components:
     textColor: "{colors.surface}"
     typography: "{typography.hero-control}"
     rounded: "{rounded.action}"
-    padding: "8px 12px"
-    height: "48px"
+    padding: "14px 24px"
+    height: "56px"
+  button-hero-hover:
+    backgroundColor: "{colors.hero-hover}"
+  button-hero-active:
+    backgroundColor: "{colors.hero-active}"
+  button-hero-mobile:
+    typography: "{typography.hero-control-mobile}"
+    padding: "12px 20px"
+    height: "52px"
   button-primary:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.canvas}"
@@ -125,21 +186,19 @@ components:
 
 **Creative North Star: "From interest to a sale. With a working system."**
 
-White, graphite and silver keep the Growth Systems offer readable. Manrope carries a centered introduction, a compact rectangular booking action and an animated word-by-word headline. Fine rules and retained pill actions support the rest of the page. A dark vertical founder chapter introduces the builder through a large original-color portrait and a personal note.
+White, graphite and silver keep the Growth Systems offer readable. Manrope carries an open, stepped two-line introduction, a compact rectangular call action and quiet offer terms. Fine rules and retained pill actions support the rest of the page. A dark vertical founder chapter introduces the builder through a large original-color portrait and a personal note.
 
-The September 21, 2026 update changes the Bulgarian and English homepage offer to growth diagnosis, focused implementation and ongoing partnership. It preserves the approved September 8 visual composition, typography, animation, founder portrait and booking destination. The homepage serves established businesses with customers and a team; detailing is an outbound validation experiment, not a permanent website restriction. Product facts and unvalidated pricing hypotheses are in [.agents/product-marketing-context.md](.agents/product-marketing-context.md), and the retained visual contract is in the [surface brief](.impeccable/surfaces/components-site-marketinghome-tsx.md). PRODUCT.md was already deleted by the owner and has not been restored. Secondary resource page bodies, `/os` and `/admin` retain their own systems.
+This record describes the September 21, 2026 clean hero replacement in the established marketing identity. Its current authority is the [clean-hero direction](.impeccable/review/clean-hero/DIRECTION.md), supported by the [surface brief](.impeccable/surfaces/components-site-marketinghome-tsx.md) and [finish review](.impeccable/review/clean-hero/FINISH-REVIEW.md). Ground truth is `components/site/GrowthHero.tsx`, `app/hero.css`, `components/site/MarketingHome.tsx`, `app/studio.css`, `app/layout.tsx` and `lib/agent-motion.ts`. Earlier centered, masked-word and five-option hero records are historical evidence, not current visual authority. The five old comparison URLs redirect to the Bulgarian homepage.
 
-The current [finish review](.impeccable/review/growth-systems/FINISH-REVIEW.md) records the copy update, responsive and conversion-flow checks, and production build. This is local implementation evidence, not a deployment or a validated client result. The free introductory call is distinct from the paid diagnostic. There are no fabricated case studies or public fixed-price promises. No raster assets were created or modified.
-
-The user approved the composition, then requested removal of the hero attribution and stronger text animation. The follow-up is recorded in [motion validation](.impeccable/review/hero-text-motion/VALIDATION.md). Ground truth is `components/site/MarketingHome.tsx`, `app/studio.css`, `app/layout.tsx` and `lib/agent-motion.ts`. The [preceding finish review](.impeccable/review/landing-skill-hero/FINISH-REVIEW.md) gives the scoped hero a **ship** disposition with no material correction. [Validation](.impeccable/review/landing-skill-hero/VALIDATION.md) and [checks](.impeccable/review/landing-skill-hero/checks.json) record the production build, scoped ESLint, TypeScript, eight production viewport cases and 14 inspected captures. That earlier disposition applies to the composition before the motion follow-up; it does not record whole-site approval or deployment.
+Confirmed commercial facts and native contact behavior live in [.agents/product-marketing-context.md](.agents/product-marketing-context.md). PRODUCT.md was deliberately deleted by the owner and has not been restored. Secondary resource page bodies, `/os` and `/admin` retain their own systems. Non-hero primitives remain the retained documentation baseline; this handoff verifies the hero and its offer terms, not a full-site token audit. The scoped review describes implementation quality; it does not establish owner approval, deployment status or measured conversion improvement. No raster assets were created or modified for this hero.
 
 **Key Characteristics:**
 
 - White and light-gray fields, graphite typography and silver support surfaces; original photo colors remain intact.
-- One Manrope hierarchy for Bulgarian and English, with a centered offer at every width.
-- A compact rectangular hero action; retained pill actions elsewhere.
-- Fine rules and a large original-color photographic profile further down the page.
-- A masked word-by-word hero entrance, a finite mouse wave and retained scroll-responsive process motion with complete static content.
+- One Manrope hierarchy for Bulgarian and English, with open line boxes and locale-aware responsive display sizes.
+- A stepped desktop hero heading, left-aligned mobile lines and one rectangular call action beside direct phone contact.
+- Fine rules, an unboxed compact offer and a large original-color photographic profile further down the page.
+- One finite decorative-arrow entrance; the heading and supporting content remain visible without motion or JavaScript.
 
 ## Colors
 
@@ -148,7 +207,8 @@ The interface uses neutral grays; the founder photograph retains its original co
 ### Primary
 
 - **Graphite ink** (`ink`): headings, primary actions and dark section grounds.
-- **Muted gray** (`muted`): supporting copy, secondary heading lines, light-surface focus outlines and primary-action hover.
+- **Muted gray** (`muted`): supporting copy, secondary section-heading lines, light-surface focus outlines and retained pill-action hover.
+- **Hero hover and active** (`hero-hover`, `hero-active`): distinct state feedback on the new rectangular call action.
 
 ### Neutral
 
@@ -162,21 +222,22 @@ The interface uses neutral grays; the founder photograph retains its original co
 - **Field rule** (`field-line`): input baselines and cookie-choice outlines.
 - **Quiet gray** (`quiet-gray`): menu-toggle border on light ground and founder byline detail on graphite.
 
-The portrait’s dark loading ground, cookie outer border and semantic form-error red remain component-local values; none introduces a brand accent. The hero alone uses a black-to-gray gradient clipped to heading text, as selected by the requested skill’s B5 rule. Each animated word receives its segment of the line’s #000000 to #666666 range, preserving the overall treatment without making transformed text disappear. Forced-colors mode uses CanvasText. All section backgrounds remain flat; unsupported text clipping falls back to graphite ink.
-
-**The Surface Pair Rule.** Use graphite text on light fields, light-gray canvas text on graphite, and light-gray copy for supporting text on dark fields. Focus outlines use muted gray on light fields, graphite for the hero action, and silver in the dark personalisation chapter and footer.
+The portrait’s dark loading ground, cookie outer border and semantic form feedback remain component-local values; none introduces a brand accent. The current hero uses solid graphite text and a white ground. Its former text gradient and clipping masks are superseded.
+**The Surface Pair Rule.** Use graphite text on light fields, light-gray canvas text on graphite, and light-gray copy for supporting text on dark fields. Focus outlines use muted gray on light fields, graphite within the hero, and silver in the dark personalisation chapter and footer. The contact fields retain their own border-and-ring focus treatment.
 
 ## Typography
 
 **Display and Body Font:** Manrope, with a sans-serif fallback. It is self-hosted through `next/font`, covers Latin and Cyrillic, and uses `--font-marketing`. It replaces the prior Golos Text selection across shared marketing components. Inter and Space Grotesk remain available for surfaces outside this scope.
 
-The hero uses the frontmatter display role at weight 600 and balanced wrapping. Recurring section headings retain a fluid scale at weight 500. Frontmatter title describes process headings; body describes recurring explanatory prose; lead and hero-control describe the hero introduction and action; control, label and annotation cover the retained actions, fields and compact explanations. The new hero scale does not imply a retrospective size conversion of the remaining page.
+The hero display uses weight 500, tight tracking and generous line-height. Its desktop fluid size reaches 96px, then uses an explicit 64px tablet step; the longer English line uses 60px at that breakpoint. Mobile Bulgarian and English have their own fluid display roles. These are intentional adaptations to the real copy, not a new scale imposed on the remaining page.
 
-The hero headline is “От интерес до покупка. / С работеща система.” and “From interest to a sale. / With a working system.” Each thought has its own line. Heading and introduction cap at 680px on desktop and tablet. The introduction uses the lead role, then changes to 16px/24px with a 448px maximum width at 700px. The headline remains 60px/1 through tablet, changes to 36px/40px at 700px, and to 30px/36px below 380px. Call terms use 12px/16px; commitments use 14px/20px, becoming 12px/16px on mobile.
+The current headline reads “От интерес / до нов клиент.” and “From interest / to new customers.” Ordinary text spans form the two lines; visible overflow and vertical line-box padding preserve Cyrillic descenders. At 900px the tablet roles apply. At 700px the mobile roles apply: Bulgarian spans 36–60px and English spans 31–56px, both at 1.2 line-height. The two lines remain part of one accessible H1; the decorative arrow is hidden from assistive technology.
 
-Recurring body text uses 16px with approximately 1.75–1.8 line height. The founder note uses 18px/1.8, becoming 16px on mobile. Form text remains 16px at every width. Compact context commonly uses 12px; the mobile footer retains local 11px annotations.
+The frontmatter intentionally records the hero's 96px maximum, 64px tablet display, 48px price, 40px compact price, 30px guarantee heading, 24px mobile guarantee heading and 15px mobile action, plus the English display adaptations. The price switches to its compact role at 900px; the guarantee heading and action switch at 700px. Hero introduction uses 18px/1.65, becomes 16px at 900px, and caps at 47ch. Offer explanation is 14px/1.65; quiet payment and call terms use the 12px annotation family. Price currency is 70% of the amount size.
 
-Local heading variants remain local: principle titles use 23px, 20px at 900px and 21px at 700px. The founder heading uses `clamp(44px, 5vw, 72px)`/1.08, and FAQ heading `clamp(36px, 3.5vw, 50px)`. At 700px, recurring section and founder headings use `clamp(32px, 8.5vw, 43px)`/1.17. FAQ questions move from 18px to 16px. These retained variants are not a new global step for every literal size.
+Recurring section headings retain their existing fluid scale and weight 500. Process headings use the title role; body describes recurring 16px explanatory prose at approximately 1.75–1.8 line-height. The founder note uses 18px/1.8, becoming 16px on mobile. Existing contact fields use 15px desktop and 16px on mobile. The retained actions, fields and compact explanations use control, label and annotation roles; the mobile footer retains local 11px annotations.
+
+Local heading variants remain local: principle titles use 23px, 20px at 900px and 21px at 700px. The founder heading uses `clamp(44px, 5vw, 72px)`/1.08, and FAQ heading `clamp(36px, 3.5vw, 50px)`. At 700px, recurring section headings use `clamp(32px, 8.5vw, 43px)`/1.26; the founder retains 1.17. FAQ questions move from 18px to 16px. These retained variants are not a global step for every literal size.
 
 **The Bilingual Type Rule.** Preserve the same hierarchy and font coverage in English and Bulgarian; let text reflow naturally at narrow widths.
 
@@ -184,53 +245,61 @@ Local heading variants remain local: principle titles use 23px, 20px at 900px an
 
 The shared container caps at 1280px with 56px side gutters. Gutters become 36px at 1150px and 20px at 700px. Major desktop sections commonly use 82–108px vertical spacing; mobile content sections use approximately 56–64px. Small gaps and panel insets use the recorded spacing steps without imposing a new mathematical scale.
 
-The white hero is centered at every width: a two-line headline, concrete introduction, booking action and terms, then three existing commitments. Its container caps at 1120px with 32px side gutters, reducing to 16px at 700px. Following the September 10 spacing correction, the hero section has 96px of top padding and 48px below the commitments; its copy block adds 64px above and 48px below. Mobile uses 80px top and 32px bottom section padding, with a 40px/32px copy inset. Personalisation starts with a 64px top inset on desktop and 56px on mobile. Intro and action spacing use 24px or 32px gaps. Commitments sit below a fine rule, wrap centrally, and use 32px vertical padding on desktop and 24px on mobile, leaving 80px/56px between the last commitment and the next section boundary. The booking label is “Безплатен разговор” / “Free call”, shared with the process link. The existing `#demo` anchor now targets this hero; no workbench is mounted.
+The white hero shares the site's responsive gutters and caps its inner container at 1200px. Top/bottom section padding is 154px/40px, with top padding reduced to 138px at 1150px and 112px/32px section padding at 700px. The second headline line starts 16.5% into the container on desktop, 9% at 900px and flush left at 700px. The first line carries one diagonal arrow; its size tracks the type.
+
+Below the heading, a two-column row pairs the introduction with the call action and phone. It starts 40px below the headline, with a 64px desktop gap, then 40px at 1150px and 32px at 900px. At 900px action and phone stack within their column. At 700px the whole conversation becomes one column, 24px below the heading with a 24px gap, and action plus phone may wrap together. The call action reads “Нека поговорим” / “Let’s talk”; its note identifies a free conversation of up to 30 minutes. It links to the language-matched native contact section; the phone is a real telephone link.
+
+A fine rule separates the compact offer from the conversation. The offer begins 64px below the conversation with a 28px top inset and three columns: amount/duration/payment, continuation terms and a details link. It becomes two columns at 1150px, reduces its top gap to 40px at 900px, then stacks at 700px with a 36px top gap, 24px inset and 18px row gaps. The details link targets the existing pricing section. The `#demo` anchor remains on the hero. Detailed offer terms and all following content remain on the homepage.
 
 Recurring section heading pairs become single columns at 900px; process and contact stack at 700px. The profile is a vertical chapter at every width: centered heading, wide portrait, then personal note and byline. Its content caps at 1040px; the photograph fills that width at 16:9 and changes to 4:5 at 700px. FAQ caps at 880px, with its centered heading above one disclosure stack. The three personalisation columns become ruled rows with small drawings beside the text. The footer moves from four columns to two at 900px, with full-width opening and closing groups at 700px.
 
 Fixed navigation is 86px tall and becomes 72px at 700px. Desktop links give way to a disclosure at 900px; at 700px booking remains in that disclosure after the separate navigation action disappears. Anchor offsets account for the fixed bar. The cookie panel uses viewport-relative width and a mobile safe-area-aware bottom margin.
 
-**The Readable Offer Rule.** Keep the hero introduction centered and immediately understandable, followed by its booking action, terms and existing commitments.
+**The Readable Offer Rule.** Let the headline lead, place explanation and contact next, and keep the compact price and commitment readable below a fine rule. Preserve this order when the layout stacks.
 
-Current recorded verification covers both languages at 1440×1000, 768×1000, 390×844 and 320×740, with full-page captures at 1440px and 390px plus normal-motion and JavaScript-disabled mobile captures. These are evidence widths, not additional CSS breakpoints.
+Current hero evidence covers Bulgarian at 320, 390, 768, 883 and 1440px, and English at 390 and 1440px, plus a Bulgarian desktop full-page capture. These are evidence widths, not extra CSS breakpoints. The scoped review also references reduced-motion and no-JavaScript checks. Earlier viewport reports apply to historical versions only.
 
 ## Elevation & Depth
 
-The public presentation is flat. Contrasting section grounds, open space, fine borders and rounded clipping separate content. The current public stylesheet defines no box shadows.
+The public presentation is flat. Contrasting section grounds, open space, fine borders and rounded clipping separate content. The hero uses no shadow. Contact fields retain a subtle focus ring; it communicates input state and is not surface elevation.
 
-The homepage hides the legacy viewport scrollbar rail so full-width sections meet the right edge without a pale strip. Wheel, touch and keyboard scrolling remain native. This rule targets the document only while `.agent-site` is present; other routes and nested scroll areas keep their scrollbars. The personalisation and process sections touch directly; the light process background is a section surface, not an inter-section gap.
+The homepage hides the legacy viewport scrollbar rail so full-width sections meet the right edge without a pale strip. Wheel, touch and keyboard scrolling remain native. This rule targets the document only while `.agent-site` is present; other routes and nested scroll areas keep their scrollbars. The following dark personalisation chapter meets the hero without an added spacer; subsequent sections retain their existing order and grounds.
 
 **The Flat Surface Rule.** Use tone, spacing and fine rules to separate the existing content surfaces.
 
-Motion enhances already-rendered content. The hero headline unfolds word by word over .85s with 75ms stagger, moving from translateY(105%) and rotateX(-70deg) to its resting position inside masks. It uses `cubic-bezier(.32, .72, 0, 1)`. Supporting copy, action/terms and commitments enter over .8s with delays of .3s, .45s and .6s. A mouse entering the headline triggers one 700ms wave with 45ms stagger and a 6px lift using the Web Animations API. Touch is excluded; changing the reduced-motion preference immediately cancels active waves. The hero’s former GSAP intro has been removed; its CSS animation only runs when reduced motion is not requested. The process line follows reading progress with scrub .35. Principle drawings enter once from y13 and rotation −9 degrees over .7s with .12s stagger; the portrait enters once from scale 1.08 over 1.1s. Nothing pins scroll or runs as a continuous decorative loop. Changing to reduced motion reverts the GSAP context and leaves complete static content; CSS also removes transitions, animation and smooth scrolling. The pending form spinner communicates actual submission state.
+Motion enhances already-rendered content. In the hero, only the decorative heading arrow enters: a 900ms movement from 9px left and down to its resting position, using `cubic-bezier(.16, 1, .3, 1)`. No headline, supporting copy or offer content waits for animation. Reduced motion removes this entrance and hero transitions.
+
+The retained process line follows reading progress with scrub .35. The existing motion hook also supports once-only principle drawings when mounted and a portrait entrance from scale 1.08 over 1.1s. The current principle text has no drawing nodes. Nothing pins scroll or runs as a continuous decorative loop. Changing to reduced motion reverts the GSAP context and leaves complete static content; CSS also removes transitions, animation and smooth scrolling. The pending form spinner communicates actual submission state.
 
 ## Shapes
 
 The hero action is a compact rectangle with the action radius (8px). Retained navigation and contact actions use pills and circular arrow ends. Cookie panels use the panel radius (16px); portrait clipping and FAQ disclosures use the compact radius (12px). The personalisation chapter has rounded upper corners (32px desktop, 24px mobile), a local section boundary rather than a reusable card radius. Small principle drawings retain their local 3px corners and 30px rounding without adding global tokens.
 
-Inputs stay square with a single baseline. Native disclosures use separate white rounded frames with fine borders. Process markers are circles containing real sequence numbers; SVG arrows and compact line icons carry functional meaning.
+The current contact form uses softly rounded fields with full borders inside a white form container. Its retained frontmatter input primitive predates that form styling and is outside this hero refresh; do not apply that legacy primitive as a new form specification. Native disclosures use separate white rounded frames with fine borders. Process markers are circles containing real sequence numbers; SVG arrows and compact line icons carry functional meaning.
 
 ## Components
 
 ### Buttons and links
 
-The hero booking action uses the frontmatter hero variant: graphite background, white semibold text, a minimum 48px height, 8px/12px padding and an 8px radius. Its inline SVG arrow moves 4px right on hover, while the background changes to the local #313131 hover value. Background and transform transitions last .7s with the hero easing; a press scales to .98. Its focus outline is graphite with a 4px offset. Retained contact booking actions are graphite pills with light text, a minimum 56px height and a silver circular arrow end. Navigation uses a compact outlined pill with a minimum 46px height and graphite circular arrow. Submission uses the primary family at full width. Hover shifts the pill color and rotates the arrow by 45 degrees; primary and navigation presses scale to 0.98. Open text links underline on hover and move their SVG arrow slightly upward and right. Hover transforms are suppressed on devices without hover.
+The hero call action uses the frontmatter hero variant: graphite background, white medium-weight text and an 8px radius. Recorded heights are minimums: 56px desktop and 52px mobile. Below 1150px its horizontal padding becomes 20px; mobile uses the complete mobile variant. Hover changes the background to the recorded hero-hover state and moves the inline SVG arrow 2px right and up; active changes to hero-active. Background transitions last .25s; arrow movement lasts .35s with the hero easing. There is no press scale on this new action. Hero controls use a graphite 2px focus outline with a 5px offset. The adjacent phone and details links have a minimum 44px height; phone hover underlines, while the details arrow moves 3px right over .3s.
 
-Interactive controls receive a 2px focus outline with a 5px offset, except the hero’s 4px offset. Keep primary actions and disclosure controls touch-sized; the checked controls have at least 44px height. Purely decorative SVGs stay hidden from assistive technology.
+Retained pricing and guide rectangles use the compact-action family, including their existing hover arrow and press feedback; they do not inherit the new hero action's size or state rules. Retained contact booking actions are graphite pills with light text, a minimum 56px height and a silver circular arrow end. Navigation uses a compact outlined pill with a minimum 46px height and graphite circular arrow. Submission uses the primary family at full width. Hover shifts pill color and rotates the arrow by 45 degrees; primary and navigation presses scale to 0.98. Open text links underline on hover and move their SVG arrow slightly upward and right. Their existing hover transforms are suppressed on devices without hover.
+
+Keep primary actions and disclosure controls touch-sized. The shared focus treatment uses a 2px outline with a 5px offset, while retained compact pricing/guide actions use a 4px offset. Purely decorative SVGs stay hidden from assistive technology.
 
 ### Inputs / Fields
 
-Visible labels sit above transparent, full-width fields with a muted baseline, graphite caret and square edges. Placeholder text remains fully opaque in muted gray. Textareas resize vertically. Submission exposes a busy state and disabled waiting control, an error alert with retry available, and a success status region. The local error red is a form state, not a brand accent.
+Visible labels sit above full-width fields with a pale ground, fine full border, graphite caret and softly rounded corners. Hover strengthens the border; focus changes the ground to white, the border to graphite and adds a subtle ring. Placeholder text remains fully opaque. Textareas resize vertically. Submission exposes a busy state and disabled waiting control, an error alert with retry available, and a success status region. The native form remains on the website; local error red and success green communicate state, not brand accents.
 
 ### Navigation and footer
 
 The fixed light navigation contains the existing KARCHX image logo rendered black with CSS `brightness(0)`, compact links, language switch and booking action. After scrolling it changes to the canvas ground with a lower rule. Link hover uses an underline; current-language text gains weight. The circular menu toggle reports its expanded state; the disclosure closes on navigation, outside pointer input or Escape, which returns focus to the toggle. The dark footer renders its existing logo white with CSS `brightness(0) invert(1)` and uses compact link columns, muted headings and a circular back-to-top action. These presentation filters leave the source rasters unchanged.
 
-### Hero headline motion
+### Hero heading and offer
 
-The user approved the new hero and then explicitly removed its founder thumbnail and attribution. The headline now reveals its words through individual masks with a short perspective unfold. Mouse entry triggers one finite wave; touch does not. The H1 retains its complete accessible name while its visual word spans are hidden from assistive technology. The large founder profile remains below the process section.
+The heading uses two ordinary line spans with no masks or text gradient. The small decorative arrow is the only entrance animation. The lower conversation and unboxed offer stay present in the HTML and retain their reading order on mobile. No founder thumbnail, attribution, price card or alternative-composition selector appears in the hero; the large founder profile remains later on the page.
 
-The rejected `AgentWorkbench.tsx` and its CSS remain unused source. They are historical implementation, not a component of the current homepage or a pattern to restore through this design record.
+The rejected `AgentWorkbench.tsx`, unused old hero selectors and historical five-option records are not current hero patterns. The remaining compact action class used by pricing and the guide is still active and remains a distinct component. The legacy comparison route accepts variants 1–5 and redirects each to `/bg`; it no longer renders alternative designs.
 
 ### Portrait and disclosures
 
@@ -246,28 +315,18 @@ The fixed white-surface panel uses a thin border, panel radius and compact copy.
 
 - **Do** use the established surface pairs and contrasting focus outlines.
 - **Do** preserve bilingual hierarchy, visible labels, keyboard interaction and touch-sized controls.
-- **Do** keep the centered offer readable, with one hero booking action, clear terms and the real builder’s name.
+- **Do** keep the stepped hero heading and its compact offer readable, with one call action, direct phone contact and clear terms.
 - **Do** keep full content available without motion and honor dynamic reduced-motion changes.
 - **Do** preserve the founder portrait in its original colors, the existing logo and their provenance records.
 
 ### Don't:
 
-- **Don't** introduce green UI styling; natural photographic colors remain intact and semantic form-error red remains a local state.
+- **Don't** introduce green brand styling; natural photographic colors and semantic form feedback remain intact.
 - **Don't** replace Manrope or change the distinct hero and retained action shapes without a separate design task.
 - **Don't** apply this homepage system to secondary page bodies, `/os` or `/admin` without a separate design task.
 - **Don't** restore the homepage web portfolio or promote the future KarchX OS as the current offer.
 - **Don't** manufacture metrics, testimonials or proof-shaped decoration, or present illustrative tasks as live execution.
 - **Don't** restore the rejected three-tab workbench or obscure the homepage offer with unrelated technical artwork, abstract 3D sculpture, an orbit or a configuration diagram.
-- **Don't** extend the hero’s text-only gradient to section backgrounds.
+- **Don't** restore the rejected hero masks, text gradient or price cards; the current opening uses plain text, open space and one fine rule.
 - **Don't** turn local artwork colors, radii or functional labels into global tokens or decorative kickers.
 - **Don't** add scroll pinning or continuous decorative animation to these public surfaces.
-
-## September 21 — first-client website flow
-
-Latest owner steering supersedes the earlier unpublished-price and booking-destination restrictions: the homepage now explains a bounded €390 introductory project for the first three businesses. The website owns the enquiry journey through its native form and phone contact; the GHL trial is separate. Preferred call times require personal confirmation. No homepage portfolio is published, at the owner's explicit preference. The four-page Bulgarian guide is ungated and available online and as PDF. Existing monochrome identity, original founder portrait and hero motion remain. Current evidence: `.impeccable/review/lead-ready/`.
-
-## September 21 — visible €250 offer and five hero compositions
-
-The latest owner request replaces the former centered masked-word hero. Main hero is a split editorial composition with a prominent price and commitment panel, in the existing Manrope / white / graphite world. Four additional implemented compositions are available on noindex comparison routes: centered, dark, enquiry journey and founder portrait. The reference vault `/Users/Apple/Desktop/agentscontrol` informed hierarchy, asymmetric composition and offer clarity through studiox-design-language and landing-page-design; no third-party assets or code are copied. The headline now uses ordinary unmasked lines with adequate line-height, preserving Cyrillic descenders. Reduced motion and no-JavaScript visibility remain supported.
-
-The owner changed the offer to €250 paid upfront for two weeks, with continued work at no additional charge until the goals agreed before payment are achieved. The old €390 / instalment / trial-experiment copy is superseded. Updated source and live variants ship to main; unrelated local OS development remains separate. Evidence: `.impeccable/review/hero-options/`.

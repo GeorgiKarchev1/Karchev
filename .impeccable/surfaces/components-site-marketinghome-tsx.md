@@ -2,47 +2,44 @@
 version: 1
 slug: "components-site-marketinghome-tsx"
 primary_target: "components/site/MarketingHome.tsx"
-related_targets: ["lib/agent-motion.ts","app/studio.css","app/layout.tsx"]
+related_targets: ["components/site/GrowthHero.tsx", "app/hero.css", "app/bg/hero-varianti/[variant]/page.tsx", "lib/agent-motion.ts", "app/studio.css", "app/layout.tsx"]
 ---
 
-Scope: Bulgarian and English homepage hero. Mode: Persuade. Apply the user-selected `/Users/Apple/Desktop/agentscontrol/.agents/skills/landing-page-design/SKILL.md` within this existing surface. Preserve product truth, large original-color profile, FAQ, booking destination and remaining sections.
+Scope: Bulgarian and English homepage hero. Mode: Persuade. Current authority: [clean-hero direction](../review/clean-hero/DIRECTION.md), September 21, 2026. This bounded replacement follows the owner's rejection of all five previous concepts. Preserve the established Manrope/white/graphite identity, detailed commercial terms, native lead flow, original-color founder profile and all remaining sections.
 
 ## Direction contract
 
-THESIS: Find the gap between marketing and sales, then implement one measurable growth priority.
+THESIS: Connect the business's offer, website and sales so interest has a clear path to becoming a customer.
 
-OWN-WORLD: White, graphite and silver; Manrope marketing typography, a subtle black-to-gray heading and one compact rectangular action.
+OWN-WORLD: White, graphite and silver; Manrope 500, open typography, a thin rule and one compact rectangular call action. The established brand remains authoritative.
 
-STORY: Recognise the business problem, understand diagnosis and implementation, and book an introductory conversation.
+STORY: Understand the help; request a free conversation or phone directly; read the scope if needed. The call is free and does not purchase the paid offer.
 
-FIRST VIEWPORT: Centered two-line heading capped at 680px; concrete supporting copy; one booking action and its terms; no founder thumbnail or attribution. Three existing commitments close the opening. No workbench or replacement mock application.
+FIRST VIEWPORT: The promise owns the screen. Two plain lines at up to 96px, with the second offset by 16.5% on desktop. One small diagonal arrow moves once into place. The lower row pairs a short explanation with the call action and phone. A fine rule separates the compact €250/two-week offer and free-continuation terms. At tablet the offset becomes 9%; at mobile both lines align left and content stacks in reading order.
 
-FORM: User-directed local hero replacement under landing-page-design; code-led within the established neutral world (inherited seed 32aa0fba). Masked word unfold and one finite mouse-entry wave; custom easing and reduced-motion support.
+FORM: Code-led scoped hero replacement within the established neutral world; inherited seed `32aa0fba` is historical brand context, not a new concept roll. No clipping masks, heading gradient, price cards, mock dashboard or portfolio. Ordinary line spans and visible overflow preserve Bulgarian descenders. The five rejected comparison URLs redirect to `/bg`.
 
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+INTERACTION: A finite 900ms arrow settle and small control hover movements; no essential content animation. Reduced motion stops hero effects. Complete text and links remain available without JavaScript.
 
-## Latest authority
+FINISH: Unreviewed and undocumented is unfinished. Current evidence is [clean-hero finish review](../review/clean-hero/FINISH-REVIEW.md), alongside DESIGN.md and its sidecar. No raster was created or changed. Review acceptance is scoped implementation evidence, not owner approval or measured conversion uplift.
 
-September 21: the owner explicitly requests a pivot to KARCHX Growth Systems and asks to fix the website and copy formerly aimed at AI agents. This supersedes previous product-copy restrictions, while preserving the approved visual identity and behavior. Scope now covers the BG/EN homepage, shared conversion copy, search/social metadata and service schema. The main offer is paid diagnosis, a bounded growth sprint and optional ongoing partnership; AI is a supporting tool. No case studies exist. Public fixed prices remain unpublished while sales hypotheses are tested. Current product context is `.agents/product-marketing-context.md`; current evidence is `.impeccable/review/growth-systems/`.
+## Current product and conversion constraints
 
-Historical visual decisions below remain applicable where they do not conflict with this latest direction.
+- €250 total KARCHX fee for the first three clients, paid fully upfront after goals and scope are agreed in writing.
+- Two weeks from the agreed start; work on the agreed goals continues completely free until those goals are achieved. Keep the detailed scope and boundaries further down the page.
+- The free first call lasts up to 30 minutes. Hero CTA targets `/bg#contact` or `/en#contact`; the direct phone is 0895 739 335 (`tel:+359895739335`). The visitor requests a preferred time; Georgi confirms it personally.
+- Public enquiry uses the website's native form and phone/email fallback. GHL remains a separate trial, not a dependency of the public contact flow.
+- Projects and results are shown privately in meetings. Do not publish a portfolio, invented proof or guarantees beyond the agreed service commitment.
+- The four-page Bulgarian checklist remains ungated online and as a PDF. Full product truth is in `.agents/product-marketing-context.md`.
 
-September 8: “Искам да използваш това $landing-page-design от тази папка /Users/Apple/Desktop/agentscontrol и да направиш нова hero секция ... обаче без този елемнт, защото не ми харесва.” The attached image identifies the three-tab AgentWorkbench as rejected. It must not return as hero content. The screenshot is an anti-reference, not a comp to reproduce.
+## Implementation and evidence
 
-The new requested skill selects Manrope in place of Golos Text for the marketing presentation and text-only heading gradient. Shared marketing typography remains consistent. Backgrounds remain flat. Internal application fonts and behavior remain separate.
+`GrowthHero.tsx` owns bilingual hero copy and links; `app/hero.css` owns its responsive composition. The display uses `clamp(64px, 6.67vw, 96px)` at weight 500 and 1.17 line-height; 900px introduces BG 64px / EN 60px; 700px introduces BG `clamp(36px, 10.9vw, 60px)` / EN `clamp(31px, 9.7vw, 56px)` and 1.2 line-height. The offer remains subordinate to the headline and has no enclosing card.
 
-Previous exclusions still hold: no abstract 3D shapes, dark draft panel, orbit diagram, portfolio, fake evidence, named future product, pricing tiers or unsupported claims. Original founder photo colors and the large existing profile photograph remain intact.
+The scoped review inspected BG widths 320, 390, 768, 883 and 1440px, EN 390 and 1440px, and the BG full-page transition. Existing contact/pricing anchors, phone, native form, mobile menu, reduced motion, JavaScript-disabled reading and five legacy redirects are covered by the supplied checks. No real test emails are implied by mocked form verification.
 
-Latest follow-up: the user explicitly likes this hero. Remove only its “Изграден лично от / Георги Карчев” attribution and thumbnail, and add expressive text animation. Preserve the approved layout and copy, plus the large profile further down the page. No new design direction is authorized by this refinement.
+## Historical context, superseded for the hero
 
-September 10 spacing correction supersedes the earlier request for a 192px/128px interval: the owner now finds the hero too empty, especially below the three commitments. Keep the composition and motion, reduce hero bottom padding to 48px desktop / 32px mobile, copy padding to 64px/48px desktop and 40px/32px mobile, and personalisation top padding to 64px/56px. Retain the navigation clearance and commitment wrapping. Change the shared booking label to “Безплатен разговор” / “Free call”.
+The September 8 centered introduction, gradient and masked-word reveal; later word-wave refinement; September 10 spacing directions; and September 21 five-option split/centered/dark/process/founder exercise describe earlier versions. All five alternatives were rejected and their comparison pages now redirect. Those records do not authorize restoring their layouts, animations or old booking destinations. The earlier €390, instalment, experiment and unpublished-price proposals are superseded by the confirmed €250 offer above.
 
-September 10 edge follow-up: remove the thin pale viewport scrollbar rail on the homepage so the dark personalisation section reaches the right edge. Keep native scrolling and the existing section colors. Personalisation and the light process section already share a boundary with no intervening margin.
-
-## Latest owner steering: first-client readiness
-
-Supersedes the earlier no-fixed-pricing rule. Publish a bounded €390 starter project for the first 3 businesses, concrete Bulgarian benefits/scope and 0895 739 335. Owner chooses to show portfolio and social proof privately in the meeting; remove the temporary public work section. Public conversion must work independently of GHL: native enquiry form, preferred time as a request (not booked), direct phone/email fallback. Add an ungated four-page Bulgarian checklist and web version. Preserve white/graphite/silver, Manrope, hero animation and original large founder photograph. Evidence is in `../review/lead-ready/`.
-
-## Latest explicit redesign and commercial terms
-
-Owner rejects the current hero and reports clipped Bulgarian text. Authorises a replacement main hero plus four more variants using the agentscontrol vault and asks to push to main. This supersedes prior preservation of the centered layout and word-mask animation. Preserve the brand and rest of the site, replace only the hero's composition and matching offer copy. Main: split heading/offer; alternatives: centered, dark, process, founder. Price €250 upfront, two weeks, continue free until agreed goals achieved. Remove the specified experimental first-three-business paragraph. Plain line spans, visible overflow and sufficient leading replace masks. Comparison routes /bg/hero-varianti/1–5 are noindex and absent from customer navigation.
+Reference research used the owner's `/Users/Apple/Desktop/agentscontrol` vault, including Studio X and notes on TinyWins, Tempo and Base. The current direction record distinguishes local reference notes from live pages that were actually inspected. No third-party imagery, logos, code or assets were copied.
