@@ -27,6 +27,7 @@ export default function CookieBanner() {
 
   function choose(value: 'accepted' | 'declined') {
     try { localStorage.setItem(COOKIE_KEY, value) } catch { /* Dismiss for this visit if storage is unavailable. */ }
+    window.dispatchEvent(new Event('karchx-cookie-consent'))
     setVisible(false)
   }
 

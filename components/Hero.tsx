@@ -111,8 +111,7 @@ export default function Hero() {
           className="mx-auto flex w-full max-w-[16rem] flex-col items-stretch gap-2.5 sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-3"
         >
           <Link
-            href="https://cal.com/georgi-karchev-3r9puz/30min"
-            target="_blank"
+            href="/bg#contact"
             className="btn-primary w-full justify-center px-5 py-2.5 text-sm sm:w-auto sm:px-6 sm:py-3 md:px-8 md:py-3.5 md:text-base"
           >
             {t('hero.bookStrategyCall')}

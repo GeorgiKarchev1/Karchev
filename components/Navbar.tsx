@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ArrowUpRight, Menu, X } from 'lucide-react'
+import { ArrowUpRight, Menu, Phone, X } from 'lucide-react'
 import { useLanguage } from '@/context/LanguageContext'
+import { PHONE_DISPLAY, PHONE_HREF, bookingPath } from '@/lib/contact-info'
 import { getLocalizedSwitchPath, getRouteLocale } from '@/lib/site'
 
 export default function Navbar() {
@@ -18,10 +19,10 @@ export default function Navbar() {
   const toggle = useRef<HTMLButtonElement>(null)
   const nav = useRef<HTMLElement>(null)
   const items = [
-    { href: home + '#demo', label: language === 'EN' ? 'Your agent' : 'Вашият агент' },
-    { href: home + '#solutions', label: language === 'EN' ? 'Personalisation' : 'Персонализация' },
-    { href: home + '#how-it-works', label: t('navbar.about') },
-    { href: home + '/blog', label: t('navbar.blog') },
+    { href: home + '#solutions', label: language === 'EN' ? 'How I help' : 'Как помагам' },
+    { href: home + '#pricing', label: language === 'EN' ? 'Price' : 'Цена' },
+    { href: home + '#guide', label: language === 'EN' ? 'Free guide' : 'Безплатно' },
+    { href: home + '#contact', label: language === 'EN' ? 'Contact' : 'Контакт' },
   ]
 
   useEffect(() => { setOpen(false) }, [pathname])
@@ -80,11 +81,12 @@ export default function Navbar() {
           {items.map(item => <Link key={item.href} href={item.href} className="studio-nav-link">{item.label}</Link>)}
         </div>
         <div className="studio-nav-actions">
+          <a href={PHONE_HREF} className="growth-nav-phone" aria-label={`${language === 'EN' ? 'Call' : 'Обадете се на'} ${PHONE_DISPLAY}`}><Phone size={19} aria-hidden="true" /><span>{PHONE_DISPLAY}</span></a>
           <a className="studio-language" href={getLocalizedSwitchPath(pathname, locale === 'en' ? 'bg' : 'en')} hrefLang={locale === 'en' ? 'bg' : 'en'} aria-label={locale === 'en' ? 'Превключи на български' : 'Switch to English'}>
             <span className={locale === 'en' ? 'active' : ''}>EN</span><span aria-hidden="true">/</span><span className={locale === 'bg' ? 'active' : ''}>BG</span>
           </a>
-          <a href="https://cal.com/georgi-karchev-3r9puz/30min" target="_blank" rel="noopener noreferrer" className="studio-nav-book">
-            {language === 'EN' ? "Let's talk" : 'Да поговорим'}<ArrowUpRight size={17} aria-hidden="true" />
+          <a href={bookingPath(language !== 'EN')} className="studio-nav-book">
+            {language === 'EN' ? 'Free call' : 'Безплатен разговор'}<ArrowUpRight size={17} aria-hidden="true" />
           </a>
           <button ref={toggle} className="studio-menu-toggle" aria-expanded={open} aria-controls="studio-mobile-menu" aria-label={language === 'EN' ? (open ? 'Close menu' : 'Open menu') : (open ? 'Затвори менюто' : 'Отвори менюто')} onClick={() => setOpen(!open)}>
             {open ? <X size={23} /> : <Menu size={23} />}
@@ -94,7 +96,7 @@ export default function Navbar() {
       {open && <div className="studio-menu-scrim" onClick={() => setOpen(false)} aria-hidden="true" />}
       {open && <div id="studio-mobile-menu" className="studio-mobile-menu">
         {items.map(item => <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}<ArrowUpRight size={22} aria-hidden="true" /></Link>)}
-        <a href="https://cal.com/georgi-karchev-3r9puz/30min" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>{t('navbar.bookMeeting')}<ArrowUpRight size={22} aria-hidden="true" /></a>
+        <a href={bookingPath(language !== 'EN')} onClick={() => setOpen(false)}>{language === 'EN' ? 'Request a free call' : 'Заявете безплатен разговор'}<ArrowUpRight size={22} aria-hidden="true" /></a>
       </div>}
     </nav>
   )

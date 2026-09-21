@@ -22,7 +22,7 @@ export default function PrivacyPage() {
         </div>
 
         <h1 className="font-heading font-black text-4xl mb-2 tracking-tight">Privacy Policy</h1>
-        <p className="text-sm text-[#2d232e]/60 mb-12">Last updated: April 25, 2026</p>
+        <p className="text-sm text-[#2d232e]/60 mb-12">Last updated: September 21, 2026</p>
 
         <div className="space-y-10 text-[15px] leading-relaxed">
 
@@ -46,7 +46,7 @@ export default function PrivacyPage() {
             <ul className="list-disc ml-6 space-y-1 mt-2">
               <li>First and last name;</li>
               <li>Email address;</li>
-              <li>Phone number (optional);</li>
+              <li>Phone number and preferred call time (optional);</li>
               <li>Information about your project/business shared via inquiry or consultation;</li>
               <li>Access credentials (domain, hosting, social profiles) — only when necessary for service delivery.</li>
             </ul>

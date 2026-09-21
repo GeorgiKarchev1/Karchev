@@ -1,28 +1,30 @@
 import type { Metadata } from 'next'
 import MarketingHome from '@/components/site/MarketingHome'
-import { localizedAlternates } from '@/lib/site'
+import { BASE_URL, localizedAlternates } from '@/lib/site'
+
+const title = 'По-ясна оферта и подреден процес за запитвания'
+const description = 'Оферта, сайт и проследяване на запитванията за работещи бизнеси. 250 € за две седмици работа. Продължаваме без допълнителна такса до постигане на договорените цели. Безплатен първи разговор с Георги Кърчев.'
 
 export const metadata: Metadata = {
-  title: 'Вашият персонализиран AI агент',
-  description: 'Един AI агент, създаден специално за Вас. Вашите задачи, инструменти и правила, с индивидуален подход от първия разговор до настройката.',
-  keywords: ['AI интеграция за бизнес', 'AI автоматизация', 'внедряване на AI', 'AI агенти за бизнес', 'автоматизация на процеси'],
+  title,
+  description,
+  keywords: ['системи за растеж', 'маркетинг и продажби', 'оптимизация на продажбения процес', 'growth consulting България', 'KARCHX Growth Systems'],
   alternates: localizedAlternates('/bg', '/en', 'bg'),
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
     alternateLocale: ['en_US'],
-    url: 'https://www.karchx.com/bg',
-    title: 'KARCHX | Вашият персонализиран AI агент',
-    description: 'Един AI агент, създаден специално за Вас. Вашите задачи, инструменти и правила, с индивидуален подход от първия разговор до настройката.',
+    url: `${BASE_URL}/bg`,
+    title: `KARCHX | ${title}`,
+    description,
     siteName: 'KARCHX',
-    images: [
-      {
-        url: '/img/og-image.png',
-        width: 1536,
-        height: 1024,
-        alt: 'KARCHX',
-      },
-    ],
+    images: [{ url: '/img/og-image.png', width: 1536, height: 1024, alt: 'KARCHX Growth Systems' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `KARCHX | ${title}`,
+    description,
+    images: ['/img/og-image.png'],
   },
 }
 

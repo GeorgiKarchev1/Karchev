@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import './studio.css'
-import Script from 'next/script'
+import './hero.css'
+import ConsentAnalytics from '@/components/site/ConsentAnalytics'
 import { Inter, Space_Grotesk, Manrope } from 'next/font/google'
 import { LanguageProvider } from '@/context/LanguageContext'
 import CookieBanner from '@/components/CookieBanner'
+import { CONTACT_EMAIL } from '@/lib/contact-info'
 import { BASE_URL } from '@/lib/site'
 
 // Self-hosted via next/font: no render-blocking request to fonts.googleapis.com
@@ -38,15 +40,15 @@ export const metadata: Metadata = {
     shortcut: '/img/newfav.png',
   },
   title: {
-    default: 'KARCHX | Your Personalised AI Agent',
+    default: 'KARCHX | Growth Systems',
     template: '%s | KARCHX'
   },
-  description: 'One AI agent built specifically for you. Your tasks, your tools and your rules, with a personal approach from our first conversation to setup.',
+  description: 'Growth systems for established businesses. Find the gaps between marketing and sales, implement focused improvements and measure the results.',
   keywords: [
-    'personalised ai agent',
-    'custom ai agent',
-    'ai integration',
-    'ai automation for business',
+    'growth systems',
+    'growth consulting',
+    'sales process improvement',
+    'growth sprint',
     'business process automation',
     'KARCHX',
   ],
@@ -57,8 +59,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     alternateLocale: ['bg_BG'],
     url: BASE_URL,
-    title: 'KARCHX | Your Personalised AI Agent',
-    description: 'One AI agent configured around your tasks, information and tools. Built individually by KARCHX.',
+    title: 'KARCHX | Growth Systems',
+    description: 'Connect your offer, marketing, sales and team with a practical growth system.',
     siteName: 'KARCHX',
     images: [
       {
@@ -71,8 +73,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'KARCHX | Your Personalised AI Agent',
-    description: 'Your own AI agent, built around your tasks and tools.',
+    title: 'KARCHX | Growth Systems',
+    description: 'Growth diagnosis, focused implementation and ongoing improvement for your business.',
     images: ['/img/og-image.png'],
   },
   robots: {
@@ -104,35 +106,8 @@ export default function RootLayout({
   // it in their own layouts.
   return (
     <html lang="bg" className={`${inter.variable} ${spaceGrotesk.variable} ${marketing.variable} scroll-smooth overflow-x-hidden`}>
-      <head>
-        {/* The analytics scripts below load afterInteractive; warming DNS+TLS
-            here takes the handshake off their critical path. */}
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link rel="preconnect" href="https://www.clarity.ms" crossOrigin="" />
-      </head>
       <body className="font-sans antialiased text-white overflow-x-hidden">
-        <Script id="microsoft-clarity" strategy="afterInteractive">
-          {`
-            (function(c,l,a,r,i,t,y){
-              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "wh7c0g9u2q");
-          `}
-        </Script>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-HYR74PQ33D"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-HYR74PQ33D');
-          `}
-        </Script>
+        <ConsentAnalytics />
         <LanguageProvider>
           <script
             type="application/ld+json"
@@ -143,6 +118,8 @@ export default function RootLayout({
                   {
                     '@type': 'Organization',
                     name: 'KARCHX',
+                    telephone: '+359895739335',
+                    email: CONTACT_EMAIL,
                     url: BASE_URL,
                     logo: `${BASE_URL}/img/newfav.png`,
                     image: `${BASE_URL}/img/og-image.png`,
@@ -163,6 +140,8 @@ export default function RootLayout({
                     '@type': 'ProfessionalService',
                     '@id': `${BASE_URL}/#business`,
                     name: 'KARCHX',
+                    telephone: '+359895739335',
+                    email: CONTACT_EMAIL,
                     // Point at /bg, not the bare domain: the root only 308s here.
                     url: `${BASE_URL}/bg`,
                     image: `${BASE_URL}/img/og-image.png`,
@@ -175,15 +154,14 @@ export default function RootLayout({
                     },
                     areaServed: [
                       { '@type': 'Country', name: 'Bulgaria' },
-                      { '@type': 'Country', name: 'United States' },
                     ],
                     inLanguage: ['bg-BG', 'en-US'],
                     serviceType: [
-                      'Custom AI agents',
-                      'AI integration',
+                      'Growth diagnosis and strategy',
+                      'Growth sprint implementation',
+                      'Sales process improvement',
+                      'Marketing and content systems',
                       'Business process automation',
-                      'Website development',
-                      'Landing page development',
                     ],
                     founder: {
                       '@type': 'Person',

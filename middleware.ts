@@ -37,6 +37,6 @@ export const config = {
   // Skip Next internals, metadata routes and static files: middleware on an
   // asset request is pure latency now that the pages themselves are static.
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|img/|blog/|.*\\.(?:png|jpg|jpeg|gif|webp|avif|svg|ico|woff2?|ttf|txt|xml|webmanifest)$).*)',
+    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|img/|blog/|.*\\.(?:png|jpg|jpeg|gif|webp|avif|svg|ico|woff2?|ttf|pdf|txt|xml|webmanifest)$).*)',
   ],
 }

@@ -1,6 +1,6 @@
 ---
-name: KARCHX public agent system
-description: A clear personal AI-agent offer in white, graphite and silver, with an original-color photographic profile.
+name: KARCHX Growth Systems
+description: A focused growth-systems offer in white, graphite and silver, with an original-color founder portrait.
 colors:
   ink: "#171717"
   muted: "#5c5c5c"
@@ -119,15 +119,17 @@ components:
     padding: "22px"
 ---
 
-# Design System: KARCHX public agent system
+# Design System: KARCHX Growth Systems
 
 ## Overview
 
-**Creative North Star: "One agent. Your configuration."**
+**Creative North Star: "From interest to a sale. With a working system."**
 
-White, graphite and silver keep the personal AI-agent offer readable. Manrope carries a centered introduction, a compact rectangular booking action and an animated word-by-word headline. Fine rules and retained pill actions support the rest of the page. A dark vertical founder chapter introduces the builder through a large original-color portrait and a personal note.
+White, graphite and silver keep the Growth Systems offer readable. Manrope carries a centered introduction, a compact rectangular booking action and an animated word-by-word headline. Fine rules and retained pill actions support the rest of the page. A dark vertical founder chapter introduces the builder through a large original-color portrait and a personal note.
 
-This records the September 8, 2026 homepage as currently built at `/bg` and `/en`, plus shared navigation, contact, footer and cookie presentation. The offer is one unnamed, individually configured agent. The latest hero follows the user-selected `landing-page-design` skill from `/Users/Apple/Desktop/agentscontrol`; it replaces the earlier DataFast/Marc Lou iteration and excludes the rejected three-tab workbench. Page composition and the inherited parent seed `32aa0fba` remain in the [surface brief](.impeccable/surfaces/components-site-marketinghome-tsx.md), with product facts in [PRODUCT.md](PRODUCT.md). Secondary page bodies, `/os` and `/admin` retain their own systems.
+The September 21, 2026 update changes the Bulgarian and English homepage offer to growth diagnosis, focused implementation and ongoing partnership. It preserves the approved September 8 visual composition, typography, animation, founder portrait and booking destination. The homepage serves established businesses with customers and a team; detailing is an outbound validation experiment, not a permanent website restriction. Product facts and unvalidated pricing hypotheses are in [.agents/product-marketing-context.md](.agents/product-marketing-context.md), and the retained visual contract is in the [surface brief](.impeccable/surfaces/components-site-marketinghome-tsx.md). PRODUCT.md was already deleted by the owner and has not been restored. Secondary resource page bodies, `/os` and `/admin` retain their own systems.
+
+The current [finish review](.impeccable/review/growth-systems/FINISH-REVIEW.md) records the copy update, responsive and conversion-flow checks, and production build. This is local implementation evidence, not a deployment or a validated client result. The free introductory call is distinct from the paid diagnostic. There are no fabricated case studies or public fixed-price promises. No raster assets were created or modified.
 
 The user approved the composition, then requested removal of the hero attribution and stronger text animation. The follow-up is recorded in [motion validation](.impeccable/review/hero-text-motion/VALIDATION.md). Ground truth is `components/site/MarketingHome.tsx`, `app/studio.css`, `app/layout.tsx` and `lib/agent-motion.ts`. The [preceding finish review](.impeccable/review/landing-skill-hero/FINISH-REVIEW.md) gives the scoped hero a **ship** disposition with no material correction. [Validation](.impeccable/review/landing-skill-hero/VALIDATION.md) and [checks](.impeccable/review/landing-skill-hero/checks.json) record the production build, scoped ESLint, TypeScript, eight production viewport cases and 14 inspected captures. That earlier disposition applies to the composition before the motion follow-up; it does not record whole-site approval or deployment.
 
@@ -170,7 +172,7 @@ The portrait’s dark loading ground, cookie outer border and semantic form-erro
 
 The hero uses the frontmatter display role at weight 600 and balanced wrapping. Recurring section headings retain a fluid scale at weight 500. Frontmatter title describes process headings; body describes recurring explanatory prose; lead and hero-control describe the hero introduction and action; control, label and annotation cover the retained actions, fields and compact explanations. The new hero scale does not imply a retrospective size conversion of the remaining page.
 
-The hero headline is “Вашият AI агент. / По Вашите правила.” and “Your own AI agent. / Built on your terms.” Each thought has its own line. Heading and introduction cap at 680px on desktop and tablet. The introduction uses the lead role, then changes to 16px/24px with a 448px maximum width at 700px. The headline remains 60px/1 through tablet, changes to 36px/40px at 700px, and to 30px/36px below 380px. Call terms use 12px/16px; commitments use 14px/20px, becoming 12px/16px on mobile.
+The hero headline is “От интерес до покупка. / С работеща система.” and “From interest to a sale. / With a working system.” Each thought has its own line. Heading and introduction cap at 680px on desktop and tablet. The introduction uses the lead role, then changes to 16px/24px with a 448px maximum width at 700px. The headline remains 60px/1 through tablet, changes to 36px/40px at 700px, and to 30px/36px below 380px. Call terms use 12px/16px; commitments use 14px/20px, becoming 12px/16px on mobile.
 
 Recurring body text uses 16px with approximately 1.75–1.8 line height. The founder note uses 18px/1.8, becoming 16px on mobile. Form text remains 16px at every width. Compact context commonly uses 12px; the mobile footer retains local 11px annotations.
 
@@ -259,3 +261,13 @@ The fixed white-surface panel uses a thin border, panel radius and compact copy.
 - **Don't** extend the hero’s text-only gradient to section backgrounds.
 - **Don't** turn local artwork colors, radii or functional labels into global tokens or decorative kickers.
 - **Don't** add scroll pinning or continuous decorative animation to these public surfaces.
+
+## September 21 — first-client website flow
+
+Latest owner steering supersedes the earlier unpublished-price and booking-destination restrictions: the homepage now explains a bounded €390 introductory project for the first three businesses. The website owns the enquiry journey through its native form and phone contact; the GHL trial is separate. Preferred call times require personal confirmation. No homepage portfolio is published, at the owner's explicit preference. The four-page Bulgarian guide is ungated and available online and as PDF. Existing monochrome identity, original founder portrait and hero motion remain. Current evidence: `.impeccable/review/lead-ready/`.
+
+## September 21 — visible €250 offer and five hero compositions
+
+The latest owner request replaces the former centered masked-word hero. Main hero is a split editorial composition with a prominent price and commitment panel, in the existing Manrope / white / graphite world. Four additional implemented compositions are available on noindex comparison routes: centered, dark, enquiry journey and founder portrait. The reference vault `/Users/Apple/Desktop/agentscontrol` informed hierarchy, asymmetric composition and offer clarity through studiox-design-language and landing-page-design; no third-party assets or code are copied. The headline now uses ordinary unmasked lines with adequate line-height, preserving Cyrillic descenders. Reduced motion and no-JavaScript visibility remain supported.
+
+The owner changed the offer to €250 paid upfront for two weeks, with continued work at no additional charge until the goals agreed before payment are achieved. The old €390 / instalment / trial-experiment copy is superseded. Updated source and live variants ship to main; unrelated local OS development remains separate. Evidence: `.impeccable/review/hero-options/`.

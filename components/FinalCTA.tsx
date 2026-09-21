@@ -101,8 +101,7 @@ export default function FinalCTA() {
             style={{ transformPerspective: 600, display: 'inline-block' }}
           >
             <Link
-              href="https://cal.com/georgi-karchev-3r9puz/30min"
-              target="_blank"
+              href="/bg#contact"
               className="btn-secondary inline-flex items-center justify-center bg-[#f1f0ea] px-6 py-4 text-base font-bold shadow-[4px_4px_0px_#2d232e] sm:px-10 sm:text-lg md:px-14 md:py-5 md:text-xl"
             >
               {t('finalCTA.button')}

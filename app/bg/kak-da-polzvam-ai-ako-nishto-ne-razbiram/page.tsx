@@ -7,7 +7,7 @@ import AiDemoChat from '@/components/funnel/AiDemoChat'
 import { absoluteUrl } from '@/lib/site'
 
 const PATH = '/bg/kak-da-polzvam-ai-ako-nishto-ne-razbiram'
-const BOOKING_URL = 'https://cal.com/georgi-karchev-3r9puz/30min'
+const BOOKING_URL = '/bg#contact'
 
 export const metadata: Metadata = {
   title: 'Как да ползвам AI, ако нищо не разбирам?',
@@ -139,7 +139,6 @@ export default function HowToUseAiFunnelPage() {
             </a>
             <Link
               href={BOOKING_URL}
-              target="_blank"
               className="text-sm font-bold text-[#2d232e]/60 underline-offset-4 transition-colors hover:text-[#2d232e] hover:underline"
             >
               или запази безплатен разговор →
@@ -210,7 +209,6 @@ export default function HowToUseAiFunnelPage() {
             </Link>
             <Link
               href={BOOKING_URL}
-              target="_blank"
               className="inline-flex items-center rounded-full border border-[#F5F5F0]/30 px-6 py-3.5 text-sm font-black text-[#F5F5F0] transition-colors hover:bg-[#F5F5F0]/10"
             >
               Запази безплатен разговор

@@ -509,9 +509,9 @@ function EnResultScreen({ result, answers, lead, onReset }: {
             <p className="text-sm text-[#e0ddcf]/60 leading-relaxed mb-6">
               I'll tell you exactly what you need, what you don't, and what it would realistically cost.
             </p>
-            <a href="https://cal.com/georgi-karchev-3r9puz/30min" target="_blank" rel="noopener noreferrer"
+            <a href="/en#contact"
               className="block w-full py-3.5 rounded-full bg-[#e0ddcf] text-[#2d232e] font-black text-sm hover:bg-white transition-colors mb-3">
-              Book a Free Call →
+              Request a Free Call →
             </a>
             <button onClick={() => alert(`Your estimate will be sent to ${lead.email}`)}
               className="block w-full py-3 rounded-full border border-[#e0ddcf]/20 text-[#e0ddcf]/60 font-semibold text-sm hover:border-[#e0ddcf]/50 hover:text-[#e0ddcf] transition-all">

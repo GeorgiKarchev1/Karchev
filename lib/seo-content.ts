@@ -15,7 +15,7 @@ const servicePageDefinitions: Record<string, ServicePageDefinition> = {
     primaryKeyword: 'изработка на сайт за бизнес',
     eyebrow: 'Услуга · България',
     ctaLabel: 'Запази безплатна консултация',
-    ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
+    ctaHref: '/bg#contact',
     proof: [
       'Малък бизнес, който иска по-сериозно онлайн присъствие',
       'Фирма със стар сайт, който не носи запитвания',
@@ -83,7 +83,7 @@ const servicePageDefinitions: Record<string, ServicePageDefinition> = {
     primaryKeyword: 'landing страница',
     eyebrow: 'Услуга · България',
     ctaLabel: 'Виж дали landing page е правилният ход',
-    ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
+    ctaHref: '/bg#contact',
     proof: [
       'Услуга с една основна оферта и ясен call-to-action',
       'Рекламни кампании, които пращат трафик към конкретна страница',
@@ -151,7 +151,7 @@ const servicePageDefinitions: Record<string, ServicePageDefinition> = {
     primaryKeyword: 'AI автоматизации за бизнес',
     eyebrow: 'Услуга · България',
     ctaLabel: 'Нека видим какво може да се автоматизира',
-    ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
+    ctaHref: '/bg#contact',
     proof: [
       'Екип, който губи време в повтаряеми ръчни действия',
       'Бизнес, който събира lead-ове, но follow-up-ът е слаб',
@@ -219,7 +219,7 @@ const servicePageDefinitions: Record<string, ServicePageDefinition> = {
     primaryKeyword: 'website development for service business',
     eyebrow: 'Service · United States',
     ctaLabel: 'Book a free strategy call',
-    ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
+    ctaHref: '/bg#contact',
     proof: [
       'Service businesses with an outdated or weak-converting site',
       'Founders who need a clearer offer and stronger trust layer',
@@ -287,7 +287,7 @@ const servicePageDefinitions: Record<string, ServicePageDefinition> = {
     primaryKeyword: 'landing page developer',
     eyebrow: 'Service · United States',
     ctaLabel: 'Talk through your funnel',
-    ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
+    ctaHref: '/bg#contact',
     proof: [
       'Founders testing a new offer or niche positioning',
       'Ads traffic that needs a clearer destination than a homepage',
@@ -355,7 +355,7 @@ const servicePageDefinitions: Record<string, ServicePageDefinition> = {
     primaryKeyword: 'ai automation for small business',
     eyebrow: 'Service · United States',
     ctaLabel: 'Find the highest-leverage workflow',
-    ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
+    ctaHref: '/bg#contact',
     proof: [
       'Small teams drowning in repetitive admin and follow-up tasks',
       'Businesses capturing leads but responding too slowly or inconsistently',
@@ -422,8 +422,8 @@ const servicePageDefinitions: Record<string, ServicePageDefinition> = {
     intro: 'Вграждам AI директно в системите, които вече ползвате — CRM, имейл и вътрешни инструменти — така че да автоматизира реална работа от първия ден, а не да стои в презентация.',
     primaryKeyword: 'AI интеграция за бизнес',
     eyebrow: 'Услуга · България & ЕС',
-    ctaLabel: 'Запази безплатен AI одит',
-    ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
+    ctaLabel: 'Запазете първи разговор',
+    ctaHref: '/bg#contact',
     proof: [
       'Бизнес с повтаряема ръчна работа, която яде времето на екипа',
       'Основател, който е пробвал AI инструменти, но те не са влезли в ежедневието',
@@ -499,8 +499,8 @@ const servicePageDefinitions: Record<string, ServicePageDefinition> = {
     intro: 'I build AI directly into the systems you already run — your CRM, inbox, and internal tools — so it automates real work from day one instead of sitting in a slide deck.',
     primaryKeyword: 'ai integration for business',
     eyebrow: 'Service · Bulgaria & EU',
-    ctaLabel: 'Book a free AI audit',
-    ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
+    ctaLabel: 'Book an introductory call',
+    ctaHref: '/bg#contact',
     proof: [
       'Businesses with repetitive manual work eating their team\'s time',
       'Founders who tried AI tools but never got them into daily operations',

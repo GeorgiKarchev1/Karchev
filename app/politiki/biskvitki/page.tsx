@@ -71,8 +71,7 @@ export default function CookiesPage() {
             <p>Някои бисквитки се поставят от трети страни:</p>
             <ul className="list-disc ml-6 space-y-1 mt-2">
               <li><strong>Google Analytics</strong> — анализ на трафика (политика: policies.google.com);</li>
-              <li><strong>Meta Pixel</strong> — ремаркетинг и измерване на реклами (политика: facebook.com/policy);</li>
-              <li><strong>Cal.com</strong> — записване на консултации (политика: cal.com/privacy).</li>
+              <li><strong>Microsoft Clarity</strong> — анализ на използването на сайта след приемане на аналитичните бисквитки.</li>
             </ul>
             <p className="mt-3">Не контролираме бисквитките, поставени от тези трети страни.</p>
           </Section>
@@ -81,8 +80,7 @@ export default function CookiesPage() {
             <p className="font-semibold">4.1. Чрез нашия банер:</p>
             <p className="mt-1">
               При първото посещение на Сайта ще видите банер, където можете да приемете или откажете
-              незадължителните бисквитки. Можете да промените избора си по всяко време от бутона
-              „Бисквитки" в долната лента на страницата.
+              незадължителните бисквитки. За нов избор изчистете запазените данни за сайта от настройките на браузъра и презаредете страницата.
             </p>
             <p className="font-semibold mt-4">4.2. Чрез настройките на браузъра:</p>
             <p className="mt-1">

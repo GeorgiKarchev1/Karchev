@@ -19,6 +19,7 @@ const contactSchema = z.object({
   name: z.string().trim().min(1).max(200),
   email: z.string().trim().email().max(200),
   phone: z.string().trim().max(50).optional().or(z.literal('')),
+  preferredTime: z.string().trim().max(200).optional().or(z.literal('')),
   service: z.string().trim().max(500).optional().or(z.literal('')),
   message: z.string().trim().max(5000).optional().or(z.literal('')),
   lang: z.enum(['BG', 'EN']).optional(),
@@ -89,7 +90,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: 'unconfigured' }, { status: 503 })
   }
 
-  const { name, email, phone, service, message, lang } = data
+  const { name, email, phone, service, preferredTime, message, lang } = data
   const sentAt = new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' })
 
   // The message is the whole point of the form — it gets its own high-contrast,
@@ -101,7 +102,7 @@ export async function POST(req: NextRequest) {
     : ''
 
   const servicePanel = service
-    ? `<tr><td style="padding:0 24px 4px"><p style="margin:0;font-family:${FONT};font-size:13px;color:#8a8a8a">Иска агентът да поеме</p><p style="margin:2px 0 0;font-family:${FONT};font-size:15px;color:#1a1a1a">${escapeHtml(
+    ? `<tr><td style="padding:0 24px 4px"><p style="margin:0;font-family:${FONT};font-size:13px;color:#8a8a8a">Основен проблем за решаване</p><p style="margin:2px 0 0;font-family:${FONT};font-size:15px;color:#1a1a1a">${escapeHtml(
         service
       )}</p></td></tr>`
     : ''
@@ -125,6 +126,7 @@ ${phone ? actionButton(telHref(phone), 'Телефон', phone) : ''}
 </table>
 </td></tr>
 ${servicePanel}
+${preferredTime ? `<tr><td style="padding:8px 24px"><p style="font-family:${FONT};font-size:14px">Удобно време (за потвърждение): ${escapeHtml(preferredTime)}</p></td></tr>` : ''}
 ${messagePanel}
 <tr><td style="padding:0 24px 24px">
 <p style="margin:0;font-family:${FONT};font-size:12px;color:#b0b0b0">Отговорете директно на този имейл, за да пишете на ${escapeHtml(
@@ -144,7 +146,8 @@ ${messagePanel}
     `Имейл: ${email}`,
   ]
   if (phone) textLines.push(`Телефон: ${phone}`)
-  if (service) textLines.push(`Иска агентът да поеме: ${service}`)
+  if (preferredTime) textLines.push(`Удобно време (за потвърждение): ${preferredTime}`)
+  if (service) textLines.push(`Основен проблем за решаване: ${service}`)
   if (message) textLines.push('', 'Съобщение:', message)
   textLines.push('', `Отговорете директно на този имейл, за да пишете на ${name}.`)
   const text = textLines.join('\n')

@@ -69,8 +69,7 @@ export default function CookiesPage() {
             <p>Some cookies are set by third parties:</p>
             <ul className="list-disc ml-6 space-y-1 mt-2">
               <li><strong>Google Analytics</strong> — traffic analysis (policy: policies.google.com);</li>
-              <li><strong>Meta Pixel</strong> — remarketing and ad measurement (policy: facebook.com/policy);</li>
-              <li><strong>Cal.com</strong> — consultation booking (policy: cal.com/privacy).</li>
+              <li><strong>Microsoft Clarity</strong> — site usage analysis after accepting analytics cookies.</li>
             </ul>
             <p className="mt-3">We do not control cookies placed by these third parties.</p>
           </Section>
@@ -79,7 +78,7 @@ export default function CookiesPage() {
             <p className="font-semibold">4.1. Via our banner:</p>
             <p className="mt-1">
               On your first visit you will see a banner where you can accept or decline optional
-              cookies. You can change your choice at any time via the "Cookies" link in the site footer.
+              cookies. To choose again, clear this site’s stored data in your browser settings and reload the page.
             </p>
             <p className="font-semibold mt-4">4.2. Via browser settings:</p>
             <p className="mt-1">

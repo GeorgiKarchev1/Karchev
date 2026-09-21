@@ -203,6 +203,10 @@ html:has(.agent-site)::-webkit-scrollbar { display: none; width: 0; height: 0; }
 /* The form sits in its own card. On the flat section background the bare
    underlined inputs read as an unfinished wireframe. */
 .studio-contact-form { background: #ffffff; border: 1px solid var(--studio-line); border-radius: 20px; padding: 34px 32px; }
+.studio-contact-form { min-width: 0; }
+.studio-ghl-frame { display: block; width: 100%; height: 1100px; border: 0; background: #fff; }
+.studio-ghl-fallback { margin-top: 16px; font-size: 13px; line-height: 1.6; color: var(--studio-muted); }
+.studio-ghl-fallback a { text-decoration: underline; text-underline-offset: 3px; }
 /* Two short fields share a row so the form reads as 4 steps, not 5 chores. */
 .studio-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
 .studio-field { margin-bottom: 20px; min-width: 0; }
@@ -408,4 +412,139 @@ html:has(.agent-site)::-webkit-scrollbar { display: none; width: 0; height: 0; }
 }
 @media (hover: none) {
   .agent-link:hover > svg, .studio-button:hover > svg, .studio-nav-book:hover > svg, .studio-submit:hover > svg, .agent-hero-button:hover > svg { transform: none; }
+}
+
+/* Growth offer: readable scope, direct contact and an ungated practical guide. */
+.studio-nav-inner { grid-template-columns: auto 1fr auto; gap: 24px; }
+.studio-nav-actions { gap: 16px; }
+.growth-nav-phone { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: 44px; min-height: 44px; font-size: 13px; white-space: nowrap; }
+.growth-hero-phone, .growth-price-link { display: block; width: fit-content; max-width: 100%; margin: 14px auto 0; padding: 8px 0; font-size: 14px; line-height: 1.6; text-underline-offset: 5px; }
+.growth-hero-phone:hover, .growth-price-link:hover { text-decoration: underline; }
+.growth-price-link { margin-top: 0; color: #5c5c5c; }
+.agent-principles-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 72px; }
+.agent-principles-list article { display: block; padding: 28px 0; border-top: 1px solid #666; }
+.agent-principles-list h3 { margin-top: 0; max-width: 28ch; }
+.agent-principles-list p { max-width: 52ch; }
+.growth-offer { padding-block: 100px 68px; }
+.growth-offer-body { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; padding-block: 36px; border-block: 1px solid #c9c9c9; }
+.growth-offer-price .growth-price { font-size: clamp(72px, 7vw, 108px); line-height: 1; letter-spacing: -.07em; font-weight: 600; color: #171717; margin: 0 0 16px; }
+.growth-price > span { font-size: .5em; letter-spacing: -.03em; }
+.growth-offer-price > p { color: #5c5c5c; font-size: 15px; line-height: 1.7; margin: 10px 0; max-width: 38ch; }
+.growth-offer-price > .agent-hero-button { margin-top: 20px; font-size: 14px; }
+.growth-offer-body h3 { font-size: 24px; font-weight: 500; margin-bottom: 16px; }
+.growth-scope { list-style: none; counter-reset: scope; }
+.growth-scope li { position: relative; counter-increment: scope; padding: 14px 0 14px 37px; border-top: 1px solid #d9d9d9; font-size: 15px; line-height: 1.8; }
+.growth-scope li::before { content: counter(scope, decimal-leading-zero); position: absolute; left: 0; color: #5c5c5c; font-size: 12px; top: 18px; }
+.growth-offer-terms { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-top: 24px; }
+.growth-offer-terms p { font-size: 13px; line-height: 1.8; color: #5c5c5c; }
+.growth-guide { background: #e9e9e9; padding-block: 80px; }
+.growth-guide-inner { display: grid; grid-template-columns: 1.25fr .75fr; gap: 96px; align-items: center; }
+.growth-guide-inner > div > p:not(.growth-guide-number) { font-size: 16px; line-height: 1.8; color: #5c5c5c; max-width: 55ch; margin-top: 24px; }
+.growth-guide-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 26px; }
+.growth-guide-inner > div > .growth-guide-note { font-size: 13px; margin-top: 18px; }
+.growth-guide-preview { border-left: 1px solid #b0b0b0; padding-left: 48px; }
+.growth-guide-number { font-size: 140px; font-weight: 500; letter-spacing: -.07em; line-height: 1; }
+.growth-guide-preview h3 { font-size: 22px; line-height: 1.4; max-width: 22ch; margin: 16px 0 22px; }
+.growth-guide-preview li { padding-block: 12px; font-size: 14px; line-height: 1.6; border-top: 1px solid #c0c0c0; }
+.growth-contact-phone { display: block; width: fit-content; font-size: clamp(26px, 3vw, 38px); font-weight: 500; letter-spacing: -.03em; line-height: 1.4; padding-block: 10px; text-underline-offset: 6px; }
+.growth-contact-phone:hover { text-decoration: underline; }
+.growth-contact-email { display: block; width: fit-content; max-width: 100%; overflow-wrap: anywhere; font-size: 15px; text-decoration: underline; text-underline-offset: 4px; padding-block: 10px; }
+.growth-form-heading { font-size: 23px; line-height: 1.3; font-weight: 500; }
+.growth-form-intro { font-size: 14px; line-height: 1.7; color: #5c5c5c; margin: 12px 0 26px; }
+.studio-form-note a { text-decoration: underline; text-underline-offset: 3px; }
+.studio-form-error { overflow-wrap: anywhere; }
+@media (max-width: 1250px) {
+  .growth-nav-phone span { display: none; }
+  .studio-desktop-links { gap: 22px; }
+}
+@media (max-width: 900px) {
+  .studio-nav-inner { grid-template-columns: auto 1fr; }
+  .agent-principles-list { grid-template-columns: 1fr; }
+  .agent-principles-list h3, .agent-principles-list p { max-width: 100%; }
+  .growth-offer-body { gap: 36px; grid-template-columns: .9fr 1.1fr; }
+  .growth-guide-inner { gap: 40px; }
+  .growth-guide-preview { padding-left: 28px; }
+}
+@media (max-width: 700px) {
+  .studio-nav-inner { gap: 8px; }
+  .studio-nav-actions { gap: 4px; }
+  .studio-language { min-width: 58px; }
+  .studio-menu-scrim { top: 72px; }
+  .growth-hero-phone, .growth-price-link { font-size: 13px; }
+  .agent-principles-list article { padding-block: 24px; }
+  .agent-principles-list h3 { font-size: 21px; }
+  .growth-offer { padding-block: 60px 32px; }
+  .growth-offer-body, .growth-offer-terms, .growth-guide-inner { grid-template-columns: 1fr; gap: 32px; }
+  .growth-offer-body { padding-block: 28px; }
+  .growth-offer-terms { gap: 14px; }
+  .growth-offer-price > p { max-width: 100%; }
+  .growth-guide { padding-block: 56px; }
+  .growth-guide-preview { border-left: 0; border-top: 1px solid #b0b0b0; padding: 28px 0 0; }
+  .growth-guide-number { font-size: 86px; }
+  .growth-guide-preview h3 { max-width: 100%; }
+}
+
+/* The same guide is comfortable on a phone and printable on four A4 pages. */
+.checklist-main { max-width: 860px; width: calc(100% - 40px); margin: 0 auto; padding-block: 120px 64px; }
+.checklist-screen-actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; font-size: 14px; margin-bottom: 24px; }
+.checklist-screen-actions a { min-height: 44px; display: inline-flex; align-items: center; text-decoration: underline; text-underline-offset: 5px; }
+.checklist-sheet { background: #fff; padding: 48px; margin-bottom: 28px; border: 1px solid #d9d9d9; }
+.checklist-heading .checklist-brand { font-size: 12px; font-weight: 600; margin-bottom: 24px; }
+.checklist-heading h1, .checklist-heading h2 { font-size: clamp(30px, 4vw, 43px); font-weight: 500; line-height: 1.14; letter-spacing: -.045em; margin-bottom: 24px; }
+.checklist-heading p, .checklist-template p, .checklist-metrics > p, .checklist-plan, .checklist-next p { font-size: 14px; line-height: 1.75; margin-bottom: 14px; color: #4b4b4b; }
+.checklist-group { margin-top: 30px; }
+.checklist-group h2 { font-size: 21px; line-height: 1.35; font-weight: 600; margin-bottom: 16px; }
+.checklist-group ol { list-style: decimal; padding-left: 22px; }
+.checklist-group li { padding: 14px 0 12px 5px; border-top: 1px solid #d9d9d9; }
+.checklist-group h3, .checklist-template h3, .checklist-metrics h3, .checklist-next h3 { font-size: 16px; line-height: 1.5; font-weight: 600; margin-bottom: 8px; }
+.checklist-group p { font-size: 13px; line-height: 1.7; margin-top: 7px; color: #4b4b4b; }
+.checklist-group strong { color: #171717; font-weight: 600; }
+.checklist-group .checklist-answer { color: #171717; font-size: 12px; margin-top: 10px; }
+.checklist-page-note { font-size: 11px; color: #5c5c5c; padding-top: 18px; border-top: 1px solid #d9d9d9; margin-top: 30px; }
+.checklist-template { margin-top: 30px; }
+.checklist-template blockquote { padding: 20px 24px; margin-block: 14px; background: #f1f1f1; border-left: 2px solid #171717; font-size: 14px; line-height: 1.8; }
+.checklist-metrics { margin-top: 32px; }
+.checklist-metrics dl > div { padding-block: 12px; border-top: 1px solid #d9d9d9; }
+.checklist-metrics dt { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.checklist-metrics dd { font-size: 13px; line-height: 1.7; color: #4b4b4b; }
+.checklist-worksheet > div { margin-top: 23px; }
+.checklist-worksheet h3 { font-size: 14px; line-height: 1.5; font-weight: 500; }
+.checklist-worksheet span { display: block; height: 40px; border-bottom: 1px solid #b0b0b0; }
+.checklist-plan { margin-top: 28px; }
+.checklist-next { margin-top: 28px; padding: 24px; background: #f1f1f1; }
+.checklist-next a { text-decoration: underline; text-underline-offset: 4px; overflow-wrap: anywhere; }
+@media (max-width: 700px) {
+  .checklist-main { width: calc(100% - 32px); padding-top: 90px; }
+  .checklist-sheet { padding: 26px 18px; }
+  .checklist-group p, .checklist-metrics dd { font-size: 14px; }
+  .checklist-template blockquote, .checklist-next { padding: 18px; }
+}
+@media print {
+  @page { size: A4; margin: 12mm 14mm; }
+  .checklist-site .studio-nav, .checklist-site .studio-footer, .checklist-screen-actions, .studio-cookie, .studio-skip { display: none !important; }
+  html:has(.checklist-site), body:has(.checklist-site), .checklist-site { background: #fff; overflow: visible !important; }
+  .checklist-main { width: 100%; max-width: none; padding: 0; }
+  .checklist-sheet { padding: 0; border: 0; margin: 0; break-after: page; }
+  .checklist-sheet:last-child { break-after: auto; }
+  .checklist-heading .checklist-brand { font-size: 9px; margin-bottom: 14px; }
+  .checklist-heading h1, .checklist-heading h2 { font-size: 30px; margin-bottom: 12px; }
+  .checklist-heading p, .checklist-template p, .checklist-metrics > p, .checklist-plan, .checklist-next p { font-size: 10px; line-height: 1.6; margin-bottom: 8px; }
+  .checklist-group { margin-top: 17px; }
+  .checklist-group h2 { font-size: 15px; margin-bottom: 8px; }
+  .checklist-group li { padding-block: 8px; break-inside: avoid; }
+  .checklist-group h3 { font-size: 11px; margin-bottom: 3px; }
+  .checklist-group p { font-size: 10px; line-height: 1.5; margin-top: 4px; }
+  .checklist-group .checklist-answer { font-size: 9px; margin-top: 5px; }
+  .checklist-page-note { font-size: 8px; margin-top: 17px; padding-top: 10px; }
+  .checklist-template, .checklist-metrics { margin-top: 24px; }
+  .checklist-template h3, .checklist-metrics h3, .checklist-next h3 { font-size: 14px; }
+  .checklist-template blockquote { font-size: 11px; line-height: 1.7; padding: 15px 18px; margin-block: 10px; }
+  .checklist-metrics dt { font-size: 11px; }
+  .checklist-metrics dd { font-size: 10px; }
+  .checklist-metrics dl > div { padding-block: 9px; }
+  .checklist-worksheet > div { margin-top: 21px; }
+  .checklist-worksheet h3 { font-size: 11px; }
+  .checklist-worksheet span { height: 40px; }
+  .checklist-next { padding: 18px; margin-top: 22px; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }

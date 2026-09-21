@@ -278,11 +278,11 @@ function ResultScreen({ result, answers, onReset }: {
       <div className="bg-[#2d232e] rounded-2xl p-5 text-center">
         <h3 className="text-base font-black text-[#e0ddcf] mb-1">Искате точна цена?</h3>
         <p className="text-xs text-[#e0ddcf]/60 leading-relaxed mb-4">
-          Запазете безплатен 30-минутен разговор — ще ви кажа директно какво ви трябва.
+          Заявете безплатен 30-минутен разговор — ще ви кажа директно какво ви трябва.
         </p>
-        <a href="https://cal.com/georgi-karchev-3r9puz/30min" target="_blank" rel="noopener noreferrer"
+        <a href="/bg#contact"
           className="block w-full py-3 rounded-full bg-[#e0ddcf] text-[#2d232e] font-black text-sm hover:bg-white transition-colors mb-2">
-          Запазете безплатен разговор →
+          Заявете безплатен разговор →
         </a>
         <button onClick={onReset}
           className="block w-full py-2.5 rounded-full border border-[#e0ddcf]/20 text-[#e0ddcf]/60 font-semibold text-xs hover:border-[#e0ddcf]/50 hover:text-[#e0ddcf] transition-all">

@@ -23,7 +23,7 @@ export default function PrivacyPage() {
         </div>
 
         <h1 className="font-heading font-black text-4xl mb-2 tracking-tight">Политика за поверителност</h1>
-        <p className="text-sm text-[#2d232e]/60 mb-12">Последна актуализация: 25 април 2026 г.</p>
+        <p className="text-sm text-[#2d232e]/60 mb-12">Последна актуализация: 21 септември 2026 г.</p>
 
         <div className="space-y-10 text-[15px] leading-relaxed">
 
@@ -47,7 +47,7 @@ export default function PrivacyPage() {
             <ul className="list-disc ml-6 space-y-1 mt-2">
               <li>Имена и фамилия;</li>
               <li>Имейл адрес;</li>
-              <li>Телефонен номер (по желание);</li>
+              <li>Телефонен номер и предпочитано време за разговор (по желание);</li>
               <li>Информация за Вашия проект/бизнес, споделена в запитване или консултация;</li>
               <li>Достъпи до платформи (домейн, хостинг, социални профили) — само когато е необходимо за изпълнение на услугата.</li>
             </ul>

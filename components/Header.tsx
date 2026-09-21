@@ -156,9 +156,7 @@ const Header = () => {
 
                   {/* Mobile CTA Button */}
                   <motion.a
-                    href="https://cal.com/georgi-karchev-3r9puz/30min"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/bg#contact"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
