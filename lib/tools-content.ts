@@ -60,7 +60,7 @@ const toolsPageDefinitions: Record<string, ToolsPageDefinition> = {
     ctaEyebrow: 'Искаш custom automation?',
     ctaTitle: 'Правя и bespoke AI setups,\nworkflow automation и client-facing системи.',
     ctaLabel: 'Запази безплатен разговор',
-    ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
+    ctaHref: '/bg#contact',
     internalLinksTitle: 'Връзка към комерсиалните страници',
     internalLinks: [
       {
@@ -97,7 +97,7 @@ const toolsPageDefinitions: Record<string, ToolsPageDefinition> = {
     ctaEyebrow: 'Want custom AI tooling?',
     ctaTitle: 'I also build bespoke Claude setups,\nautomation systems, and client-facing workflows.',
     ctaLabel: 'Book a free call',
-    ctaHref: 'https://cal.com/georgi-karchev-3r9puz/30min',
+    ctaHref: '/bg#contact',
     internalLinksTitle: 'Commercial paths connected to these tools',
     internalLinks: [
       {

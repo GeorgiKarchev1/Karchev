@@ -1,14 +1,17 @@
 'use client'
 
 import { useEffect, useMemo, useState } from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { ArrowRight, Loader2, Sparkles } from 'lucide-react'
 import { useOS } from '@/context/OSContext'
+import { MODULE_BY_KEY } from '@/lib/os/modules'
 import type {
   BusinessProfileInput,
   ContentGoal,
   OSBootstrapResult,
 } from '@/lib/os/types'
+import { GlyphArrowRight, GlyphCheck, GlyphSpark } from './icons'
+import { OSButton, OSField, OSSectionLabel, fieldClass } from './ui'
 
 const goals: { value: ContentGoal; label: string }[] = [
   { value: 'leads', label: 'Leads' },
@@ -28,15 +31,19 @@ const emptyForm: BusinessProfileInput = {
   goals: ['leads', 'trust'],
 }
 
+/** The fields the generator actually leans on, used for the readiness meter. */
+const SUBSTANTIVE_FIELDS: (keyof BusinessProfileInput)[] = [
+  'businessName',
+  'businessType',
+  'whatYouSell',
+  'targetAudience',
+  'customerPains',
+  'faqs',
+]
+
 export default function OnboardingForm() {
   const router = useRouter()
-  const {
-    profile,
-    bootstrap,
-    setProfile,
-    setBootstrap,
-    hydrated,
-  } = useOS()
+  const { profile, bootstrap, setProfile, setBootstrap, hydrated } = useOS()
 
   const [form, setForm] = useState<BusinessProfileInput>(emptyForm)
   const [loading, setLoading] = useState(false)
@@ -48,7 +55,18 @@ export default function OnboardingForm() {
 
   const selectedGoalSet = useMemo(() => new Set(form.goals), [form.goals])
 
-  const updateField = (field: keyof BusinessProfileInput, value: string | ContentGoal[]) => {
+  // The more context the generator gets, the less generic its output — so the
+  // form shows how complete that context is rather than leaving it invisible.
+  const filledCount = useMemo(
+    () => SUBSTANTIVE_FIELDS.filter((key) => String(form[key]).trim().length > 0).length,
+    [form],
+  )
+  const completeness = Math.round((filledCount / SUBSTANTIVE_FIELDS.length) * 100)
+
+  const updateField = (
+    field: keyof BusinessProfileInput,
+    value: string | ContentGoal[],
+  ) => {
     setForm((current) => ({ ...current, [field]: value }))
   }
 
@@ -84,82 +102,84 @@ export default function OnboardingForm() {
   }
 
   const buttonLabel = loading
-    ? 'Generating OS…'
+    ? 'Generating…'
     : bootstrap
-      ? 'Regenerate content OS'
-      : 'Generate content OS'
+      ? 'Regenerate the OS'
+      : 'Generate the OS'
 
   return (
-    <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
-      <form
-        onSubmit={handleSubmit}
-        className="glass-card bg-[#f1f0ea] p-5 md:p-7"
-      >
+    <div className="os-settle grid gap-4 px-6 md:px-10 xl:grid-cols-[1.25fr_0.75fr]">
+      <form onSubmit={handleSubmit} className="os-pane p-5 md:p-7">
         <div className="grid gap-4 md:grid-cols-2">
-          <Field label="Business name">
+          <OSField label="Business name">
             <input
               value={form.businessName}
               onChange={(e) => updateField('businessName', e.target.value)}
-              className="os-input"
+              className={fieldClass}
               placeholder="KarchX"
             />
-          </Field>
-          <Field label="Business type">
+          </OSField>
+          <OSField label="Business type">
             <input
               value={form.businessType}
               onChange={(e) => updateField('businessType', e.target.value)}
-              className="os-input"
+              className={fieldClass}
               placeholder="Agency / SaaS / Service business"
             />
-          </Field>
+          </OSField>
         </div>
 
         <div className="mt-4 grid gap-4">
-          <Field label="What do you sell?">
+          <OSField label="What do you sell?">
             <textarea
               value={form.whatYouSell}
               onChange={(e) => updateField('whatYouSell', e.target.value)}
-              className="os-input min-h-[96px]"
+              className={`${fieldClass} min-h-[96px] resize-y`}
               placeholder="Describe your offer clearly. What outcome do clients walk away with?"
             />
-          </Field>
-          <Field label="Target audience">
+          </OSField>
+          <OSField label="Target audience">
             <textarea
               value={form.targetAudience}
               onChange={(e) => updateField('targetAudience', e.target.value)}
-              className="os-input min-h-[96px]"
+              className={`${fieldClass} min-h-[96px] resize-y`}
               placeholder="Who are you trying to reach? Role, stage, size, context."
             />
-          </Field>
-          <Field label="Top customer pains">
+          </OSField>
+          <OSField
+            label="Top customer pains"
+            hint="The generator mines these for hooks, so specifics beat adjectives."
+          >
             <textarea
               value={form.customerPains}
               onChange={(e) => updateField('customerPains', e.target.value)}
-              className="os-input min-h-[110px]"
+              className={`${fieldClass} min-h-[110px] resize-y`}
               placeholder="What pains, problems, or objections come up the most in calls and DMs?"
             />
-          </Field>
-          <Field label="FAQs / common questions">
+          </OSField>
+          <OSField label="FAQs / common questions">
             <textarea
               value={form.faqs}
               onChange={(e) => updateField('faqs', e.target.value)}
-              className="os-input min-h-[110px]"
+              className={`${fieldClass} min-h-[110px] resize-y`}
               placeholder="Paste real questions you hear in DMs, calls, or sales chats."
             />
-          </Field>
-          <Field label="Brand voice">
+          </OSField>
+          <OSField label="Brand voice">
             <input
               value={form.tone}
               onChange={(e) => updateField('tone', e.target.value)}
-              className="os-input"
+              className={fieldClass}
               placeholder="Direct, premium, practical"
             />
-          </Field>
+          </OSField>
         </div>
 
-        <div className="mt-5">
-          <p className="mb-3 text-sm font-semibold text-[#2d232e]">Goals</p>
-          <div className="flex flex-wrap gap-3">
+        <fieldset className="mt-6">
+          <legend className="mb-3">
+            <OSSectionLabel>Goals</OSSectionLabel>
+          </legend>
+          <div className="flex flex-wrap gap-2">
             {goals.map((goal) => {
               const active = selectedGoalSet.has(goal.value)
               return (
@@ -167,86 +187,120 @@ export default function OnboardingForm() {
                   key={goal.value}
                   type="button"
                   onClick={() => toggleGoal(goal.value)}
-                  className={`rounded-full border-2 px-4 py-2 text-sm font-semibold transition ${
+                  aria-pressed={active}
+                  className={`inline-flex min-h-[38px] items-center gap-1.5 rounded-[var(--os-r-pill)] px-3.5 text-[13px] font-semibold transition-all duration-[var(--os-fast)] ease-[var(--os-ease)] ${
                     active
-                      ? 'border-[#2d232e] bg-[#534b52] text-[#f1f0ea] shadow-[3px_3px_0px_#2d232e]'
-                      : 'border-[#2d232e] bg-[#f7f4ea] text-[#2d232e]'
+                      ? 'os-accent-fill text-white shadow-[var(--os-shadow-rest)]'
+                      : 'border border-[var(--os-line)] bg-white text-[var(--os-muted)] hover:border-[var(--os-line-strong)] hover:text-[var(--os-ink)]'
                   }`}
                 >
+                  {active ? <GlyphCheck className="h-3.5 w-3.5" /> : null}
                   {goal.label}
                 </button>
               )
             })}
           </div>
-        </div>
+        </fieldset>
 
         {error ? (
-          <p className="mt-4 text-sm font-semibold text-red-700">{error}</p>
+          <p
+            role="alert"
+            className="mt-4 rounded-[var(--os-r-tile)] border border-[#f0d4d0] bg-[#fdf5f4] px-3 py-2.5 text-[13px] font-medium text-[#c0392b]"
+          >
+            {error}
+          </p>
         ) : null}
 
-        <div className="mt-6 flex flex-wrap items-center gap-4">
-          <button
-            disabled={loading}
-            className="btn-primary disabled:opacity-60"
+        <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-[var(--os-line)] pt-5">
+          <OSButton
             type="submit"
+            tone="accent"
+            busy={loading}
+            icon={<GlyphSpark className="h-4 w-4" />}
           >
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
             {buttonLabel}
-          </button>
-          <p className="text-sm text-[#534b52]">
+          </OSButton>
+          <p className="text-[13px] leading-5 text-[var(--os-muted)]">
             {hydrated && profile
-              ? 'Edits will regenerate your pillars, ideas, hooks, and plan.'
-              : 'Step 1: business context → pillars → ideas → hooks → plan.'}
+              ? 'Regenerating replaces your pillars, ideas, hooks and plan.'
+              : 'Context first — pillars, ideas, hooks and the week follow from it.'}
           </p>
         </div>
       </form>
 
-      <div className="space-y-6">
-        <div className="glass-card bg-[#ddd7c8] p-5 md:p-6">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#534b52]">
-            What this sets up
+      <div className="flex flex-col gap-4">
+        <section className="os-pane p-5 md:p-6">
+          <OSSectionLabel>Context strength</OSSectionLabel>
+          <div className="mt-3 flex items-baseline gap-2">
+            <span className="font-heading text-[26px] font-semibold tabular-nums text-[var(--os-ink)]">
+              {completeness}%
+            </span>
+            <span className="text-[13px] text-[var(--os-muted)]">
+              {filledCount} of {SUBSTANTIVE_FIELDS.length} filled
+            </span>
+          </div>
+          <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-[var(--os-surface-sunk)]">
+            <div
+              className="os-accent-edge h-full rounded-full transition-[width] duration-[var(--os-base)] ease-[var(--os-ease)]"
+              style={{ width: `${completeness}%` }}
+            />
+          </div>
+          <p className="mt-3 text-[13px] leading-5 text-[var(--os-muted)]">
+            Thin answers produce generic pillars. Sentences you would actually say
+            to a client work best.
           </p>
-          <ul className="mt-4 space-y-3 text-sm leading-6 text-[#2d232e]">
-            <li>• Content pillars locked to your offer + audience</li>
-            <li>• A weekly idea bank with hook, format, angle</li>
-            <li>• A reusable hook library mapped to your business</li>
-            <li>• A Mon–Fri plan you can publish from immediately</li>
-            <li>• A repurposing flow to turn one input into 5 platforms</li>
+        </section>
+
+        <section className="os-pane p-5 md:p-6">
+          <OSSectionLabel>What this sets up</OSSectionLabel>
+          <ul className="mt-4 space-y-2.5">
+            {[
+              MODULE_BY_KEY.pillars,
+              MODULE_BY_KEY.ideas,
+              MODULE_BY_KEY.hooks,
+              MODULE_BY_KEY.plan,
+              MODULE_BY_KEY.repurpose,
+            ].map((module) => (
+              <li key={module.key} className="flex gap-2.5">
+                <span
+                  className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full"
+                  style={{ background: module.accentA }}
+                  aria-hidden="true"
+                />
+                <span className="text-[13px] leading-5 text-[var(--os-muted)]">
+                  <span className="font-semibold text-[var(--os-ink)]">
+                    {module.label}
+                  </span>{' '}
+                  — {module.blurb}
+                </span>
+              </li>
+            ))}
           </ul>
-        </div>
+        </section>
 
         {bootstrap ? (
-          <div className="glass-card bg-[#f1f0ea] p-5 md:p-6">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#534b52]">
-              Current OS preview
-            </p>
-            <ul className="mt-4 space-y-3 text-sm leading-6 text-[#2d232e]">
+          <section className="os-pane p-5 md:p-6">
+            <OSSectionLabel>Current pillars</OSSectionLabel>
+            <ul className="mt-4 space-y-3">
               {bootstrap.pillars.slice(0, 3).map((pillar) => (
-                <li key={pillar.id}>
-                  <span className="font-semibold">{pillar.title}:</span>{' '}
-                  <span className="text-[#534b52]">{pillar.description}</span>
+                <li key={pillar.id} className="text-[13px] leading-5">
+                  <span className="font-semibold text-[var(--os-ink)]">
+                    {pillar.title}
+                  </span>
+                  <span className="text-[var(--os-muted)]"> — {pillar.description}</span>
                 </li>
               ))}
             </ul>
-            <a
+            <Link
               href="/os/pillars"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#2d232e] underline-offset-4 hover:underline"
+              className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[var(--os-accent-a)] transition-transform duration-[var(--os-fast)] hover:translate-x-0.5"
             >
               Open pillars
-              <ArrowRight className="h-3 w-3" />
-            </a>
-          </div>
+              <GlyphArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </section>
         ) : null}
       </div>
     </div>
-  )
-}
-
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <label className="block">
-      <span className="mb-2 block text-sm font-semibold text-[#2d232e]">{label}</span>
-      {children}
-    </label>
   )
 }

@@ -1,14 +1,25 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { Loader2, Plus, RefreshCw, Trash2 } from 'lucide-react'
-import { useOS } from '@/context/OSContext'
-import EmptyState from '@/components/os/EmptyState'
-import type { ContentPillar } from '@/lib/os/types'
+import { useState } from 'react';
+import { useOS } from '@/context/OSContext';
+import EmptyState from '@/components/os/EmptyState';
+import { GlyphPlus, GlyphRefresh, GlyphTrash } from '@/components/os/icons';
+import {
+  OSButton,
+  OSCard,
+  OSChip,
+  OSIconButton,
+  OSLabel,
+  OSSectionLabel,
+} from '@/components/os/ui';
+import { MODULE_BY_KEY } from '@/lib/os/modules';
+import type { ContentPillar } from '@/lib/os/types';
+
+const PILLARS = MODULE_BY_KEY.pillars;
 
 export default function PillarsBoard() {
-  const { bootstrap, profile, updatePillars, regenerate } = useOS()
-  const [regenerating, setRegenerating] = useState(false)
+  const { bootstrap, profile, updatePillars, regenerate } = useOS();
+  const [regenerating, setRegenerating] = useState(false);
 
   if (!profile) {
     return (
@@ -16,7 +27,7 @@ export default function PillarsBoard() {
         title="Add your business context first"
         description="We build pillars from your offer, audience, and pains. Finish onboarding to unlock this view."
       />
-    )
+    );
   }
 
   if (!bootstrap) {
@@ -26,18 +37,18 @@ export default function PillarsBoard() {
         description="Your profile is saved. Run the generator to build pillars, ideas, hooks and a weekly plan."
         ctaLabel="Generate now"
       />
-    )
+    );
   }
 
   const updateField = (id: string, field: keyof ContentPillar, value: string | number) => {
     const next = bootstrap.pillars.map((p) =>
       p.id === id ? { ...p, [field]: value } : p
-    )
-    updatePillars(next)
-  }
+    );
+    updatePillars(next);
+  };
 
   const addPillar = () => {
-    const id = `pillar-${Date.now()}`
+    const id = `pillar-${Date.now()}`;
     updatePillars([
       ...bootstrap.pillars,
       {
@@ -46,96 +57,124 @@ export default function PillarsBoard() {
         description: 'Describe what this lane is about.',
         weight: 20,
       },
-    ])
-  }
+    ]);
+  };
 
   const removePillar = (id: string) => {
-    updatePillars(bootstrap.pillars.filter((p) => p.id !== id))
-  }
+    updatePillars(bootstrap.pillars.filter((p) => p.id !== id));
+  };
 
   const handleRegenerate = async () => {
-    setRegenerating(true)
+    setRegenerating(true);
     try {
-      await regenerate()
+      await regenerate();
     } finally {
-      setRegenerating(false)
+      setRegenerating(false);
     }
-  }
+  };
 
   return (
-    <div className="space-y-6 px-6 py-8 md:px-10 md:py-10">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm text-[#534b52]">
-          {bootstrap.pillars.length} pillars in your system. Edit titles or descriptions inline.
-        </p>
-        <div className="flex flex-wrap gap-2">
-          <button
+    <div className="space-y-4 px-6 pb-8 md:px-10 md:pb-10">
+      {/*
+        The board bar sits flush under PageHeader (which the route owns, and
+        which carries the h1) so the toolbar reads as part of that band rather
+        than as a second strip of chrome.
+      */}
+      <div className="os-settle flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <OSSectionLabel>{bootstrap.pillars.length} pillars</OSSectionLabel>
+          <p className="text-[13px] text-[var(--os-faint)]">
+            Weight is the share of the week a lane owns — keep the set near 100%.
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2">
+          <OSButton
+            type="button"
             onClick={addPillar}
-            className="inline-flex items-center gap-2 rounded-full border-2 border-[#2d232e] bg-[#f7f4ea] px-4 py-2 text-sm font-bold text-[#2d232e] transition hover:bg-[#e0ddcf]"
+            icon={<GlyphPlus className="h-4 w-4" />}
           >
-            <Plus className="h-4 w-4" />
             Add pillar
-          </button>
-          <button
+          </OSButton>
+          <OSButton
+            type="button"
+            tone="accent"
             onClick={handleRegenerate}
-            disabled={regenerating}
-            className="inline-flex items-center gap-2 rounded-full border-2 border-[#2d232e] bg-[#534b52] px-4 py-2 text-sm font-bold text-[#f1f0ea] shadow-[3px_3px_0px_#2d232e] transition hover:bg-[#2d232e] disabled:opacity-60"
+            busy={regenerating}
+            icon={<GlyphRefresh className="h-4 w-4" />}
           >
-            {regenerating ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
-            ) : (
-              <RefreshCw className="h-4 w-4" />
-            )}
             Regenerate
-          </button>
+          </OSButton>
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="os-stagger grid gap-3 md:grid-cols-2 xl:grid-cols-3">
         {bootstrap.pillars.map((pillar, i) => (
-          <div
+          <OSCard
             key={pillar.id}
-            className="glass-card flex flex-col gap-3 bg-[#f1f0ea] p-5"
+            interactive
+            accentA={PILLARS.accentA}
+            accentB={PILLARS.accentB}
+            className="flex flex-col gap-3 p-4"
           >
-            <div className="flex items-start justify-between gap-3">
-              <span className="rounded-full border-2 border-[#2d232e] bg-[#534b52] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#f1f0ea] shadow-[2px_2px_0px_#2d232e]">
-                Pillar {i + 1}
-              </span>
-              <button
+            <div className="flex items-start justify-between gap-2">
+              <OSChip tone="accent">Pillar {i + 1}</OSChip>
+              <OSIconButton
+                danger
+                label={`Remove pillar ${i + 1}`}
                 onClick={() => removePillar(pillar.id)}
-                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border-2 border-[#2d232e] bg-[#f7f4ea] p-1.5 text-[#534b52] transition hover:bg-[#ddd7c8] hover:text-[#2d232e]"
-                title="Remove pillar" aria-label="Remove pillar"
               >
-                <Trash2 className="h-3.5 w-3.5" />
-              </button>
+                <GlyphTrash className="h-4 w-4" />
+              </OSIconButton>
             </div>
+
             <input
               value={pillar.title}
               onChange={(e) => updateField(pillar.id, 'title', e.target.value)}
-              className="w-full rounded-xl border-2 border-transparent bg-transparent px-2 py-1 text-xl font-bold text-[#2d232e] outline-none transition focus:border-[#2d232e] focus:bg-[#f7f4ea]"
+              aria-label={`Pillar ${i + 1} title`}
+              className="w-full rounded-[var(--os-r-tile)] border border-transparent bg-transparent px-2 py-1.5 font-heading text-[17px] font-semibold tracking-[-0.01em] text-[var(--os-ink)] outline-none transition-colors duration-[var(--os-fast)] hover:border-[var(--os-line)] focus:border-[var(--os-accent-a)] focus:bg-white"
             />
+
             <textarea
               value={pillar.description}
               onChange={(e) => updateField(pillar.id, 'description', e.target.value)}
-              className="min-h-[88px] w-full rounded-xl border-2 border-transparent bg-transparent px-2 py-1 text-sm leading-6 text-[#534b52] outline-none transition focus:border-[#2d232e] focus:bg-[#f7f4ea]"
+              aria-label={`Pillar ${i + 1} description`}
+              className="os-scroll min-h-[84px] w-full resize-y rounded-[var(--os-r-tile)] border border-transparent bg-transparent px-2 py-1.5 text-[13px] leading-6 text-[var(--os-muted)] outline-none transition-colors duration-[var(--os-fast)] hover:border-[var(--os-line)] focus:border-[var(--os-accent-a)] focus:bg-white"
             />
-            <div className="flex items-center gap-3 text-xs font-semibold text-[#534b52]">
-              <span>Weight</span>
+
+            {/*
+              Weight is the only numeric this board edits, so it gets a
+              proportion bar as well as the figure — a bare 20 next to a
+              slider reads as a setting, a filled bar reads as a share.
+            */}
+            <label className="mt-auto flex flex-col gap-2 border-t border-[var(--os-line)] pt-3">
+              <span className="flex items-center justify-between gap-2">
+                <OSLabel>Weight</OSLabel>
+                <span className="text-[13px] font-semibold tabular-nums text-[var(--os-ink)]">
+                  {pillar.weight}%
+                </span>
+              </span>
               <input
                 type="range"
                 min={5}
                 max={50}
                 value={pillar.weight}
-                onChange={(e) =>
-                  updateField(pillar.id, 'weight', Number(e.target.value))
-                }
-                className="flex-1 accent-[#2d232e]"
+                onChange={(e) => updateField(pillar.id, 'weight', Number(e.target.value))}
+                className="w-full"
               />
-              <span className="font-bold text-[#2d232e]">{pillar.weight}%</span>
-            </div>
-          </div>
+              <span
+                aria-hidden="true"
+                className="block h-1 w-full overflow-hidden rounded-full bg-[var(--os-line)]"
+              >
+                <span
+                  className="os-accent-edge block h-full rounded-full transition-[width] duration-[var(--os-base)] ease-[var(--os-ease)]"
+                  style={{ width: `${pillar.weight}%` }}
+                />
+              </span>
+            </label>
+          </OSCard>
         ))}
       </div>
     </div>
-  )
+  );
 }
