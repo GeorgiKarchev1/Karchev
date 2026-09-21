@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import HeroVariantPreview, { HERO_VARIANT_KEYS, isHeroVariant } from '@/components/site/heroes/variants'
 
 export const metadata: Metadata = {
-  title: 'Hero вариант',
+  title: 'Hero variant',
   robots: { index: false, follow: false },
   alternates: { canonical: null },
 }
@@ -14,5 +14,5 @@ export function generateStaticParams() {
 
 export default function HeroVariantPage({ params }: { params: { variant: string } }) {
   if (!isHeroVariant(params.variant)) notFound()
-  return <HeroVariantPreview variant={params.variant} bg />
+  return <HeroVariantPreview variant={params.variant} bg={false} />
 }

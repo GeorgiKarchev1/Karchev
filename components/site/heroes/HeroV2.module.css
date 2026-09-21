@@ -1,0 +1,89 @@
+/* V2 — Centred promise over a real artefact. No illustration stands in for
+   proof: the card shows the actual checks the engagement runs. */
+.hero {
+  --ink: #171717;
+  --muted: #5c5c5c;
+  --line: #d9d9d9;
+  --ease: cubic-bezier(.32, .72, 0, 1);
+  background: #fff;
+  color: var(--ink);
+  padding: 160px 0 64px;
+}
+.wrap { width: calc(100% - 112px); max-width: 1280px; margin-inline: auto; }
+.lede { display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+.title {
+  margin: 0; max-width: 680px;
+  font-size: 60px; line-height: 1.05; font-weight: 700; letter-spacing: -.035em;
+  text-wrap: balance;
+}
+.title span { display: block; }
+/* Cyrillic descenders (д, ц, щ) fall below the line box, and `background-clip:
+   text` clips the gradient to the element box — without this padding the tails
+   of the last line lose their fill. The negative margin keeps the rhythm. */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .title {
+    background: linear-gradient(90deg, #000 0%, #666 100%);
+    background-clip: text; -webkit-background-clip: text; color: transparent;
+    padding-block-end: .14em; margin-block-end: -.14em;
+  }
+}
+.sub { margin: 24px 0 0; max-width: 680px; font-size: 20px; line-height: 28px; color: var(--muted); text-wrap: pretty; }
+
+.cta {
+  display: inline-flex; align-items: center; gap: 16px;
+  margin-top: 32px; min-height: 56px; padding: 8px 12px 8px 24px;
+  border-radius: 8px; background: var(--ink); color: #fff;
+  font-size: 16px; line-height: 24px; font-weight: 600;
+  transition: background .7s var(--ease), transform .7s var(--ease);
+}
+.cta svg { flex-shrink: 0; transition: transform .7s var(--ease); }
+.cta:hover { background: #313131; }
+.cta:hover svg { transform: translate(2px, -2px); }
+.cta:active { transform: scale(.98); }
+.note { margin: 12px 0 0; font-size: 14px; line-height: 20px; color: var(--muted); }
+
+.card {
+  display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 48px; align-items: start;
+  margin-top: 80px; padding: 48px;
+  border: 1px solid var(--line); border-radius: 16px; background: #fff;
+}
+.count { margin: 0; font-size: 96px; line-height: 1; font-weight: 700; letter-spacing: -.045em; font-variant-numeric: lining-nums; }
+.countLabel { margin: 8px 0 0; font-size: 18px; line-height: 28px; font-weight: 600; max-width: 20ch; text-wrap: balance; }
+/* Outranks the global `.agent-site h2` rule in studio.css, which would
+   otherwise force this to 52px. */
+.hero h2.cardTitle { margin: 0; font-size: 24px; line-height: 32px; font-weight: 600; letter-spacing: -.02em; text-wrap: balance; }
+.checks { margin: 24px 0 0; padding: 0; list-style: none; display: grid; gap: 16px; }
+.checks li { position: relative; padding-left: 32px; font-size: 16px; line-height: 24px; max-width: 60ch; text-wrap: pretty; }
+.checks li::before { content: ''; position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
+.proof { margin: 32px 0 0; padding-top: 24px; border-top: 1px solid var(--line); font-size: 16px; line-height: 24px; color: var(--muted); }
+
+.hero :focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .lede, .card { animation: v2-enter .8s var(--ease) backwards; }
+  .card { animation-delay: .15s; }
+}
+@keyframes v2-enter { from { opacity: 0; transform: translateY(64px); filter: blur(12px); } }
+
+@media (max-width: 1150px) {
+  .wrap { width: calc(100% - 72px); }
+  .title { font-size: 48px; }
+  .card { gap: 40px; padding: 40px; }
+}
+@media (max-width: 900px) {
+  .card { grid-template-columns: 1fr; gap: 32px; margin-top: 64px; }
+  .count { font-size: 72px; }
+}
+@media (max-width: 700px) {
+  .hero { padding: 128px 0 48px; }
+  .wrap { width: calc(100% - 40px); }
+  .title { font-size: 36px; line-height: 40px; }
+  .sub { font-size: 18px; line-height: 28px; }
+  .cta { width: 100%; justify-content: space-between; }
+  .card { padding: 32px 24px; margin-top: 48px; }
+  .count { font-size: 60px; }
+}
+@media (forced-colors: active) { .title { background: none; color: CanvasText; } }
+@media (prefers-reduced-motion: reduce) { .hero *, .hero *::before, .hero *::after { animation: none !important; transition: none !important; } }

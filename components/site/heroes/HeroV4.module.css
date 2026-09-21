@@ -1,0 +1,96 @@
+/* V4 — One reading path down a single centred axis: what the problem is, who
+   this is for, one action, one proof, the terms. Nothing sits side by side,
+   because scanning two columns is what made the earlier drafts tiring.
+   Recipe taken from the centred heroes in the reference vault (DataFast,
+   CodeFast, ClipMarc, basement.studio): flat background, H1 at 48–72px, one
+   CTA, and exactly one proof object placed BELOW the action, never beside it.
+   No label above the heading — none of the ~35 catalogued heroes uses one. */
+.hero {
+  --ink: #171717;
+  --muted: #5c5c5c;
+  --line: #d9d9d9;
+  --ease: cubic-bezier(.32, .72, 0, 1);
+  background: #fff;
+  color: var(--ink);
+  padding: 160px 0 80px; /* 160 = 86px fixed nav + 64 rhythm step */
+}
+.wrap { width: calc(100% - 112px); max-width: 1280px; margin-inline: auto; }
+.column { display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+/* Wider than the 680px the subheading keeps: at 60px this heading needs ~820px
+   to hold each sentence on its own line, and three lines breaks the rhythm the
+   reference heroes rely on. The measure is still only ~27 characters. */
+.title {
+  margin: 0; max-width: 880px;
+  font-size: 60px; line-height: 1; font-weight: 700; letter-spacing: -.04em;
+  text-wrap: balance;
+}
+.title span { display: block; }
+/* Cyrillic descenders (д, ц, щ) fall below the line box, and `background-clip:
+   text` clips the gradient to the element box — without this padding the tails
+   of the last line lose their fill. The negative margin keeps the rhythm. */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .title {
+    background: linear-gradient(90deg, #000 0%, #666 100%);
+    background-clip: text; -webkit-background-clip: text; color: transparent;
+    padding-block-end: .14em; margin-block-end: -.14em;
+  }
+}
+
+/* Names the audience and the work in two lines, which is where this recipe
+   puts "who is this for" — the heading carries the problem, not the label. */
+.sub { margin: 24px 0 0; max-width: 680px; font-size: 20px; line-height: 28px; color: var(--muted); text-wrap: pretty; }
+
+.cta {
+  display: inline-flex; align-items: center; gap: 16px;
+  margin-top: 32px; min-height: 56px; padding: 8px 12px 8px 24px;
+  border-radius: 8px; background: var(--ink); color: #fff;
+  font-size: 16px; line-height: 24px; font-weight: 600;
+  transition: background .7s var(--ease), transform .7s var(--ease);
+}
+.cta svg { flex-shrink: 0; transition: transform .7s var(--ease); }
+.cta:hover { background: #313131; }
+.cta:hover svg { transform: translate(2px, -2px); }
+.cta:active { transform: scale(.98); }
+.note { margin: 16px auto 0; max-width: 56ch; font-size: 16px; line-height: 24px; color: var(--muted); text-wrap: pretty; }
+
+/* The price carries its weight through size, not through a container. A solid
+   panel made it read as a separate advert rather than the end of the sentence
+   the hero is telling. */
+.offer { margin-top: 56px; padding-top: 32px; width: 100%; max-width: 680px; border-top: 1px solid var(--line); }
+.price { display: flex; align-items: baseline; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.amount { margin: 0; font-size: 60px; line-height: 1; font-weight: 700; letter-spacing: -.04em; font-variant-numeric: lining-nums; }
+.amount span { font-size: .55em; letter-spacing: -.02em; }
+.terms { margin: 0; font-size: 24px; line-height: 32px; font-weight: 600; }
+.continuation { margin: 16px auto 0; max-width: 52ch; font-size: 18px; line-height: 28px; color: var(--muted); text-wrap: pretty; }
+
+.hero :focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .title, .sub, .cta, .note, .offer { animation: v4-enter .8s var(--ease) backwards; }
+  .sub { animation-delay: .08s; }
+  .cta, .note { animation-delay: .16s; }
+  .offer { animation-delay: .24s; }
+}
+@keyframes v4-enter { from { opacity: 0; transform: translateY(64px); filter: blur(12px); } }
+
+@media (max-width: 1150px) { .wrap { width: calc(100% - 72px); } }
+@media (max-width: 900px) { .title { font-size: 48px; } }
+@media (max-width: 700px) {
+  .hero { padding: 128px 0 48px; }
+  .wrap { width: calc(100% - 40px); }
+  /* Measured at 390px: the usable width is 350px and the second sentence needs
+     360px at 36px, which is what stranded "си." on its own line. A fixed 30px
+     fixed that but read as too small. Scaling with the viewport keeps the
+     sentence whole at every phone width and still reaches 36px on a large one. */
+  .title { font-size: clamp(30px, 9.3vw, 36px); line-height: 40px; }
+  .sub { font-size: 18px; line-height: 28px; }
+  .cta { width: 100%; justify-content: space-between; }
+  .offer { margin-top: 40px; padding-top: 24px; }
+  /* Kept below the headline so the hero has one clear first read. */
+  .amount { font-size: 30px; line-height: 36px; }
+  .terms { font-size: 20px; line-height: 28px; }
+  .continuation { font-size: 16px; line-height: 24px; }
+}
+@media (forced-colors: active) { .title { background: none; color: CanvasText; } }
+@media (prefers-reduced-motion: reduce) { .hero *, .hero *::before, .hero *::after { animation: none !important; transition: none !important; } }

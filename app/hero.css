@@ -45,8 +45,6 @@
 .growth-offer-guarantee { margin-top: 32px; padding: 32px; border: 1px solid #b0b0b0; border-radius: 16px; }
 .growth-offer-guarantee h3 { font-size: 30px; line-height: 1.3; font-weight: 500; }
 .growth-offer-guarantee p { font-size: 18px; line-height: 1.7; margin-top: 16px; max-width: 80ch; }
-.growth-offer-terms { grid-template-columns: 1fr; }
-.growth-offer-terms p { max-width: 100ch; }
 
 @media (prefers-reduced-motion: no-preference) {
   .kx-title-start > svg { animation: kx-arrow-settle .9s var(--hero-ease) both; }
@@ -96,8 +94,8 @@
   .kx-hero-details { grid-column: auto; margin-top: -6px; }
   .kx-hero-en .kx-hero-title { font-size: clamp(31px, 9.7vw, 56px); }
   .growth-offer-guarantee { padding: 24px; }
-  .growth-offer-guarantee h3 { font-size: 24px; }
-  .growth-offer-guarantee p { font-size: 16px; }
+  .growth-offer-guarantee h3 { font-size: 20px; line-height: 28px; }
+  .growth-offer-guarantee p { font-size: 16px; line-height: 24px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .kx-hero *, .kx-hero *::before, .kx-hero *::after { animation: none !important; transition: none !important; }

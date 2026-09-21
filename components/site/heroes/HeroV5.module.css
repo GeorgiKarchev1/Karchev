@@ -1,0 +1,90 @@
+/* V5 — Before and after. The proof is the contrast itself: the same enquiry,
+   handled two ways. The price sits between the cards, as the bridge. */
+.hero {
+  --ink: #171717;
+  --muted: #5c5c5c;
+  --line: #d9d9d9;
+  --ease: cubic-bezier(.32, .72, 0, 1);
+  background: #fff;
+  color: var(--ink);
+  padding: 160px 0 64px;
+}
+.wrap { width: calc(100% - 112px); max-width: 1280px; margin-inline: auto; }
+
+.title {
+  margin: 0; max-width: 680px;
+  font-size: 60px; line-height: 1.05; font-weight: 700; letter-spacing: -.035em;
+  text-wrap: balance;
+}
+.title span { display: block; }
+/* Cyrillic descenders (д, ц, щ) fall below the line box, and `background-clip:
+   text` clips the gradient to the element box — without this padding the tails
+   of the last line lose their fill. The negative margin keeps the rhythm. */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .title {
+    background: linear-gradient(90deg, #000 0%, #666 100%);
+    background-clip: text; -webkit-background-clip: text; color: transparent;
+    padding-block-end: .14em; margin-block-end: -.14em;
+  }
+}
+.sub { margin: 24px 0 0; max-width: 680px; font-size: 20px; line-height: 28px; color: var(--muted); text-wrap: pretty; }
+
+.pair { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 32px; align-items: stretch; margin-top: 64px; }
+.card { padding: 32px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+.cardAfter { background: #171717; border-color: #171717; color: #fff; }
+.cardLabel { margin: 0 0 24px; font-size: 14px; line-height: 20px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.card ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 16px; }
+.card li { position: relative; padding-left: 32px; font-size: 18px; line-height: 28px; text-wrap: pretty; }
+.card li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.cardAfter .cardLabel { color: #d9d9d9; }
+
+.bridge { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+.bridgeLine { flex: 1; width: 1px; background: var(--line); }
+.bridgeText { font-size: 18px; line-height: 28px; font-weight: 600; white-space: nowrap; writing-mode: vertical-rl; }
+
+.foot { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 48px; align-items: center; margin-top: 48px; }
+.actions { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.cta {
+  display: inline-flex; align-items: center; gap: 16px;
+  min-height: 56px; padding: 8px 12px 8px 24px;
+  border-radius: 8px; background: var(--ink); color: #fff;
+  font-size: 16px; line-height: 24px; font-weight: 600;
+  transition: background .7s var(--ease), transform .7s var(--ease);
+}
+.cta svg { flex-shrink: 0; transition: transform .7s var(--ease); }
+.cta:hover { background: #313131; }
+.cta:hover svg { transform: translate(2px, -2px); }
+.cta:active { transform: scale(.98); }
+.note { margin: 0; font-size: 14px; line-height: 20px; color: var(--muted); }
+.proof { margin: 0; font-size: 16px; line-height: 24px; color: var(--muted); max-width: 60ch; text-wrap: pretty; }
+
+.hero :focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .title, .sub, .pair, .foot { animation: v5-enter .8s var(--ease) backwards; }
+  .sub { animation-delay: .08s; }
+  .pair { animation-delay: .16s; }
+  .foot { animation-delay: .24s; }
+}
+@keyframes v5-enter { from { opacity: 0; transform: translateY(64px); filter: blur(12px); } }
+
+@media (max-width: 1150px) { .wrap { width: calc(100% - 72px); } .title { font-size: 48px; } .pair { gap: 24px; } }
+@media (max-width: 900px) {
+  .pair { grid-template-columns: 1fr; gap: 16px; }
+  .bridge { flex-direction: row; padding-block: 8px; }
+  .bridgeLine { width: auto; height: 1px; flex: 1; }
+  .bridgeText { writing-mode: horizontal-tb; }
+  .foot { grid-template-columns: 1fr; gap: 24px; align-items: start; }
+}
+@media (max-width: 700px) {
+  .hero { padding: 128px 0 48px; }
+  .wrap { width: calc(100% - 40px); }
+  .title { font-size: 36px; line-height: 40px; }
+  .sub { font-size: 18px; line-height: 28px; }
+  .pair { margin-top: 48px; }
+  .card { padding: 24px; }
+  .card li { font-size: 16px; line-height: 24px; }
+  .cta { width: 100%; justify-content: space-between; }
+}
+@media (forced-colors: active) { .title { background: none; color: CanvasText; } }
+@media (prefers-reduced-motion: reduce) { .hero *, .hero *::before, .hero *::after { animation: none !important; transition: none !important; } }

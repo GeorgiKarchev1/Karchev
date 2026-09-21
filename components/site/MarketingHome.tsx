@@ -1,5 +1,6 @@
 'use client'
 
+import type { ReactNode } from 'react'
 import Image from 'next/image'
 import { ArrowUpRight, Plus } from 'lucide-react'
 import Navbar from '@/components/Navbar'
@@ -13,7 +14,9 @@ import { GUIDE_URL, PILOT_PRICE_EUR, bookingPath } from '@/lib/contact-info'
 import GrowthHero from '@/components/site/GrowthHero'
 import { growthContent as content } from '@/lib/growth-content'
 
-export default function MarketingHome() {
+/** `hero` lets the variant preview routes swap the top of the page while the
+ *  rest of the homepage stays identical, so the comparison is honest. */
+export default function MarketingHome({ hero }: { hero?: ReactNode } = {}) {
   const { language } = useLanguage()
   const bg = language === 'BG'
   const c = content[bg ? 'bg' : 'en']
@@ -25,7 +28,7 @@ export default function MarketingHome() {
       <a href="#main-content" className="studio-skip">{bg ? 'Към съдържанието' : 'Skip to content'}</a>
       <Navbar />
       <main id="main-content">
-        <GrowthHero bg={bg} />
+        {hero ?? <GrowthHero bg={bg} />}
 
         <section className="agent-principles" id="solutions" aria-labelledby="solutions-title">
           <div className="studio-wrap"><div className="agent-section-heading"><h2 id="solutions-title">{c.differenceTitle}<br /><span>{c.differenceSecond}</span></h2><p>{c.differenceIntro}</p></div>
@@ -37,14 +40,9 @@ export default function MarketingHome() {
           <div className="agent-section-heading"><h2 id="pricing-title">{c.offerTitle}<br /><span>{c.offerSecond}</span></h2><p>{c.offerIntro}</p></div>
           <div className="growth-offer-body">
             <div className="growth-offer-price"><p className="growth-price">{PILOT_PRICE_EUR}<span> €</span></p><p>{c.priceLabel}</p><p>{c.offerTiming}</p><p>{c.offerPayment}</p><a href={booking} className="agent-hero-button">{c.offerCta}<ArrowUpRight size={20} aria-hidden="true" /></a></div>
-            <div><h3>{bg ? 'Какво получавате' : 'What you receive'}</h3><ul className="growth-scope">{c.scope.map(item => <li key={item}>{item}</li>)}</ul></div>
+            <div><h3>{bg ? 'Какво получаваш' : 'What you get'}</h3><ul className="growth-scope">{c.scope.map(item => <li key={item}>{item}</li>)}</ul></div>
           </div>
-          <div className="growth-offer-guarantee"><h3>{bg ? 'Не спираме на втората седмица.' : 'Our work does not stop at week two.'}</h3><p>{c.offerWhy}</p></div><div className="growth-offer-terms"><p>{c.offerBoundary}</p></div>
-        </section>
-
-        <section className="agent-process studio-wrap" id="how-it-works" aria-labelledby="process-title">
-          <div className="agent-process-intro"><h2 id="process-title">{c.processTitle}<br /><span>{c.processSecond}</span></h2><p>{c.processIntro}</p><a href={booking} className="agent-link">{c.cta}<ArrowUpRight size={20} aria-hidden="true" /></a></div>
-          <div className="agent-process-sequence"><span className="agent-process-track" aria-hidden="true"><i /></span><ol>{c.steps.map((step, i) => <li key={step.title}><span className="agent-step-number">{String(i + 1).padStart(2, '0')}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></li>)}</ol></div>
+          <div className="growth-offer-guarantee"><h3>{bg ? 'Не спираме на втората седмица.' : 'Our work does not stop at week two.'}</h3><p>{c.offerWhy}</p></div>
         </section>
 
         <section className="growth-guide" id="guide" aria-labelledby="guide-title"><div className="studio-wrap growth-guide-inner">
