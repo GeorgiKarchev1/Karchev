@@ -1,0 +1,22 @@
+[
+  {
+    "lang": "bg",
+    "width": 1440,
+    "status": 200,
+    "normalMotion": true,
+    "consoleErrors": [],
+    "metadata": true,
+    "schema": true,
+    "booking": true
+  },
+  {
+    "lang": "en",
+    "width": 390,
+    "status": 200,
+    "normalMotion": true,
+    "consoleErrors": [],
+    "metadata": true,
+    "schema": true,
+    "booking": true
+  }
+]

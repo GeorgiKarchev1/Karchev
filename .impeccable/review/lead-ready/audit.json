@@ -1,0 +1,65 @@
+[
+  {
+    "name": "desktop",
+    "width": 1440,
+    "scroll": 1440,
+    "h1": "От запитване до нов клиент.",
+    "phoneLinks": 4,
+    "iframes": 0,
+    "badHashes": [],
+    "errors": []
+  },
+  {
+    "name": "mobile",
+    "width": 390,
+    "scroll": 390,
+    "h1": "От запитване до нов клиент.",
+    "phoneLinks": 4,
+    "iframes": 0,
+    "badHashes": [],
+    "errors": []
+  },
+  {
+    "menuCloses": true
+  },
+  {
+    "name": "small",
+    "width": 320,
+    "scroll": 320,
+    "h1": "От запитване до нов клиент.",
+    "phoneLinks": 4,
+    "iframes": 0,
+    "badHashes": [],
+    "errors": []
+  },
+  {
+    "name": "tablet",
+    "width": 768,
+    "scroll": 768,
+    "h1": "От запитване до нов клиент.",
+    "phoneLinks": 4,
+    "iframes": 0,
+    "badHashes": [],
+    "errors": []
+  },
+  {
+    "name": "english",
+    "width": 1440,
+    "scroll": 1440,
+    "h1": "From an enquiry to a new customer.",
+    "phoneLinks": 4,
+    "iframes": 0,
+    "badHashes": [],
+    "errors": []
+  },
+  {
+    "name": "guide-mobile",
+    "width": 390,
+    "scroll": 390,
+    "h1": "12 проверки:къде губите запитвания",
+    "phoneLinks": 3,
+    "iframes": 0,
+    "badHashes": [],
+    "errors": []
+  }
+]

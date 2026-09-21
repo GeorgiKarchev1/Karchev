@@ -1,0 +1,37 @@
+[
+  {
+    "liveForm": {
+      "status": 200,
+      "ok": true,
+      "personalConfirmationCopy": true
+    }
+  },
+  {
+    "path": "/bg",
+    "status": 200,
+    "width": 1440,
+    "errors": [],
+    "ghlRequests": 0
+  },
+  {
+    "path": "/en",
+    "status": 200,
+    "width": 390,
+    "errors": [],
+    "ghlRequests": 0
+  },
+  {
+    "path": "/bg/checklist",
+    "status": 200,
+    "width": 390,
+    "errors": [],
+    "ghlRequests": 0
+  },
+  {
+    "pdf": {
+      "status": 200,
+      "bytes": 313910,
+      "contentType": "application/pdf"
+    }
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "path": "/bg",
+    "status": 200,
+    "errors": [],
+    "price250": true
+  },
+  {
+    "path": "/en",
+    "status": 200,
+    "errors": [],
+    "price250": true
+  },
+  {
+    "path": "/bg/hero-varianti/1",
+    "status": 200,
+    "errors": [],
+    "price250": true
+  },
+  {
+    "path": "/bg/hero-varianti/2",
+    "status": 200,
+    "errors": [],
+    "price250": true
+  },
+  {
+    "path": "/bg/hero-varianti/3",
+    "status": 200,
+    "errors": [],
+    "price250": true
+  },
+  {
+    "path": "/bg/hero-varianti/4",
+    "status": 200,
+    "errors": [],
+    "price250": true
+  },
+  {
+    "path": "/bg/hero-varianti/5",
+    "status": 200,
+    "errors": [],
+    "price250": true
+  },
+  {
+    "contactUi": "pass",
+    "realEmailSent": false
+  },
+  {
+    "noJavaScriptHero": "visible"
+  }
+]

@@ -1,0 +1,123 @@
+{
+  "results": [
+    {
+      "lang": "bg",
+      "width": 1440,
+      "title": "Growth Systems — системи за растеж | KARCHX",
+      "h1": "От интерес до покупка. С работеща система.",
+      "description": "За бизнеси с клиенти и екип: откриваме пречките между маркетинга и продажбите и внедряваме конкретни подобрения. Диагностика, Growth Sprint и партньорство.",
+      "twitter": "KARCHX | Growth Systems — системи за растеж",
+      "og": "KARCHX | Growth Systems — системи за растеж",
+      "canonical": "https://www.karchx.com/bg",
+      "overflow": false,
+      "outside": [],
+      "brokenAnchors": []
+    },
+    {
+      "lang": "bg",
+      "width": 768,
+      "title": "Growth Systems — системи за растеж | KARCHX",
+      "h1": "От интерес до покупка. С работеща система.",
+      "description": "За бизнеси с клиенти и екип: откриваме пречките между маркетинга и продажбите и внедряваме конкретни подобрения. Диагностика, Growth Sprint и партньорство.",
+      "twitter": "KARCHX | Growth Systems — системи за растеж",
+      "og": "KARCHX | Growth Systems — системи за растеж",
+      "canonical": "https://www.karchx.com/bg",
+      "overflow": false,
+      "outside": [],
+      "brokenAnchors": []
+    },
+    {
+      "lang": "bg",
+      "width": 390,
+      "title": "Growth Systems — системи за растеж | KARCHX",
+      "h1": "От интерес до покупка. С работеща система.",
+      "description": "За бизнеси с клиенти и екип: откриваме пречките между маркетинга и продажбите и внедряваме конкретни подобрения. Диагностика, Growth Sprint и партньорство.",
+      "twitter": "KARCHX | Growth Systems — системи за растеж",
+      "og": "KARCHX | Growth Systems — системи за растеж",
+      "canonical": "https://www.karchx.com/bg",
+      "overflow": false,
+      "outside": [],
+      "brokenAnchors": []
+    },
+    {
+      "lang": "bg",
+      "width": 320,
+      "title": "Growth Systems — системи за растеж | KARCHX",
+      "h1": "От интерес до покупка. С работеща система.",
+      "description": "За бизнеси с клиенти и екип: откриваме пречките между маркетинга и продажбите и внедряваме конкретни подобрения. Диагностика, Growth Sprint и партньорство.",
+      "twitter": "KARCHX | Growth Systems — системи за растеж",
+      "og": "KARCHX | Growth Systems — системи за растеж",
+      "canonical": "https://www.karchx.com/bg",
+      "overflow": false,
+      "outside": [],
+      "brokenAnchors": []
+    },
+    {
+      "lang": "bg",
+      "interactions": "mobile menu, Escape, anchor, keyboard FAQ, validation, mock error/loading/success/reset, language switch passed",
+      "mockContactRequests": 2
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "title": "Growth Systems for Your Business | KARCHX",
+      "h1": "From interest to a sale. With a working system.",
+      "description": "For businesses with customers and a team: identify the gaps between marketing and sales and implement focused improvements. Growth Audit, Sprint and Partnership.",
+      "twitter": "KARCHX | Growth Systems for Your Business",
+      "og": "KARCHX | Growth Systems for Your Business",
+      "canonical": "https://www.karchx.com/en",
+      "overflow": false,
+      "outside": [],
+      "brokenAnchors": []
+    },
+    {
+      "lang": "en",
+      "width": 768,
+      "title": "Growth Systems for Your Business | KARCHX",
+      "h1": "From interest to a sale. With a working system.",
+      "description": "For businesses with customers and a team: identify the gaps between marketing and sales and implement focused improvements. Growth Audit, Sprint and Partnership.",
+      "twitter": "KARCHX | Growth Systems for Your Business",
+      "og": "KARCHX | Growth Systems for Your Business",
+      "canonical": "https://www.karchx.com/en",
+      "overflow": false,
+      "outside": [],
+      "brokenAnchors": []
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "title": "Growth Systems for Your Business | KARCHX",
+      "h1": "From interest to a sale. With a working system.",
+      "description": "For businesses with customers and a team: identify the gaps between marketing and sales and implement focused improvements. Growth Audit, Sprint and Partnership.",
+      "twitter": "KARCHX | Growth Systems for Your Business",
+      "og": "KARCHX | Growth Systems for Your Business",
+      "canonical": "https://www.karchx.com/en",
+      "overflow": false,
+      "outside": [],
+      "brokenAnchors": []
+    },
+    {
+      "lang": "en",
+      "width": 320,
+      "title": "Growth Systems for Your Business | KARCHX",
+      "h1": "From interest to a sale. With a working system.",
+      "description": "For businesses with customers and a team: identify the gaps between marketing and sales and implement focused improvements. Growth Audit, Sprint and Partnership.",
+      "twitter": "KARCHX | Growth Systems for Your Business",
+      "og": "KARCHX | Growth Systems for Your Business",
+      "canonical": "https://www.karchx.com/en",
+      "overflow": false,
+      "outside": [],
+      "brokenAnchors": []
+    },
+    {
+      "lang": "en",
+      "interactions": "mobile menu, Escape, anchor, keyboard FAQ, validation, mock error/loading/success/reset, language switch passed",
+      "mockContactRequests": 2
+    },
+    {
+      "zoom": "CSS 200% reflow simulation passed"
+    }
+  ],
+  "errors": [],
+  "externalRequests": "blocked; contact API fully mocked"
+}

@@ -1,0 +1,10 @@
+{
+  "commit": "ec2ede65442f877c3315abc1e6c379d920e0da51",
+  "branch": "main",
+  "deployment": "dpl_G1BreRjdYqZmM2w4RYHeNC9AHPKB",
+  "site": "https://www.karchx.com/bg",
+  "variants": "https://www.karchx.com/bg/hero-varianti/1",
+  "status": "ready",
+  "gitSourceVerified": true,
+  "localMainMatchesRemote": true
+}

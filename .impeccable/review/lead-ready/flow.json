@@ -1,0 +1,9 @@
+[
+  "No GHL or analytics requests with declined consent",
+  "Required validation focuses first invalid field",
+  "Failed send retains input and shows phone/email; duplicate click sends once",
+  "Rate limit has Bulgarian recovery copy",
+  "15-second timeout unlocks form and preserves input",
+  "Success explains personal reply and unconfirmed preferred time",
+  "No-JS visitors see phone/email without a broken form"
+]

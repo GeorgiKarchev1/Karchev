@@ -1,0 +1,17 @@
+{
+  "commit": "14a6c39558fb33a74b596661784f13e19133fa0b",
+  "uiCommit": "48a0bf8096dfff8585733155a3c358290c1612af",
+  "deployment": "dpl_9ssDKZRg17iEdVPttFHaukLabrHW",
+  "status": "success",
+  "url": "https://www.karchx.com/bg",
+  "browser": "Brave",
+  "liveChecks": {
+    "desktop": 1440,
+    "mobile": 390,
+    "phone": true,
+    "contactAnchor": true,
+    "consoleErrors": 0
+  },
+  "build": "passed66routes",
+  "review": "ship"
+}

@@ -1,0 +1,14 @@
+const {chromium}=require('/Users/Apple/.npm/_npx/9833c18b2d85bc59/node_modules/playwright');const assert=require('node:assert/strict');const fs=require('fs');
+(async()=>{
+const origin=process.env.HERO_TEST_ORIGIN||'http://127.0.0.1:3103';const b=await chromium.launch({executablePath:'/Applications/Brave Browser.app/Contents/MacOS/Brave Browser',headless:true});const result=[];
+for(const path of ['/bg','/en',...Array.from({length:5},(_,i)=>'/bg/hero-varianti/'+(i+1))]){
+ const p=await b.newPage({viewport:{width:path==='/bg'?390:1440,height:900}});const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.addInitScript(()=>localStorage.setItem('karchev_cookie_consent','declined'));const r=await p.goto(origin+path,{waitUntil:'networkidle'});await p.evaluate(()=>Promise.all(document.getAnimations().map(a=>a.finished.catch(()=>{}))));
+ assert.equal(r.status(),200);assert.equal(errors.length,0);const text=await p.locator('.kx-hero').innerText();assert(text.includes('250'));assert(!text.includes('390'));assert.equal(await p.locator('.agent-title-mask').count(),0);assert.equal(await p.locator('h1').count(),1);assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ if(path.includes('hero-varianti')){assert((await p.locator('meta[name="robots"]').getAttribute('content')).includes('noindex'));assert.equal(await p.locator('.kx-preview-bar [aria-current="page"]').count(),1);}else{await p.locator('.kx-hero-action').click();assert(p.url().endsWith('#contact'));}
+ result.push({path,status:r.status(),errors,price250:true});
+ if(path==='/bg'||path.endsWith('/2')||path.endsWith('/3'))await p.screenshot({path:'.impeccable/review/hero-options/final-'+(path.replaceAll('/','-'))+'.png',fullPage:path.includes('hero-varianti')});
+ await p.close();
+}
+const p=await b.newPage();await p.goto(origin+'/bg');await p.locator('#contact-name').fill('UI проверка');await p.locator('#contact-email').fill('qa@example.com');await p.route('**/api/contact',r=>r.fulfill({status:200,contentType:'application/json',body:'{"ok":true}'}));await p.locator('.studio-submit').click();await p.getByText('Благодаря за запитването!',{exact:true}).waitFor();result.push({contactUi:'pass',realEmailSent:false});await p.close();
+const nojs=await b.newPage({javaScriptEnabled:false,viewport:{width:390,height:900}});await nojs.goto(origin+'/bg');assert(await nojs.locator('.kx-hero h1').isVisible());assert(await nojs.locator('.kx-hero-amount').isVisible());await nojs.close();result.push({noJavaScriptHero:'visible'});await b.close();const file=origin.includes('localhost')||origin.includes('127.0.0.1')?'production-checks':'live-checks';fs.writeFileSync('.impeccable/review/hero-options/'+file+'.json',JSON.stringify(result,null,2));console.log(result);
+})().catch(e=>{console.error(e);process.exit(1)});

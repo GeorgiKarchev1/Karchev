@@ -1,0 +1,91 @@
+npm notice run developer-portfolio@0.1.0 build
+npm notice run next build
+   ▲ Next.js 14.0.0
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+Browserslist: browsers data (caniuse-lite) is 14 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/59) ...
+   Generating static pages (14/59) 
+   Generating static pages (29/59) 
+   Generating static pages (44/59) 
+ ✓ Generating static pages (59/59) 
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                                         Size     First Load JS
+┌ ○ /_not-found                                                     878 B          88.5 kB
+├ ○ /admin                                                          2.3 kB           90 kB
+├ ○ /admin/dashboard                                                11.9 kB        99.6 kB
+├ λ /api/admin/analytics                                            0 B                0 B
+├ λ /api/admin/auth                                                 0 B                0 B
+├ λ /api/admin/generate                                             0 B                0 B
+├ λ /api/admin/posts                                                0 B                0 B
+├ λ /api/admin/seo                                                  0 B                0 B
+├ λ /api/ai-demo                                                    0 B                0 B
+├ λ /api/contact                                                    0 B                0 B
+├ λ /api/os/bootstrap                                               0 B                0 B
+├ λ /api/os/repurpose                                               0 B                0 B
+├ λ /api/submit-lead                                                0 B                0 B
+├ ○ /bg                                                             154 B           122 kB
+├ ○ /bg/ai-avtomatizatsii                                           232 B           112 kB
+├ ○ /bg/ai-integratsiya                                             232 B           112 kB
+├ ○ /bg/blog                                                        247 B           112 kB
+├ λ /bg/blog/[slug]                                                 193 B           112 kB
+├ ○ /bg/blog/ai-avtomatizatsii-za-seo-sadarzhanie-i-blog-sistema    247 B           112 kB
+├ ○ /bg/blog/greshkite-v-saita-koito-ubivat-doverieto               247 B           112 kB
+├ ○ /bg/blog/kak-ai-avtomatizatsiite-pestyat-vreme-na-malak-biznes  247 B           112 kB
+├ ○ /bg/blog/kakvo-tryabva-da-ima-sait-za-malak-biznes              247 B           112 kB
+├ ○ /bg/blog/koga-ti-tryabva-landing-stranitsa-vmesto-sait          247 B           112 kB
+├ ○ /bg/blog/kolko-struva-sait-za-malak-biznes                      247 B           112 kB
+├ ○ /bg/estimate                                                    7.59 kB        95.3 kB
+├ ○ /bg/izrabotka-na-saitove                                        232 B           112 kB
+├ ○ /bg/kak-da-polzvam-ai-ako-nishto-ne-razbiram                    3.02 kB         115 kB
+├ ○ /bg/landing-stranitsi                                           232 B           112 kB
+├ ○ /bg/tools                                                       232 B           112 kB
+├ ○ /en                                                             154 B           122 kB
+├ ○ /en/ai-automation                                               232 B           112 kB
+├ ○ /en/ai-integration                                              232 B           112 kB
+├ ○ /en/blog                                                        247 B           112 kB
+├ ○ /en/blog/ai-automation-seo-content-pipeline                     247 B           112 kB
+├ ○ /en/blog/how-ai-automation-saves-time-for-small-businesses      247 B           112 kB
+├ ○ /en/blog/website-cost-small-business-bulgaria                   247 B           112 kB
+├ ○ /en/blog/website-mistakes-that-kill-trust                       247 B           112 kB
+├ ○ /en/blog/what-a-small-business-website-needs                    247 B           112 kB
+├ ○ /en/blog/when-you-need-a-landing-page-instead-of-a-website      247 B           112 kB
+├ ○ /en/estimate                                                    8.6 kB          103 kB
+├ ○ /en/landing-pages                                               232 B           112 kB
+├ ○ /en/tools                                                       232 B           112 kB
+├ ○ /en/website-development                                         232 B           112 kB
+├ ○ /os                                                             3.48 kB         102 kB
+├ ○ /os/hooks                                                       3.74 kB         102 kB
+├ ○ /os/ideas                                                       3.92 kB         102 kB
+├ ○ /os/onboarding                                                  3.77 kB         102 kB
+├ ○ /os/pillars                                                     3.06 kB         101 kB
+├ ○ /os/plan                                                        3.15 kB         101 kB
+├ ○ /os/repurpose                                                   3.42 kB        94.7 kB
+├ ○ /policies/cookies                                               194 B          94.8 kB
+├ ○ /policies/privacy-policy                                        194 B          94.8 kB
+├ ○ /policies/terms-of-service                                      194 B          94.8 kB
+├ ○ /politiki/biskvitki                                             194 B          94.8 kB
+├ ○ /politiki/obshti-uslovia                                        194 B          94.8 kB
+├ ○ /politiki/poveritelnost                                         194 B          94.8 kB
+├ ○ /robots.txt                                                     0 B                0 B
+└ ○ /sitemap.xml                                                    0 B                0 B
++ First Load JS shared by all                                       87.7 kB
+  ├ chunks/2472-e2ee560dd4ec3f63.js                                 32.3 kB
+  ├ chunks/fd9d1056-046bb5f7ef1bd6d4.js                             53.3 kB
+  ├ chunks/main-app-feaafb0006b4f713.js                             233 B
+  └ chunks/webpack-312c12e63fcbbd16.js                              1.85 kB
+
+
+ƒ Middleware                                                        31.2 kB
+
+○  (Static)   prerendered as static HTML
+λ  (Dynamic)  server-rendered on demand using Node.js
+

@@ -1,0 +1,21 @@
+[
+  {
+    "width": 1440,
+    "status": 200,
+    "newHero": true,
+    "phone": true,
+    "contactAnchor": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "status": 200,
+    "newHero": true,
+    "phone": true,
+    "contactAnchor": true,
+    "errors": []
+  },
+  {
+    "oldComparisonLink": "redirects to new home"
+  }
+]

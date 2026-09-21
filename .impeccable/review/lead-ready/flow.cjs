@@ -1,0 +1,20 @@
+const { chromium } = require('/Users/Apple/.npm/_npx/9833c18b2d85bc59/node_modules/playwright');
+const assert=require('node:assert/strict');const fs=require('fs');
+(async()=>{
+ const b=await chromium.launch({executablePath:'/Applications/Brave Browser.app/Contents/MacOS/Brave Browser',headless:true});
+ const p=await b.newPage({viewport:{width:390,height:844}});const checks=[];const requests=[];
+ p.on('request',r=>requests.push(r.url()));
+ await p.addInitScript(()=>localStorage.setItem('karchev_cookie_consent','declined'));
+ await p.goto('http://127.0.0.1:3102/bg',{waitUntil:'networkidle'});
+ assert.equal(requests.some(u=>/leadconnector|msgsndr|googletagmanager|clarity\.ms/.test(u)),false);checks.push('No GHL or analytics requests with declined consent');
+ await p.locator('.studio-submit').click();assert.equal(await p.locator('#contact-name-error').innerText(),'Моля, въведете име.');assert.equal(await p.locator('#contact-name').evaluate(e=>e===document.activeElement),true);checks.push('Required validation focuses first invalid field');
+ await p.locator('#contact-name').fill('Тест — не е клиент');await p.locator('#contact-email').fill('wrong');await p.locator('.studio-submit').click();assert(await p.locator('#contact-email-error').isVisible());
+ await p.locator('#contact-email').fill('qa@example.com');await p.locator('#contact-message').fill('Проверка на запазения текст');await p.locator('#contact-preferredTime').fill('Вторник след 14:00');
+ let count=0;await p.route('**/api/contact',async r=>{count++;await new Promise(r=>setTimeout(r,600));await r.fulfill({status:502,contentType:'application/json',body:JSON.stringify({ok:false})});});
+ await p.locator('.studio-submit').evaluate(e=>{e.click();e.click()});await p.locator('.studio-form-error').waitFor();assert.equal(count,1);assert.equal(await p.locator('#contact-message').inputValue(),'Проверка на запазения текст');assert(await p.locator('[role="alert"] a[href="tel:+359895739335"]').isVisible());checks.push('Failed send retains input and shows phone/email; duplicate click sends once');
+ await p.unroute('**/api/contact');await p.route('**/api/contact',r=>r.fulfill({status:429,contentType:'application/json',body:JSON.stringify({ok:false,error:'rate_limited'})}));await p.locator('.studio-submit').click();await p.locator('.studio-form-error').filter({hasText:'Твърде много опити'}).waitFor();checks.push('Rate limit has Bulgarian recovery copy');
+ await p.unroute('**/api/contact');await p.route('**/api/contact',()=>{});await p.locator('.studio-submit').click();await p.locator('.studio-form-error').filter({hasText:'Не успяхме'}).waitFor({timeout:20000});assert.equal(await p.locator('.studio-submit').isEnabled(),true);checks.push('15-second timeout unlocks form and preserves input');
+ await p.unroute('**/api/contact');await p.route('**/api/contact',r=>r.fulfill({status:200,contentType:'application/json',body:JSON.stringify({ok:true})}));await p.locator('.studio-submit').click();await p.getByText('Благодаря за запитването!',{exact:true}).waitFor();assert(await p.getByText(/часът още не е потвърден/).isVisible());checks.push('Success explains personal reply and unconfirmed preferred time');
+ const nojs=await b.newPage({javaScriptEnabled:false});await nojs.goto('http://127.0.0.1:3102/bg');assert.equal(await nojs.locator('form').isVisible(),false);assert(await nojs.locator('a[href="tel:+359895739335"]').count()>0);checks.push('No-JS visitors see phone/email without a broken form');await nojs.close();
+ await p.close();await b.close();fs.writeFileSync('.impeccable/review/lead-ready/flow.json',JSON.stringify(checks,null,2));console.log(checks);
+})().catch(e=>{console.error(e);process.exit(1)});
