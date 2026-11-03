@@ -1,0 +1,287 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@font-face {
+  font-family: 'abcMarist';
+  src: url('/sites/karchx/fonts/serif-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'abcMarist';
+  src: url('/sites/karchx/fonts/serif-italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'dmSans';
+  src: url('/sites/karchx/fonts/sans-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'dmMono';
+  src: url('/sites/karchx/fonts/mono-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-abc-marist: 'abcMarist', Georgia, serif;
+  --font-dm-sans: 'dmSans', system-ui, -apple-system, sans-serif;
+  --font-dm-mono: 'dmMono', monospace;
+
+  --color-background-primary: #f9f8f5;
+  --color-background-secondary: #f3f0e9;
+  --color-surface-stone: #ede8de;
+  --color-surface-stone-subtle: #f8f6f2;
+  
+  --color-core-black: #070503;
+  --color-black-800: #1a1613;
+  --color-black-600: #37302c;
+  --color-black-400: #564b43;
+  --color-black-200: #696563;
+  --color-black-100: #766f6f;
+
+  --color-orange-500: #ff740a;
+  --color-orange-600: #f06800;
+  --color-orange-700: #cc5800;
+
+  --color-green-600: #6cda76;
+  --color-green-700: #46a758;
+  --color-green-900: #297c3b;
+  --color-green-100: #effbef;
+
+  --color-border-subtle: rgba(7, 5, 3, 0.08);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background-primary);
+    color: var(--color-core-black);
+    font-family: var(--font-dm-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-marist {
+    font-family: var(--font-abc-marist);
+  }
+
+  .font-mono-code {
+    font-family: var(--font-dm-mono);
+  }
+}
+
+/* Glassmorphism & custom components */
+.bg-glass-pill {
+  background: rgba(249, 248, 245, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(7, 5, 3, 0.08);
+}
+
+.bg-glass-dark {
+  background: rgba(18, 12, 8, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.bg-glass-card {
+  background: rgba(249, 248, 245, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(7, 5, 3, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+}
+
+/* Frame overlay */
+.hero-frame {
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .hero-frame {
+    border-radius: 72px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-frame {
+    border-radius: 96px;
+  }
+}
+
+/* Pulse animation */
+@keyframes pulseDot {
+  0% { transform: scale(0.95); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.6; }
+}
+
+.animate-pulse-dot {
+  animation: pulseDot 2.4s infinite ease-in-out;
+}
+
+/* Slow ken-burns pan used behind the feature demos (stands in for the blurred pan in the source videos) */
+@keyframes feature-pan {
+  from { transform: scale(1.02) translate3d(-1.5%, 0, 0); }
+  to { transform: scale(1.1) translate3d(1.5%, -1%, 0); }
+}
+
+/* Hero ticker: incoming line slides up + unblurs */
+@keyframes ticker-in {
+  from { opacity: 0; transform: translateY(10px); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes ticker-out {
+  from { opacity: 1; transform: translateY(0); filter: blur(0); }
+  to { opacity: 0; transform: translateY(-10px); filter: blur(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes flower-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* Keep the page light: the bento component ships dark: variants, which should only apply under an explicit .dark class (not the OS setting) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@keyframes gradient-drift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes gradient-blob {
+  0% { transform: translate(-8%, -6%) scale(1); }
+  50% { transform: translate(10%, 8%) scale(1.15); }
+  100% { transform: translate(-8%, -6%) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gradient-drift, .gradient-blob { animation: none !important; }
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+
+/* Code snippet tile in the hero grid: lines appear one after another, hold, fade, repeat */
+.snip-line { opacity: 0; animation: snip-loop 9s ease-out infinite both; animation-delay: var(--d, 0s); }
+@keyframes snip-loop {
+  0% { opacity: 0; transform: translateY(3px); }
+  4%, 88% { opacity: 1; transform: none; }
+  96%, 100% { opacity: 0; transform: none; }
+}
+
+/* ───────── Dark theme (only applies under html.dark; light mode is untouched) ───────── */
+html.dark { color-scheme: dark; }
+html.dark body { background-color: #0a0a0a; color: #ffffff; }
+
+html.dark .bg-\[\#f9f8f5\] { background-color: #0a0a0a; }
+html.dark .bg-\[\#f9f8f5\]\/90 { background-color: rgb(10 10 10 / 0.9); }
+html.dark .bg-\[\#f9f8f5\]\/95 { background-color: rgb(10 10 10 / 0.95); }
+
+html.dark .text-\[\#070503\],
+html.dark .text-\[\#141414\] { color: #ffffff; }
+html.dark .text-\[\#070503\]\/90 { color: rgb(255 255 255 / 0.9); }
+html.dark .text-\[\#070503\]\/80 { color: rgb(255 255 255 / 0.8); }
+html.dark .text-\[\#070503\]\/70 { color: rgb(255 255 255 / 0.7); }
+html.dark .text-\[\#070503\]\/60 { color: rgb(255 255 255 / 0.6); }
+html.dark .text-\[\#070503\]\/55 { color: rgb(255 255 255 / 0.55); }
+html.dark .text-\[\#070503\]\/50 { color: rgb(255 255 255 / 0.5); }
+html.dark .text-\[\#070503\]\/40 { color: rgb(255 255 255 / 0.4); }
+html.dark .\!text-\[\#070503\] { color: #ffffff !important; }
+html.dark .text-\[\#141414\]\/65 { color: rgb(255 255 255 / 0.65); }
+html.dark .text-\[\#141414\]\/60 { color: rgb(255 255 255 / 0.6); }
+html.dark .text-\[\#141414\]\/55 { color: rgb(255 255 255 / 0.55); }
+html.dark .hover\:text-\[\#070503\]:hover,
+html.dark .group:hover .group-hover\:text-\[\#070503\] { color: #fff; }
+
+html.dark .border-\[\#070503\]\/5 { border-color: rgb(255 255 255 / 0.07); }
+html.dark .border-\[\#070503\]\/10 { border-color: rgb(255 255 255 / 0.12); }
+html.dark .border-\[\#070503\]\/30 { border-color: rgb(255 255 255 / 0.3); }
+html.dark .border-\[\#141414\]\/20 { border-color: rgb(255 255 255 / 0.22); }
+html.dark .divide-\[\#070503\]\/10 > :not(:last-child) { border-color: rgb(255 255 255 / 0.12); }
+
+html.dark .bg-\[\#070503\]\/5 { background-color: rgb(255 255 255 / 0.06); }
+html.dark .bg-\[\#070503\]\/10 { background-color: rgb(255 255 255 / 0.12); }
+html.dark .bg-\[\#070503\]\/40 { background-color: rgb(255 255 255 / 0.4); }
+html.dark .bg-\[\#070503\]\/60 { background-color: rgb(255 255 255 / 0.6); }
+
+/* Solid dark buttons flip to light ones */
+html.dark .bg-\[\#070503\],
+html.dark .bg-\[\#141414\] { background-color: #ffffff; color: #0a0a0a; }
+html.dark .bg-\[\#1a1613\],
+html.dark .hover\:bg-\[\#1a1613\]:hover { background-color: #fff; }
+
+/* Cream panels */
+html.dark .bg-\[\#F3F0E9\] { background-color: #141414; }
+html.dark .bg-\[\#f3f0e9\] { background-color: #2a2a2a; }
+html.dark .bg-\[\#ede8de\] { background-color: #1c1c1c; color: #ffffff; }
+html.dark .bg-\[\#ede8de\]\/80 { background-color: rgb(28 28 28 / 0.8); }
+html.dark .bg-\[\#ede8de\]\/60 { background-color: rgb(28 28 28 / 0.6); }
+
+/* Footer */
+html.dark footer.bg-white { background-color: #0a0a0a; }
+html.dark footer .text-black\/55,
+html.dark footer .text-black\/50 { color: rgb(255 255 255 / 0.55); }
+html.dark footer .hover\:text-black:hover { color: #fff; }
+html.dark footer .border-black\/10 { border-color: rgb(255 255 255 / 0.12); }
+html.dark footer [aria-hidden].select-none {
+  background-image: linear-gradient(to bottom, #3a3a3a 0%, #232323 50%, #141414 100%) !important;
+}
+
+/* Misc */
+html.dark .shadow-xl, html.dark .shadow-sm { --tw-shadow-color: rgb(0 0 0 / 0.5); }
+html.dark ::selection { background: rgb(255 116 10 / 0.35); }
+
+/* Founder poster */
+html.dark .bg-\[\#fcfcfc\] { background-color: #111111; }
+html.dark .bg-\[\#d9d9d9\] { background-color: #1e1e1e; }
+html.dark .text-\[\#0b0b0b\] { color: #ffffff; }
+html.dark .text-\[\#0b0b0b\]\/55 { color: rgb(255 255 255 / 0.55); }
+html.dark .bg-\[\#0b0b0b\] { background-color: #ffffff; }
+html.dark .text-\[\#070503\]\! { color: #ffffff !important; }
+
+/* Contact panel: lighter grey gradient in dark mode */
+html.dark .contact-panel { background: linear-gradient(to bottom, #787878 0%, #4a4a4a 45%, #2b2b2b 100%); }
+html.dark .contact-panel .bg-\[\#f3f0e9\] { background-color: #f3f0e9; }
+
+/* Phones: a card shows its sentence, then fades to its back side, then back again */
+@keyframes m-front { 0%, 38% { opacity: 1; } 48%, 90% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes m-back  { 0%, 38% { opacity: 0; } 48%, 90% { opacity: 1; } 100% { opacity: 0; } }
+.m-front { animation: m-front 8s ease-in-out infinite; }
+.m-back  { animation: m-back 8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .m-front, .m-back { animation: none; }
+  .m-back { opacity: 0; }
+}
+
+/* Phones and tablets: slow endless carousel of the small cards, moving left to right */
+@keyframes m-marquee { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.m-marquee { animation: m-marquee 90s linear infinite; will-change: transform; }
+
+/* Bulgarian on phones: the words are longer, so the headline is a touch smaller and the "Up to 30 minutes" line may wrap */
+@media (max-width: 639px) {
+  html.lang-bg .hero-headline { font-size: 11.5vw !important; }
+  html.lang-bg .hero-headline > p { font-size: 10px; letter-spacing: 0.1em; }
+  html.lang-bg .hero-upto { white-space: normal !important; font-size: 11px !important; }
+}
